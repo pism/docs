@@ -12,15 +12,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"]}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Installing prerequisites and building PISM on Arch Linux" href="arch.html" />
     <link rel="prev" title="Installation Cookbook" href="cookbook.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -109,22 +106,19 @@ recommended as they satisfy requirements for building or running PISM.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code></p></td>
 <td><p>optional; used in some pre- and post-processing scripts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-petsc4py</span></code></p></td>
-<td><p>optional; used by PISM’s Python bindings</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-pyproj</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-pyproj</span></code></p></td>
 <td><p>optional; used in some pre-processing scripts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-scipy</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-scipy</span></code></p></td>
 <td><p>optional; used in some pre- and post-processing scripts</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">swig</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">swig</span></code></p></td>
 <td><p>optional; used to build PISM’s Python bindings</p></td>
 </tr>
 </tbody>
 </table>
 <p>You may be able to install these by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install -y cmake g++ git libfftw3-dev libgsl-dev libnetcdf-dev libudunits2-dev netcdf-bin petsc-dev cdo cmake-curses-gui libpnetcdf-dev libproj-dev libx11-dev nco ncview python3-dev python3-netcdf4 python3-nose python3-numpy python3-petsc4py python3-pyproj python3-scipy swig
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install -y cmake g++ git libfftw3-dev libgsl-dev libnetcdf-dev libudunits2-dev netcdf-bin petsc-dev cdo cmake-curses-gui libpnetcdf-dev libproj-dev libx11-dev nco ncview python3-dev python3-netcdf4 python3-nose python3-numpy python3-pyproj python3-scipy swig
 </pre></div>
 </div>
 <p>Click <a class="reference download internal" download="" href="../_downloads/ee1d5658757ddd49caa6c7557781a660/install_libraries.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this file.</p>
@@ -219,9 +213,9 @@ recommended as they satisfy requirements for building or running PISM.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2503-g0c4c79141
+      Git revision v1.0-2512-g36199d382
       committed by Constantine Khrulev
-      on 2021-08-02 15:21:44 -0800 |
+      on 2021-08-03 16:49:37 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

@@ -21,7 +21,6 @@
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -151,7 +150,7 @@ updated (“<code class="docutils literal notranslate"><span class="pre">h</span
 </div>
 <p>Recall that the PISM time step is determined by an adaptive mechanism. Stable mass
 conservation and conservation of energy solutions require such an adaptive time-stepping
-scheme <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id32"><span>15</span></a>]</span>. The first word we see here, namely “<code class="docutils literal notranslate"><span class="pre">diffusivity</span></code>”, is the
+scheme <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id1">[27]</a>. The first word we see here, namely “<code class="docutils literal notranslate"><span class="pre">diffusivity</span></code>”, is the
 adaptive-timestepping “reason”. See <a class="reference internal" href="#tab-dt-reason"><span class="std std-numref">Table 24</span></a>. We also see that
 there was a major time step of <span class="math notranslate nohighlight">\(0.83945\)</span> model years divided into <span class="math notranslate nohighlight">\(2\)</span> substeps of about
 <span class="math notranslate nohighlight">\(0.42\)</span> years. The parameter <a class="reference internal" href="../parameters/index.html#config-time_stepping.skip.enabled"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.skip</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a> enables this mechanism,
@@ -176,7 +175,7 @@ step restriction for the “advective” part of the flow in the mass continuity
 </div>
 <p>The third line of the above example shows that the SSA stress balance was solved.
 Information on the number of nonlinear (outer) and linear (inner) iterations is provided
-<span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id33"><span>9</span></a>]</span>.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id2">[26]</a>.</p>
 <table class="colwidths-given docutils align-default" id="tab-dt-reason">
 <caption><span class="caption-number">Table 24 </span><span class="caption-text">Meaning of some adaptive time-stepping “reasons” in the standard
              output line</span><a class="headerlink" href="#tab-dt-reason" title="Permalink to this table">¶</a></caption>
@@ -194,16 +193,16 @@ Information on the number of nonlinear (outer) and linear (inner) iterations is 
 <td><p>CFL condition for the “advective” part of the mass continuity equation. Uses (<span class="math notranslate nohighlight">\(u\)</span>,
 <span class="math notranslate nohighlight">\(v\)</span>) components of the vertically-averaged horizontal ice velocity with the Blatter
 stress balance model. Uses sliding velocity with all other stress balance choices
-<span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id33"><span>9</span></a>]</span>.</p></td>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id3">[26]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">diffusivity</span></code></p></td>
 <td><p>SIA-diffusivity-based time step restriction for the mass continuity equation
-<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id32"><span>15</span></a>]</span>, <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id186"><span>98</span></a>]</span></p></td>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[27]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarshpayne" id="id5">[115]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">energy</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">model</span></code></p></td>
 <td><p>CFL condition using horizontal (<span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span>) components of the ice velocity within the
 ice volume. Restricts the time step of enthalpy, temperature, or age advection
-<span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id32"><span>15</span></a>]</span>. (This CFL condition does not use the vertical (<span class="math notranslate nohighlight">\(w\)</span>) component of ice
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id6">[27]</a>. (This CFL condition does not use the vertical (<span class="math notranslate nohighlight">\(w\)</span>) component of ice
 velocity: PISM’s 3D advection scheme is explicit in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and implicit in
 <span class="math notranslate nohighlight">\(z\)</span>.)</p></td>
 </tr>
@@ -240,7 +239,7 @@ see section <a class="reference internal" href="../modeling-choices/marine/calvi
 <span id="sec-time-stepping-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">time_stepping.</span></code></p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../parameters/index.html#config-time_stepping.adaptive_ratio"><code class="docutils literal notranslate"><span class="pre">adaptive_ratio</span></code></a> (0.12) Adaptive time stepping ratio for the explicit scheme for the mass balance equation; <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id32"><span>15</span></a>]</span>, inequality (25)</p></li>
+<li><p><a class="reference internal" href="../parameters/index.html#config-time_stepping.adaptive_ratio"><code class="docutils literal notranslate"><span class="pre">adaptive_ratio</span></code></a> (0.12) Adaptive time stepping ratio for the explicit scheme for the mass balance equation; <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[27]</a>, inequality (25)</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-time_stepping.count_steps"><code class="docutils literal notranslate"><span class="pre">count_steps</span></code></a> (no) If yes, IceModel::run() will count the number of time steps it took.  Sometimes useful for performance evaluation.  Counts all steps, regardless of whether processes (mass continuity, energy, velocity, …) occurred within the step.</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-time_stepping.hit_extra_times"><code class="docutils literal notranslate"><span class="pre">hit_extra_times</span></code></a> (yes) Modify the time-stepping mechanism to hit times requested using <a class="reference internal" href="../parameters/index.html#config-output.extra.times"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.extra</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.times</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-time_stepping.hit_multiples"><code class="docutils literal notranslate"><span class="pre">hit_multiples</span></code></a> (0<em> years</em>) Hit every X years, where X is specified using this parameter. Use 0 to disable.</p></li>
@@ -347,9 +346,9 @@ see section <a class="reference internal" href="../modeling-choices/marine/calvi
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2503-g0c4c79141
+      Git revision v1.0-2512-g36199d382
       committed by Constantine Khrulev
-      on 2021-08-02 15:21:44 -0800 |
+      on 2021-08-03 16:49:37 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

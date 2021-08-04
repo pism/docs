@@ -21,7 +21,6 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -63,7 +62,7 @@ pismr -i state.nc -surface given -extra_times 0.0:0.1:2.5 \
 </pre></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">pismr</span> <span class="pre">-eisII</span> <span class="pre">A</span></code> merely generates demonstration climate data, using EISMINT II
-choices <span id="id1">[<a class="reference internal" href="../zzz_references_html.html#id105"><span>11</span></a>]</span>. The next run extracts the surface mass balance
+choices <a class="bibtex reference internal" href="../zzz_references_html.html#eismint00" id="id1">[22]</a>. The next run extracts the surface mass balance
 <code class="variable docutils literal notranslate"><span class="pre">climatic_mass_balance</span></code> and surface temperature <code class="variable docutils literal notranslate"><span class="pre">ice_surface_temp</span></code> from
 <code class="docutils literal notranslate"><span class="pre">state.nc</span></code>. It then does nothing interesting, exactly because a constant climate is
 used. Viewing <code class="docutils literal notranslate"><span class="pre">movie.nc</span></code> we see these same values as from <code class="docutils literal notranslate"><span class="pre">state.nc</span></code>, in variables
@@ -84,7 +83,7 @@ get the surface mass balance <code class="variable docutils literal notranslate"
 <code class="variable docutils literal notranslate"><span class="pre">air_temp</span></code> and a noticeable decrease in the surface mass balance during summer months
 (see variable <code class="variable docutils literal notranslate"><span class="pre">climatic_mass_balance</span></code>). Note that <code class="variable docutils literal notranslate"><span class="pre">ice_surface_temp</span></code> is constant
 in time: this is the temperature <em>at the ice surface but below firn</em> and it does not
-include seasonal variations <span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id188"><span>29</span></a>]</span>.</p>
+include seasonal variations <a class="bibtex reference internal" href="../zzz_references_html.html#hock05" id="id2">[23]</a>.</p>
 </div>
 <div class="section" id="using-low-resolution-test-runs">
 <h2>Using low-resolution test runs<a class="headerlink" href="#using-low-resolution-test-runs" title="Permalink to this headline">¶</a></h2>
@@ -141,7 +140,7 @@ positive degree-days in the given period, because of highs of the air temperatur
 Recall the air temperature graph does not show random daily variations. Even though it
 has the maximum of about <span class="math notranslate nohighlight">\(266\)</span> Kelvin, the parameterized instantaneous air
 temperature can be above freezing. A positive value for positive degree-days is
-expected <span id="id3">[<a class="reference internal" href="../zzz_references_html.html#id80"><span>140</span></a>]</span>.</p></li>
+expected <a class="bibtex reference internal" href="../zzz_references_html.html#calovgreve05" id="id3">[18]</a>.</p></li>
 </ol>
 <div class="figure align-default" id="fig-pddseries">
 <img alt="../_images/pdd-movie.png" src="../_images/pdd-movie.png" />
@@ -244,9 +243,9 @@ temperature offsets are used correctly.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2503-g0c4c79141
+      Git revision v1.0-2512-g36199d382
       committed by Constantine Khrulev
-      on 2021-08-02 15:21:44 -0800 |
+      on 2021-08-03 16:49:37 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

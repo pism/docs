@@ -21,7 +21,6 @@
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
@@ -36,11 +35,11 @@
 <span id="sec-paleorun"></span><h1>Fourth run: paleo-climate model spin-up<a class="headerlink" href="#fourth-run-paleo-climate-model-spin-up" title="Permalink to this headline">¶</a></h1>
 <p>A this point we have barely mentioned one of the most important players in an ice sheet
 model: the surface mass balance (SMB) model. Specifically, an SMB model combines
-precipitation (e.g. <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id41"><span>28</span></a>]</span> for present-day Greenland) and a model for melt.
+precipitation (e.g. <a class="bibtex reference internal" href="../../zzz_references_html.html#balesetal2001" id="id1">[141]</a> for present-day Greenland) and a model for melt.
 Melt models are always based on some approximation of the energy available at the ice
-surface <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id188"><span>29</span></a>]</span>. Previous runs in this section used a “constant-climate”
+surface <a class="bibtex reference internal" href="../../zzz_references_html.html#hock05" id="id2">[23]</a>. Previous runs in this section used a “constant-climate”
 assumption, which specifically meant using the modeled present-day SMB rates from the
-regional climate model RACMO <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id113"><span>6</span></a>]</span>, as contained in the SeaRISE-Greenland
+regional climate model RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id3">[60]</a>, as contained in the SeaRISE-Greenland
 data set <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code>.</p>
 <p>While a physical model of ice dynamics only describes the movement of the ice, the SMB
 (and the sub-shelf melt rate) are key inputs which directly determine changes in the
@@ -50,23 +49,23 @@ stress balance model and thus the motion.</p>
 try such a method, a “paleo-climate spin-up” for our Greenland ice sheet model. Of course,
 direct measurements of prior climates in Greenland are not available as data! There are,
 however, estimates of past surface temperatures at the locations of ice cores (see
-<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id218"><span>7</span></a>]</span> for GRIP), along with estimates of past global sea level
-<span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id209"><span>8</span></a>]</span> which can be used to determine where the flotation criterion is
+<a class="bibtex reference internal" href="../../zzz_references_html.html#johnsenetalgrip" id="id4">[8]</a> for GRIP), along with estimates of past global sea level
+<a class="bibtex reference internal" href="../../zzz_references_html.html#imbrieetal1984" id="id5">[9]</a> which can be used to determine where the flotation criterion is
 applied—this is how PISM’s <code class="docutils literal notranslate"><span class="pre">mask</span></code> variable is determined. Also, models have been
 constructed for how precipitation differs from the present-day values
-<span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id203"><span>30</span></a>]</span>. For demonstration purposes, these are all used in the next run. The
+<a class="bibtex reference internal" href="../../zzz_references_html.html#huybrechts02" id="id6">[2]</a>. For demonstration purposes, these are all used in the next run. The
 relevant options are further documented in the <a class="reference internal" href="../../climate_forcing/index.html#sec-climate-forcing"><span class="std std-ref">Climate Forcing Manual</span></a>.</p>
 <p>As noted, one must compute melt in order to compute SMB. Here this is done using a
-temperature-index, <a class="reference internal" href="../../climate_forcing/surface.html#sec-surface-pdd"><span class="std std-ref">“positive degree-day”</span></a> (PDD) model <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id188"><span>29</span></a>]</span>. Such a PDD model has
+temperature-index, <a class="reference internal" href="../../climate_forcing/surface.html#sec-surface-pdd"><span class="std std-ref">“positive degree-day”</span></a> (PDD) model <a class="bibtex reference internal" href="../../zzz_references_html.html#hock05" id="id7">[23]</a>. Such a PDD model has
 parameters for how much snow and/or ice is melted when surface temperatures spend time
 near or above zero degrees. Again, see the <a class="reference internal" href="../../climate_forcing/index.html#sec-climate-forcing"><span class="std std-ref">Climate Forcing Manual</span></a> for relevant options.</p>
 <p>To summarize the paleo-climate model applied here, temperature offsets from the GRIP core
 record affect the snow energy balance, and thus the rates of melting and runoff calculated
 by the PDD model. In warm periods there is more marginal ablation, but precipitation may
-also increase (according to a temperature-offset model <span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id203"><span>30</span></a>]</span>). Additionally
+also increase (according to a temperature-offset model <a class="bibtex reference internal" href="../../zzz_references_html.html#huybrechts02" id="id8">[2]</a>). Additionally
 sea level undergoes changes in time and this affects which ice is floating. Finally we add
 an earth deformation model, which responds to changes in ice load by changing the bedrock
-elevation <span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id38"><span>31</span></a>]</span>.</p>
+elevation <a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id9">[24]</a>.</p>
 <p>To see how all this translates into PISM options, run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PARAM_PPQ</span><span class="o">=</span><span class="m">0</span>.5
 <span class="nb">export</span> <span class="nv">REGRIDFILE</span><span class="o">=</span>g20km_10ka_hy.nc
@@ -220,9 +219,9 @@ fraction of temperate ice. Note different volume scale compared to that in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2503-g0c4c79141
+      Git revision v1.0-2512-g36199d382
       committed by Constantine Khrulev
-      on 2021-08-02 15:21:44 -0800 |
+      on 2021-08-03 16:49:37 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
