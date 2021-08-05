@@ -92,7 +92,7 @@ MPI implementation</p>
 <ul class="simple">
 <li><p>has headers that compile without warnings,</p></li>
 <li><p>provides type checking for pointer arguments in MPI calls, and</p></li>
-<li><p>does not produce “false positives” when debugging memory access with <a class="reference external" href="http://www.valgrind.org/">Valgrind</a>.</p></li>
+<li><p>does not produce “false positives” when debugging memory access with <a class="reference external" href="https://www.valgrind.org/">Valgrind</a>.</p></li>
 </ul>
 <p>When working on a fix for a stubborn bug it <em>may</em> be helpful to use PETSc compiled with
 debugging enabled (option <code class="docutils literal notranslate"><span class="pre">--with-debugging=1</span></code>), but in our experience this is rarely
@@ -201,7 +201,7 @@ in the code where you would like to stop if <code class="docutils literal notran
 </div>
 <p>will stop execution at the grid point where <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">228</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">==</span> <span class="pre">146</span></code>.</p>
 <p>Some of the more troublesome bugs involve memory access errors (<em>segmentation fault</em>
-errors are often caused by these). Consider using <a class="reference external" href="http://www.valgrind.org/">Valgrind</a> to detect them.</p>
+errors are often caused by these). Consider using <a class="reference external" href="https://www.valgrind.org/">Valgrind</a> to detect them.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Your code will run much, much slower when using Valgrind, so it is important to find
@@ -298,7 +298,7 @@ of the code. See tests in <code class="docutils literal notranslate"><span class
 </div>
 <div class="section" id="editing-pism-s-manual">
 <span id="sec-editing-the-manual"></span><h2><a class="toc-backref" href="#id16">Editing PISM’s manual</a><a class="headerlink" href="#editing-pism-s-manual" title="Permalink to this headline">¶</a></h2>
-<p>PISM’s manual is written using the <a class="reference external" href="https://docutils.readthedocs.io/en/sphinx-docs/user/rst/quickstart.html">reStructuredText</a> markup and <a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx</a>.</p>
+<p>PISM’s manual is written using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a> markup and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx</a>.</p>
 <p>See <a class="reference internal" href="../installation/documentation.html#sec-install-documentation"><span class="std std-ref">Rebuilding PISM documentation</span></a> for a list of tools needed to build PISM’s
 documentation.</p>
 <p>When working on major edits, <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> can save you a lot of
@@ -407,9 +407,9 @@ make sure that it is up to date, run <code class="docutils literal notranslate">
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2518-gff7830fb5
-      committed by Kyle Blum
-      on 2021-08-04 16:15:15 -0800 |
+      Git revision v1.0-2519-g71ef366f2
+      committed by Constantine Khrulev
+      on 2021-08-04 17:17:44 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
