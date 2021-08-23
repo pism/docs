@@ -13,7 +13,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"]}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Atmosphere model components" href="atmosphere.html" />
@@ -169,19 +169,19 @@ temperature using the 4 parameters <span class="math notranslate nohighlight">\(
 balance using the 5 parameters <span class="math notranslate nohighlight">\(\m{min}\)</span>, <span class="math notranslate nohighlight">\(\m{max}\)</span>, <span class="math notranslate nohighlight">\(\h{min}\)</span>,
 <span class="math notranslate nohighlight">\(\h{ELA}\)</span>, <span class="math notranslate nohighlight">\(\h{max}\)</span>. Let</p>
 <div class="math notranslate nohighlight">
-\[\diff{\m{abl}}{h} = -\m{min} / (\h{max} - \h{min})\]</div>
+\[\diff{\m{abl}}{h} = -\m{min} / (\ELA - \h{min})\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
-\[\diff{\m{acl}}{h} = \m{max} / (\h{max} - \h{min})\]</div>
+\[\diff{\m{acl}}{h} = \m{max} / (\h{max} - \ELA)\]</div>
 <p>be the mass balance gradient in the ablation and in the accumulation area, respectively.
 Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}m(x,y) =
 \begin{cases}
  \m{min}, &amp; h(x,y) \le \h{min}, \\
- \diff{\m{abl}}{h} \, (h(x,y) - h_{\text{ELA}}), &amp;  \h{min} &lt; h(x,y) &lt; \h{max}, \\
- \diff{\m{acl}}{h} \, (h(x,y) - h_{\text{ELA}}), &amp; \h{min} &lt; h(x,y) &lt; \h{max}, \\
- \m{max}, &amp; \h{max} \le h(x,y).
+ \diff{\m{abl}}{h} \, (h(x,y) - \ELA), &amp; \h{min} &lt; h(x,y) \le \ELA, \\
+ \diff{\m{acl}}{h} \, (h(x,y) - \ELA), &amp; \ELA &lt; h(x,y) \le \h{max}, \\
+ \m{max}, &amp; \h{max} &lt; h(x,y).
 \end{cases}\end{split}\]</div>
 <p>The option <code class="option docutils literal notranslate"><span class="pre">-climatic_mass_balance_limits</span></code> (<em>list of 2 numbers</em>) limits the mass
 balance below <span class="math notranslate nohighlight">\(\h{min}\)</span> to <span class="math notranslate nohighlight">\(\ms{min}\)</span> and above <span class="math notranslate nohighlight">\(\h{max}\)</span> to
@@ -190,9 +190,9 @@ balance below <span class="math notranslate nohighlight">\(\h{min}\)</span> to <
 \[\begin{split}m(x,y) =
 \begin{cases}
  m^{*}_{\text{min}}, &amp; h(x,y) \le \h{min}, \\
- \diff{\m{abl}}{h} \, (h(x,y) - h_{\text{ELA}}), &amp; \h{min} &lt; h(x,y) &lt; \h{max}, \\
- \diff{\m{acl}}{h} \, (h(x,y) - h_{\text{ELA}}), &amp; \h{min} &lt; h(x,y) &lt; \h{max}, \\
- m^{*}_{\text{max}}, &amp; \h{max} \le h(x,y).
+ \diff{\m{abl}}{h} \, (h(x,y) - \ELA), &amp; \h{min} &lt; h(x,y) \le \ELA, \\
+ \diff{\m{acl}}{h} \, (h(x,y) - \ELA), &amp; \ELA &lt; h(x,y) \le \h{max}, \\
+ m^{*}_{\text{max}}, &amp; \h{max} &lt; h(x,y).
 \end{cases}\end{split}\]</div>
 <p>Note: this surface model <em>ignores</em> the atmosphere model selection made using the
 <code class="option docutils literal notranslate"><span class="pre">-atmosphere</span></code> option.</p>
@@ -637,9 +637,9 @@ updates. PISM may take longer time-steps if the adaptive scheme allows it, thoug
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2535-g2ce9940dc
+      Git revision v1.0-2536-g16b7ec9f9
       committed by Constantine Khrulev
-      on 2021-08-23 13:20:29 -0800 |
+      on 2021-08-23 14:57:44 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
