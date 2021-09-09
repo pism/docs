@@ -16,7 +16,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Managing model time" href="time.html" />
+    <link rel="next" title="Using time-dependent forcing" href="time-dependent.html" />
     <link rel="prev" title="Diagnostic quantities" href="../manual/diagnostics/index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -43,12 +43,12 @@ code.</p>
 <p>To get started with climate forcing usage we need to introduce some language to describe
 parts of PISM. In this manual a <em>component</em> is a piece of PISM code, usually a C++ class.
 A combination of components (or, in some cases, one component) makes up a “model” — an
-implementation of a physical/mathematical description of a system.</p>
+implementation of a physical or mathematical description of a system.</p>
 <p>PISM’s climate forcing code has two kinds of components.</p>
 <ul class="simple">
 <li><p>Ones that can be used as “stand-alone” models, such as the implementation of the PDD
 scheme (section <a class="reference internal" href="surface.html#sec-surface-pdd"><span class="std std-ref">Temperature-index scheme</span></a>). These are <em>model components</em>.</p></li>
-<li><p>Ones implementing “corrections” of various kinds, such as lapse rate corrections
+<li><p>Ones implementing “adjustments” of various kinds, such as lapse rate corrections
 (sections <a class="reference internal" href="surface.html#sec-surface-elevation-change"><span class="std std-ref">Adjustments using modeled change in surface elevation</span></a> and <a class="reference internal" href="atmosphere.html#sec-atmosphere-elevation-change"><span class="std std-ref">Adjustments using modeled change in surface elevation</span></a>) or
 ice-core derived offsets (sections <a class="reference internal" href="surface.html#sec-surface-delta-t"><span class="std std-ref">Scalar temperature offsets</span></a> and
 <a class="reference internal" href="ocean.html#sec-ocean-delta-sl"><span class="std std-ref">Scalar sea level offsets</span></a>, for example). These are called <em>modifier components</em> or
@@ -63,8 +63,8 @@ ice-core derived offsets (sections <a class="reference internal" href="surface.h
 conditions with a modifier that applies scalar temperature offsets. This combination
 one of the many ocean models that can be chosen using components as building blocks.</p>
 <p>Section <a class="reference internal" href="examples.html#sec-forcing-examples"><span class="std std-ref">Examples and corresponding options</span></a> gives examples of combining components to choose
-models. Before that we address how PISM handles model time (Section
-<a class="reference internal" href="time.html#sec-model-time"><span class="std std-ref">Managing model time</span></a>).</p>
+models. Before that we address how PISM interprets time-dependent inputs (Section
+<a class="reference internal" href="time-dependent.html#sec-forcing-time-dependent"><span class="std std-ref">Using time-dependent forcing</span></a>).</p>
 <div class="admonition-summary-of-the-main-idea-in-using-this-manual admonition">
 <p class="admonition-title">Summary of the main idea in using this manual</p>
 <p>Setting up PISM’s climate interface <em>requires</em> selecting one surface and one ocean
@@ -74,14 +74,23 @@ component. The surface component may use an atmosphere component also; see
 argument; the first keyword <em>has</em> to correspond to a model component, the rest can be
 “modifier” components. Any of these options can be omitted to use the default
 atmosphere, surface or ocean model components, but one has to explicitly choose a model
-component to use a modifier. Model components and modifiers are chained as in
-<a class="reference internal" href="../manual/highlevelview/climate-inputs.html#fig-climate-input-data-flow"><span class="std std-numref">Fig. 16</span></a>.</p>
+component to use a modifier.</p>
+<p>Model components and modifiers are chained as in <a class="reference internal" href="../manual/highlevelview/climate-inputs.html#fig-climate-input-data-flow"><span class="std std-numref">Fig. 16</span></a>;
+arrows in this figure indicate the data flow.</p>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="time.html">Managing model time</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="time.html#periodic-forcing">Periodic forcing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time.html#using-time-bounds-in-forcing-data">Using time bounds in forcing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-dependent.html">Using time-dependent forcing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html#scalar-time-dependent-inputs">Scalar time-dependent inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html#spatially-variable-time-dependent-inputs">Spatially-variable time-dependent inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html#periodic-forcing">Periodic forcing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html#adding-time-bounds">Adding time bounds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="time-dependent.html#times-as-mid-points-of-intervals">Times as mid-points of intervals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-dependent.html#times-as-left-end-points-of-intervals">Times as left end points of intervals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-dependent.html#times-as-right-end-points-of-intervals">Times as right end points of intervals</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and corresponding options</a><ul>
@@ -161,7 +170,7 @@ component to use a modifier. Model components and modifiers are chained as in
           <td style="text-align: center; width: 30%">
           </td>
           <td style="text-align: right; width: 30%">
-              <a class="reference internal" href="time.html">Next</a>
+              <a class="reference internal" href="time-dependent.html">Next</a>
           </td>
         </tr>
       </table>
@@ -190,7 +199,7 @@ component to use a modifier. Model components and modifiers are chained as in
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">PISM User’s Manual</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Climate forcing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="time.html">Managing model time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time-dependent.html">Using time-dependent forcing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples and corresponding options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Testing if forcing data is used correctly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="surface.html">Surface mass and energy process model components</a></li>
@@ -220,9 +229,9 @@ component to use a modifier. Model components and modifiers are chained as in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2536-g16b7ec9f9
+      Git revision v1.0-2646-g5678c496d
       committed by Constantine Khrulev
-      on 2021-08-23 14:57:44 -0800 |
+      on 2021-09-09 15:26:39 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

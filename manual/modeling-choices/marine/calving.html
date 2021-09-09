@@ -75,8 +75,7 @@ time-dependent variable <code class="variable docutils literal notranslate"><spa
 <p>Configuration parameters:</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> File containing the scaling factor applied to calving rates from <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code>, <code class="docutils literal notranslate"><span class="pre">vonmises_calving</span></code>, and <code class="docutils literal notranslate"><span class="pre">hayhurst_calving</span></code> (variable name: <code class="docutils literal notranslate"><span class="pre">frac_calving_rate</span></code>)</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.period"><code class="docutils literal notranslate"><span class="pre">period</span></code></a> (0<em> years</em>) Length of the period of the calving rate scaling. Set to zero to disable.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.reference_year"><code class="docutils literal notranslate"><span class="pre">reference_year</span></code></a> (0<em> years</em>) Reference year to use when <a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.period"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.rate_scaling</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.period</span></code></a> is active.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
 </div>
 </div>
@@ -165,8 +164,7 @@ is removed along the front, at a rate at most one grid cell per time step. The v
 <p>Configuration parameters:</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the spatially-variable thickness calving threshold.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.period"><code class="docutils literal notranslate"><span class="pre">period</span></code></a> (0<em> years</em>) Length of the period of the climate forcing data. Set to zero to disable.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.reference_year"><code class="docutils literal notranslate"><span class="pre">reference_year</span></code></a> (0<em> years</em>) Reference year to use when <a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.period"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.thickness_calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.period</span></code></a> is active.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.threshold"><code class="docutils literal notranslate"><span class="pre">threshold</span></code></a> (50<em> meters</em>) When terminal ice thickness of floating ice shelf is less than this threshold, it will be calved off.</p></li>
 </ol>
 </div>
@@ -203,8 +201,7 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
 <p>Configuration parameters:</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the maximum ice extent mask <code class="docutils literal notranslate"><span class="pre">land_ice_area_fraction_retreat</span></code></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.period"><code class="docutils literal notranslate"><span class="pre">period</span></code></a> (0<em> years</em>) Length of the period of the front retreat data. Set to zero to disable.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.reference_year"><code class="docutils literal notranslate"><span class="pre">reference_year</span></code></a> (0<em> years</em>) Reference year to use when <a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.period"><code class="docutils literal notranslate"><span class="pre">geometry</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.front_retreat</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.prescribed</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.period</span></code></a> is active.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
 </div>
 </div>
@@ -293,9 +290,9 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2536-g16b7ec9f9
+      Git revision v1.0-2646-g5678c496d
       committed by Constantine Khrulev
-      on 2021-08-23 14:57:44 -0800 |
+      on 2021-09-09 15:26:39 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
