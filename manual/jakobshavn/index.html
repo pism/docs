@@ -34,23 +34,23 @@
 <p>Jakobshavn Isbrae is a fast-flowing outlet glacier in western Greenland that drains
 approximately 7% of the area of the Greenland ice sheet. It experienced a large
 acceleration following the loss of its floating tongue in the 1990s
-<a class="bibtex reference internal" href="../../zzz_references_html.html#joughinabdalatifahnestock" id="id1">[55]</a>, an event which seems to have been driven by warmer
-ocean temperatures <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandetal2008" id="id2">[56]</a>. Because it is thick, has a steep surface
+<a class="bibtex reference internal" href="../../zzz_references_html.html#joughinabdalatifahnestock" id="id1">[57]</a>, an event which seems to have been driven by warmer
+ocean temperatures <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandetal2008" id="id2">[58]</a>. Because it is thick, has a steep surface
 slope, has a deep trough in its bedrock topography (Figure <a class="reference internal" href="#fig-jako-basin-topg"><span class="std std-numref">Fig. 42</span></a>),
-and has a thick layer of low-viscosity temperate ice at its base <a class="bibtex reference internal" href="../../zzz_references_html.html#luethietal2009" id="id3">[57]</a>,
+and has a thick layer of low-viscosity temperate ice at its base <a class="bibtex reference internal" href="../../zzz_references_html.html#luethietal2009" id="id3">[59]</a>,
 this ice flow is different from the ice streams in West Antarctica or Northeast Greenland
-<a class="bibtex reference internal" href="../../zzz_references_html.html#trufferechelmeyer" id="id4">[47]</a>.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#trufferechelmeyer" id="id4">[49]</a>.</p>
 <p>This section describes how to build a PISM regional model of this outlet glacier
-<a class="bibtex reference internal" href="../../zzz_references_html.html#dellagiustina2011" id="id5">[58]</a> using scripts from <code class="docutils literal notranslate"><span class="pre">examples/jako/</span></code>. The same strategy should
+<a class="bibtex reference internal" href="../../zzz_references_html.html#dellagiustina2011" id="id5">[60]</a> using scripts from <code class="docutils literal notranslate"><span class="pre">examples/jako/</span></code>. The same strategy should
 work for other outlet glaciers. We also demonstrate the PISM regional mode <code class="docutils literal notranslate"><span class="pre">pismr</span>
 <span class="pre">-regional</span></code>, and Python <a class="reference external" href="https://github.com/pism/regional-tools">drainage-basin-delineation tools</a> which can be
 downloaded from the PISM source code website. Such regional models allow modest-size
 computers to run high resolution models <a class="footnote-reference brackets" href="#id16" id="id6">1</a> and large ensembles. Regional analysis is
 justified if detailed data is available for the region.</p>
-<p>The geometric data used here is the SeaRISE <a class="bibtex reference internal" href="../../zzz_references_html.html#bindschadler2013searise" id="id7">[59]</a> 1 km dataset
+<p>The geometric data used here is the SeaRISE <a class="bibtex reference internal" href="../../zzz_references_html.html#bindschadler2013searise" id="id7">[61]</a> 1 km dataset
 for the whole Greenland ice sheet. It contains bedrock topography from recent CReSIS radar
 in the Jakobshavn area. We also use the SeaRISE 5 km data set which has climatic mass
-balance from the Greenland-region climate model RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id8">[60]</a>.</p>
+balance from the Greenland-region climate model RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id8">[62]</a>.</p>
 <p>A regional ice flow model generally needs ice flow and stress boundary conditions. For
 this we use a 5 km grid, whole ice sheet, spun-up model state from PISM, described in
 <a class="reference internal" href="../std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a> of this <em>Manual</em>. You can download the large NetCDF result from
@@ -280,7 +280,7 @@ but they should do no harm (see section <a class="reference internal" href="../m
 <p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Left: modeled surface speed at the end of a 2 km grid, 100 model year, steady
 present-day climate run. Right: observed surface speed, an average of four winter
 velocity maps (2000,2006–2008) derived from RADARSAT data, as included in the SeaRISE
-5 km data set <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal2010" id="id12">[61]</a>, for the same region. Scales are in meters per
+5 km data set <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal2010" id="id12">[63]</a>, for the same region. Scales are in meters per
 year.</span><a class="headerlink" href="#fig-jako-csurf" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -303,15 +303,15 @@ comparison to observations.</p>
 <p>Over this 100 year period the flow appears to be relatively steady state. Though this is
 not surprising because the climate forcing and boundary conditions are time-independent, a
 longer run reveals ongoing speed variability associated to subglacially-driven sliding
-cyclicity; compare <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id13">[62]</a>.</p>
+cyclicity; compare <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id13">[64]</a>.</p>
 <p>The ice dynamics parameters chosen in <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">century.sh</span></code>, especially the
 combination</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-topg_to_phi 15.0,40.0,-300.0,700.0 -till_effective_fraction_overburden 0.02 \
    -pseudo_plastic -pseudo_plastic_q 0.25 -tauc_slippery_grounding_lines
 </pre></div>
 </div>
-<p>are a topic for a parameter study (compare <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id14">[63]</a>) or a
-study of their relation to inverse modeling results (e.g. <a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id15">[64]</a>).</p>
+<p>are a topic for a parameter study (compare <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id14">[65]</a>) or a
+study of their relation to inverse modeling results (e.g. <a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id15">[66]</a>).</p>
 </div>
 <div class="section" id="plotting-results">
 <h2>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">¶</a></h2>
@@ -434,9 +434,9 @@ modeled region.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2651-g058922f3a
+      Git revision v1.0-2654-g34f0afd5e
       committed by Constantine Khrulev
-      on 2021-09-14 14:13:44 -0800 |
+      on 2021-09-16 13:02:57 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

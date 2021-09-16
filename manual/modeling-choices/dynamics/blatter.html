@@ -39,7 +39,7 @@ The number of vertical “levels” in this grid is controlled by
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.Mz"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.blatter</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.Mz</span></code></a>.</p>
 <p>The non-linear system resulting from the discretization of PDEs corresponding to Blatter’s
 stress balance model is much harder to solve than the one corresponding to the
-SSA system (<a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id1">[54]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id2">[66]</a>) and (at this point)
+SSA system (<a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id1">[56]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id2">[68]</a>) and (at this point)
 experimentation with preconditioner choices seems inevitable. We use PETSc’s command-line
 options to control these choices.</p>
 <div class="admonition note">
@@ -54,7 +54,7 @@ options to control these choices.</p>
 </div>
 <p>The multigrid (MG) preconditioner using semi-coarsening in the vertical direction followed
 by further (horizontal) coarsening using algebraic multigrid methods appears to be
-effective <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id3">[66]</a>. The option combination</p>
+effective <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id3">[68]</a>. The option combination</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bp_pc_type mg <span class="se">\</span>
 -bp_pc_mg_levels N <span class="se">\</span>
 -bp_mg_levels_ksp_type gmres <span class="se">\</span>
@@ -62,7 +62,7 @@ effective <a class="bibtex reference internal" href="../../../zzz_references_htm
 </pre></div>
 </div>
 <p>roughly corresponds to this approach (see <a class="reference internal" href="#sec-blatter-preconditioners"><span class="std std-ref">Practical preconditioners choices</span></a> for more).</p>
-<p>Unlike <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id4">[66]</a>, who used a purely
+<p>Unlike <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id4">[68]</a>, who used a purely
 algebraic approach, these options select a combination of geometric and algebraic
 multigrid preconditioners.</p>
 <p>To use a multigrid preconditioner the user has to specify</p>
@@ -146,7 +146,7 @@ is just one element thick).</p>
 <span id="sec-blatter-gradient"></span><h2>Surface gradient computation<a class="headerlink" href="#surface-gradient-computation" title="Permalink to this headline">¶</a></h2>
 <p>Some synthetic geometry experiments with grounded margins show “checkerboard” artifacts in
 computed ice velocity near steep margins. A similar issue and an attempt to address it are
-described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id6">[67]</a>.</p>
+described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id6">[69]</a>.</p>
 <p>This implementation takes a different approach: instead of using an “upwinded” finite
 difference approximation of the surface gradient we allow using the <span class="math notranslate nohighlight">\(\eta\)</span> transformation
 described in <a class="reference internal" href="sia.html#sec-sia-gradient"><span class="std std-ref">Surface gradient method</span></a>. Set
@@ -156,8 +156,8 @@ described in <a class="reference internal" href="sia.html#sec-sia-gradient"><spa
 <span id="sec-blatter-time-stepping"></span><h2>Adaptive time stepping<a class="headerlink" href="#adaptive-time-stepping" title="Permalink to this headline">¶</a></h2>
 <p>PISM’s explicit in time mass continuity code is <em>conditionally stable</em>. When used with the
 SSA + SIA hybrid, the maximum allowed time step is computed using a combination of the CFL
-criterion <a class="bibtex reference internal" href="../../../zzz_references_html.html#mortonmayers" id="id7">[68]</a> and the maximum diffusivity of the SIA flow
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id8">[26]</a>. This time step restriction does not disappear when the same mass
+criterion <a class="bibtex reference internal" href="../../../zzz_references_html.html#mortonmayers" id="id7">[70]</a> and the maximum diffusivity of the SIA flow
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id8">[28]</a>. This time step restriction does not disappear when the same mass
 continuity code is used with a stress balance model that does not explicitly compute
 “advective” and “diffusive” parts of the flow. We need a work-around.</p>
 <div class="admonition note">
@@ -184,7 +184,7 @@ the vertically-averaged ice flux <span class="math notranslate nohighlight">\(Q\
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Other models supporting this stress balance model and using an explicit in time
-geometry evolution method (<a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id9">[67]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#hoffman2018" id="id10">[69]</a>) report that the
+geometry evolution method (<a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id9">[69]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#hoffman2018" id="id10">[71]</a>) report that the
 CFL condition appears to be sufficient in practice.</p>
 <p>Given the lack of a theory describing the maximum time step necessary for stability it
 may make sense to experiment with <em>increasing</em> <a class="reference internal" href="../../parameters/index.html#config-time_stepping.adaptive_ratio"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.adaptive_ratio</span></code></a>.</p>
@@ -226,7 +226,7 @@ only one, and most likely not the best one.</p>
 </div>
 <p>may work better<a class="footnote-reference brackets" href="#bp-pc-settings" id="id11">2</a>, but requires PETSc built with <a class="reference external" href="https://hypre.readthedocs.io/en/latest/">hypre</a>.</p>
 <p>Here <code class="docutils literal notranslate"><span class="pre">-bp_snes_ksp_ew</span> <span class="pre">-bp_snes_ksp_ew_version</span> <span class="pre">3</span></code> enables Luis Chacón’s variant of the
-Eisenstat-Walker <a class="bibtex reference internal" href="../../../zzz_references_html.html#eisenstat1996" id="id12">[70]</a> method of adjusting linear solver tolerances to
+Eisenstat-Walker <a class="bibtex reference internal" href="../../../zzz_references_html.html#eisenstat1996" id="id12">[72]</a> method of adjusting linear solver tolerances to
 avoid oversolving and <code class="docutils literal notranslate"><span class="pre">-bp_mg_coarse_pc_type</span> <span class="pre">hypre</span> <span class="pre">-bp_mg_coarse_pc_hypre_type</span>
 <span class="pre">boomeramg</span></code> selects the BoomerAMG algebraic MG preconditioner from <a class="reference external" href="https://hypre.readthedocs.io/en/latest/">hypre</a> for the coarse
 MG level.</p>
@@ -256,7 +256,7 @@ example, the following would use <a class="reference external" href="http://mump
 <p class="admonition-title">Note</p>
 <p>Parallel direct solvers such as MUMPS really benefit from using optimized BLAS and
 LAPACK libraries.</p>
-<p>Please see section 3.5.3 of <a class="bibtex reference internal" href="../../../zzz_references_html.html#petsc-user-ref" id="id13">[71]</a> for instructions. At the time of
+<p>Please see section 3.5.3 of <a class="bibtex reference internal" href="../../../zzz_references_html.html#petsc-user-ref" id="id13">[73]</a> for instructions. At the time of
 writing</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--download-f2cblaslapack --download-blis
 </pre></div>
@@ -265,16 +265,16 @@ writing</p>
 other freely-available libraries (Intel MKL, OpenBLAS) as well.</p>
 </div>
 <p>Note, though, that the multigrid preconditioner, even if it is effective in terms of
-reducing the number of Krylov iterations, may not be the cheapest one <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id14">[72]</a>:
+reducing the number of Krylov iterations, may not be the cheapest one <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id14">[74]</a>:
 there is a trade off between the number of iterations and the cost of a single iteration.
 Other preconditioner options may be worth considering as well.</p>
 <p>In some cases node ordering and the way the domain is split among processes in a parallel
-run may affect solver performance (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id15">[54]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id16">[72]</a>,
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id17">[66]</a>). These references mention staggering the unknowns so that <span class="math notranslate nohighlight">\(u\)</span> and
+run may affect solver performance (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id15">[56]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id16">[74]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id17">[68]</a>). These references mention staggering the unknowns so that <span class="math notranslate nohighlight">\(u\)</span> and
 <span class="math notranslate nohighlight">\(v\)</span> components at the same node correspond to adjacent equations in the system and using
 contiguous ordering of unknowns in the same ice column. This allows the solver to capture
 vertical coupling <em>locally</em> using incomplete factorization.</p>
-<p>In addition to this, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id18">[72]</a> mention that parallel domain distribution
+<p>In addition to this, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id18">[74]</a> mention that parallel domain distribution
 partitioning ice columns among multiple processes <em>sometimes</em> leads to convergence issues.
 Following this advice, PISM does not partition the domain in the <span class="math notranslate nohighlight">\(z\)</span> direction, but some
 of our experiments show that if the solver struggles, switching to a <em>one-dimensional</em>
@@ -298,7 +298,7 @@ default (approximately <span class="math notranslate nohighlight">\(\sqrt{M}\)</
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.coarsening_factor"><code class="docutils literal notranslate"><span class="pre">coarsening_factor</span></code></a> (2) Coarsening factor in the <span class="math notranslate nohighlight">\(z\)</span> direction</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">enhancement_factor</span></code></a> (1) Flow enhancement factor for the Blatter stress balance flow law</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The flow law used by the Blatter-Pattyn stress balance model</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.use_eta_transform"><code class="docutils literal notranslate"><span class="pre">use_eta_transform</span></code></a> (no) Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id19">[30]</a> for details).</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.use_eta_transform"><code class="docutils literal notranslate"><span class="pre">use_eta_transform</span></code></a> (no) Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id19">[32]</a> for details).</p></li>
 </ol>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
@@ -308,7 +308,7 @@ hierarchy, i.e. each grid is “extruded” from PISM’s 2D grid with
 uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions.</p>
 </dd>
 <dt class="label" id="bp-pc-settings"><span class="brackets"><a class="fn-backref" href="#id11">2</a></span></dt>
-<dd><p>These settings are inspired by <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id20">[54]</a>.</p>
+<dd><p>These settings are inspired by <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id20">[56]</a>.</p>
 </dd>
 </dl>
 </div>
@@ -398,9 +398,9 @@ uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2651-g058922f3a
+      Git revision v1.0-2654-g34f0afd5e
       committed by Constantine Khrulev
-      on 2021-09-14 14:13:44 -0800 |
+      on 2021-09-16 13:02:57 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

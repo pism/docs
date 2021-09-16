@@ -39,7 +39,7 @@
 comparisons of the “hybrid” model mentioned above to older studies using this
 parameterization.</p>
 </div>
-<p>The “Weertman-type sliding law” (<a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id1">[53]</a>, equations 5.35 and 5.91) has
+<p>The “Weertman-type sliding law” (<a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id1">[55]</a>, equations 5.35 and 5.91) has
 the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{u}_s =
@@ -49,7 +49,7 @@ the form</p>
 \end{cases}\end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(T_b\)</span> is the ice temperature, and <span class="math notranslate nohighlight">\(T_m\)</span> is the pressure-melting temperature. The constant
 <span class="math notranslate nohighlight">\(C_b\)</span> and exponents <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are tuning parameters.</p>
-<p>The particular form implemented in PISM comes from equation 5 in <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id2">[87]</a>:</p>
+<p>The particular form implemented in PISM comes from equation 5 in <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id2">[88]</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-weertman-sliding">
 <span class="eqno">(5)<a class="headerlink" href="#equation-eq-weertman-sliding" title="Permalink to this equation">¶</a></span>\[\mathbf{u}_s = -\frac{2 A_s \beta_c (\rho g H)^{n}}{N - P} |\nabla h|^{n-1} \nabla h.\]</div>
 <table class="colwidths-given docutils align-default" id="tab-weertman-notation">
@@ -104,11 +104,11 @@ ice velocity) or <code class="option docutils literal notranslate"><span class="
 as a sliding law with the deformational flow modeled using the SIA model.</p>
 <p>Use configuration parameters <a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.k"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.weertman_sliding</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.k</span></code></a> and
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.weertman_sliding</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.A</span></code></a> to set <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(A_s\)</span>, respectively. Default
-values come from <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id3">[87]</a>.</p>
+values come from <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id3">[88]</a>.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (1.8e-16<em> Pa-3 year-1 m-2</em>) Sliding parameter in the Weertman-style sliding parameterization <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id4">[87]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (1.8e-16<em> Pa-3 year-1 m-2</em>) Sliding parameter in the Weertman-style sliding parameterization <a class="bibtex reference internal" href="../../../zzz_references_html.html#tomkin2007" id="id4">[88]</a></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.k"><code class="docutils literal notranslate"><span class="pre">k</span></code></a> (0.2) The ratio of the basal water pressure and the ice overburden pressure in the Weertman-style sliding parameterization.</p></li>
 </ol>
 </div>
@@ -198,9 +198,9 @@ values come from <a class="bibtex reference internal" href="../../../zzz_referen
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2651-g058922f3a
+      Git revision v1.0-2654-g34f0afd5e
       committed by Constantine Khrulev
-      on 2021-09-14 14:13:44 -0800 |
+      on 2021-09-16 13:02:57 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
