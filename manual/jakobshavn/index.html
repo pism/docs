@@ -108,7 +108,7 @@ ncview gr1km.nc                      # view fields
 </div>
 <p>The boundary condition file <code class="docutils literal notranslate"><span class="pre">g5km_bc.nc</span></code> contains thermodynamical spun-up variables
 (<code class="docutils literal notranslate"><span class="pre">enthalpy,bmelt,bwat</span></code>) and boundary values for the sliding velocity
-(<code class="docutils literal notranslate"><span class="pre">u_ssa_bc,v_ssa_bc</span></code>); these have been extracted from <code class="docutils literal notranslate"><span class="pre">g5km_gridseq.nc</span></code>.</p>
+(<code class="docutils literal notranslate"><span class="pre">u_bc,v_bc</span></code>); these have been extracted from <code class="docutils literal notranslate"><span class="pre">g5km_gridseq.nc</span></code>.</p>
 <p>None of the above actions is specific to Jakobshavn, though all are specific to Greenland.
 If your goal is to build a regional model of another outlet glacier in Greenland, then you
 may be able to use <code class="docutils literal notranslate"><span class="pre">preprocess.sh</span></code> as is. The SeaRISE 1 km data set has recent CReSIS
@@ -253,11 +253,11 @@ drainage basin defined by <code class="docutils literal notranslate"><span class
 variables <code class="docutils literal notranslate"><span class="pre">bmelt,tillwat,enthalpy,litho_temp</span></code> from <code class="docutils literal notranslate"><span class="pre">g5km_bc.nc</span></code> are held fixed and
 used as boundary conditions for the conservation of energy model. A key part of putting
 these boundary conditions into the model strip are the options</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-regrid_file g5km_bc.nc -regrid_vars bmelt,tillwat,enthalpy,litho_temp,vel_ssa_bc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-regrid_file g5km_bc.nc -regrid_vars bmelt,tillwat,enthalpy,litho_temp,vel_bc
 </pre></div>
 </div>
 </li>
-<li><p>Dirichlet boundary conditions <code class="docutils literal notranslate"><span class="pre">u_ssa_bc,v_ssa_bc</span></code> are also regridded from
+<li><p>Dirichlet boundary conditions <code class="docutils literal notranslate"><span class="pre">u_bc,v_bc</span></code> are also regridded from
 <code class="docutils literal notranslate"><span class="pre">g5km_bc.nc</span></code> for the sliding SSA stress balance, and the option <code class="docutils literal notranslate"><span class="pre">-ssa_dirichlet_bc</span></code>
 then uses them during the run. The SSA equations are solved as usual except in the
 <code class="docutils literal notranslate"><span class="pre">no_model_strip</span></code> where these Dirichlet boundary conditions are used. Note that the
@@ -434,9 +434,9 @@ modeled region.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2655-g2325f05f9
+      Git revision v1.0-2668-g1e8e8d71f
       committed by Constantine Khrulev
-      on 2021-09-20 06:56:29 -0800 |
+      on 2021-09-30 14:57:33 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

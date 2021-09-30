@@ -78,10 +78,10 @@ bed elevations, surface temperature, net accumulation, as well as latitude and l
 values. All of these are typical of ice sheet modelling data, both in diagnostic runs and
 as needed to initialize and provide boundary conditions for prognostic (evolutionary)
 runs; see below for the prognostic case with these data. The <code class="docutils literal notranslate"><span class="pre">_combined</span></code> file also has
-variables <code class="docutils literal notranslate"><span class="pre">u_ssa_bc</span></code> and <code class="docutils literal notranslate"><span class="pre">v_ssa_bc</span></code> for the boundary values used in the (diagnostic
+variables <code class="docutils literal notranslate"><span class="pre">u_bc</span></code> and <code class="docutils literal notranslate"><span class="pre">v_bc</span></code> for the boundary values used in the (diagnostic
 and prognostic) computation of velocity. They are used at all grounded locations and at
-ice shelf cells that are immediate neighbors of grounded ice. The variable <code class="docutils literal notranslate"><span class="pre">bc_mask</span></code>
-specifies these locations. Finally the variables <code class="docutils literal notranslate"><span class="pre">u_ssa_bc,v_ssa_bc</span></code>, which contain
+ice shelf cells that are immediate neighbors of grounded ice. The variable <code class="docutils literal notranslate"><span class="pre">vel_bc_mask</span></code>
+specifies these locations. Finally the variables <code class="docutils literal notranslate"><span class="pre">u_bc,v_bc</span></code>, which contain
 observed values, are used after the run to compare to the computed interior velocities.</p>
 </div>
 <div class="section" id="diagnostic-computation-of-ice-shelf-velocity">
@@ -116,8 +116,8 @@ one-year-long run will be covered by exactly one time step.</p></li>
 non-evolving example. Note that <code class="docutils literal notranslate"><span class="pre">-kill_icebergs</span></code> removes effectively-detached bits of
 ice, especially in McMurdo sound area, so that the SSA problem is well-posed for the
 grounded-ice-sheet-connected ice shelf.</p></li>
-<li><p>Option <code class="option docutils literal notranslate"><span class="pre">-ssa_dirichlet_bc</span></code> forces the use of fields <code class="docutils literal notranslate"><span class="pre">u_ssa_bc,</span> <span class="pre">v_ssa_bc,</span> <span class="pre">bc_mask</span></code>
-described above. The field <code class="docutils literal notranslate"><span class="pre">bc_mask</span></code> is <span class="math notranslate nohighlight">\(1\)</span> at boundary condition locations, and <span class="math notranslate nohighlight">\(0\)</span>
+<li><p>Option <code class="option docutils literal notranslate"><span class="pre">-ssa_dirichlet_bc</span></code> forces the use of fields <code class="docutils literal notranslate"><span class="pre">u_bc,</span> <span class="pre">v_bc,</span> <span class="pre">vel_bc_mask</span></code>
+described above. The field <code class="docutils literal notranslate"><span class="pre">vel_bc_mask</span></code> is <span class="math notranslate nohighlight">\(1\)</span> at boundary condition locations, and <span class="math notranslate nohighlight">\(0\)</span>
 elsewhere. For the prognostic runs below, the ice thickness is also fixed at boundary
 condition locations, so as to prescribe ice flux as an ice shelf input.</p></li>
 <li><p>Options <code class="docutils literal notranslate"><span class="pre">-yield_stress</span> <span class="pre">constant</span> <span class="pre">-tauc</span> <span class="pre">1e6</span></code> essentially just turn off the
@@ -300,9 +300,9 @@ marine ice may all generate significant variation in shelf density.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2655-g2325f05f9
+      Git revision v1.0-2668-g1e8e8d71f
       committed by Constantine Khrulev
-      on 2021-09-20 06:56:29 -0800 |
+      on 2021-09-30 14:57:33 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
