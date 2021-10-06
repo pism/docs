@@ -46,13 +46,13 @@
 </li>
 </ul>
 </div>
-<p>References <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id1">[93]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id2">[89]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id3">[36]</a>
+<p>References <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id1">[98]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id2">[89]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id3">[36]</a>
 by the research group of Prof. Anders Levermann at the Potsdam Institute for Climate
 Impact Research (“PIK”), Germany, describe most of the mechanisms covered in this section.
 These are all improvements to the grounded, SSA-as-a-sliding law model of
 <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id4">[28]</a>. These improvements make PISM an effective Antarctic model, as
-demonstrated by <a class="bibtex reference internal" href="../../../zzz_references_html.html#golledgeetal2013" id="id5">[94]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id6">[3]</a>,
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2012" id="id7">[95]</a>, among other publications. These improvements had a separate
+demonstrated by <a class="bibtex reference internal" href="../../../zzz_references_html.html#golledgeetal2013" id="id5">[99]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id6">[3]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2012" id="id7">[100]</a>, among other publications. These improvements had a separate
 existence as the “PISM-PIK” model from 2009–2010, but since PISM stable0.4 are part of
 PISM itself.</p>
 <p>A summary of options to turn on most of these “PIK” mechanisms is in
@@ -82,15 +82,15 @@ for the SSA stress balance solver <a class="bibtex reference internal" href="../
 </tr>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-part_grid</span></code></p></td>
 <td><p>allow the ice shelf front to advance by a part of a grid cell, avoiding
-the development of unphysically-thinned ice shelves <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id10">[93]</a></p></td>
+the development of unphysically-thinned ice shelves <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id10">[98]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-subgl</span></code></p></td>
 <td><p>apply interpolation to compute basal shear stress and basal melt near the grounding
-line <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id11">[96]</a></p></td>
+line <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id11">[101]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-no_subgl_basal_melt</span></code></p></td>
 <td><p><strong>don’t</strong> apply interpolation to compute basal melt near the grounding line if
-<code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> is set <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id12">[96]</a></p></td>
+<code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> is set <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id12">[101]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-pik</span></code></p></td>
 <td><p>equivalent to option combination <code class="docutils literal notranslate"><span class="pre">-cfbc</span> <span class="pre">-kill_icebergs</span> <span class="pre">-part_grid</span> <span class="pre">-subgl</span></code></p></td>
@@ -126,11 +126,11 @@ discretization chosen by <code class="option docutils literal notranslate"><span
 scheme. If option <code class="option docutils literal notranslate"><span class="pre">-cfbc</span></code> is set then, during matrix assembly, those equations which
 are for fully-filled grid cells along the ice domain boundary have terms replaced
 according to equation <a class="reference internal" href="#equation-eq-cfbc">(28)</a>, so as to apply the correct stresses
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id14">[93]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id15">[36]</a>.</p>
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id14">[98]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id15">[36]</a>.</p>
 </div>
 <div class="section" id="partially-filled-cells-at-the-boundaries-of-ice-shelves">
 <span id="sec-part-grid"></span><h2><a class="toc-backref" href="#id22">Partially-filled cells at the boundaries of ice shelves</a><a class="headerlink" href="#partially-filled-cells-at-the-boundaries-of-ice-shelves" title="Permalink to this headline">¶</a></h2>
-<p>Albrecht et al <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id16">[93]</a> argue that the correct movement of the ice shelf
+<p>Albrecht et al <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id16">[98]</a> argue that the correct movement of the ice shelf
 calving front on a finite-difference grid, assuming for the moment that ice velocities are
 correctly determined (see below), requires tracking some cells as being partially-filled
 (option <code class="option docutils literal notranslate"><span class="pre">-part_grid</span></code>). If the calving front is moving forward, for example, then the
@@ -175,8 +175,8 @@ section <a class="reference internal" href="../../practical-usage/saving-diagnos
 <div class="section" id="sub-grid-treatment-of-the-grounding-line-position">
 <span id="sec-subgrid-grounding-line"></span><h2><a class="toc-backref" href="#id24">Sub-grid treatment of the grounding line position</a><a class="headerlink" href="#sub-grid-treatment-of-the-grounding-line-position" title="Permalink to this headline">¶</a></h2>
 <p>The command-line option <code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> turns on a parameterization of the grounding line
-position based on the “LI” parameterization described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#gladstoneetal2010" id="id18">[97]</a> and
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id19">[96]</a>. With this option PISM computes an extra flotation mask,
+position based on the “LI” parameterization described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#gladstoneetal2010" id="id18">[102]</a> and
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id19">[101]</a>. With this option PISM computes an extra flotation mask,
 available as the <code class="variable docutils literal notranslate"><span class="pre">cell_grounded_fraction</span></code> output variable, which corresponds to the
 fraction of the cell that is grounded. Cells that are ice-free or fully floating are
 assigned the value of <span class="math notranslate nohighlight">\(0\)</span> while fully-grounded icy cells get the value of <span class="math notranslate nohighlight">\(1\)</span>. Partially
@@ -279,9 +279,9 @@ value of the flotation mask. Use <code class="option docutils literal notranslat
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2668-g1e8e8d71f
+      Git revision v1.0-2689-gc6d15fc7f
       committed by Constantine Khrulev
-      on 2021-09-30 14:57:33 -0800 |
+      on 2021-10-05 19:49:54 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

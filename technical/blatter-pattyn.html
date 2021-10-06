@@ -165,8 +165,8 @@
 <div class="section" id="introduction">
 <span id="sec-bp-intro"></span><h2><a class="toc-backref" href="#id40">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This implementation is based on the PETSc example <code class="docutils literal notranslate"><span class="pre">snes/tutorials/ex48.c</span></code> (see
-<a class="bibtex reference internal" href="../zzz_references_html.html#brownsmithahmadia2013" id="id1">[56]</a>) and is inspired by <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id2">[153]</a>,
-<a class="bibtex reference internal" href="../zzz_references_html.html#lipscomb2019" id="id3">[69]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#hoffman2018" id="id4">[71]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#tuminaro2016" id="id5">[68]</a>, and <a class="bibtex reference internal" href="../zzz_references_html.html#perego2012" id="id6">[154]</a>.</p>
+<a class="bibtex reference internal" href="../zzz_references_html.html#brownsmithahmadia2013" id="id1">[56]</a>) and is inspired by <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id2">[157]</a>,
+<a class="bibtex reference internal" href="../zzz_references_html.html#lipscomb2019" id="id3">[69]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#hoffman2018" id="id4">[71]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#tuminaro2016" id="id5">[68]</a>, and <a class="bibtex reference internal" href="../zzz_references_html.html#perego2012" id="id6">[158]</a>.</p>
 <p>Define</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\E_1 &amp;= \left( 2 u_x + v_y, \quad \frac12 (u_y + v_x), \quad \frac12 u_z \right),\\\E_2 &amp;= \left( \frac12 (u_y + v_x), \quad u_x + 2 v_y, \quad \frac12 v_z \right),\\\E &amp;= (\E_1, \E_2).\end{aligned}\end{align} \]</div>
@@ -192,13 +192,13 @@ the strain rate tensor:</p>
 <p class="admonition-title">Note</p>
 <p>There are at least three equivalent expressions for ice viscosity in the literature:
 the form in <a class="reference internal" href="#equation-eq-bp-viscosity">(70)</a> appears in <a class="bibtex reference internal" href="../zzz_references_html.html#brownsmithahmadia2013" id="id7">[56]</a> while
-<a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id8">[153]</a> and <a class="bibtex reference internal" href="../zzz_references_html.html#lipscomb2019" id="id9">[69]</a> define the effective strain rate
+<a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id8">[157]</a> and <a class="bibtex reference internal" href="../zzz_references_html.html#lipscomb2019" id="id9">[69]</a> define the effective strain rate
 <span class="math notranslate nohighlight">\(\dot\epsilon_e\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\newcommand{\edot}{\dot\epsilon}
 \edot_e^2 = \edot_{xx}^2 + \edot_{yy}^2 + \edot_{xx}\edot_{yy} + \edot_{xy}^2 +
 \edot_{xz}^2 + \edot_{yz}^2.\]</div>
-<p>Meanwhile <a class="bibtex reference internal" href="../zzz_references_html.html#dukowiczetal2010" id="id10">[155]</a> have</p>
+<p>Meanwhile <a class="bibtex reference internal" href="../zzz_references_html.html#dukowiczetal2010" id="id10">[159]</a> have</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\dot\epsilon_{\text{BP}}^2 &amp;= \left( \diff{u}{x} \right)^2 +
 \left( \diff{v}{y} \right)^2 +
@@ -219,7 +219,7 @@ the form in <a class="reference internal" href="#equation-eq-bp-viscosity">(70)<
 <div class="math notranslate nohighlight">
 \[\int_{\Omega} \nabla\cdot (f X) = \int_{\partial \Omega} (f X)\cdot \n\, ds.\]</div>
 </div>
-<p>We omit discussions of function spaces; see <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id11">[153]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#perego2012" id="id12">[154]</a> and
+<p>We omit discussions of function spaces; see <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id11">[157]</a>, <a class="bibtex reference internal" href="../zzz_references_html.html#perego2012" id="id12">[158]</a> and
 other references mentioned above for details.</p>
 <p>To obtain the weak form, we multiply both equations in <a class="reference internal" href="#equation-eq-bp">(69)</a> by a <em>scalar</em> test
 function <span class="math notranslate nohighlight">\(\psi\)</span> and integrate over the domain <span class="math notranslate nohighlight">\(\Omega\)</span>. For the first equation, we get</p>
@@ -291,13 +291,13 @@ that experience drag and floating parts that do not. This implementation uses a 
 quadrature with <em>many</em> equally-spaced points (a Newton-Cotes quadrature) to integrate over
 the part of the basal boundary containing the grounding line. Here <span class="math notranslate nohighlight">\(\beta\)</span> is computed at
 each quadrature point, depending on whether the ice is grounded or floating at its
-location. This is similar to the SEP3 parameterization described in <a class="bibtex reference internal" href="../zzz_references_html.html#seroussi2014" id="id16">[156]</a>.</p>
+location. This is similar to the SEP3 parameterization described in <a class="bibtex reference internal" href="../zzz_references_html.html#seroussi2014" id="id16">[160]</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>It may be a good idea to implement scaling of the <span class="math notranslate nohighlight">\(\beta\)</span> coefficient according to
 the fraction of an element face that is grounded, similar to SEP1 (equation 7 in
-<a class="bibtex reference internal" href="../zzz_references_html.html#seroussi2014" id="id17">[156]</a>). An approximation of the grounded fraction for an element
+<a class="bibtex reference internal" href="../zzz_references_html.html#seroussi2014" id="id17">[160]</a>). An approximation of the grounded fraction for an element
 column can be computed using existing code in PISM.</p></li>
 <li><p>In general the bottom face of an element is <em>not</em> planar and <em>not</em> parallel to the
 plane <span class="math notranslate nohighlight">\(z = 0\)</span>. This means that integrals over the basal boundary should be evaluated
@@ -316,7 +316,7 @@ normal vector has the form <span class="math notranslate nohighlight">\(\n = (\c
 <p>In other words, this boundary condition corresponds to the difference between the
 cryostatic pressure of the ice on one side of the interface and the hydrostatic pressure
 of water on the other. The atmospheric pressure is ignored. Equation
-<a class="reference internal" href="#equation-eq-bp-lateral-bc">(77)</a> is a generalization of equation 18 in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id18">[153]</a>.</p>
+<a class="reference internal" href="#equation-eq-bp-lateral-bc">(77)</a> is a generalization of equation 18 in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id18">[157]</a>.</p>
 <p>Just like in the implementation of the basal boundary condition near grounding lines, we
 use a low order quadrature with many equally-spaced points to approximate integrals over
 element faces intersected by the sea level. This <em>should</em> improve the quality of the
@@ -332,7 +332,7 @@ it does not.) Should we use lots of quadrature points?</p>
 <p class="admonition-title">Note</p>
 <p>CISM 2.1 <a class="bibtex reference internal" href="../zzz_references_html.html#lipscomb2019" id="id19">[69]</a> uses a depth-averaged lateral boundary condition <em>without
 justification</em>.</p>
-<p>The lateral BC described in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id20">[153]</a> is equivalent to the one described here,
+<p>The lateral BC described in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id20">[157]</a> is equivalent to the one described here,
 but the implementation in Albany/FELIX (and therefore in MALI) matches the one in CISM.</p>
 </div>
 <p>Implementations in CISM and MALI <em>do not</em> use this boundary condition at grounded margins
@@ -547,7 +547,7 @@ to achieve similar reductions in the number of unknowns from one level to the ne
 multigrid hierarchy.</p>
 <p>The second argument against semi-coarsening is deeper: spatial variations in the sliding
 parameter <span class="math notranslate nohighlight">\(\beta\)</span> may lead to the kind of anisotropy that cannot be addressed by
-coarsening in the vertical direction (see chapter 7 in <a class="bibtex reference internal" href="../zzz_references_html.html#briggshensonmccormick" id="id25">[157]</a> for a
+coarsening in the vertical direction (see chapter 7 in <a class="bibtex reference internal" href="../zzz_references_html.html#briggshensonmccormick" id="id25">[161]</a> for a
 discussion). Still, we are encouraged by results published by Tuminaro et al
 <a class="bibtex reference internal" href="../zzz_references_html.html#tuminaro2016" id="id26">[68]</a>, who used a similar mesh structure and an approach equivalent to
 using geometric multigrid with semi-coarsening in the vertical direction for the finer
@@ -629,7 +629,7 @@ hierarchy. The transpose of this matrix is used as a restriction operator.</p>
 </div>
 <div class="section" id="parameter-continuation-as-a-recovery-mechanism">
 <span id="sec-bp-parameter-continuation"></span><h3><a class="toc-backref" href="#id61">Parameter continuation as a recovery mechanism</a><a class="headerlink" href="#parameter-continuation-as-a-recovery-mechanism" title="Permalink to this headline">¶</a></h3>
-<p>As in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id30">[153]</a>, we can start with a large <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>, find an approximate
+<p>As in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id30">[157]</a>, we can start with a large <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>, find an approximate
 solution, then use it as an initial guess for the next solve with a reduced
 <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>.</p>
 <div class="admonition note">
@@ -747,7 +747,7 @@ boundaries.</p>
 </dd>
 <dt class="field-even">Comments</dt>
 <dd class="field-even"><p>This test uses a constant ice hardness, <span class="math notranslate nohighlight">\(n = 3\)</span>, and has no variation in the
-<span class="math notranslate nohighlight">\(z\)</span> direction. It is similar to the <span class="math notranslate nohighlight">\(x-y\)</span> MMS verification test in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id33">[153]</a>,
+<span class="math notranslate nohighlight">\(z\)</span> direction. It is similar to the <span class="math notranslate nohighlight">\(x-y\)</span> MMS verification test in <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id33">[157]</a>,
 section 4.1 (we use Dirichlet boundary conditions along the whole lateral boundary
 instead of Robin conditions derived from the chosen exact solution).</p>
 <p>The compensatory term is computed using <a class="reference external" href="https://www.sympy.org">SymPy</a>; please see the code in
@@ -782,10 +782,10 @@ instead of Robin conditions derived from the chosen exact solution).</p>
 <li><p>has no variation (and is periodic) in the <span class="math notranslate nohighlight">\(y\)</span> direction,</p></li>
 <li><p>uses a constant basal resistance coefficient <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
 </ul>
-<p>It is similar to the <span class="math notranslate nohighlight">\(x-z\)</span> MMS verification test <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id34">[153]</a>, section 4.2
+<p>It is similar to the <span class="math notranslate nohighlight">\(x-z\)</span> MMS verification test <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id34">[157]</a>, section 4.2
 (again, we use Dirichlet BC at lateral boundaries instead of Robin conditions stated in
 the paper).</p>
-<p>See <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id35">[153]</a> and the code in <code class="docutils literal notranslate"><span class="pre">src/stressbalance/blatter/verification</span></code> for
+<p>See <a class="bibtex reference internal" href="../zzz_references_html.html#tezaur2015" id="id35">[157]</a> and the code in <code class="docutils literal notranslate"><span class="pre">src/stressbalance/blatter/verification</span></code> for
 details.</p>
 </dd>
 </dl>
@@ -818,7 +818,7 @@ the ice is submerged.</p>
 <div class="section" id="verification-test-xz-vv-van-der-veen-profile">
 <span id="sec-bp-verification-xz-vanderveen"></span><h3><a class="toc-backref" href="#id72">Verification test XZ-VV (van der Veen profile)</a><a class="headerlink" href="#verification-test-xz-vv-van-der-veen-profile" title="Permalink to this headline">¶</a></h3>
 <p>This setup tests the implementation of the basal sliding boundary condition (see
-<a class="reference internal" href="#sec-bp-bc-basal"><span class="std std-ref">Basal boundary</span></a>) using the van der Veen shelf profile <a class="bibtex reference internal" href="../zzz_references_html.html#vanderveen" id="id36">[158]</a>:</p>
+<a class="reference internal" href="#sec-bp-bc-basal"><span class="std std-ref">Basal boundary</span></a>) using the van der Veen shelf profile <a class="bibtex reference internal" href="../zzz_references_html.html#vanderveen" id="id36">[162]</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-bp-van-der-veen">
 <span class="eqno">(93)<a class="headerlink" href="#equation-eq-bp-van-der-veen" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}H(x) &amp;= \left[ \frac{4 C x}{Q_0} + H_0^{-4} \right]^{-\frac14},\\u(x) &amp;= \frac{Q_0}{H(x)},\\v(x) &amp;= 0,\\C &amp;= \left( \frac{\alpha g \rho_i}{2 B} \right)^3,\end{aligned}\end{align} \]</div>
 <p>where <span class="math notranslate nohighlight">\(Q_0\)</span> is the flux at the left boundary and <span class="math notranslate nohighlight">\(H_0\)</span> is the corresponding ice thickness.</p>
@@ -957,9 +957,9 @@ one to use “geometric” coarsening.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2668-g1e8e8d71f
+      Git revision v1.0-2689-gc6d15fc7f
       committed by Constantine Khrulev
-      on 2021-09-30 14:57:33 -0800 |
+      on 2021-10-05 19:49:54 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

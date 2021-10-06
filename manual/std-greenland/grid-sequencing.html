@@ -41,7 +41,7 @@ first. It is, however, only possible to pick up detail from high quality data, f
 instance bed elevation and high-resolution climate data, using high grid resolution.</p>
 <p>A 20 or 10 km grid is inadequate for resolving the flow of the ice sheet through the kind
 of fjord-like, few-kilometer-wide topographical confinement which occurs, for example, at
-Jakobshavn Isbrae in the west Greenland ice sheet <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal08" id="id1">[131]</a>, an important
+Jakobshavn Isbrae in the west Greenland ice sheet <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal08" id="id1">[136]</a>, an important
 outlet glacier which both flows fast and drains a large fraction of the ice sheet. One
 possibility is to set up an even higher-resolution PISM regional model covering only one
 outlet glacier, but this requires decisions about coupling to the whole ice sheet flow.
@@ -152,7 +152,7 @@ grid sequencing example to 3 km or 2 km resolutions
 <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code>. Note that the vertical grid also generally gets refined as the horizontal
 grid is refined.</p>
 <p>Going to a 1km grid is possible, but you will start to see the limitations of distributed
-file systems in writing the enormous NetCDF files in question <a class="bibtex reference internal" href="../../zzz_references_html.html#dickensmorey2013" id="id5">[132]</a>.
+file systems in writing the enormous NetCDF files in question <a class="bibtex reference internal" href="../../zzz_references_html.html#dickensmorey2013" id="id5">[137]</a>.
 Notice that a factor-of-five refinement in all three dimensions, e.g. from 5 km to 1 km in
 the horizontal, and from 20 m to 4 m in the vertical, generates an output NetCDF file
 which is 125 times larger. Since the already-generated 5 km result <code class="docutils literal notranslate"><span class="pre">g5km_gridseq.nc</span></code> is
@@ -265,9 +265,9 @@ coarsening stages in computing the fine grid solution.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2668-g1e8e8d71f
+      Git revision v1.0-2689-gc6d15fc7f
       committed by Constantine Khrulev
-      on 2021-09-30 14:57:33 -0800 |
+      on 2021-10-05 19:49:54 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
