@@ -13,7 +13,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Scalar diagnostic quantities" href="saving-time-series.html" />
@@ -89,7 +89,7 @@ allowed time step is</p>
 <p>If <a class="reference internal" href="../parameters/index.html#config-time_stepping.skip.enabled"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.skip</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a> is set <em>and</em> the most severe restriction comes
 from the SIA-diffusivity-based stability criterion for mass continuity, it skips</p>
 <div class="math notranslate nohighlight" id="equation-eq-dt-skip">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eq-dt-skip" title="Permalink to this equation">¶</a></span>\[N = \min\left(\left\lfloor 0.95\, \frac{\dt_1}{\dt_0} \right\rfloor,
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-dt-skip" title="Permalink to this equation">¶</a></span>\[N = \min\left(\left\lfloor 0.95\, \frac{\dt_1}{\dt_0} \right\rfloor,
               N_{\text{max}}  \right)\]</div>
 <p>energy, age, and 3D velocity updates, where <span class="math notranslate nohighlight">\(N_{\text{max}}\)</span> is set using
 <a class="reference internal" href="../parameters/index.html#config-time_stepping.skip.max"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.skip</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.max</span></code></a>.</p>
@@ -117,7 +117,7 @@ sampling of periodic climate data.</p></li>
 <li><p>If the value <span class="math notranslate nohighlight">\(R\)</span> set using <a class="reference internal" href="../parameters/index.html#config-time_stepping.resolution"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.resolution</span></code></a> is positive PISM
 reduces the time step length so that</p>
 <div class="math notranslate nohighlight" id="equation-eq-dt-rounding-down">
-<span class="eqno">(38)<a class="headerlink" href="#equation-eq-dt-rounding-down" title="Permalink to this equation">¶</a></span>\[\dt = N\cdot R\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-dt-rounding-down" title="Permalink to this equation">¶</a></span>\[\dt = N\cdot R\]</div>
 <p>for some integer <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <p>The default <span class="math notranslate nohighlight">\(R\)</span> (<span class="math notranslate nohighlight">\(1\)</span> second) allows PISM to represent model time more accurately,
 reducing the influence of rounding errors.</p>
@@ -197,7 +197,7 @@ stress balance model. Uses sliding velocity with all other stress balance choice
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">diffusivity</span></code></p></td>
 <td><p>SIA-diffusivity-based time step restriction for the mass continuity equation
-<a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarshpayne" id="id5">[120]</a></p></td>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarshpayne" id="id5">[123]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">energy</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">model</span></code></p></td>
 <td><p>CFL condition using horizontal (<span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span>) components of the ice velocity within the
@@ -346,9 +346,9 @@ see section <a class="reference internal" href="../modeling-choices/marine/calvi
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

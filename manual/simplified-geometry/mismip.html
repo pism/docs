@@ -13,7 +13,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="MISMIP3d" href="mismip3d.html" />
@@ -42,16 +42,16 @@ on reverse-slope beds is tested. The intercomparison process is described at the
 <div><p><a class="reference external" href="http://homepages.ulb.ac.be/~fpattyn/mismip/">http://homepages.ulb.ac.be/~fpattyn/mismip/</a></p>
 </div></blockquote>
 <p>Find a full text description there, along with the published report on the results
-<a class="bibtex reference internal" href="../../zzz_references_html.html#mismip2012" id="id1">[131]</a>; that paper includes results from PISM version 0.1. These documents are
+<a class="bibtex reference internal" href="../../zzz_references_html.html#mismip2012" id="id1">[134]</a>; that paper includes results from PISM version 0.1. These documents are
 essential reading for understanding MISMIP results generally, and for appreciating the
 brief discussion in this subsection.</p>
 <p>PISM’s version of MISMIP includes an attached ice shelf even though modeling the shelf is
-theoretically unnecessary in the flow line case. The analysis in <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id2">[134]</a> shows
+theoretically unnecessary in the flow line case. The analysis in <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id2">[137]</a> shows
 that the only effect of an ice shelf, in the flow line case, is to transfer the force
 imbalance at the calving front directly to the ice column at the grounding line. Such an
 analysis does not apply to ice shelves with two horizontal dimensions; real ice shelves
 have “buttressing” and “side drag” and other forces not present in the flow line
-<a class="bibtex reference internal" href="../../zzz_references_html.html#goldbergetal2009" id="id3">[135]</a>. See the next subsection on MISMIP3d and the Ross ice shelf example in
+<a class="bibtex reference internal" href="../../zzz_references_html.html#goldbergetal2009" id="id3">[138]</a>. See the next subsection on MISMIP3d and the Ross ice shelf example in
 section <a class="reference internal" href="../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a>, among other examples.</p>
 <p>We must adapt the usual 3D PISM model to two horizontal dimensions, i.e. to do flow-line
 problems (see section <a class="reference internal" href="../practical-usage/flowline.html#sec-flowline-modeling"><span class="std std-ref">Using PISM for flow-line modeling</span></a>). The flow direction for MISMIP is
@@ -103,18 +103,18 @@ at step 7. Left: grid mode 1 (12 km grid). Right: grid mode 3 (6 km grid).</span
 <div class="figure align-default" id="fig-smexper1am1a1">
 <img alt="../../_images/SM-1a-A1.png" src="../../_images/SM-1a-A1.png" />
 <p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Analytical profile for steady state of experiment 1a, step 1, from theory in
-<a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id5">[134]</a>. This is a boundary layer asymptotic matching result, but not the
+<a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id5">[137]</a>. This is a boundary layer asymptotic matching result, but not the
 exact solution to the equations.</span><a class="headerlink" href="#fig-smexper1am1a1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The script <code class="docutils literal notranslate"><span class="pre">MISMIP.py</span></code> in <code class="docutils literal notranslate"><span class="pre">examples/mismip/mismip2d</span></code> has the ability to compute the
-profile from the Schoof’s <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id6">[134]</a> asymptotic-matching boundary layer theory. This
+profile from the Schoof’s <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id6">[137]</a> asymptotic-matching boundary layer theory. This
 script is a Python translation, using <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and <code class="docutils literal notranslate"><span class="pre">pylab</span></code>, of the <a class="reference external" href="http://homepages.ulb.ac.be/~fpattyn/mismip/MISMIP_distribution.tar">provided MATLAB
 codes</a>. For example,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python MISMIP.py -o mismip_analytic.png
 </pre></div>
 </div>
 <p>produces a <code class="docutils literal notranslate"><span class="pre">.png</span></code> image file with <a class="reference internal" href="#fig-smexper1am1a1"><span class="std std-numref">Fig. 23</span></a>. By default
-<code class="docutils literal notranslate"><span class="pre">run.py</span></code> uses the asymptotic-matching thickness result from the <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id7">[134]</a> theory
+<code class="docutils literal notranslate"><span class="pre">run.py</span></code> uses the asymptotic-matching thickness result from the <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofmarine1" id="id7">[137]</a> theory
 to initialize the initial ice thickness, as allowed by the MISMIP specification.</p>
 <div class="figure align-default" id="fig-mismipmode2results">
 <img alt="../../_images/profileA7-M2.png" src="../../_images/profileA7-M2.png" />
@@ -214,9 +214,9 @@ to 16 km for grid mode 2 (a factor of about 5), by using a grid refinement from 
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

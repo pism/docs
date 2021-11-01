@@ -13,7 +13,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Sample convergence plots" href="convergence-figures.html" />
@@ -41,7 +41,7 @@ the assessment of numerical errors is called <em>verification</em>… Validation
 only after verification, otherwise agreement between measured and computed results may
 well be fortuitous.</p>
 <p>P. Wesseling, (2001) <em>Principles of Computational Fluid Dynamics</em>, pp. 560–561
-<a class="bibtex reference internal" href="../../zzz_references_html.html#wesseling" id="id1">[148]</a></p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#wesseling" id="id1">[151]</a></p>
 </div></blockquote>
 <p>Verification is the essentially mathematical task of checking that the predictions of the
 numerical code are close to the predictions of a continuum model, the one which the
@@ -49,7 +49,7 @@ numerical code claims to approximate. It is a crucial task for a code as complic
 PISM. In verification there is no comparison between model output and observations of
 nature. Instead, one compares exact solutions of the continuum model, in circumstances in
 which they are available, to their numerical approximations.</p>
-<p>Reference <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id2">[147]</a> gives a broad discussion of verification and validation in
+<p>Reference <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id2">[150]</a> gives a broad discussion of verification and validation in
 computational fluid dynamics. See <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id3">[32]</a> and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[29]</a> for discussion of verification
 issues for the isothermal and thermomechanically coupled shallow ice approximation (SIA),
 respectively, and for exact solutions to these models, and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id5">[28]</a>,
@@ -83,7 +83,7 @@ class of the PISM base class.</p>
 </tr>
 <tr class="row-odd"><td><p>B</p></td>
 <td><p>isothermal SIA, flat bed, zero accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id8">[32]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id9">[123]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id8">[32]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id9">[126]</a></p></td>
 <td><p>similarity solution</p></td>
 </tr>
 <tr class="row-even"><td><p>C</p></td>
@@ -128,7 +128,7 @@ class of the PISM base class.</p>
 </tr>
 <tr class="row-even"><td><p>K</p></td>
 <td><p>pure conduction in ice and bedrock</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#buelertestk" id="id20">[156]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#buelertestk" id="id20">[159]</a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>L</p></td>
@@ -240,7 +240,7 @@ model runs.</p></li>
 <p>Knowing the error decay rate may give a prediction of how fine a grid is necessary to
 achieve a desired smallness for the numerical error.</p>
 <p>Therefore one must “go down” a grid refinement “path” and measure numerical error for each
-grid <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id21">[147]</a>. The refinement path is defined by a sequence of spatial grid cell sizes
+grid <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id21">[150]</a>. The refinement path is defined by a sequence of spatial grid cell sizes
 which decrease toward the refinement limit of zero size <a class="bibtex reference internal" href="../../zzz_references_html.html#mortonmayers" id="id22">[70]</a>. In PISM the
 timestep <span class="math notranslate nohighlight">\(\dt\)</span> is determined adaptively by a stability criterion (see
 section <a class="reference internal" href="../practical-usage/time-stepping.html#sec-adapt"><span class="std std-ref">Understanding adaptive time-stepping</span></a>). In PISM one specifies the number of grid points, thus the
@@ -356,9 +356,9 @@ not very smooth at the free boundary <a class="bibtex reference internal" href="
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

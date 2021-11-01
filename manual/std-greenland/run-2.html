@@ -13,7 +13,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Third run: higher resolution" href="run-3.html" />
@@ -48,7 +48,7 @@ described by the SIA, is the SIA+SSA “hybrid” model <a class="bibtex referen
 <p>The practical issue with models of sliding is that a distinctly-uncertain parameter space
 must be introduced. This especially involves parameters controlling the amount and
 pressure of subglacial water (see <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id9">[65]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#clarke05" id="id10">[103]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id11">[107]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id12">[64]</a>, among others). In
+<a class="bibtex reference internal" href="../../zzz_references_html.html#clarke05" id="id10">[103]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id11">[109]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id12">[64]</a>, among others). In
 this regard, PISM uses the concept of a saturated and pressurized subglacial till with a
 modeled distribution of yield stress <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id13">[28]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id14">[44]</a>. The yield
 stress arises from the PISM model of the production of subglacial water, which is itself
@@ -99,7 +99,7 @@ contour (solid black).</p>
 output. However, though it is critical to the response of the ice to changes in climate,
 basal sliding velocity is essentially unobservable in real ice sheets. On the other hand,
 because of relatively-recent advances in radar and image technology and processing
-<a class="bibtex reference internal" href="../../zzz_references_html.html#joughin2002" id="id17">[143]</a>, the surface velocity of an ice sheet can be measured.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#joughin2002" id="id17">[146]</a>, the surface velocity of an ice sheet can be measured.</p>
 <p>So, how good is our model result <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code>? <a class="reference internal" href="#fig-csurfvsobserved"><span class="std std-numref">Fig. 5</span></a> compares
 the radar-observed <code class="docutils literal notranslate"><span class="pre">surfvelmag</span></code> field in the downloaded SeaRISE-Greenland data file
 <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code> with the just-computed PISM result. The reader might agree with
@@ -130,8 +130,8 @@ magnitude, but</p></li>
 </div>
 </div>
 <p>We can compare these PISM results to other observed-vs-model comparisons of surface
-velocity maps, for example Figure 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#priceetal2011" id="id18">[142]</a> and Figure 8 in
-<a class="bibtex reference internal" href="../../zzz_references_html.html#larouretal2012" id="id19">[141]</a>. Only ice-sheet-wide parameters and models were used here in PISM,
+velocity maps, for example Figure 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#priceetal2011" id="id18">[145]</a> and Figure 8 in
+<a class="bibtex reference internal" href="../../zzz_references_html.html#larouretal2012" id="id19">[144]</a>. Only ice-sheet-wide parameters and models were used here in PISM,
 that is, each location in the ice sheet was modeled by the same physics. By comparison,
 those published comparisons involved tuning a large number of spatially-variable
 subglacial parameters to values which would yield close match to observations of the
@@ -156,7 +156,7 @@ this contrast use <code class="docutils literal notranslate"><span class="pre">n
 and <code class="docutils literal notranslate"><span class="pre">dt</span></code>.</p>
 </dd>
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id20">2</a></span></dt>
-<dd><p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltetal2013" id="id24">[144]</a> (inversion of DEMs for basal topography) and
+<dd><p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltetal2013" id="id24">[147]</a> (inversion of DEMs for basal topography) and
 <a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id25">[66]</a> (inversion surface velocities for basal shear stress) for
 PISM-based inversion methods and analysis.</p>
 </dd>
@@ -248,9 +248,9 @@ PISM-based inversion methods and analysis.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

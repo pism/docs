@@ -13,7 +13,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Notes about the flow-line SSA" href="ssafd-flow-line.html" />
@@ -119,7 +119,7 @@ be omitted from the remaining analysis.</p>
 \[ \begin{align}\begin{aligned}p &amp;= p - \td{xx} - \td{yy} - \td{zz}\\&amp;= - t_{zz} - \td{xx} - \td{yy}\\&amp;= \pice - \td{xx} - \td{yy}.\end{aligned}\end{align} \]</div>
 <p>Thus</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-1">
-<span class="eqno">(45)<a class="headerlink" href="#equation-ssafd-cfbc-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(49)<a class="headerlink" href="#equation-ssafd-cfbc-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   (2\td{xx} + \td{yy}) \nx &amp;+&amp; \td{xy} \ny &amp;=&amp; (\pice - \psw) \nx,\\
   \td{xy} \nx &amp;+&amp; (2\td{yy} + \td{xx}) \ny &amp;=&amp; (\pice - \psw) \ny.\\
 \end{array}\end{split}\]</div>
@@ -131,9 +131,9 @@ can define the membrane stress <span class="math notranslate nohighlight">\(N\)<
 <div class="math notranslate nohighlight">
 \[N_{ij} = \int_{b}^{h} t^{D}_{ij} dz = 2\, \bar \viscosity\, H\, D_{ij}.\]</div>
 <p>Here <span class="math notranslate nohighlight">\(\bar \viscosity\)</span> is the vertically-averaged effective viscosity.</p>
-<p>Integrating <a class="reference internal" href="#equation-ssafd-cfbc-1">(45)</a> with respect to <span class="math notranslate nohighlight">\(z\)</span>, we get</p>
+<p>Integrating <a class="reference internal" href="#equation-ssafd-cfbc-1">(49)</a> with respect to <span class="math notranslate nohighlight">\(z\)</span>, we get</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-3">
-<span class="eqno">(46)<a class="headerlink" href="#equation-ssafd-cfbc-3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(50)<a class="headerlink" href="#equation-ssafd-cfbc-3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   (2N_{xx} + N_{yy}) \nx &amp;+&amp; N_{xy} \ny &amp;=&amp; \displaystyle \int_{b}^{h}(\pice - \psw) dz\, \nx,\\
   N_{xy} \nx &amp;+&amp; (2N_{yy} + N_{xx}) \ny &amp;=&amp; \displaystyle \int_{b}^{h}(\pice - \psw) dz\, \ny.
 \end{array}\end{split}\]</div>
@@ -142,7 +142,7 @@ can define the membrane stress <span class="math notranslate nohighlight">\(N\)<
 <h2><a class="toc-backref" href="#id9">Shallow shelf approximation</a><a class="headerlink" href="#shallow-shelf-approximation" title="Permalink to this headline">¶</a></h2>
 <p>The shallow shelf approximation written in terms of <span class="math notranslate nohighlight">\(N_{ij}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-2">
-<span class="eqno">(47)<a class="headerlink" href="#equation-ssafd-cfbc-2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(51)<a class="headerlink" href="#equation-ssafd-cfbc-2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   \D \diff{}{x}(2N_{xx} + N_{yy}) &amp;+&amp; \D \diff{N_{xy}}{y} &amp;=&amp; \D \rho g H \diff{h}{x},\\
   \D \diff{N_{xy}}{x} &amp;+&amp; \D \diff{}{y}(2N_{yy} + N_{xx}) &amp;=&amp; \D \rho g H \diff{h}{y}.
 \end{array}\end{split}\]</div>
@@ -150,9 +150,9 @@ can define the membrane stress <span class="math notranslate nohighlight">\(N\)<
 <div class="section" id="implementing-the-calving-front-boundary-condition">
 <h2><a class="toc-backref" href="#id10">Implementing the calving front boundary condition</a><a class="headerlink" href="#implementing-the-calving-front-boundary-condition" title="Permalink to this headline">¶</a></h2>
 <p>We use centered finite difference approximations in the discretization of the SSA
-<a class="reference internal" href="#equation-ssafd-cfbc-2">(47)</a>. Consider the first equation:</p>
+<a class="reference internal" href="#equation-ssafd-cfbc-2">(51)</a>. Consider the first equation:</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-4">
-<span class="eqno">(48)<a class="headerlink" href="#equation-ssafd-cfbc-4" title="Permalink to this equation">¶</a></span>\[\diff{}{x}(2N_{xx} + N_{yy}) + \D \diff{N_{xy}}{y} = \D \rho g H \diff{h}{x}.\]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-ssafd-cfbc-4" title="Permalink to this equation">¶</a></span>\[\diff{}{x}(2N_{xx} + N_{yy}) + \D \diff{N_{xy}}{y} = \D \rho g H \diff{h}{x}.\]</div>
 <p>Let <span class="math notranslate nohighlight">\(\tilde F\)</span> be an approximation of <span class="math notranslate nohighlight">\(F\)</span> using a finite-difference scheme. Then the first
 SSA equation is approximated by</p>
 <div class="math notranslate nohighlight">
@@ -160,13 +160,13 @@ SSA equation is approximated by</p>
 \frac1{\dy}\left(\partII_{i,j+\frac12} - \partII_{i,j-\frac12}\right) =
 \rho g H \frac{h_{i+\frac12,j} - h_{i-\frac12,j}}{\dx}.\]</div>
 <p>Now, assume that the cell boundary (face) at <span class="math notranslate nohighlight">\(i+\frac12,j\)</span> is at the
-calving front. Then <span class="math notranslate nohighlight">\(\n = (1,0)\)</span> and from <a class="reference internal" href="#equation-ssafd-cfbc-3">(46)</a> we have</p>
+calving front. Then <span class="math notranslate nohighlight">\(\n = (1,0)\)</span> and from <a class="reference internal" href="#equation-ssafd-cfbc-3">(50)</a> we have</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-vertintbdry">
-<span class="eqno">(49)<a class="headerlink" href="#equation-ssafd-cfbc-vertintbdry" title="Permalink to this equation">¶</a></span>\[2N_{xx} + N_{yy} = \int_{b}^{h}(\pice - \psw) dz.\]</div>
-<p>We call the right-hand side of <a class="reference internal" href="#equation-ssafd-cfbc-vertintbdry">(49)</a> the “pressure difference term.”</p>
+<span class="eqno">(53)<a class="headerlink" href="#equation-ssafd-cfbc-vertintbdry" title="Permalink to this equation">¶</a></span>\[2N_{xx} + N_{yy} = \int_{b}^{h}(\pice - \psw) dz.\]</div>
+<p>We call the right-hand side of <a class="reference internal" href="#equation-ssafd-cfbc-vertintbdry">(53)</a> the “pressure difference term.”</p>
 <p>In forming the matrix approximation of the SSA <a class="bibtex reference internal" href="../zzz_references_html.html#bbssasliding" id="id4">[28]</a>,
 <a class="bibtex reference internal" href="../zzz_references_html.html#winkelmannetal2011" id="id5">[36]</a>, instead of assembling a matrix row corresponding to the
-generic equation <a class="reference internal" href="#equation-ssafd-cfbc-4">(48)</a> we use</p>
+generic equation <a class="reference internal" href="#equation-ssafd-cfbc-4">(52)</a> we use</p>
 <div class="math notranslate nohighlight">
 \[\frac1{\dx}\left(\left[\int_{b}^{h}(\pice - \psw) dz\right]_{i+\frac12,j} - \partI_{i-\frac12,j}\right) +
 \frac1{\dy}\left(\partII_{i,j+\frac12} - \partII_{i,j-\frac12}\right) =
@@ -261,9 +261,9 @@ right-hand side, we get</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

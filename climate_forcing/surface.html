@@ -13,7 +13,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Atmosphere model components" href="atmosphere.html" />
@@ -48,6 +48,7 @@
 <li><p><a class="reference internal" href="#mass-flux-adjustment" id="id42">Mass flux adjustment</a></p></li>
 <li><p><a class="reference internal" href="#using-climate-data-anomalies" id="id43">Using climate data anomalies</a></p></li>
 <li><p><a class="reference internal" href="#the-caching-modifier" id="id44">The caching modifier</a></p></li>
+<li><p><a class="reference internal" href="#preventing-grounding-line-retreat" id="id45">Preventing grounding line retreat</a></p></li>
 </ul>
 </li>
 </ul>
@@ -545,8 +546,35 @@ used every time a surface model is updated.</p>
 differs little from the next. (Coarse-grid paleo-climate runs, for example.)</p>
 <p>It uses the following parameters:</p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-surface.cache.update_interval"><code class="docutils literal notranslate"><span class="pre">update_interval</span></code></a> (10<em> 365days</em>) Update interval (in years) for the <span class="math notranslate nohighlight">\(-surface cache\)</span> modifier.</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-surface.cache.update_interval"><code class="docutils literal notranslate"><span class="pre">update_interval</span></code></a> (10<em> 365days</em>) Update interval (in 365-day years) for the <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">cache</span></code> modifier.</p></li>
 </ol>
+</div>
+<div class="section" id="preventing-grounding-line-retreat">
+<span id="sec-surface-no-gl-retreat"></span><h2><a class="toc-backref" href="#id45">Preventing grounding line retreat</a><a class="headerlink" href="#preventing-grounding-line-retreat" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Options</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">...,no_gl_retreat</span></code></p>
+</dd>
+<dt class="field-even">C++ class</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">pism::surface::NoGLRetreat</span></code></p>
+</dd>
+</dl>
+<p>This modifier adjust the surface mass balance to prevent the retreat of the grounding
+line. See <a class="reference internal" href="../manual/modeling-choices/subglacier/basal-strength.html#sec-tillphi-optimization"><span class="std std-ref">Till friction angle optimization</span></a> for an application.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This modifier <em>adds mass</em> in violation of mass conservation. Save the diagnostic
+<code class="variable docutils literal notranslate"><span class="pre">no_gl_retreat_smb_adjustment</span></code> to get an idea about the amount added. Note,
+though, that this is an imperfect measure: it includes mass added to maintain
+non-negativity of ice thickness.</p></li>
+<li><p>We assume that the sea level and the bed elevation remain constant throughout the
+simulation.</p></li>
+<li><p>This does <em>not</em> prevent grounding line retreat caused by the thinning of the ice due
+to the melt at the base. Set <a class="reference internal" href="../manual/parameters/index.html#config-geometry.update.use_basal_melt_rate"><code class="docutils literal notranslate"><span class="pre">geometry</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.update</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.use_basal_melt_rate</span></code></a> to “false”
+to ensure that basal melt has no effect on the position of the grounding line</p></li>
+</ul>
+</div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
 <dt class="label" id="time-units"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -610,6 +638,7 @@ differs little from the next. (Coarse-grid paleo-climate runs, for example.)</p>
 <li class="toctree-l3"><a class="reference internal" href="#mass-flux-adjustment">Mass flux adjustment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-climate-data-anomalies">Using climate data anomalies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-caching-modifier">The caching modifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-grounding-line-retreat">Preventing grounding line retreat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="atmosphere.html">Atmosphere model components</a></li>
@@ -638,9 +667,9 @@ differs little from the next. (Coarse-grid paleo-climate runs, for example.)</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

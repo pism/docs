@@ -13,7 +13,7 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Fracture density modeling" href="damage.html" />
@@ -33,27 +33,27 @@
       
   <div class="section" id="modeling-melange-back-pressure">
 <span id="sec-model-melange-pressure"></span><h1>Modeling melange back-pressure<a class="headerlink" href="#modeling-melange-back-pressure" title="Permalink to this headline">¶</a></h1>
-<p>Equation <a class="reference internal" href="pik.html#equation-eq-cfbc">(28)</a> above, describing the stress boundary condition for ice shelves,
+<p>Equation <a class="reference internal" href="pik.html#equation-eq-cfbc">(32)</a> above, describing the stress boundary condition for ice shelves,
 can be written in terms of velocity components:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc-uv">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-cfbc-uv" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}2 \nu H (2u_x + u_y) \nx + 2 \nu H (u_y + v_x)  \ny &amp;= \displaystyle \int_{b}^{h}(\pice(z) - \psw(z)) dz\, \nx,\\2 \nu H (u_y + v_x)  \nx + 2 \nu H (2v_y + u_x) \ny &amp;= \displaystyle \int_{b}^{h}(\pice(z) - \psw(z)) dz\, \ny.\end{aligned}\end{align} \]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-cfbc-uv" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}2 \nu H (2u_x + u_y) \nx + 2 \nu H (u_y + v_x)  \ny &amp;= \displaystyle \int_{b}^{h}(\pice(z) - \psw(z)) dz\, \nx,\\2 \nu H (u_y + v_x)  \nx + 2 \nu H (2v_y + u_x) \ny &amp;= \displaystyle \int_{b}^{h}(\pice(z) - \psw(z)) dz\, \ny.\end{aligned}\end{align} \]</div>
 <p>Here <span class="math notranslate nohighlight">\(\nu\)</span> is the vertically-averaged ice viscosity, <span class="math notranslate nohighlight">\(H\)</span> is the ice thickness, <span class="math notranslate nohighlight">\(b\)</span> is the
 elevation of the bottom and <span class="math notranslate nohighlight">\(h\)</span> of the top ice surface, <span class="math notranslate nohighlight">\(\psw\)</span> and <span class="math notranslate nohighlight">\(\pice\)</span> are pressures
 of the column of ice and water, respectively:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc-pressures">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq-cfbc-pressures" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\pice &amp;= \rhoi\, g (h - z),\\\psw &amp;= \rhow\, g\, \max(\zs - z,\, 0).\end{aligned}\end{align} \]</div>
-<p>We call the integral on the right hand side of <a class="reference internal" href="#equation-eq-cfbc-uv">(33)</a> the <em>pressure difference
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-cfbc-pressures" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\pice &amp;= \rhoi\, g (h - z),\\\psw &amp;= \rhow\, g\, \max(\zs - z,\, 0).\end{aligned}\end{align} \]</div>
+<p>We call the integral on the right hand side of <a class="reference internal" href="#equation-eq-cfbc-uv">(37)</a> the <em>pressure difference
 term</em>.</p>
 <p>It can be re-written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc-pressure-difference">
-<span class="eqno">(35)<a class="headerlink" href="#equation-eq-cfbc-pressure-difference" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\int_b^h \pice(z) - \psw(z) dz &amp;= H (\bar p_{\text{ice}} - \bar p_{\text{water}}),\, \text{where}\\\bar p_{\text{ice}} &amp;= \frac12\, \rho_{\text{ice}}\, g\, H,\\\bar p_{\text{water}} &amp;= \frac12\, \rho_{\text{water}}\, g\, \frac{\max(z_s - b, 0)^2}{H}.\end{aligned}\end{align} \]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-cfbc-pressure-difference" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\int_b^h \pice(z) - \psw(z) dz &amp;= H (\bar p_{\text{ice}} - \bar p_{\text{water}}),\, \text{where}\\\bar p_{\text{ice}} &amp;= \frac12\, \rho_{\text{ice}}\, g\, H,\\\bar p_{\text{water}} &amp;= \frac12\, \rho_{\text{water}}\, g\, \frac{\max(z_s - b, 0)^2}{H}.\end{aligned}\end{align} \]</div>
 <p>PISM’s ocean model components provide <span class="math notranslate nohighlight">\(\bar p_{\text{water}}\)</span>, the vertically-averaged
 pressure of the water column adjacent to an ice margin.</p>
 <p>To model the effect of melange <a class="bibtex reference internal" href="../../../zzz_references_html.html#amundsonetal2010" id="id1">[97]</a> on the stress boundary condition
-we modify the pressure difference term in <a class="reference internal" href="#equation-eq-cfbc-uv">(33)</a>, adding <span class="math notranslate nohighlight">\(\pmelange\)</span>, the
+we modify the pressure difference term in <a class="reference internal" href="#equation-eq-cfbc-uv">(37)</a>, adding <span class="math notranslate nohighlight">\(\pmelange\)</span>, the
 vertically-averaged melange back pressure:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc-3">
-<span class="eqno">(36)<a class="headerlink" href="#equation-eq-cfbc-3" title="Permalink to this equation">¶</a></span>\[\int_{b}^{h}(\pice - (\psw + \pmelange))\, dz.\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-cfbc-3" title="Permalink to this equation">¶</a></span>\[\int_{b}^{h}(\pice - (\psw + \pmelange))\, dz.\]</div>
 <p>By default, <span class="math notranslate nohighlight">\(\pmelange\)</span> is zero, but PISM implements two ocean model components to support
 scalar time-dependent melange pressure forcing. Please see the <a class="reference internal" href="../../../climate_forcing/ocean.html#sec-ocean-frac-mbp"><span class="std std-ref">Climate Forcing
 Manual</span></a> for details.</p>
@@ -143,9 +143,9 @@ Manual</span></a> for details.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

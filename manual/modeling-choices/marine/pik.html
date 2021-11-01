@@ -13,7 +13,7 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}"}}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Flotation criterion, mask, and sea level" href="mask.html" />
@@ -109,23 +109,23 @@ non-default FEM stress balance <code class="option docutils literal notranslate"
 <p>The vertically integrated force balance at floating calving fronts has been formulated by
 <a class="bibtex reference internal" href="../../../zzz_references_html.html#morland" id="id13">[42]</a> as</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eq-cfbc" title="Permalink to this equation">¶</a></span>\[\int_{z_s-\frac{\rho}{\rho_w}H}^{z_s+(1-\frac{\rho}{\rho_w})H}\mathbf{\sigma}\cdot\mathbf{n}\;dz
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-cfbc" title="Permalink to this equation">¶</a></span>\[\int_{z_s-\frac{\rho}{\rho_w}H}^{z_s+(1-\frac{\rho}{\rho_w})H}\mathbf{\sigma}\cdot\mathbf{n}\;dz
 = \int_{z_s-\frac{\rho}{\rho_w}H}^{z_s}\rho_w g (z-z_s) \;\mathbf{n}\;dz.\]</div>
 <p>with <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> being the horizontal normal vector pointing from the ice boundary
 oceanward, <span class="math notranslate nohighlight">\(\mathbf{\sigma}\)</span> the <em>Cauchy</em> stress tensor, <span class="math notranslate nohighlight">\(H\)</span> the ice thickness and <span class="math notranslate nohighlight">\(\rho\)</span>
 and <span class="math notranslate nohighlight">\(\rho_{w}\)</span> the densities of ice and seawater, respectively, for a sea level of <span class="math notranslate nohighlight">\(z_s\)</span>.
-The integration limits on the right hand side of equation <a class="reference internal" href="#equation-eq-cfbc">(28)</a> account for the
+The integration limits on the right hand side of equation <a class="reference internal" href="#equation-eq-cfbc">(32)</a> account for the
 pressure exerted by the ocean on that part of the shelf, which is below sea level (bending
 and torque neglected). The limits on the left hand side change for water-terminating
 outlet glacier or glacier fronts above sea level according to the bed topography. By
-applying the ice flow law (section <a class="reference internal" href="../dynamics/rheology.html#sec-rheology"><span class="std std-ref">Ice rheology</span></a>), equation <a class="reference internal" href="#equation-eq-cfbc">(28)</a> can be
+applying the ice flow law (section <a class="reference internal" href="../dynamics/rheology.html#sec-rheology"><span class="std std-ref">Ice rheology</span></a>), equation <a class="reference internal" href="#equation-eq-cfbc">(32)</a> can be
 rewritten in terms of strain rates (velocity derivatives), as one does with the SSA stress
 balance itself.</p>
 <p>Note that the discretized SSA stress balance, in the default finite difference
 discretization chosen by <code class="option docutils literal notranslate"><span class="pre">-ssa_method</span></code> <code class="docutils literal notranslate"><span class="pre">fd</span></code>, is solved with an iterative matrix
 scheme. If option <code class="option docutils literal notranslate"><span class="pre">-cfbc</span></code> is set then, during matrix assembly, those equations which
 are for fully-filled grid cells along the ice domain boundary have terms replaced
-according to equation <a class="reference internal" href="#equation-eq-cfbc">(28)</a>, so as to apply the correct stresses
+according to equation <a class="reference internal" href="#equation-eq-cfbc">(32)</a>, so as to apply the correct stresses
 <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id14">[98]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id15">[36]</a>.</p>
 </div>
 <div class="section" id="partially-filled-cells-at-the-boundaries-of-ice-shelves">
@@ -279,9 +279,9 @@ value of the flotation mask. Use <code class="option docutils literal notranslat
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2725-g8ef149795
+      Git revision v1.0-2739-gee3795126
       committed by Constantine Khrulev
-      on 2021-11-01 12:32:02 -0800 |
+      on 2021-11-01 13:44:24 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
