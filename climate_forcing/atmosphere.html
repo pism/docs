@@ -369,14 +369,21 @@ changes in surface elevation relative to a reference elevation read from a file.
 <a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.temperature_lapse_rate"><code class="docutils literal notranslate"><span class="pre">atmosphere</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.elevation_change</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.temperature_lapse_rate</span></code></a>. Here</p>
 <div class="math notranslate nohighlight">
 \[\gamma_T = -\frac{dT}{dz}.\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some atmosphere models (<a class="reference internal" href="#sec-atmosphere-pik"><span class="std std-ref">PIK</span></a>, for example) use elevation-dependent
+near-surface air temperature parameterizations that include an elevation lapse rate.</p>
+<p>In most cases one should not combine such a temperature parameterization with an
+additional elevation lapse rate for temperature.</p>
+</div>
 <p>Two methods of adjusting precipitation are available:</p>
 <ul>
 <li><p>Scaling using an exponential factor</p>
 <div class="math notranslate nohighlight">
 \[\mathrm{P} = \mathrm{P_{input}} \cdot \exp(C \cdot \Delta T),\]</div>
 <p>where <span class="math notranslate nohighlight">\(C =\)</span> <a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.precip_exponential_factor_for_temperature"><code class="docutils literal notranslate"><span class="pre">atmosphere</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.precip_exponential_factor_for_temperature</span></code></a> and <span class="math notranslate nohighlight">\(\Delta
-T\)</span> is the temperature difference produced by applying
-<a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.temperature_lapse_rate"><code class="docutils literal notranslate"><span class="pre">atmosphere</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.elevation_change</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.temperature_lapse_rate</span></code></a>.</p>
+T\)</span> is the temperature difference produced by applying the lapse rate
+<a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.precipitation.temp_lapse_rate"><code class="docutils literal notranslate"><span class="pre">atmosphere</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.elevation_change</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.precipitation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.temp_lapse_rate</span></code></a>.</p>
 <p>This mechanisms increases precipitation by <span class="math notranslate nohighlight">\(100(\exp(C) - 1)\)</span> percent for each degree of
 temperature increase.</p>
 <p>To use this method, set <code class="option docutils literal notranslate"><span class="pre">-precip_adjustment</span> <span class="pre">scale</span></code>.</p>
@@ -393,8 +400,9 @@ temperature increase.</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the reference surface elevation field (variable <code class="variable docutils literal notranslate"><span class="pre">usurf</span></code>).</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.precipitation.lapse_rate"><code class="docutils literal notranslate"><span class="pre">precipitation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.lapse_rate</span></code></a> (0<em> (kg m-2 / year) / km</em>) Elevation lapse rate for the surface mass balance</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.precipitation.lapse_rate"><code class="docutils literal notranslate"><span class="pre">precipitation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.lapse_rate</span></code></a> (0<em> (kg m-2 / year) / km</em>) Elevation lapse rate for the precipitation</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.precipitation.method"><code class="docutils literal notranslate"><span class="pre">precipitation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.method</span></code></a> (<code class="docutils literal notranslate"><span class="pre">shift</span></code>) Choose the precipitation adjustment method. <code class="docutils literal notranslate"><span class="pre">scale</span></code>: use temperature-change-dependent scaling factor. <code class="docutils literal notranslate"><span class="pre">shift</span></code>: use the precipitation lapse rate.</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.precipitation.temp_lapse_rate"><code class="docutils literal notranslate"><span class="pre">precipitation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.temp_lapse_rate</span></code></a> (0<em> Kelvin / km</em>) Elevation lapse rate for the surface temperature used to compute <span class="math notranslate nohighlight">\(\Delta T\)</span> in the precipitation scaling factor <span class="math notranslate nohighlight">\(\exp(C \cdot \Delta T)\)</span></p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.temperature_lapse_rate"><code class="docutils literal notranslate"><span class="pre">temperature_lapse_rate</span></code></a> (0<em> Kelvin / km</em>) Elevation lapse rate for the surface temperature</p></li>
 </ol>
 <p>The file specified using <a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.elevation_change.file"><code class="docutils literal notranslate"><span class="pre">atmosphere</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.elevation_change</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a> may contain several
@@ -590,9 +598,9 @@ with the prefix <code class="docutils literal notranslate"><span class="pre">atm
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2739-gee3795126
+      Git revision v1.0-2740-g0a8470eb4
       committed by Constantine Khrulev
-      on 2021-11-01 13:44:24 -0800 |
+      on 2021-11-02 13:36:37 -0800 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
