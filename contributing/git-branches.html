@@ -33,8 +33,8 @@
 <span id="sec-git-branches"></span><h1>Git branches<a class="headerlink" href="#git-branches" title="Permalink to this headline">¶</a></h1>
 <p>PISM development loosely follows the Git branching model described in <a class="reference external" href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git
 branching model</a> by Vincent Driessen.<a class="footnote-reference brackets" href="#id3" id="id1">1</a></p>
-<p>PISM’s repository contains two long-lived branches: <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code>.</p>
-<p>The default branch <code class="docutils literal notranslate"><span class="pre">master</span></code> contains released code. This way users can clone
+<p>PISM’s repository contains two long-lived branches: <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code>.</p>
+<p>The default branch <code class="docutils literal notranslate"><span class="pre">main</span></code> contains released code. This way users can clone
 <a class="reference external" href="https://github.com/pism/pism">https://github.com/pism/pism</a> and get the latest PISM release.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch contains code that is ready to be included in the next release.</p>
 <p>Current development is done in <em>topic branches</em> started from <code class="docutils literal notranslate"><span class="pre">dev</span></code>. Once a new feature or
@@ -47,15 +47,15 @@ contained in it to the current state of <code class="docutils literal notranslat
 branch was started. However, merging <code class="docutils literal notranslate"><span class="pre">dev</span></code> into a topic branch “just to stay up to date”
 is not a good idea since it confuses commit history.</p>
 <p>When a released version of the code needs a fix, a “bug-fix” branch is created from the
-<code class="docutils literal notranslate"><span class="pre">master</span></code> branch. When the implementation of a fix is complete, the bug-fix branch is
-merged into <code class="docutils literal notranslate"><span class="pre">master</span></code> (and <code class="docutils literal notranslate"><span class="pre">master</span></code> is tagged to mark the new bug-fix release) and into
+<code class="docutils literal notranslate"><span class="pre">main</span></code> branch. When the implementation of a fix is complete, the bug-fix branch is
+merged into <code class="docutils literal notranslate"><span class="pre">main</span></code> (and <code class="docutils literal notranslate"><span class="pre">main</span></code> is tagged to mark the new bug-fix release) and into
 <code class="docutils literal notranslate"><span class="pre">dev</span></code> so that the fix is included in the next major release.</p>
 <p>In <a class="reference external" href="https://github.com/pism/pism">https://github.com/pism/pism</a> branches are named using the name of the person responsible for the
 branch as a prefix. For example, <code class="docutils literal notranslate"><span class="pre">ckhroulev/pnetcdf</span></code> is the name of Constantine Khroulev’s
 branch containing improvements of the I/O code using <a class="reference external" href="https://parallel-netcdf.github.io/">PnetCDF</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please commit all your changes to “topic” branches. The <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> branches are
+<p>Please commit all your changes to “topic” branches. The <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> branches are
 managed by PISM developers at UAF.</p>
 </div>
 <p class="rubric">Footnotes</p>
@@ -140,9 +140,9 @@ Hamano for more about “topic branches.”</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2756-g1cffeb305
+      Git revision v1.0-2758-gbc9033574
       committed by Constantine Khrulev
-      on 2021-11-11 13:59:31 -0900 |
+      on 2021-11-11 14:22:28 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
