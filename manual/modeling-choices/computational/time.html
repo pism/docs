@@ -35,10 +35,10 @@
 <span id="sec-time"></span><h1>Model time<a class="headerlink" href="#model-time" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="#tab-timeoptions"><span class="std std-numref">Table 7</span></a> gives the command-line options which control PISM time. If
 option <code class="docutils literal notranslate"><span class="pre">-ys</span></code> is absent then the start year is read from the input file (if present) or
-it defaults to zero. The default value for the end year is the start year plus the given
-(<code class="docutils literal notranslate"><span class="pre">-y</span></code>) run length. If both <code class="docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="docutils literal notranslate"><span class="pre">-ye</span></code> are used then the run length is set to
-the difference. Using all three of <code class="docutils literal notranslate"><span class="pre">-ys</span></code>, <code class="docutils literal notranslate"><span class="pre">-y</span></code> and <code class="docutils literal notranslate"><span class="pre">-ys</span></code> is not allowed; this
-generates an error message.</p>
+it defaults to zero. The default value for the end of the run is the start time plus the
+given (<code class="docutils literal notranslate"><span class="pre">-y</span></code>) run length. If both <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> are used then the run length
+is set to the difference. If both <code class="option docutils literal notranslate"><span class="pre">-y</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> are set PISM will use
+<code class="option docutils literal notranslate"><span class="pre">-ye</span></code> and ignore <code class="option docutils literal notranslate"><span class="pre">-y</span></code>.</p>
 <table class="colwidths-given docutils align-default" id="tab-timeoptions">
 <caption><span class="caption-number">Table 7 </span><span class="caption-text">Command-line options controlling PISM time</span><a class="headerlink" href="#tab-timeoptions" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -52,45 +52,75 @@ generates an error message.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-y</span></code> (years)</p></td>
-<td><p>Number of model years to run.</p></td>
+<td><p>Number of model years to run (see <a class="reference internal" href="../../parameters/index.html#config-time.run_length"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.run_length</span></code></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-ys</span></code> (years)</p></td>
-<td><p>Model year at which to start the run. Also resets the model
-time, ignoring any time in the input file.</p></td>
+<td><p>Model year at which to start the run (see <a class="reference internal" href="../../parameters/index.html#config-time.start"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.start</span></code></a>). Also resets the
+model time, ignoring any time in the input file.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-ye</span></code> (years)</p></td>
-<td><p>Model year at which to end the run.</p></td>
+<td><p>Model year at which to end the run (see <a class="reference internal" href="../../parameters/index.html#config-time.end"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.end</span></code></a>).</p></td>
 </tr>
 </tbody>
 </table>
+<p>Times specified by <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> are interpreted as <em>years since the reference
+date in the chosen calendar</em> (see <a class="reference internal" href="../../parameters/index.html#config-time.reference_date"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.reference_date</span></code></a> and
+<a class="reference internal" href="../../parameters/index.html#config-time.calendar"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.calendar</span></code></a>), so by default <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">0</span></code> will correspond to January 1 of year 1.</p>
+<p>It is also possible to provide <em>units</em>: for example, <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">1day</span> <span class="pre">-ye</span> <span class="pre">2weeks</span></code> will start the
+run from January 2, 1 and run for 14 days (until January 15).</p>
+<p>In addition to this, <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> (as well as <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, etc) can
+take <em>dates</em> of the form <code class="docutils literal notranslate"><span class="pre">Y-M-D</span></code>, so <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">2000-1-1</span> <span class="pre">-ye</span> <span class="pre">2100-1-1</span></code> would tell PISM to
+run for 100 years from January 1, 2000.</p>
+<p>The run length given by <code class="option docutils literal notranslate"><span class="pre">-y</span></code> is interpreted as the number of <span class="math notranslate nohighlight">\(365\)</span>-day years. For
+more precise control of the run duration, provide units (e.g. <code class="docutils literal notranslate"><span class="pre">-y</span> <span class="pre">1s</span></code> for a very short
+run or <code class="docutils literal notranslate"><span class="pre">-y</span> <span class="pre">&quot;1000</span> <span class="pre">360day&quot;</span></code> to run for one thousand <span class="math notranslate nohighlight">\(360\)</span>-day years) or use <code class="option docutils literal notranslate"><span class="pre">-ye</span></code>
+instead.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fact that <code class="option docutils literal notranslate"><span class="pre">-y</span></code> is not calendar-aware can lead to some confusion. Note, for
+example, that <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">2000-1-1</span> <span class="pre">-y</span> <span class="pre">100</span> <span class="pre">-calendar</span> <span class="pre">360_day</span></code> will end the run on
+<code class="docutils literal notranslate"><span class="pre">2101-05-21</span></code>: this is the date in the <span class="math notranslate nohighlight">\(360\)</span>-day calendar that is one hundred
+<span class="math notranslate nohighlight">\(365\)</span>-day years from <code class="docutils literal notranslate"><span class="pre">2000-1-1</span></code>.</p>
+</div>
+<p>It is also possible to run PISM for the duration of the available forcing data using the
+<code class="option docutils literal notranslate"><span class="pre">-time_file</span></code> option. The command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -calendar gregorian -time_file forcing.nc
+</pre></div>
+</div>
+<p>will extract the reference date and run length from <code class="docutils literal notranslate"><span class="pre">forcing.nc</span></code>, respecting time
+bounds.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When preparing input files it is important to use time units that are a fixed multiple
+of “seconds”, such as “<code class="docutils literal notranslate"><span class="pre">minutes</span> <span class="pre">since</span> <span class="pre">1989-1-1</span></code>” or “<code class="docutils literal notranslate"><span class="pre">days</span> <span class="pre">since</span> <span class="pre">1999-12-31</span></code>” and
+avoid “months” and “years”. (PISM uses UDUNITS-2 to convert units, and in UDUNITS one
+month is always interpreted as <span class="math notranslate nohighlight">\(\frac{1}{12}\cdot 365.242198781\)</span> days.) Please see the
+<a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">CF Conventions</a> document for details.</p></li>
+</ul>
+</div>
 <div class="section" id="calendars">
 <span id="sec-calendars"></span><h2>Calendars<a class="headerlink" href="#calendars" title="Permalink to this headline">¶</a></h2>
 <p>Most of PISM, and its ice dynamics core in particular, only needs to know the length of
 the current time-step. Internally PISM stores time in “seconds since a specified moment”
-and thus PISM generally does not use or need a calendar. <a class="footnote-reference brackets" href="#id3" id="id1">1</a> We refer to PISM internal
+and thus PISM generally does not use or need a calendar.<a class="footnote-reference brackets" href="#f1" id="id1">1</a> We refer to PISM internal
 time as <em>model time</em>.</p>
-<p>One can select a calendar for more precise control of the model time, however. A
-“calendar” is a concept that is part of the <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">CF Conventions</a>. Choosing a calendar is
-appropriate for runs for specific temporal periods like “the 18th-century” or
-“1989–2010”. The calendar is generally needed because specific knowledge of lengths of
-months and years is required to use climate data properly or to facilitate model
-validation.</p>
+<p>One can select a calendar for more precise control of the model time, however (see
+<a class="reference internal" href="../../parameters/index.html#config-time.calendar"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.calendar</span></code></a>). A “calendar” is a concept that is part of the <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">CF Conventions</a>.
+Choosing a calendar is appropriate for runs for specific temporal periods like “the
+18th-century” or “1989–2010”. The calendar is generally needed because specific knowledge
+of lengths of months and years is required to use climate data properly or to facilitate
+model validation.</p>
 <p>PISM uses <a class="reference external" href="http://cirrus.ucsd.edu/~pierce/calcalcs/calendars.html">CalCalcs</a> by David W. Pierce to perform calendric computations. This lets us
 support all the <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#calendar">calendars</a> defined by the CF Metadata Conventions
 document except for the <code class="docutils literal notranslate"><span class="pre">366_day</span></code> (<code class="docutils literal notranslate"><span class="pre">all_leap</span></code>) calendar.</p>
-<p>Time units in PISM’s output files always contain a reference date because it is required
-by the CF metadata conventions.</p>
 <p>By default PISM uses the <code class="docutils literal notranslate"><span class="pre">365_day</span></code> calendar. This is appropriate for runs that do not
 require precise application of forcing data or reporting on particular dates
-(paleo-climate runs, for example). In this mode PISM ignores the reference date in time
-unit specifications (such as “<code class="docutils literal notranslate"><span class="pre">days</span> <span class="pre">since</span> <span class="pre">1969-7-20</span></code>”), though the value set using
-<a class="reference internal" href="../../parameters/index.html#config-time.reference_date"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.reference_date</span></code></a> configuration parameter is saved in (is passed forward into)
-output files.</p>
-<p>The calendar setting also affects the year length. In particular, with the default choice
-of the calendar (<code class="docutils literal notranslate"><span class="pre">365_day</span></code>), <code class="docutils literal notranslate"><span class="pre">-y</span> <span class="pre">10</span></code> sets the run duration to</p>
-<div class="math notranslate nohighlight">
-\[10 \times 365 \times 24 \times 60 \times 60 = 315360000\]</div>
-<p>seconds, not <span class="math notranslate nohighlight">\(10 \times 365.25 \times 24 \times 60 \times 60\)</span> or similar.</p>
+(paleo-climate runs, for example).</p>
+<p>In addition to setting run start and end times, the calendar setting also affects the
+interpretation of “monthly” and “yearly” reporting with <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>,
+<code class="option docutils literal notranslate"><span class="pre">-ts_times</span></code>, and <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> (see <a class="reference internal" href="../../practical-usage/saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>,
+<a class="reference internal" href="../../practical-usage/saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>, and <a class="reference internal" href="../../practical-usage/saving-snapshots.html#sec-snapshots"><span class="std std-ref">Snapshots of the model state</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This does <strong>not</strong> affect unit conversion: the factor used to convert <span class="math notranslate nohighlight">\(m/s\)</span> to
@@ -124,60 +154,8 @@ of the calendar (<code class="docutils literal notranslate"><span class="pre">36
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">julian</span></code></p></td>
 <td><p>Julian calendar</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p></td>
-<td><p>no calendar</p></td>
-</tr>
 </tbody>
 </table>
-<p>Selecting a non-trivial (Gregorian, Proleptic Gregorian, or Julian) calendar using the
-<a class="reference internal" href="../../parameters/index.html#config-time.calendar"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.calendar</span></code></a> configuration parameter or the <code class="option docutils literal notranslate"><span class="pre">-calendar</span></code> command-line
-option enables calendar-based time management; see <a class="reference internal" href="#tab-calendars"><span class="std std-numref">Table 8</span></a>. The
-implications of selecting such a calendar are:</p>
-<ul>
-<li><p>PISM uses the <code class="docutils literal notranslate"><span class="pre">units</span></code> attribute of coordinate variables <em>literally</em> (including the
-reference date) in unit conversions. Please make sure that the <code class="variable docutils literal notranslate"><span class="pre">time</span></code> variable in
-all forcing files has the units attribute such as “<code class="docutils literal notranslate"><span class="pre">days</span> <span class="pre">since</span> <span class="pre">2012-1-1</span></code>”. PISM will
-stop with an error message if a time variable does not have a reference date in its unit
-specification.</p></li>
-<li><p>It is important to use units that are a fixed multiple of “seconds”, such as “<code class="docutils literal notranslate"><span class="pre">minutes</span>
-<span class="pre">since</span> <span class="pre">1989-1-1</span></code>” or “<code class="docutils literal notranslate"><span class="pre">days</span> <span class="pre">since</span> <span class="pre">1999-12-31</span></code>” and avoid “months” and “years”. (PISM
-uses UDUNITS-2 to convert units, and in UDUNITS one month is always interpreted as
-<span class="math notranslate nohighlight">\(\frac{1}{12}\cdot 365.242198781\)</span> days.) Please see the <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html">CF Conventions</a> document
-for details.</p></li>
-<li><p>PISM uses dates in standard output:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
-   time interval (length)   [2012-01-01, 2021-12-31]  (10.000 years)
-...
-S 2012-05-26:  0.00011    0.6306   0.00000000           0.00000
-$v$Eh m (dt=0.10000)
-S 2012-07-01:  0.00014    0.6306   0.00000000           0.00000
-</pre></div>
-</div>
-<p>Just like in the no-calendar mode, run length, run start and run end times are specified
-using <code class="option docutils literal notranslate"><span class="pre">-y</span></code>, <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> command-line options, respectively. Arguments
-of these options are interpreted in a slightly different manner, though:</p>
-</li>
-<li><p>the run length option <code class="docutils literal notranslate"><span class="pre">-y</span></code> takes an <em>integer</em> argument, interpreted as the number of
-<em>calendar</em> years</p></li>
-<li><p>options <code class="docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="docutils literal notranslate"><span class="pre">-ye</span></code> take <em>dates</em> as arguments.</p></li>
-</ul>
-<p>For example, either of the following commands sets up a run covering the <span class="math notranslate nohighlight">\(21^{st}\)</span>
-century:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -calendar gregorian -ys 2001-1-1 -y 100 ...
-pismr -calendar standard -ys 2001-1-1 -ye 2101-1-1 ...
-</pre></div>
-</div>
-<p>(These option combinations are equivalent.)</p>
-<p>It is also possible to run PISM for the duration of the available forcing data using the
-<code class="option docutils literal notranslate"><span class="pre">-time_file</span></code> option. The command</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -calendar gregorian -time_file forcing.nc
-</pre></div>
-</div>
-<p>will extract the reference date and run length from <code class="docutils literal notranslate"><span class="pre">forcing.nc</span></code>, respecting time
-bounds.</p>
-<p>When a non-trivial calendar is selected, spatial and scalar time-series can be saved
-daily, monthly or yearly using these calendric computations. See sections
-<a class="reference internal" href="../../practical-usage/saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a> and <a class="reference internal" href="../../practical-usage/saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>.</p>
 </div>
 <div class="section" id="re-starting-an-interrupted-run-using-time-file">
 <span id="sec-time-file-restart"></span><h2>Re-starting an interrupted run using <code class="docutils literal notranslate"><span class="pre">-time_file</span></code><a class="headerlink" href="#re-starting-an-interrupted-run-using-time-file" title="Permalink to this headline">¶</a></h2>
@@ -205,20 +183,20 @@ pismr -i backup.nc -time_file time.nc -o output.nc -time_file_continue_run
 <p>A “diagnostic” computation can be defined as one where the internal state does not evolve.
 The internal state of PISM is the set of variables read by “<code class="docutils literal notranslate"><span class="pre">-i</span></code>”. You can ask PISM to
 do a diagnostic computation by setting the run duration to a small number such as
-<span class="math notranslate nohighlight">\(0.001\)</span> years (about <span class="math notranslate nohighlight">\(9\)</span> hours). The duration to use depends on the modeling
+<span class="math notranslate nohighlight">\(1\)</span> hours (<code class="docutils literal notranslate"><span class="pre">-y</span> <span class="pre">10hours</span></code>). The duration to use depends on the modeling
 setup, but should be smaller than the maximum time-step allowed by PISM’s stability
 criteria. Such short runs can also be used to look at additional fields corresponding to
 the current model state.</p>
 <p>As an example, consider these two runs:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -eisII A -y 6000 -o foo.nc
-pismr -i foo.nc -y 0.001 -o bar.nc -o_size big
+pismr -i foo.nc -y 10hours -o bar.nc -o_size big
 </pre></div>
 </div>
 <p>The result of the second (short) run is a NetCDF file <code class="docutils literal notranslate"><span class="pre">bar.nc</span></code> which contains the full
 three-dimensional velocity field in the scalar NetCDF variables <code class="docutils literal notranslate"><span class="pre">uvel</span></code>, <code class="docutils literal notranslate"><span class="pre">vvel</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">wvel</span></code>, as well as many other variables. The file <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code> does not contain many of
 these fields because it was written with the default output size of <code class="docutils literal notranslate"><span class="pre">medium</span></code>. The “<code class="docutils literal notranslate"><span class="pre">-y</span>
-<span class="pre">0.001</span></code>” run has diagnostically “filled-in” all the fields which PISM can model at a time
+<span class="pre">10hours</span></code>” run has diagnostically “filled-in” all the fields which PISM can model at a time
 step, but the run duration was chosen so as to avoid significant model state evolution
 during the run.</p>
 <p>This diagnostic mode is often associated to the modeling of ice shelves and ice streams.
@@ -234,7 +212,7 @@ supported diagnostic quantities at the end of a time-stepping run using the opti
 <code class="docutils literal notranslate"><span class="pre">-o_size</span> <span class="pre">big</span></code>.</p>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Note seconds are part of SI units.</p>
 </dd>
 </dl>
@@ -325,9 +303,9 @@ supported diagnostic quantities at the end of a time-stepping run using the opti
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2751-ga21c55ff6
+      Git revision v1.0-2754-g08d08a636
       committed by Constantine Khrulev
-      on 2021-11-10 15:46:54 -0900 |
+      on 2021-11-11 13:13:36 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
