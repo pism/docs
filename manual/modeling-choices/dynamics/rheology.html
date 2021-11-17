@@ -108,6 +108,7 @@ Paterson-Budd then this law returns</p>
 <p class="rubric">Parameters</p>
 <p>This flow law uses all the parameters controlling the Paterson-Budd law, plus the ones
 listed below.</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">flow_law.gpbld.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_coeff"><code class="docutils literal notranslate"><span class="pre">water_frac_coeff</span></code></a> (181.25) coefficient in Glen-Paterson-Budd flow law for extra dependence of softness on liquid water fraction (omega) <a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id11">[56]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id12">[77]</a></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_observed_limit"><code class="docutils literal notranslate"><span class="pre">water_frac_observed_limit</span></code></a> (0.01) maximum value of liquid water fraction omega for which softness values are parameterized by <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id13">[77]</a>; used in Glen-Paterson-Budd-Lliboutry-Duval flow law; compare <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id14">[35]</a></p></li>
@@ -123,6 +124,7 @@ listed below.</p>
 <p>if <span class="math notranslate nohighlight">\(T^* &gt; T_{\text{critical}}\)</span>. Here <span class="math notranslate nohighlight">\(T^*\)</span> is pressure-adjusted temperature
 <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id15">[76]</a>.</p>
 <p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.Paterson_Budd.A_cold"><code class="docutils literal notranslate"><span class="pre">A_cold</span></code></a> (3.61e-13<em> Pascal-3 / second</em>) Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{cold}\)</span>, see <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id16">[76]</a></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.Paterson_Budd.A_warm"><code class="docutils literal notranslate"><span class="pre">A_warm</span></code></a> (1730<em> Pascal-3 / second</em>) Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{warm}\)</span>, see <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id17">[76]</a></p></li>
@@ -142,6 +144,7 @@ values for <span class="math notranslate nohighlight">\(T^* &gt; T_{\text{critic
 \[A(T) = A \exp\left(-\frac{Q}{RT^*} + 3C (T_r - T^*)^\kappa\right).\]</div>
 <p>Fixed Glen exponent <span class="math notranslate nohighlight">\(n=3\)</span> and constants as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id23">[79]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#paynebaldwin" id="id24">[47]</a>.</p>
 <p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.Hooke.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (4.42165e-09<em> Pascal-3 second-1</em>) <span class="math notranslate nohighlight">\(A_{\text{Hooke}} = (1/B_0)^n\)</span> where n=3 and <span class="math notranslate nohighlight">\(B_0\)</span> = 1.928 <span class="math notranslate nohighlight">\(a^{1/3}\)</span> Pa. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id25">[79]</a></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.Hooke.C"><code class="docutils literal notranslate"><span class="pre">C</span></code></a> (0.16612<em> Kelvin^k</em>) See <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id26">[79]</a></p></li>
@@ -156,6 +159,7 @@ values for <span class="math notranslate nohighlight">\(T^* &gt; T_{\text{critic
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-isothermal-glen" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}F(\sigma) &amp;= A_0 \sigma^{n-1},\\\nu(D) &amp;= \frac{1}{2} B_0 D^{(1-n)/(2n)},\end{aligned}\end{align} \]</div>
 <p>where <span class="math notranslate nohighlight">\(A_0\)</span> is the ice softness and <span class="math notranslate nohighlight">\(B_0=A_0^{-1/n}\)</span> is the ice hardness.</p>
 <p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">flow_law.isothermal_Glen.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.isothermal_Glen.ice_softness"><code class="docutils literal notranslate"><span class="pre">ice_softness</span></code></a> (3.1689e-24<em> Pascal-3 second-1</em>) ice softness used by the isothermal Glen flow law <a class="bibtex reference internal" href="../../../zzz_references_html.html#eismint96" id="id30">[34]</a></p></li>
 </ol>
@@ -317,9 +321,9 @@ ice sheet with PISM-PIK.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2768-g1b6772d2a
+      Git revision v1.0-2770-g19b400ecc
       committed by Constantine Khrulev
-      on 2021-11-16 16:44:35 -0900 |
+      on 2021-11-17 12:23:44 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

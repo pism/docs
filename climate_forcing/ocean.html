@@ -100,13 +100,14 @@ controlled by <a class="reference internal" href="../manual/parameters/index.htm
 </dl>
 <p>This ocean model component reads sub-shelf ice temperature <code class="variable docutils literal notranslate"><span class="pre">shelfbtemp</span></code> and the
 sub-shelf mass flux <code class="variable docutils literal notranslate"><span class="pre">shelfbmassflux</span></code> from a file.</p>
-<p>It uses the following parameters:</p>
+<p>Variables <code class="variable docutils literal notranslate"><span class="pre">shelfbtemp</span></code> and <code class="variable docutils literal notranslate"><span class="pre">shelfbmassflux</span></code> may be time-dependent. (The <code class="docutils literal notranslate"><span class="pre">-ocean</span>
+<span class="pre">given</span></code> component is very similar to <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">given</span></code> and <code class="docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">given</span></code>.)</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.given.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.given.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing climate forcing fields.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.given.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-<p>Variables <code class="variable docutils literal notranslate"><span class="pre">shelfbtemp</span></code> and <code class="variable docutils literal notranslate"><span class="pre">shelfbmassflux</span></code> may be time-dependent. (The <code class="docutils literal notranslate"><span class="pre">-ocean</span>
-<span class="pre">given</span></code> component is very similar to <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">given</span></code> and <code class="docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">given</span></code>.)</p>
 </div>
 <div class="section" id="pik">
 <span id="sec-ocean-pik"></span><h2><a class="toc-backref" href="#id21">PIK</a><a class="headerlink" href="#pik" title="Permalink to this headline">¶</a></h2>
@@ -124,7 +125,8 @@ sub-shelf mass flux <code class="variable docutils literal notranslate"><span cl
 <p>This ocean model component implements the ocean forcing setup used in
 <a class="bibtex reference internal" href="../zzz_references_html.html#martinetal2011" id="id1">[3]</a>. The sub-shelf ice temperature is set to pressure-melting; the
 sub-shelf mass flux computation follows <a class="bibtex reference internal" href="../zzz_references_html.html#beckmanngoosse2003" id="id2">[10]</a>.</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.pik_</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.pik_melt_factor"><code class="docutils literal notranslate"><span class="pre">melt_factor</span></code></a> (0.005) dimensionless tuning parameter in the <code class="docutils literal notranslate"><span class="pre">-ocean</span> <span class="pre">pik</span></code> ocean heat flux parameterization; see <a class="bibtex reference internal" href="../zzz_references_html.html#martinetal2011" id="id3">[3]</a></p></li>
 </ol>
@@ -161,7 +163,8 @@ the surrounding ocean.</p>
 <p>This implementation uses different approximations of the temperature gradient at the base
 of an ice shelf column depending on whether there is sub-shelf melt, sub-shelf freeze-on,
 or neither (see <a class="bibtex reference internal" href="../zzz_references_html.html#hollandjenkins1999" id="id6">[11]</a> for details).</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.th.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.th.clip_salinity"><code class="docutils literal notranslate"><span class="pre">clip_salinity</span></code></a> (yes) Clip shelf base salinity so that it is in the range [4, 40] k/kg. See <a class="bibtex reference internal" href="../zzz_references_html.html#hollandjenkins1999" id="id7">[11]</a>.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.th.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing climate forcing fields.</p></li>
@@ -235,7 +238,8 @@ shelves with individual ocean inputs. If ocean input parameters cannot be
 identified, standard values are used (<strong>Warning:</strong> this could strongly influence melt
 rates computed by PICO). In regions where the PICO geometry cannot be identified,
 <a class="bibtex reference internal" href="../zzz_references_html.html#beckmanngoosse2003" id="id16">[10]</a> is applied.</p>
-<p>PICO uses the following configuration parameters (prefix: <code class="docutils literal notranslate"><span class="pre">ocean.pico.</span></code>):</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.pico.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.pico.continental_shelf_depth"><code class="docutils literal notranslate"><span class="pre">continental_shelf_depth</span></code></a> (-800<em> meters</em>) Specifies the depth up to which oceanic input temperatures and salinities are averaged over the continental shelf areas in front of the ice shelf cavities.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.pico.exclude_ice_rises"><code class="docutils literal notranslate"><span class="pre">exclude_ice_rises</span></code></a> (yes) If set to true, grounding lines of ice rises are excluded in the geometrical routines that determine the ocean boxes; using this option is recommended.</p></li>
@@ -261,10 +265,13 @@ rates computed by PICO). In regions where the PICO geometry cannot be identified
 </dd>
 </dl>
 <p>The <code class="docutils literal notranslate"><span class="pre">delta_sl</span></code> modifier implements sea level forcing using scalar offsets.</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.delta_sl.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing sea level offsets.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl_2d.file"><code class="docutils literal notranslate"><span class="pre">2d</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a> Name of the file containing climate forcing fields.</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl_2d.periodic"><code class="docutils literal notranslate"><span class="pre">2d</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
 </div>
 <div class="section" id="two-dimensional-sea-level-offsets">
@@ -282,7 +289,8 @@ rates computed by PICO). In regions where the PICO geometry cannot be identified
 </dl>
 <p>The <code class="docutils literal notranslate"><span class="pre">delta_sl</span></code> modifier implements sea level forcing using time-dependent and
 spatially-variable offsets.</p>
-<p>It uses the following configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.delta_sl_2d.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl_2d.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing climate forcing fields.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_sl_2d.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -302,7 +310,8 @@ spatially-variable offsets.</p>
 </dd>
 </dl>
 <p>This modifier implements forcing using sub-shelf ice temperature offsets.</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.delta_T.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_T.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing temperature offsets.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_T.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -322,7 +331,8 @@ spatially-variable offsets.</p>
 </dd>
 </dl>
 <p>This modifier implements forcing using sub-shelf mass flux (melt rate) offsets.</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.delta_mass_flux.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_mass_flux.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing sub-shelf mass flux offsets.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_mass_flux.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -342,7 +352,8 @@ spatially-variable offsets.</p>
 </dd>
 </dl>
 <p>This modifier implements forcing using sub-shelf mass flux (melt rate) fraction offsets.</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.frac_mass_flux.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.frac_mass_flux.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing sub-shelf mass flux scaling.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.frac_mass_flux.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -364,14 +375,15 @@ spatially-variable offsets.</p>
 <p>This modifier implements a spatially-variable version of <code class="docutils literal notranslate"><span class="pre">-ocean</span> <span class="pre">...,delta_SMB</span></code> which
 applies time-dependent shelf base mass flux anomalies, as used for initMIP or LARMIP
 model intercomparisons.</p>
-<p>It uses the following parameters:</p>
+<p>See also to <code class="docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">...,anomaly</span></code> or <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">...,anomaly</span></code> (section
+<a class="reference internal" href="surface.html#sec-surface-anomaly"><span class="std std-ref">Using climate data anomalies</span></a>) which is similar, but applies anomalies at the atmosphere or
+surface level, respectively.</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.anomaly.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.anomaly.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing shelf basal mass flux offset fields.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.anomaly.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-<p>See also to <code class="docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">...,anomaly</span></code> or <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">...,anomaly</span></code> (section
-<a class="reference internal" href="surface.html#sec-surface-anomaly"><span class="std std-ref">Using climate data anomalies</span></a>) which is similar, but applies anomalies at the atmosphere or
-surface level, respectively.</p>
 </div>
 <div class="section" id="scalar-melange-back-pressure-offsets">
 <span id="sec-ocean-delta-mbp"></span><h2><a class="toc-backref" href="#id30">Scalar melange back pressure offsets</a><a class="headerlink" href="#scalar-melange-back-pressure-offsets" title="Permalink to this headline">¶</a></h2>
@@ -395,7 +407,8 @@ applied over the thickness of melange <span class="math notranslate nohighlight"
 <span class="eqno">(45)<a class="headerlink" href="#equation-eq-melange-pressure" title="Permalink to this equation">¶</a></span>\[\bar p_{\text{melange}} = \frac{\sigma_b\cdot h}{H},\]</div>
 <p>where <span class="math notranslate nohighlight">\(H\)</span> is ice thickness.</p>
 <p>See <a class="reference internal" href="../manual/modeling-choices/marine/melange.html#sec-model-melange-pressure"><span class="std std-ref">Modeling melange back-pressure</span></a> for details.</p>
-<p>This modifier uses the following configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.delta_MBP.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_MBP.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing melange back-pressure offsets</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.delta_MBP.melange_thickness"><code class="docutils literal notranslate"><span class="pre">melange_thickness</span></code></a> (100<em> meters</em>) Melange thickness (assumed to be constant in space and time)</p></li>
@@ -426,7 +439,8 @@ exceed the vertically-averaged ice pressure at the same location:</p>
 <p>The scalar time-dependent variable <code class="variable docutils literal notranslate"><span class="pre">frac_MBP</span></code> should take on values between 0 and 1
 and has the meaning of <span class="math notranslate nohighlight">\(\lambda\)</span> above.</p>
 <p>Please see <a class="reference internal" href="../manual/modeling-choices/marine/melange.html#sec-model-melange-pressure"><span class="std std-ref">Modeling melange back-pressure</span></a> for details.</p>
-<p>This modifier uses the following configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.frac_MBP.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.frac_MBP.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing melange back-pressure scaling.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.frac_MBP.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -450,7 +464,8 @@ every <a class="reference internal" href="../manual/parameters/index.html#config
 (respecting the chosen calendar) is used every time a ocean model is updated.</p>
 <p>This is useful in cases when inter-annual climate variability is important, but one year
 differs little from the next. (Coarse-grid paleo-climate runs, for example.)</p>
-<p>It uses the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">ocean.cache.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-ocean.cache.update_interval"><code class="docutils literal notranslate"><span class="pre">update_interval</span></code></a> (10<em> 365days</em>) update interval of the <code class="docutils literal notranslate"><span class="pre">cache</span></code> ocean modifier</p></li>
 </ol>
@@ -543,9 +558,9 @@ differs little from the next. (Coarse-grid paleo-climate runs, for example.)</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2768-g1b6772d2a
+      Git revision v1.0-2770-g19b400ecc
       committed by Constantine Khrulev
-      on 2021-11-16 16:44:35 -0900 |
+      on 2021-11-17 12:23:44 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

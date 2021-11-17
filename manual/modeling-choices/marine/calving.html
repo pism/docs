@@ -72,7 +72,8 @@ synthetic geometry setups.)</p>
 all selected rate-based mechanisms, e.g. to introduce calving variability corresponding to
 seasonal changes in ice melange. The file used with this option should contain the scalar
 time-dependent variable <code class="variable docutils literal notranslate"><span class="pre">frac_calving_rate</span></code> (units: <span class="math notranslate nohighlight">\(1\)</span>).</p>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.rate_scaling.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> File containing the scaling factor applied to calving rates from <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code>, <code class="docutils literal notranslate"><span class="pre">vonmises_calving</span></code>, and <code class="docutils literal notranslate"><span class="pre">hayhurst_calving</span></code> (variable name: <code class="docutils literal notranslate"><span class="pre">frac_calving_rate</span></code>)</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -100,7 +101,8 @@ leading to the release of icebergs. This (and other) ice shelf calving models ar
 intended to resolve individual rifts or calving events, but it produces
 structurally-stable calving front positions which agree well with observations. Calving
 rates balance calving-front ice flow velocities on average.</p>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.eigen_calving.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.eigen_calving.K"><code class="docutils literal notranslate"><span class="pre">K</span></code></a> (0<em> meter second</em>) Set proportionality constant to determine calving rate from strain rates.  Note references <a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id2">[89]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id3">[3]</a> use K in range <span class="math notranslate nohighlight">\(10^{9}\)</span> to <span class="math notranslate nohighlight">\(3 \times 10^{11}\)</span> m a, that is, <span class="math notranslate nohighlight">\(3 \times 10^{16}\)</span> to <span class="math notranslate nohighlight">\(10^{19}\)</span> m s.</p></li>
 </ol>
@@ -126,7 +128,8 @@ tensile strain rate is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-calv5">
 <span class="eqno">(36)<a class="headerlink" href="#equation-eq-calv5" title="Permalink to this equation">¶</a></span>\[\tilde{\sigma} = \sqrt{3} B \tilde{\dot{{\epsilon}}}_e^{1/n},\]</div>
 <p>where <span class="math notranslate nohighlight">\(B\)</span> is the ice hardness.</p>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.vonmises_calving.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.Glen_exponent"><code class="docutils literal notranslate"><span class="pre">Glen_exponent</span></code></a> (3) Glen exponent in ice flow law for von Mises calving</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The custom flow law for the von Mises stress computation</p></li>
@@ -143,7 +146,8 @@ tensile strain rate is defined as</p>
 <p class="admonition-title">Note</p>
 <p>FIXME: not documented.</p>
 </div>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.hayhurst_calving.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.B_tilde"><code class="docutils literal notranslate"><span class="pre">B_tilde</span></code></a> (65<em> (MPa)^r / year</em>) Effective damage rate <a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id8">[91]</a></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.exponent_r"><code class="docutils literal notranslate"><span class="pre">exponent_r</span></code></a> (0.43) Damage law exponent <a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id9">[91]</a></p></li>
@@ -161,7 +165,8 @@ is removed along the front, at a rate at most one grid cell per time step. The v
 <p>To set a time-and-space dependent ice thickness threshold, set the parameter
 <a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.file"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.thickness_calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a>. This file should contain the variable
 <code class="variable docutils literal notranslate"><span class="pre">thickness_calving_threshold</span></code> in meters.</p>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.thickness_calving.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the spatially-variable thickness calving threshold.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -176,7 +181,8 @@ ice shelves in the model at all.</p>
 <p>Set <a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.margin_only"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.float_kill</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.margin_only</span></code></a> to restrict this to cells at the ice margin.</p>
 <p>Sometimes it is useful to preserve a one-cell-wide shelf near the grounding line. To do
 this, set <a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.calve_near_grounding_line"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.float_kill</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.calve_near_grounding_line</span></code></a> to false.</p>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.float_kill.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.calve_near_grounding_line"><code class="docutils literal notranslate"><span class="pre">calve_near_grounding_line</span></code></a> (yes) Calve floating ice near the grounding line.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.margin_only"><code class="docutils literal notranslate"><span class="pre">margin_only</span></code></a> (no) Apply float_kill at ice margin cells only.</p></li>
@@ -198,7 +204,8 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
 <p class="admonition-title">Note</p>
 <p>This replaces the <code class="docutils literal notranslate"><span class="pre">ocean_kill</span></code> mechanism available in previous PISM versions.</p>
 </div>
-<p>Configuration parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">geometry.front_retreat.prescribed.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the maximum ice extent mask <code class="docutils literal notranslate"><span class="pre">land_ice_area_fraction_retreat</span></code></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
@@ -290,9 +297,9 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2768-g1b6772d2a
+      Git revision v1.0-2770-g19b400ecc
       committed by Constantine Khrulev
-      on 2021-11-16 16:44:35 -0900 |
+      on 2021-11-17 12:23:44 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

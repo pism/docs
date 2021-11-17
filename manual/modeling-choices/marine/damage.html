@@ -56,7 +56,8 @@ healing is assumed to occur with a defined healing rate below a strain rate thre
 <p>The fracture growth constant <span class="math notranslate nohighlight">\(\gamma\)</span> (<a class="reference internal" href="../../parameters/index.html#config-fracture_density.gamma"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.gamma</span></code></a>) is ignored if
 <a class="reference internal" href="../../parameters/index.html#config-fracture_density.borstad_limit"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.borstad_limit</span></code></a> is set.</p>
 <p>To enable this model, set <a class="reference internal" href="../../parameters/index.html#config-fracture_density.enabled"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a>.</p>
-<p>This model is controlled by the following parameters:</p>
+<p class="rubric">Parameters</p>
+<p>Prefix: <code class="docutils literal notranslate"><span class="pre">fracture_density.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-fracture_density.borstad_limit"><code class="docutils literal notranslate"><span class="pre">borstad_limit</span></code></a> (no) Model fracture growth according to the constitutive law in <a class="bibtex reference internal" href="../../../zzz_references_html.html#borstad2016constitutive" id="id8">[96]</a> (Eq. 4), ignoring <a class="reference internal" href="../../parameters/index.html#config-fracture_density.gamma"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.gamma</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-fracture_density.constant_fd"><code class="docutils literal notranslate"><span class="pre">constant_fd</span></code></a> (no) Keep fracture density fields constant in time but include its softening effect.</p></li>
@@ -163,9 +164,9 @@ evolve, with fracture bands reaching all the way from the inlets to the calving 
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2768-g1b6772d2a
+      Git revision v1.0-2770-g19b400ecc
       committed by Constantine Khrulev
-      on 2021-11-16 16:44:35 -0900 |
+      on 2021-11-17 12:23:44 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
