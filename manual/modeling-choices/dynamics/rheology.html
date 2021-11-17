@@ -46,7 +46,7 @@
 </div>
 <p>The “rheology” of a viscous fluid refers to the relation between the applied stress and
 the resulting deformation, the strain rate. The models of ice rheology available in PISM
-are all isotropic <a class="bibtex reference internal" href="../../../zzz_references_html.html#paterson" id="id1">[45]</a>. A rheology in this class is described by a “flow law”,
+are all isotropic <a class="bibtex reference internal" href="../../../zzz_references_html.html#paterson" id="id1">[46]</a>. A rheology in this class is described by a “flow law”,
 which is, in the most general case in PISM, a function <span class="math notranslate nohighlight">\(F(\sigma,T,\omega,P,d)\)</span> in the
 “constitutive relation” form</p>
 <div class="math notranslate nohighlight" id="equation-eq-constitutive">
@@ -58,7 +58,7 @@ the grain size, and <span class="math notranslate nohighlight">\(\sigma^2 = \fra
 <p>Form <a class="reference internal" href="#equation-eq-constitutive">(8)</a> of the flow law is used in the SIA, but the “viscosity form” of
 a flow law, found by inverting the constitutive relation <a class="reference internal" href="#equation-eq-constitutive">(8)</a>, is needed
 for ice shelf and ice stream (SSA) flow and the first-order stress balance approximation
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id2">[28]</a>:</p>
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id2">[29]</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-viscosityform">
 <span class="eqno">(9)<a class="headerlink" href="#equation-eq-viscosityform" title="Permalink to this equation">¶</a></span>\[\sigma_{ij}' = 2 \nu(D,T,\omega,P,d)\,D_{ij}\]</div>
 <p>Here <span class="math notranslate nohighlight">\(\nu(D,T,\omega,P,d)\)</span> is the “effective viscosity” and <span class="math notranslate nohighlight">\(D^2 = \frac{1}{2}
@@ -66,7 +66,7 @@ D_{ij} D_{ij}\)</span>.</p>
 <p>Most of the flow laws in PISM are of Glen-Nye single-power type.  For example,</p>
 <div class="math notranslate nohighlight" id="equation-eq-glen">
 <span class="eqno">(10)<a class="headerlink" href="#equation-eq-glen" title="Permalink to this equation">¶</a></span>\[F(\sigma,T) = A(T) \sigma^{n-1}\]</div>
-<p>is the common temperature-dependent Glen law <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id3">[76]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id4">[29]</a> (which has no
+<p>is the common temperature-dependent Glen law <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id3">[76]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id4">[30]</a> (which has no
 dependence on liquid water fraction, pressure, or grain size). If the ice softness
 <span class="math notranslate nohighlight">\(A(T)=A_0\)</span> is constant then the law is isothermal, whereas if there is dependence on
 temperature then <span class="math notranslate nohighlight">\(A(T)\)</span> is usually a generalization of “Arrhenius” form</p>
@@ -79,7 +79,7 @@ product of a function of <span class="math notranslate nohighlight">\(T,P,d\)</s
 <p>There is only one choice for the flow law which takes full advantage of the enthalpy mode
 of PISM, which is the thermodynamical modeling (i.e. conservation of energy) default.
 Namely the Glen-Paterson-Budd-Lliboutry-Duval flow law
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id6">[34]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id7">[77]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id8">[76]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id6">[35]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id7">[77]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#patersonbudd" id="id8">[76]</a>,
 which is a function <span class="math notranslate nohighlight">\(F(\sigma,T,\omega,P)\)</span>. This law is the only one in the literature
 where the ice softness depends on both the temperature and the liquid water fraction, so
 it parameterizes the (observed) softening of pressure-melting-temperature ice as its
@@ -97,7 +97,7 @@ among a number of “cold ice” laws listed below which do not use the liquid w
 respectively. Allowed arguments are listed below.</p>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">gpbld</span></code>: Glen-Paterson-Budd-Lliboutry-Duval law <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id9">[77]</a>, the
-enthalpy-based default in PISM <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id10">[34]</a>. Extends the
+enthalpy-based default in PISM <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id10">[35]</a>. Extends the
 Paterson-Budd law (below) to positive liquid water fraction. If <span class="math notranslate nohighlight">\(A_{c}(T)\)</span> is from
 Paterson-Budd then this law returns</p>
 <div class="math notranslate nohighlight">
@@ -109,8 +109,8 @@ Paterson-Budd then this law returns</p>
 <p>This flow law uses all the parameters controlling the Paterson-Budd law, plus the ones
 listed below.</p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_coeff"><code class="docutils literal notranslate"><span class="pre">water_frac_coeff</span></code></a> (181.25) coefficient in Glen-Paterson-Budd flow law for extra dependence of softness on liquid water fraction (omega) <a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id11">[55]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id12">[77]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_observed_limit"><code class="docutils literal notranslate"><span class="pre">water_frac_observed_limit</span></code></a> (0.01) maximum value of liquid water fraction omega for which softness values are parameterized by <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id13">[77]</a>; used in Glen-Paterson-Budd-Lliboutry-Duval flow law; compare <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id14">[34]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_coeff"><code class="docutils literal notranslate"><span class="pre">water_frac_coeff</span></code></a> (181.25) coefficient in Glen-Paterson-Budd flow law for extra dependence of softness on liquid water fraction (omega) <a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id11">[56]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id12">[77]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.gpbld.water_frac_observed_limit"><code class="docutils literal notranslate"><span class="pre">water_frac_observed_limit</span></code></a> (0.01) maximum value of liquid water fraction omega for which softness values are parameterized by <a class="bibtex reference internal" href="../../../zzz_references_html.html#lliboutryduval1985" id="id13">[77]</a>; used in Glen-Paterson-Budd-Lliboutry-Duval flow law; compare <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id14">[35]</a></p></li>
 </ol>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pb</span></code>: Paterson-Budd law, the cold-mode default. Fixed Glen exponent <span class="math notranslate nohighlight">\(n=3\)</span>. Has a split
@@ -134,13 +134,13 @@ listed below.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">arr</span></code>: <em>Cold</em> part of Paterson-Budd. Regardless of temperature, the <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> values
 for <span class="math notranslate nohighlight">\(T^* &lt; T_{\text{critical}}\)</span> in the Paterson-Budd law apply. This is the flow law
 used in the thermomechanically-coupled exact solutions run by <code class="docutils literal notranslate"><span class="pre">pismv</span> <span class="pre">-test</span> <span class="pre">F</span></code> and
-<code class="docutils literal notranslate"><span class="pre">pismv</span> <span class="pre">-test</span> <span class="pre">G</span></code> <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id21">[29]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#bb" id="id22">[78]</a>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">pismv</span> <span class="pre">-test</span> <span class="pre">G</span></code> <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id21">[30]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#bb" id="id22">[78]</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">arrwarm</span></code>: <em>Warm</em> part of Paterson-Budd. Regardless of temperature, the <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>
 values for <span class="math notranslate nohighlight">\(T^* &gt; T_{\text{critical}}\)</span> in Paterson-Budd apply.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hooke</span></code>: Hooke law with</p>
 <div class="math notranslate nohighlight">
 \[A(T) = A \exp\left(-\frac{Q}{RT^*} + 3C (T_r - T^*)^\kappa\right).\]</div>
-<p>Fixed Glen exponent <span class="math notranslate nohighlight">\(n=3\)</span> and constants as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id23">[79]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#paynebaldwin" id="id24">[46]</a>.</p>
+<p>Fixed Glen exponent <span class="math notranslate nohighlight">\(n=3\)</span> and constants as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id23">[79]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#paynebaldwin" id="id24">[47]</a>.</p>
 <p class="rubric">Parameters</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.Hooke.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (4.42165e-09<em> Pascal-3 second-1</em>) <span class="math notranslate nohighlight">\(A_{\text{Hooke}} = (1/B_0)^n\)</span> where n=3 and <span class="math notranslate nohighlight">\(B_0\)</span> = 1.928 <span class="math notranslate nohighlight">\(a^{1/3}\)</span> Pa. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#hooke" id="id25">[79]</a></p></li>
@@ -157,7 +157,7 @@ values for <span class="math notranslate nohighlight">\(T^* &gt; T_{\text{critic
 <p>where <span class="math notranslate nohighlight">\(A_0\)</span> is the ice softness and <span class="math notranslate nohighlight">\(B_0=A_0^{-1/n}\)</span> is the ice hardness.</p>
 <p class="rubric">Parameters</p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.isothermal_Glen.ice_softness"><code class="docutils literal notranslate"><span class="pre">ice_softness</span></code></a> (3.1689e-24<em> Pascal-3 second-1</em>) ice softness used by the isothermal Glen flow law <a class="bibtex reference internal" href="../../../zzz_references_html.html#eismint96" id="id30">[33]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-flow_law.isothermal_Glen.ice_softness"><code class="docutils literal notranslate"><span class="pre">ice_softness</span></code></a> (3.1689e-24<em> Pascal-3 second-1</em>) ice softness used by the isothermal Glen flow law <a class="bibtex reference internal" href="../../../zzz_references_html.html#eismint96" id="id30">[34]</a></p></li>
 </ol>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gk</span></code>: The Goldsby-Kohlstedt flow law. This law has a combination of exponents from
@@ -223,7 +223,7 @@ stress balance models.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p><a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id34">[65]</a> used <span class="math notranslate nohighlight">\(e_{\text{SIA}} = 3.0\)</span> for Greenland
+<li><p><a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id34">[66]</a> used <span class="math notranslate nohighlight">\(e_{\text{SIA}} = 3.0\)</span> for Greenland
 ice sheet simulations (see the supplement) while <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id35">[3]</a> used
 <span class="math notranslate nohighlight">\(e_{\text{SIA}} = 4.5\)</span> for simulations of the Antarctic ice sheet with PISM-PIK.</p></li>
 <li><p><a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id36">[3]</a> used <span class="math notranslate nohighlight">\(e_{\text{SSA}} =0.512\)</span> for simulations of the Antarctic
@@ -317,9 +317,9 @@ ice sheet with PISM-PIK.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

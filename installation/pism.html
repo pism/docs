@@ -43,22 +43,31 @@ like <code class="docutils literal notranslate"><span class="pre">$PETSC_DIR/$PE
 </pre></div>
 </div>
 <p>From now on we will assume that the <code class="docutils literal notranslate"><span class="pre">PETSC_ARCH</span></code> and <code class="docutils literal notranslate"><span class="pre">PETSC_DIR</span></code> variables are set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PETSC_ARCH</span></code> variable is not needed if PETSc was configured using the
+<code class="docutils literal notranslate"><span class="pre">--prefix=</span></code> option.</p>
+</div>
 <p>Follow these steps to build PISM:</p>
 <ol class="arabic">
-<li><p>Get the latest source for PISM using the <a class="reference external" href="https://git-scm.com/">Git</a> version control system:</p>
-<p>Check <a class="reference external" href="https://pism.github.io">PISM’s website</a> for the latest version of PISM.</p>
-<p id="git-clone">Run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/pism/pism.git pism-stable
+<li><p>Get the latest source for PISM using the <a class="reference external" href="https://git-scm.com/">Git</a> version control system by running</p>
+<div class="highlight-bash notranslate" id="git-clone"><div class="highlight"><pre><span></span>git clone git://github.com/pism/pism.git pism-stable
 </pre></div>
 </div>
 <p>A directory called “<code class="docutils literal notranslate"><span class="pre">pism-stable</span></code>” will be created. Note that in the future when you
-enter that directory, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> will update to the latest revision of PISM. <a class="footnote-reference brackets" href="#id5" id="id1">1</a></p>
+enter that directory, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> will update to the latest revision of PISM. <a class="footnote-reference brackets" href="#f1" id="id1">1</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also <a class="reference external" href="https://github.com/pism/pism/releases">download a tarball from GitHub</a>.</p>
+</div>
 </li>
-<li><p>Build PISM:<a class="footnote-reference brackets" href="#id6" id="id2">2</a></p>
+<li><p>Build PISM:<a class="footnote-reference brackets" href="#f2" id="id2">2</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p pism-stable/build
 <span class="nb">cd</span> pism-stable/build
-<span class="nv">PISM_INSTALL_PREFIX</span><span class="o">=</span>~/pism <span class="nv">CC</span><span class="o">=</span>mpicc <span class="nv">CXX</span><span class="o">=</span>mpicxx cmake ..
-make install
+<span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span>mpicc
+<span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span>mpicxx
+cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span>~/pism ..
+make -j install
 </pre></div>
 </div>
 <p>Here <code class="docutils literal notranslate"><span class="pre">pism-stable</span></code> is the directory containing PISM source code while <code class="docutils literal notranslate"><span class="pre">~/pism</span></code> is
@@ -71,31 +80,29 @@ installation.</p>
 select were used to compile the PETSc library: <em>PISM and PETSc have to use the same
 MPI installation.</em></p>
 </div>
-<p>All the temporary files created during the build process will be in
-<code class="docutils literal notranslate"><span class="pre">pism-stable/build</span></code> created above.</p>
 <p>Commands above will configure PISM to be installed in <code class="docutils literal notranslate"><span class="pre">~/pism/bin</span></code> and
 <code class="docutils literal notranslate"><span class="pre">~/pism/lib/</span></code> then compile and install all its executables and scripts.</p>
-<p>If your operating system does not support shared libraries<a class="footnote-reference brackets" href="#id7" id="id3">3</a>, then set
+<p>If your operating system does not support shared libraries<a class="footnote-reference brackets" href="#f3" id="id3">3</a>, then set
 <code class="docutils literal notranslate"><span class="pre">Pism_LINK_STATICALLY</span></code> to “ON”. This can be done by either running</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DPism_LINK_STATICALLY<span class="o">=</span>ON ..
 </pre></div>
 </div>
-<p>or by using <code class="docutils literal notranslate"><span class="pre">ccmake</span></code><a class="footnote-reference brackets" href="#id8" id="id4">4</a> run</p>
+<p>or by using <code class="docutils literal notranslate"><span class="pre">ccmake</span></code><a class="footnote-reference brackets" href="#f4" id="id4">4</a> run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ccmake ..
 </pre></div>
 </div>
 <p>and then change <code class="docutils literal notranslate"><span class="pre">Pism_LINK_STATICALLY</span></code> (and then press <code class="docutils literal notranslate"><span class="pre">c</span></code> to “configure” and <code class="docutils literal notranslate"><span class="pre">g</span></code>
 to “generate Makefiles”). Then run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>.</p>
-<p>Object files created during the build process (located in the <code class="docutils literal notranslate"><span class="pre">build</span></code> sub-directory)
-are not automatically deleted after installing PISM, so run “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>” if space
-is an issue. You can also delete the build directory altogether if you are not planning
-on re-compiling PISM.</p>
+<p>Temporary files created during the build process (located in the <code class="docutils literal notranslate"><span class="pre">build</span></code>
+sub-directory) are not automatically deleted after installing PISM, so run “<code class="docutils literal notranslate"><span class="pre">make</span>
+<span class="pre">clean</span></code>” if space is an issue. You can also delete the build directory altogether if
+you are not planning on re-compiling PISM.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When using Intel’s compiler high optimization settings such as <code class="docutils literal notranslate"><span class="pre">-O3</span></code>, <code class="docutils literal notranslate"><span class="pre">-fp-model</span>
-<span class="pre">precise</span></code> may be needed to get reproducible model results. Set it using <code class="docutils literal notranslate"><span class="pre">ccmake</span></code>
-or by setting <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code> environment variables when building PISM’s
-prerequisites and PISM itself.</p>
+<p>When using Intel’s compiler and high optimization settings such as <code class="docutils literal notranslate"><span class="pre">-O3</span></code>,
+<code class="docutils literal notranslate"><span class="pre">-fp-model</span> <span class="pre">precise</span></code> may be needed to get reproducible model results. Set it using
+<code class="docutils literal notranslate"><span class="pre">ccmake</span></code> or by setting <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">CXXFLAGS</span></code> environment variables when
+building PISM’s prerequisites (such as PETSc) and PISM itself.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-fp-model precise&quot;</span>
 <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-fp-model precise&quot;</span>
 cmake <span class="o">[</span>other options<span class="o">]</span> ..
@@ -200,18 +207,18 @@ directories.</p>
 </div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Of course, after <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> you will <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">build</span> <span class="pre">install</span></code> to recompile and
 re-install PISM.</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Please report any problems you meet at these build stages by <a class="reference external" href="mailto:uaf-pism&#37;&#52;&#48;alaska&#46;edu">sending us</a> the output.</p>
 </dd>
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>This might be necessary if you’re building on a Cray XT5 or a Sun Opteron Cluster,
 for example.</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="f4"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Install the <code class="docutils literal notranslate"><span class="pre">cmake-curses-gui</span></code> package to get <code class="docutils literal notranslate"><span class="pre">ccmake</span></code> on <a class="reference external" href="https://ubuntu.com/desktop">Ubuntu</a>.</p>
 </dd>
 </dl>
@@ -297,9 +304,9 @@ for example.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

@@ -90,7 +90,7 @@ value of the driving stress. Such an SIA sliding mechanism appears in ISMIP-HEIN
 <a class="bibtex reference internal" href="../../../zzz_references_html.html#calovetal2009heinofinal" id="id2">[104]</a> and in EISMINT II experiment H <a class="bibtex reference internal" href="../../../zzz_references_html.html#eismint00" id="id3">[22]</a>, among
 other places. This kind of sliding is <em>not</em> recommended, as it does not make sense to
 regard the driving stress as the local generator of flow if the bed is not holding all of
-that stress <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id4">[28]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#fowler01" id="id5">[47]</a>. Within PISM, for historical reasons,
+that stress <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id4">[29]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#fowler01" id="id5">[48]</a>. Within PISM, for historical reasons,
 there is an implementation of SIA-based sliding only for verification test E; see section
 <a class="reference internal" href="../../verification/index.html#sec-verif"><span class="std std-ref">Verification</span></a>. PISM does <em>not</em> support this SIA-based sliding mode in other contexts.</p>
 <div class="section" id="choosing-the-sliding-law">
@@ -106,9 +106,9 @@ power law</p>
 <div class="math notranslate nohighlight" id="equation-eq-pseudoplastic">
 <span class="eqno">(16)<a class="headerlink" href="#equation-eq-pseudoplastic" title="Permalink to this equation">¶</a></span>\[\boldsymbol{\tau}_b =  - \tau_c \frac{\mathbf{u}}{u_{\text{threshold}}^q |\mathbf{u}|^{1-q}},\]</div>
 <p>where <span class="math notranslate nohighlight">\(u_{\text{threshold}}\)</span> is a parameter with units of velocity (see below). Condition
-<a class="reference internal" href="#equation-eq-plastic">(15)</a> is studied in <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id6">[44]</a> and <a class="bibtex reference internal" href="../../../zzz_references_html.html#schooftill" id="id7">[105]</a> in particular,
+<a class="reference internal" href="#equation-eq-plastic">(15)</a> is studied in <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id6">[45]</a> and <a class="bibtex reference internal" href="../../../zzz_references_html.html#schooftill" id="id7">[105]</a> in particular,
 while power laws for sliding are common across the glaciological literature (e.g. see
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#cuffeypaterson" id="id8">[80]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id9">[55]</a>). Notice that the coefficient <span class="math notranslate nohighlight">\(\tau_c\)</span> in
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#cuffeypaterson" id="id8">[80]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#greveblatter2009" id="id9">[56]</a>). Notice that the coefficient <span class="math notranslate nohighlight">\(\tau_c\)</span> in
 <a class="reference internal" href="#equation-eq-pseudoplastic">(16)</a> has units of stress, regardless of the power <span class="math notranslate nohighlight">\(q\)</span>.</p>
 <p>In both of the above equations <a class="reference internal" href="#equation-eq-plastic">(15)</a> and <a class="reference internal" href="#equation-eq-pseudoplastic">(16)</a> we call
 <span class="math notranslate nohighlight">\(\tau_c\)</span> the <em>yield stress</em>. It corresponds to the variable <code class="variable docutils literal notranslate"><span class="pre">tauc</span></code> in PISM output files.
@@ -161,7 +161,7 @@ case is <span class="math notranslate nohighlight">\(q=1\)</span>, in which case
 form</p>
 <div class="math notranslate nohighlight" id="equation-eq-sliding-linear">
 <span class="eqno">(17)<a class="headerlink" href="#equation-eq-sliding-linear" title="Permalink to this equation">¶</a></span>\[\boldsymbol{\tau}_b = - \beta \mathbf{u}\]</div>
-<p>(The “<span class="math notranslate nohighlight">\(\beta\)</span>” coefficient is also called <span class="math notranslate nohighlight">\(\beta^2\)</span> in some sources (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#macayeal" id="id10">[43]</a>,
+<p>(The “<span class="math notranslate nohighlight">\(\beta\)</span>” coefficient is also called <span class="math notranslate nohighlight">\(\beta^2\)</span> in some sources (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#macayeal" id="id10">[44]</a>,
 for example).) If you want such a linear sliding law, and you have a value
 <span class="math notranslate nohighlight">\(\beta=\)</span> <code class="docutils literal notranslate"><span class="pre">beta</span></code> in <span class="math notranslate nohighlight">\(\text{Pa}\,\text{s}\,\text{m}^{-1}\)</span>, then use this option
 combination:</p>
@@ -223,7 +223,7 @@ saturated till, or</p></li>
 data, read from the input file.</p></li>
 </ul>
 <p>In normal modelling cases, variations in yield stress are part of the explanation of the
-locations of ice streams <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id13">[44]</a>. The default model <code class="docutils literal notranslate"><span class="pre">-yield_stress</span>
+locations of ice streams <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id13">[45]</a>. The default model <code class="docutils literal notranslate"><span class="pre">-yield_stress</span>
 <span class="pre">mohr_coulomb</span></code> determines these variations in time and space. The value of <span class="math notranslate nohighlight">\(\tau_c\)</span> is
 determined in part by a subglacial hydrology model, including the modeled till-pore water
 amount (<span class="math notranslate nohighlight">\(W_{till}\)</span>, NetCDF variable <code class="variable docutils literal notranslate"><span class="pre">tillwat</span></code>; see <a class="reference internal" href="hydrology.html#sec-subhydro"><span class="std std-ref">Subglacial hydrology</span></a>), which then
@@ -234,7 +234,7 @@ variable <code class="variable docutils literal notranslate"><span class="pre">t
 <div class="math notranslate nohighlight" id="equation-eq-mohrcoulomb">
 <span class="eqno">(19)<a class="headerlink" href="#equation-eq-mohrcoulomb" title="Permalink to this equation">¶</a></span>\[\tau_c = c_{0} + (\tan\phi)\,N_{till}.\]</div>
 <p>Here <span class="math notranslate nohighlight">\(c_0\)</span> is called the “till cohesion”, whose default value in PISM is zero (see
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id15">[44]</a>, formula (2.4)) but which can be set by option <code class="option docutils literal notranslate"><span class="pre">-till_cohesion</span></code>.</p>
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id15">[45]</a>, formula (2.4)) but which can be set by option <code class="option docutils literal notranslate"><span class="pre">-till_cohesion</span></code>.</p>
 <p>Option combination <code class="docutils literal notranslate"><span class="pre">-yield_stress</span> <span class="pre">constant</span> <span class="pre">-tauc</span> <span class="pre">X</span></code> can be used to fix the yield stress
 to have value <span class="math notranslate nohighlight">\(\tau_c = X\)</span> at all grounded locations and all times if desired. This is
 unlikely to be a good modelling choice for real ice sheets.</p>
@@ -293,8 +293,8 @@ otherwise <span class="math notranslate nohighlight">\(\tau_c\)</span> is update
 <span id="sec-tillphi-heuristic"></span><h3><a class="toc-backref" href="#id35">Till friction angle heuristic</a><a class="headerlink" href="#till-friction-angle-heuristic" title="Permalink to this headline">¶</a></h3>
 <p>We find that an effective, though heuristic, way to determine <span class="math notranslate nohighlight">\(\phi\)</span> in
 <a class="reference internal" href="#equation-eq-mohrcoulomb">(19)</a> is to make it a function of bed elevation
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id16">[65]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id17">[3]</a>,
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id18">[36]</a>. This heuristic is motivated by hypothesis that basal material
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id16">[66]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id17">[3]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id18">[37]</a>. This heuristic is motivated by hypothesis that basal material
 with a marine history should be weak <a class="bibtex reference internal" href="../../../zzz_references_html.html#huybrechtsdewolde" id="id19">[4]</a>. PISM has a mechanism
 setting <span class="math notranslate nohighlight">\(\phi\)</span> to be a <em>piece-wise linear</em> function of bed elevation. The
 option is</p>
@@ -596,9 +596,9 @@ instead.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

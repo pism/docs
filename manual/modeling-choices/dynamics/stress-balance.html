@@ -34,29 +34,29 @@
   <div class="section" id="choosing-the-stress-balance">
 <span id="sec-stressbalance"></span><h1>Choosing the stress balance<a class="headerlink" href="#choosing-the-stress-balance" title="Permalink to this headline">¶</a></h1>
 <p>The basic stress balance used for all grounded ice in PISM is the non-sliding,
-thermomechanically-coupled SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id1">[29]</a>. For the vast majority of most ice sheets, as
+thermomechanically-coupled SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id1">[30]</a>. For the vast majority of most ice sheets, as
 measured by area or volume, this is an appropriate model, which is an <span class="math notranslate nohighlight">\(O(\epsilon^2)\)</span>
 approximation to the Stokes model if <span class="math notranslate nohighlight">\(\epsilon\)</span> is the depth-to-length ratio of the ice
-sheet <a class="bibtex reference internal" href="../../../zzz_references_html.html#fowler" id="id2">[30]</a>.</p>
+sheet <a class="bibtex reference internal" href="../../../zzz_references_html.html#fowler" id="id2">[31]</a>.</p>
 <p>The shallow shelf approximation (SSA) stress balance applies to floating ice. See the Ross
 ice shelf example in section <a class="reference internal" href="../../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a> for an example in which the SSA is only
 applied to floating ice.</p>
 <p>In PISM the SSA is also used to describe the sliding of grounded ice and the formation of
-ice streams <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id3">[28]</a>. Specifically for the SSA with “plastic” (Coulomb
+ice streams <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id3">[29]</a>. Specifically for the SSA with “plastic” (Coulomb
 friction) basal resistance, the locations of ice streams are determined as part of a free
-boundary problem of Schoof <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id4">[44]</a>, a model for emergent ice streams within a
+boundary problem of Schoof <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id4">[45]</a>, a model for emergent ice streams within a
 ice sheet and ice shelf system. This model explains ice streams through a combination of
 plastic till failure and SSA stress balance.</p>
 <p>This SSA description of ice streams is the preferred “sliding law” for the SIA
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id5">[28]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id6">[36]</a>. The SSA should be combined with the SIA,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id5">[29]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id6">[37]</a>. The SSA should be combined with the SIA,
 in this way, in preference to classical SIA sliding laws which make the sliding velocity
 of ice a local function of the basal value of the driving stress. The resulting
 combination of SIA and SSA is a “hybrid” approximation of the Stokes model
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id7">[36]</a>. Option <code class="docutils literal notranslate"><span class="pre">-stress_balance</span> <span class="pre">ssa+sia</span></code> turns on this “hybrid”
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id7">[37]</a>. Option <code class="docutils literal notranslate"><span class="pre">-stress_balance</span> <span class="pre">ssa+sia</span></code> turns on this “hybrid”
 model. In this use of the SSA as a sliding law, floating ice is also subject to the SSA.</p>
 <p>In addition to this, PISM includes an implementation of the first order approximation of
-Stokes equations due to Blatter (<code class="docutils literal notranslate"><span class="pre">-stress_balance</span> <span class="pre">blatter</span></code>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blatter" id="id8">[37]</a>,
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#pattyn03" id="id9">[38]</a>).</p>
+Stokes equations due to Blatter (<code class="docutils literal notranslate"><span class="pre">-stress_balance</span> <span class="pre">blatter</span></code>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blatter" id="id8">[38]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#pattyn03" id="id9">[39]</a>).</p>
 <p>All stress balance options <em>except</em> for the first order approximation correspond to two
 basic choices:</p>
 <ul class="simple">
@@ -83,7 +83,7 @@ file and held constant, ice velocity within the column is approximated using the
 <a class="reference internal" href="sia.html#sec-sia"><span class="std std-ref">Shallow ice approximation (SIA)</span></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ssa+sia</span></code>: use <a class="reference internal" href="ssa.html#sec-ssa"><span class="std std-ref">Shallow shelf approximation (SSA)</span></a> as a sliding law with a plastic or
 pseudo-plastic till, combining it with the <a class="reference internal" href="sia.html#sec-sia"><span class="std std-ref">Shallow ice approximation (SIA)</span></a> according to the combination
-in <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id10">[36]</a>; similar to <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id11">[28]</a>. Floating ice uses SSA
+in <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id10">[37]</a>; similar to <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id11">[29]</a>. Floating ice uses SSA
 only. <em>This “hybrid” stress balance is the recommended sliding law for the SIA.</em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">weertman_sliding+sia</span></code>: basal sliding is approximated using the
 <a class="reference internal" href="weertman.html#sec-weertman"><span class="std std-ref">Weertman-style sliding law</span></a>, ice velocity within the column is approximated using the
@@ -204,9 +204,9 @@ only. <em>This “hybrid” stress balance is the recommended sliding law for th
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

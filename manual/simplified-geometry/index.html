@@ -33,24 +33,24 @@
 <span id="sec-simp"></span><h1>Simplified geometry experiments<a class="headerlink" href="#simplified-geometry-experiments" title="Permalink to this headline">¶</a></h1>
 <p>There have been three stages of ice sheet model intercomparisons based on simplified
 geometry experiments since the early 1990s <a class="bibtex reference internal" href="../../zzz_references_html.html#buelerspray" id="id1">[125]</a>.</p>
-<p>EISMINT I (European Ice Sheet Modeling INiTiative) <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint96" id="id2">[33]</a><a class="footnote-reference brackets" href="#id27" id="id3">1</a> was the first of
+<p>EISMINT I (European Ice Sheet Modeling INiTiative) <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint96" id="id2">[34]</a><a class="footnote-reference brackets" href="#id27" id="id3">1</a> was the first of
 these and involved only the isothermal shallow ice approximation (SIA). Both fixed margin
 and moving margin experiments were performed in EISMINT I, and various conclusions were
 drawn about the several numerical schemes used in the intercomparison. EISMINT I is
 superceded, however, by verification using the full variety of known exact solutions to
-the isothermal SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id4">[32]</a>. The “rediscovery”, since EISMINT I, of the Halfar similarity
+the isothermal SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id4">[33]</a>. The “rediscovery”, since EISMINT I, of the Halfar similarity
 solution with zero accumulation <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id5">[126]</a>, and verification runs using that solution,
 already suffices to measure the isothermal SIA performance of PISM more precisely than
 would be allowed by comparison to EISMINT I results.</p>
 <p>EISMINT II <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id6">[22]</a> pointed out interesting and surprising properties of the
-thermocoupled SIA. References <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh04" id="id8">[127]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh06" id="id9">[128]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id10">[46]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#saitoeismint" id="id11">[129]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id12">[28]</a> each interpret the
+thermocoupled SIA. References <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[30]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh04" id="id8">[127]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh06" id="id9">[128]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id10">[47]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#saitoeismint" id="id11">[129]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id12">[29]</a> each interpret the
 EISMINT II experiments and/or describe attempts to add more complete physical models to
 “fix” the (perceived and real) shortfalls of ice sheet model behavior on EISMINT II
 experiments. We believe that the discussion in <a class="bibtex reference internal" href="../../zzz_references_html.html#paynedongelmans" id="id13">[130]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id14">[46]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id15">[29]</a> adequately explains the “spokes” in EISMINT II
-experiment F as a genuine fluid instability, while <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler01" id="id16">[47]</a> and Appendix B of
-<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id17">[28]</a> adequately cautions against the continuum model that generates the
+<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id14">[47]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id15">[30]</a> adequately explains the “spokes” in EISMINT II
+experiment F as a genuine fluid instability, while <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler01" id="id16">[48]</a> and Appendix B of
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id17">[29]</a> adequately cautions against the continuum model that generates the
 “spokes” in EISMINT II experiment H. Thus we can move on from that era of controversy. In
 any case, PISM has built-in support for all of the published and unpublished EISMINT II
 experiments; these are described in the next subsection.</p>
@@ -65,9 +65,9 @@ INtercOmparison <a class="bibtex reference internal" href="../../zzz_references_
 problem described by HEINO, also used in EISMINT II experiment H (above), is not
 meaningfully approximate-able because of a required discontinuous jump in the basal
 velocity field. The continuum problem predicts infinite vertical velocity because of this
-jump (<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id23">[28]</a>, Appendix B). Details of the numerical schemes and their results are
+jump (<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id23">[29]</a>, Appendix B). Details of the numerical schemes and their results are
 irrelevant if the continuum model makes such a prediction. PISM offers the physical
-continuum model described in <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id24">[28]</a>, an SIA+SSA hybrid, as an alternative to the
+continuum model described in <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id24">[29]</a>, an SIA+SSA hybrid, as an alternative to the
 continuum model used in ISMIP-HEINO and EISMINT II experiment H. Indeed the SIA+SSA hybrid
 is offered as a unified shallow model for real ice sheets (section <a class="reference internal" href="../highlevelview/index.html#sec-dynamics"><span class="std std-ref">Ice dynamics, the PISM view</span></a>).</p>
 <p>A third and fourth ISMIP parts are the two parts of the Marine Ice Sheet Model
@@ -179,9 +179,9 @@ experiments are supported in PISM, as described in subsections <a class="referen
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

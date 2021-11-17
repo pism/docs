@@ -38,7 +38,8 @@ parameters. One can also set CMake cache variables using the <code class="docuti
 <ul>
 <li><p>If you are compiling PISM on a system using a cross-compiler, you will need to disable
 CMake’s tests trying to determine if PETSc is installed properly. To do this, set
-<code class="docutils literal notranslate"><span class="pre">PETSC_EXECUTABLE_RUNS</span></code> to “yes”.</p>
+<code class="docutils literal notranslate"><span class="pre">PETSC_EXECUTABLE_RUNS</span></code> to “yes” by adding <code class="docutils literal notranslate"><span class="pre">-DPETSC_EXECUTABLE_RUNS=YES</span></code> to
+<code class="docutils literal notranslate"><span class="pre">cmake</span></code> options.</p>
 <p>To tell CMake where to look for libraries for the target system, see <a class="reference external" href="https://cmake.org/rdrctcm.php?old_link=CMake_Cross_Compiling">CMake cross
 compiling</a> and the paragraph about <code class="docutils literal notranslate"><span class="pre">CMAKE_FIND_ROOT_PATH</span></code>
 in particular.</p>
@@ -133,9 +134,9 @@ compiler flags by hand. See <a class="reference external" href="https://github.c
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

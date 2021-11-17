@@ -48,36 +48,31 @@ evolve together. These tools are required:</p>
 <td><p>needed to rebuild this Manual</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/">sphinxcontrib.bibtex</a></p></td>
-<td><p>needed to rebuild this Manual and the documentation of PISM’s Python bindings
-(below)</p></td>
+<td><p>needed to rebuild this Manual</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://www.latex-project.org/">LaTeX</a></p></td>
-<td><p>needed to rebuild the PDF version of this Manual, the PISM <em>Source Code Browser</em>, and the
-documentation of PISM’s Python bindings</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dvipng</span></code></p></td>
-<td><p>needed to rebuild the documentation of PISM’s Python bindings</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="http://personal.psu.edu/jcc8//software/latexmk-jcc/">Latexmk</a></p></td>
 <td><p>needed to rebuild the PDF version of this Manual</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ncgen</span></code> from <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/">NetCDF</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="http://personal.psu.edu/jcc8//software/latexmk-jcc/">Latexmk</a></p></td>
+<td><p>needed to rebuild the PDF version of this Manual</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ncgen</span></code> from <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/">NetCDF</a></p></td>
 <td><p>needed to rebuild this Manual</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/netCDF4">netcdf4-python</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/netCDF4">netcdf4-python</a></p></td>
 <td><p>needed to rebuild this Manual</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.doxygen.nl/index.html">doxygen</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.doxygen.nl/index.html">doxygen</a></p></td>
 <td><p>required to rebuild the PISM <em>Source Code Browser</em></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="http://www.graphviz.org/">graphviz</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="http://www.graphviz.org/">graphviz</a></p></td>
 <td><p>required to rebuild the PISM <em>Source Code Browser</em></p></td>
 </tr>
 </tbody>
 </table>
-<p>On a Debian-based system you may be able to install these by running</p>
+<p>On a Debian-based system you may be able to install most of these by running</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install <span class="se">\</span>
-     graphviz dvipng <span class="se">\</span>
+     graphviz <span class="se">\</span>
      texlive texlive-fonts-extra <span class="se">\</span>
      latexmk
 
@@ -86,20 +81,6 @@ pip3 install sphinx sphinxcontrib-bibtex --user
 </div>
 <p>Click <a class="reference download internal" download="" href="../_downloads/f98974912b5a9119112c1876257a48d9/install_docu_libraries.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this file.</p>
 <p>(You may need to change this command to match your package system.)</p>
-<p>Note that if you install Sphinx using <a class="reference external" href="https://www.macports.org/">MacPorts</a>, you will install a version that
-corresponds to your Python version, and its executables will have names with suffixes
-corresponding to this version, e.g. <code class="docutils literal notranslate"><span class="pre">sphinx-build-2.7</span></code> rather than <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> for
-Python 2.7. You will want to set up aliases so that the standard names work as well. To do
-this, run</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo port select sphinx py27-sphinx
-</pre></div>
-</div>
-<p>(replacing <code class="docutils literal notranslate"><span class="pre">py27-sphinx</span></code> with <code class="docutils literal notranslate"><span class="pre">py26-sphinx</span></code> for Python 2.6, etc.) If you opt not to do
-this, you can tell CMake the name of your Sphinx executable using</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cmake -DSPHINX_EXECUTABLE=sphinx-build-2.7 ...
-</pre></div>
-</div>
-<p>for example.</p>
 <div class="section" id="manual">
 <h2>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h2>
 <p>To rebuild this manual, change to the PISM build directory and run</p>
@@ -119,21 +100,6 @@ directory.</p>
 </div>
 <p>The main page for the documentation is then in <code class="docutils literal notranslate"><span class="pre">doc/browser/html/index.html</span></code> inside
 your build directory.</p>
-</div>
-<div class="section" id="documentation-for-pisms-python-bindings-and-inversion-tools">
-<h2>Documentation for PISM’s Python bindings and inversion tools<a class="headerlink" href="#documentation-for-pisms-python-bindings-and-inversion-tools" title="Permalink to this headline">¶</a></h2>
-<p>These bindings make scripting and interactive use of PISM possible, but many PISM users
-will not need them. Installing them is required to use PISM for inversion of surface
-velocities for basal shear stress and ice hardness. Building their documentation is
-strongly-recommended before use.</p>
-<p>To build the documentation of PISM’s Python bindings, change to the PISM build directory
-and run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make pismpython_docs
-</pre></div>
-</div>
-<p>The main page for the documentation is then in <code class="docutils literal notranslate"><span class="pre">doc/pismpython/html/index.html</span></code> inside
-your build directory. The documentation build can take some time while it builds a large
-number of small images from LaTeX formulas.</p>
 </div>
 <div class="section" id="re-building-documentation-without-pism-s-prerequisites">
 <h2>Re-building documentation without PISM’s prerequisites<a class="headerlink" href="#re-building-documentation-without-pism-s-prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -196,7 +162,6 @@ work as expected.</p>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Rebuilding PISM documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#manual">Manual</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#source-code-browser">Source Code Browser</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#documentation-for-pisms-python-bindings-and-inversion-tools">Documentation for PISM’s Python bindings and inversion tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#re-building-documentation-without-pism-s-prerequisites">Re-building documentation without PISM’s prerequisites</a></li>
 </ul>
 </li>
@@ -226,9 +191,9 @@ work as expected.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

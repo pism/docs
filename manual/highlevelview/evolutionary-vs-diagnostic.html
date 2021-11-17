@@ -43,13 +43,13 @@ establishing mathematical initial conditions when first starting PISM, see secti
 taking small time steps. “Small” may vary from thousandths to tens of model years, in
 practice, depending primarily on grid resolution, but also on modeled ice geometry and
 flow speed. Time steps are chosen adaptively in PISM, according to the stability criteria
-of the combined numerical methods <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id1">[28]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id2">[29]</a>.</p>
+of the combined numerical methods <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id1">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id2">[30]</a>.</p>
 <p>However, especially for ice streams and shelves, non-time-stepping “diagnostic” solution
 of the stress balance partial differential equations might be the desired computation, and
 PISM can also produce such “diagnostic” velocity fields. Such computations necessarily
 assume that the ice geometry, viscosity, and boundary stresses are known. Because of the
 slowness of the ice, in the sense that inertia can be neglected in the stress balance
-<a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id3">[30]</a>, such computations can determine the ice velocity.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id3">[31]</a>, such computations can determine the ice velocity.</p>
 <p>Sections <a class="reference internal" href="../std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a> and <a class="reference internal" href="../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a> give examples illustrating evolutionary and
 diagnostic modes of PISM, respectively. The first describes time-stepping evolution models
 for the Greenland ice sheet, while the second describes a diagnostic SSA model for the
@@ -137,9 +137,9 @@ Ross ice shelf.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

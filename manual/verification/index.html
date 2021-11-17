@@ -50,10 +50,10 @@ PISM. In verification there is no comparison between model output and observatio
 nature. Instead, one compares exact solutions of the continuum model, in circumstances in
 which they are available, to their numerical approximations.</p>
 <p>Reference <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id2">[150]</a> gives a broad discussion of verification and validation in
-computational fluid dynamics. See <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id3">[32]</a> and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[29]</a> for discussion of verification
+computational fluid dynamics. See <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id3">[33]</a> and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id4">[30]</a> for discussion of verification
 issues for the isothermal and thermomechanically coupled shallow ice approximation (SIA),
-respectively, and for exact solutions to these models, and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id5">[28]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id6">[44]</a> for verification using an exact solution to the SSA equations for ice
+respectively, and for exact solutions to these models, and <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id5">[29]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id6">[45]</a> for verification using an exact solution to the SSA equations for ice
 streams.</p>
 <p>In PISM there is a separate executable <code class="docutils literal notranslate"><span class="pre">pismv</span></code> which is used for SIA-related
 verification, and there are additional scripts for SSA-related verification. The source
@@ -78,47 +78,47 @@ class of the PISM base class.</p>
 <tbody>
 <tr class="row-even"><td><p>A</p></td>
 <td><p>isothermal SIA, steady,  flat bed, constant accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id7">[32]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id7">[33]</a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>B</p></td>
 <td><p>isothermal SIA, flat bed, zero accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id8">[32]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id9">[126]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id8">[33]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id9">[126]</a></p></td>
 <td><p>similarity solution</p></td>
 </tr>
 <tr class="row-even"><td><p>C</p></td>
 <td><p>isothermal SIA, flat bed, growing accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id10">[32]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id10">[33]</a></p></td>
 <td><p>similarity solution</p></td>
 </tr>
 <tr class="row-odd"><td><p>D</p></td>
 <td><p>isothermal SIA, flat bed, oscillating accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id11">[32]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id11">[33]</a></p></td>
 <td><p>uses compensatory accumulation</p></td>
 </tr>
 <tr class="row-even"><td><p>E</p></td>
 <td><p>isothermal SIA; as A, but with sliding in a sector</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id12">[32]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id12">[33]</a></p></td>
 <td><p>uses compensatory accumulation</p></td>
 </tr>
 <tr class="row-odd"><td><p>F</p></td>
 <td><p>thermomechanically coupled SIA (mass and energy conservation), steady, flat bed</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#bb" id="id13">[78]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id14">[29]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#bb" id="id13">[78]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id14">[30]</a></p></td>
 <td><p>uses compensatory accumulation and heating</p></td>
 </tr>
 <tr class="row-even"><td><p>G</p></td>
 <td><p>thermomechanically coupled SIA; as F  but with oscillating accumulation</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#bb" id="id15">[78]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id16">[29]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#bb" id="id15">[78]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id16">[30]</a></p></td>
 <td><p>ditto</p></td>
 </tr>
 <tr class="row-odd"><td><p>H</p></td>
 <td><p>bed deformation coupled with isothermal SIA</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id17">[26]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id17">[27]</a></p></td>
 <td><p>joined similarity solution</p></td>
 </tr>
 <tr class="row-even"><td><p>I</p></td>
 <td><p>stream velocity computation using SSA (plastic till)</p></td>
-<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id18">[44]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id19">[28]</a></p></td>
+<td><p><a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id18">[45]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id19">[29]</a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>J</p></td>
@@ -241,7 +241,7 @@ model runs.</p></li>
 achieve a desired smallness for the numerical error.</p>
 <p>Therefore one must “go down” a grid refinement “path” and measure numerical error for each
 grid <a class="bibtex reference internal" href="../../zzz_references_html.html#roache" id="id21">[150]</a>. The refinement path is defined by a sequence of spatial grid cell sizes
-which decrease toward the refinement limit of zero size <a class="bibtex reference internal" href="../../zzz_references_html.html#mortonmayers" id="id22">[70]</a>. In PISM the
+which decrease toward the refinement limit of zero size <a class="bibtex reference internal" href="../../zzz_references_html.html#mortonmayers" id="id22">[71]</a>. In PISM the
 timestep <span class="math notranslate nohighlight">\(\dt\)</span> is determined adaptively by a stability criterion (see
 section <a class="reference internal" href="../practical-usage/time-stepping.html#sec-adapt"><span class="std std-ref">Understanding adaptive time-stepping</span></a>). In PISM one specifies the number of grid points, thus the
 grid cell sizes because the overall dimensions of the computational box are normally
@@ -249,7 +249,7 @@ fixed; see section <a class="reference internal" href="../modeling-choices/compu
 computing a norm (or norms) of the difference between the numerical solution and the exact
 solution.</p>
 <p>For a grid refinement path example, in tests of the thermomechanically-coupled SIA model
-one refines in three dimensions, and these runs produced Figures 13, 14, and 15 of <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id23">[29]</a>:</p>
+one refines in three dimensions, and these runs produced Figures 13, 14, and 15 of <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id23">[30]</a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismv -test G -max_dt 10.0 -y 25000 -Mx 61 -My 61 -Mz 61 -z_spacing equal
 pismv -test G -max_dt 10.0 -y 25000 -Mx 91 -My 91 -Mz 91 -z_spacing equal
 pismv -test G -max_dt 10.0 -y 25000 -Mx 121 -My 121 -Mz 121 -z_spacing equal
@@ -269,8 +269,8 @@ tests described above. These figures were produced automatically using Python sc
 <code class="docutils literal notranslate"><span class="pre">test/vfnow.py</span></code> and <code class="docutils literal notranslate"><span class="pre">test/vnreport.py</span></code>. See section <a class="reference internal" href="../practical-usage/scripts.html#sec-scripts"><span class="std std-ref">Utility and test scripts</span></a>.</p>
 <p>These figures <em>do not</em> show outstanding rates of convergence, relative to textbook partial
 differential equation examples. For the errors in tests B and G, see the discussion of
-free margin shape in <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id24">[32]</a>. For the errors in test I, the exact continuum solution is
-not very smooth at the free boundary <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id25">[44]</a>.</p>
+free margin shape in <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id24">[33]</a>. For the errors in test I, the exact continuum solution is
+not very smooth at the free boundary <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id25">[45]</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="convergence-figures.html">Sample convergence plots</a></li>
@@ -356,9 +356,9 @@ not very smooth at the free boundary <a class="bibtex reference internal" href="
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

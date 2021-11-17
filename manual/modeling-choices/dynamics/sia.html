@@ -77,7 +77,7 @@ and then differentiate the sum of the thickness and the bed using centered diffe
 <p>Here <span class="math notranslate nohighlight">\(b\)</span> is the bed elevation, <span class="math notranslate nohighlight">\(h\)</span> is the surface elevation, and <span class="math notranslate nohighlight">\(n\)</span> is the Glen
 exponent. This transformation sometimes has the benefits that the surface values of the
 horizontal velocity and vertical velocity, and the driving stress, are better behaved
-near the margin. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id2">[32]</a> for technical explanation of this transformation and
+near the margin. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id2">[33]</a> for technical explanation of this transformation and
 compare <a class="bibtex reference internal" href="../../../zzz_references_html.html#saitomargin" id="id3">[82]</a>. The actual finite difference schemes applied to compute
 the surface slope are similar to option <code class="docutils literal notranslate"><span class="pre">mahaffy</span></code>.</p>
 <div class="admonition note">
@@ -146,7 +146,7 @@ coefficient, from bumpy bed.</p>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.Glen_exponent"><code class="docutils literal notranslate"><span class="pre">Glen_exponent</span></code></a> (3) Glen exponent in ice flow law for SIA</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.range"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.range</span></code></a> (5000<em> meters</em>) half-width of smoothing domain in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id9">[83]</a>; set to zero to disable</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.theta_min"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.theta_min</span></code></a> (0) minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id10">[83]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.e_age_coupling"><code class="docutils literal notranslate"><span class="pre">e_age_coupling</span></code></a> (no) Couple the SIA enhancement factor to age as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#greve" id="id11">[35]</a>.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.e_age_coupling"><code class="docutils literal notranslate"><span class="pre">e_age_coupling</span></code></a> (no) Couple the SIA enhancement factor to age as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#greve" id="id11">[36]</a>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">enhancement_factor</span></code></a> (1) Flow enhancement factor for SIA</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor_interglacial"><code class="docutils literal notranslate"><span class="pre">enhancement_factor_interglacial</span></code></a> (1) Flow enhancement factor for SIA; used for ice accumulated during interglacial periods.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The SIA flow law.</p></li>
@@ -242,9 +242,9 @@ coefficient, from bumpy bed.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v1.0-2766-g6cc74d380
+      Git revision v1.0-2768-g1b6772d2a
       committed by Constantine Khrulev
-      on 2021-11-16 07:51:21 -0900 |
+      on 2021-11-16 16:44:35 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
