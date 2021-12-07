@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Blatter’s model &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Ice rheology" href="rheology.html" />
     <link rel="prev" title="Weertman-style sliding law" href="weertman.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="blatter-s-model">
+  <section id="blatter-s-model">
 <span id="sec-blatter"></span><h1>Blatter’s model<a class="headerlink" href="#blatter-s-model" title="Permalink to this headline">¶</a></h1>
 <p>Unlike the rest of PISM, the Blatter solver uses a geometry-following vertical grid (see
 <a class="reference internal" href="../computational/grid.html#fig-grid-vertical-sigma"><span class="std std-numref">Fig. 19</span></a>) to approximate horizontal components of ice velocity.
@@ -39,7 +41,7 @@ The number of vertical “levels” in this grid is controlled by
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.Mz"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.blatter</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.Mz</span></code></a>.</p>
 <p>The non-linear system resulting from the discretization of PDEs corresponding to Blatter’s
 stress balance model is much harder to solve than the one corresponding to the
-SSA system (<a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id1">[57]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id2">[69]</a>) and (at this point)
+SSA system (<span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id73" title="Jed Brown, Barry Smith, and Aron Ahmadia. Achieving textbook multigrid efficiency for hydrostatic ice sheet flow. SIAM J. Sci. Comp., 35(2):B359–B375, 2013.">56</a>]</span>, <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id9" title="R. Tuminaro, Mauro Perego, I. Tezaur, A. Salinger, and Stephen Price. A matrix dependent/algebraic multigrid approach for extruded meshes with applications to ice sheet modeling. SIAM Journal on Scientific Computing, 38(5):C504–C532, 2016. doi:10.1137/15M1040839.">72</a>]</span>) and (at this point)
 experimentation with preconditioner choices seems inevitable. We use PETSc’s command-line
 options to control these choices.</p>
 <div class="admonition note">
@@ -54,7 +56,7 @@ options to control these choices.</p>
 </div>
 <p>The multigrid (MG) preconditioner using semi-coarsening in the vertical direction followed
 by further (horizontal) coarsening using algebraic multigrid methods appears to be
-effective <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id3">[69]</a>. The option combination</p>
+effective <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id9" title="R. Tuminaro, Mauro Perego, I. Tezaur, A. Salinger, and Stephen Price. A matrix dependent/algebraic multigrid approach for extruded meshes with applications to ice sheet modeling. SIAM Journal on Scientific Computing, 38(5):C504–C532, 2016. doi:10.1137/15M1040839.">72</a>]</span>. The option combination</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bp_pc_type mg <span class="se">\</span>
 -bp_pc_mg_levels N <span class="se">\</span>
 -bp_mg_levels_ksp_type gmres <span class="se">\</span>
@@ -62,7 +64,7 @@ effective <a class="bibtex reference internal" href="../../../zzz_references_htm
 </pre></div>
 </div>
 <p>roughly corresponds to this approach (see <a class="reference internal" href="#sec-blatter-preconditioners"><span class="std std-ref">Practical preconditioners choices</span></a> for more).</p>
-<p>Unlike <a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id4">[69]</a>, who used a purely
+<p>Unlike <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id9" title="R. Tuminaro, Mauro Perego, I. Tezaur, A. Salinger, and Stephen Price. A matrix dependent/algebraic multigrid approach for extruded meshes with applications to ice sheet modeling. SIAM Journal on Scientific Computing, 38(5):C504–C532, 2016. doi:10.1137/15M1040839.">72</a>]</span>, who used a purely
 algebraic approach, these options select a combination of geometric and algebraic
 multigrid preconditioners.</p>
 <p>To use a multigrid preconditioner the user has to specify</p>
@@ -142,22 +144,22 @@ particular setup.</p>
 in <a class="reference internal" href="#equation-eq-bp-vertical-grid-size">(6)</a>); two levels is the minimum achievable in the context of
 the finite element method used to discretize the system (this corresponds to a mesh that
 is just one element thick).</p>
-<div class="section" id="surface-gradient-computation">
+<section id="surface-gradient-computation">
 <span id="sec-blatter-gradient"></span><h2>Surface gradient computation<a class="headerlink" href="#surface-gradient-computation" title="Permalink to this headline">¶</a></h2>
 <p>Some synthetic geometry experiments with grounded margins show “checkerboard” artifacts in
 computed ice velocity near steep margins. A similar issue and an attempt to address it are
-described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id6">[70]</a>.</p>
+described in <span id="id6">[<a class="reference internal" href="../../../zzz_references_html.html#id10" title="William H. Lipscomb, Stephen F. Price, Matthew J. Hoffman, Gunter R. Leguy, Andrew R. Bennett, Sarah L. Bradley, Katherine J. Evans, Jeremy G. Fyke, Joseph H. Kennedy, Mauro Perego, and others. Description and evaluation of the Community Ice Sheet Model (CISM) v2.1. Geoscientific Model Development, 2019. doi:10.5194/gmd-12-387-2019.">73</a>]</span>.</p>
 <p>This implementation takes a different approach: instead of using an “upwinded” finite
 difference approximation of the surface gradient we allow using the <span class="math notranslate nohighlight">\(\eta\)</span> transformation
 described in <a class="reference internal" href="sia.html#sec-sia-gradient"><span class="std std-ref">Surface gradient method</span></a>. Set
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.use_eta_transform"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.blatter</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.use_eta_transform</span></code></a> to enable it.</p>
-</div>
-<div class="section" id="adaptive-time-stepping">
+</section>
+<section id="adaptive-time-stepping">
 <span id="sec-blatter-time-stepping"></span><h2>Adaptive time stepping<a class="headerlink" href="#adaptive-time-stepping" title="Permalink to this headline">¶</a></h2>
 <p>PISM’s explicit in time mass continuity code is <em>conditionally stable</em>. When used with the
 SSA + SIA hybrid, the maximum allowed time step is computed using a combination of the CFL
-criterion <a class="bibtex reference internal" href="../../../zzz_references_html.html#mortonmayers" id="id7">[71]</a> and the maximum diffusivity of the SIA flow
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id8">[29]</a>. This time step restriction does not disappear when the same mass
+criterion <span id="id7">[<a class="reference internal" href="../../../zzz_references_html.html#id306" title="K. W. Morton and D. F. Mayers. Numerical Solutions of Partial Differential Equations: An Introduction. Cambridge University Press, 2nd edition, 2005.">74</a>]</span> and the maximum diffusivity of the SIA flow
+<span id="id8">[<a class="reference internal" href="../../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>. This time step restriction does not disappear when the same mass
 continuity code is used with a stress balance model that does not explicitly compute
 “advective” and “diffusive” parts of the flow. We need a work-around.</p>
 <div class="admonition note">
@@ -184,7 +186,7 @@ the vertically-averaged ice flux <span class="math notranslate nohighlight">\(Q\
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Other models supporting this stress balance model and using an explicit in time
-geometry evolution method (<a class="bibtex reference internal" href="../../../zzz_references_html.html#lipscomb2019" id="id9">[70]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#hoffman2018" id="id10">[72]</a>) report that the
+geometry evolution method (<span id="id9">[<a class="reference internal" href="../../../zzz_references_html.html#id10" title="William H. Lipscomb, Stephen F. Price, Matthew J. Hoffman, Gunter R. Leguy, Andrew R. Bennett, Sarah L. Bradley, Katherine J. Evans, Jeremy G. Fyke, Joseph H. Kennedy, Mauro Perego, and others. Description and evaluation of the Community Ice Sheet Model (CISM) v2.1. Geoscientific Model Development, 2019. doi:10.5194/gmd-12-387-2019.">73</a>]</span>, <span id="id10">[<a class="reference internal" href="../../../zzz_references_html.html#id8" title="Matthew J. Hoffman, Mauro Perego, Stephen F. Price, William H. Lipscomb, Tong Zhang, Douglas Jacobsen, Irina Tezaur, Andrew G. Salinger, Raymond Tuminaro, and Luca Bertagna. MPAS-Albany land ice (MALI): a variable-resolution ice sheet model for Earth system modeling using Voronoi grids. Geoscientific Model Development, 2018. doi:10.5194/gmd-11-3747-2018.">75</a>]</span>) report that the
 CFL condition appears to be sufficient in practice.</p>
 <p>Given the lack of a theory describing the maximum time step necessary for stability it
 may make sense to experiment with <em>increasing</em> <a class="reference internal" href="../../parameters/index.html#config-time_stepping.adaptive_ratio"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.adaptive_ratio</span></code></a>.</p>
@@ -200,8 +202,8 @@ balance and age models takes the “long” time step.</p>
 <p>Since the Blatter solver is likely to dominate the computational cost, setting
 <a class="reference internal" href="../../parameters/index.html#config-time_stepping.skip.enabled"><code class="docutils literal notranslate"><span class="pre">time_stepping</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.skip</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a> to “true” is not likely to be beneficial.</p>
 </div>
-</div>
-<div class="section" id="practical-preconditioners-choices">
+</section>
+<section id="practical-preconditioners-choices">
 <span id="sec-blatter-preconditioners"></span><h2>Practical preconditioners choices<a class="headerlink" href="#practical-preconditioners-choices" title="Permalink to this headline">¶</a></h2>
 <p>The option combination</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bp_pc_type mg <span class="se">\</span>
@@ -226,7 +228,7 @@ only one, and most likely not the best one.</p>
 </div>
 <p>may work better<a class="footnote-reference brackets" href="#bp-pc-settings" id="id11">2</a>, but requires PETSc built with <a class="reference external" href="https://hypre.readthedocs.io/en/latest/">hypre</a>.</p>
 <p>Here <code class="docutils literal notranslate"><span class="pre">-bp_snes_ksp_ew</span> <span class="pre">-bp_snes_ksp_ew_version</span> <span class="pre">3</span></code> enables Luis Chacón’s variant of the
-Eisenstat-Walker <a class="bibtex reference internal" href="../../../zzz_references_html.html#eisenstat1996" id="id12">[73]</a> method of adjusting linear solver tolerances to
+Eisenstat-Walker <span id="id12">[<a class="reference internal" href="../../../zzz_references_html.html#id3" title="Stanley C. Eisenstat and Homer F. Walker. Choosing the forcing terms in an inexact newton method. SIAM Journal on Scientific Computing, 17(1):16–32, jan 1996. doi:10.1137/0917003.">76</a>]</span> method of adjusting linear solver tolerances to
 avoid oversolving and <code class="docutils literal notranslate"><span class="pre">-bp_mg_coarse_pc_type</span> <span class="pre">hypre</span> <span class="pre">-bp_mg_coarse_pc_hypre_type</span>
 <span class="pre">boomeramg</span></code> selects the BoomerAMG algebraic MG preconditioner from <a class="reference external" href="https://hypre.readthedocs.io/en/latest/">hypre</a> for the coarse
 MG level.</p>
@@ -256,7 +258,7 @@ example, the following would use <a class="reference external" href="http://mump
 <p class="admonition-title">Note</p>
 <p>Parallel direct solvers such as MUMPS really benefit from using optimized BLAS and
 LAPACK libraries.</p>
-<p>Please see section 3.5.3 of <a class="bibtex reference internal" href="../../../zzz_references_html.html#petsc-user-ref" id="id13">[26]</a> for instructions. At the time of
+<p>Please see section 3.5.3 of <span id="id13">[<a class="reference internal" href="../../../zzz_references_html.html#id475" title="S. Balay and others. PETSc Users Manual. Technical Report ANL-95/11 - Revision 3.15, Argonne National Laboratory, 2021.">1</a>]</span> for instructions. At the time of
 writing</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--download-f2cblaslapack --download-blis
 </pre></div>
@@ -265,16 +267,16 @@ writing</p>
 other freely-available libraries (Intel MKL, OpenBLAS) as well.</p>
 </div>
 <p>Note, though, that the multigrid preconditioner, even if it is effective in terms of
-reducing the number of Krylov iterations, may not be the cheapest one <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id14">[74]</a>:
+reducing the number of Krylov iterations, may not be the cheapest one <span id="id14">[<a class="reference internal" href="../../../zzz_references_html.html#id12" title="Irina K. Tezaur, Raymond S. Tuminaro, Mauro Perego, Andrew G. Salinger, and Stephen F. Price. On the scalability of the albany/FELIX first-order stokes approximation ice sheet solver for large-scale simulations of the Greenland and antarctic ice sheets. Procedia Computer Science, 51:2026–2035, 2015. doi:10.1016/j.procs.2015.05.467.">77</a>]</span>:
 there is a trade off between the number of iterations and the cost of a single iteration.
 Other preconditioner options may be worth considering as well.</p>
 <p>In some cases node ordering and the way the domain is split among processes in a parallel
-run may affect solver performance (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id15">[57]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id16">[74]</a>,
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#tuminaro2016" id="id17">[69]</a>). These references mention staggering the unknowns so that <span class="math notranslate nohighlight">\(u\)</span> and
+run may affect solver performance (see <span id="id15">[<a class="reference internal" href="../../../zzz_references_html.html#id73" title="Jed Brown, Barry Smith, and Aron Ahmadia. Achieving textbook multigrid efficiency for hydrostatic ice sheet flow. SIAM J. Sci. Comp., 35(2):B359–B375, 2013.">56</a>]</span>, <span id="id16">[<a class="reference internal" href="../../../zzz_references_html.html#id12" title="Irina K. Tezaur, Raymond S. Tuminaro, Mauro Perego, Andrew G. Salinger, and Stephen F. Price. On the scalability of the albany/FELIX first-order stokes approximation ice sheet solver for large-scale simulations of the Greenland and antarctic ice sheets. Procedia Computer Science, 51:2026–2035, 2015. doi:10.1016/j.procs.2015.05.467.">77</a>]</span>,
+<span id="id17">[<a class="reference internal" href="../../../zzz_references_html.html#id9" title="R. Tuminaro, Mauro Perego, I. Tezaur, A. Salinger, and Stephen Price. A matrix dependent/algebraic multigrid approach for extruded meshes with applications to ice sheet modeling. SIAM Journal on Scientific Computing, 38(5):C504–C532, 2016. doi:10.1137/15M1040839.">72</a>]</span>). These references mention staggering the unknowns so that <span class="math notranslate nohighlight">\(u\)</span> and
 <span class="math notranslate nohighlight">\(v\)</span> components at the same node correspond to adjacent equations in the system and using
 contiguous ordering of unknowns in the same ice column. This allows the solver to capture
 vertical coupling <em>locally</em> using incomplete factorization.</p>
-<p>In addition to this, <a class="bibtex reference internal" href="../../../zzz_references_html.html#tezaur2015b" id="id18">[74]</a> mention that parallel domain distribution
+<p>In addition to this, <span id="id18">[<a class="reference internal" href="../../../zzz_references_html.html#id12" title="Irina K. Tezaur, Raymond S. Tuminaro, Mauro Perego, Andrew G. Salinger, and Stephen F. Price. On the scalability of the albany/FELIX first-order stokes approximation ice sheet solver for large-scale simulations of the Greenland and antarctic ice sheets. Procedia Computer Science, 51:2026–2035, 2015. doi:10.1016/j.procs.2015.05.467.">77</a>]</span> mention that parallel domain distribution
 partitioning ice columns among multiple processes <em>sometimes</em> leads to convergence issues.
 Following this advice, PISM does not partition the domain in the <span class="math notranslate nohighlight">\(z\)</span> direction, but some
 of our experiments show that if the solver struggles, switching to a <em>one-dimensional</em>
@@ -287,8 +289,8 @@ domain decomposition along the <span class="math notranslate nohighlight">\(y\)<
 <p>This forces PISM to split the domain into <span class="math notranslate nohighlight">\(M\)</span> parts in the <span class="math notranslate nohighlight">\(y\)</span> direction instead of the
 default (approximately <span class="math notranslate nohighlight">\(\sqrt{M}\)</span> in both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>).</p>
 <p>Please see <a class="reference internal" href="../../../technical/blatter-pattyn.html#sec-blatter-details"><span class="std std-ref">Blatter stress balance solver: technical details</span></a> for more.</p>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>Below is the complete list of configuration parameters controlling this solver (prefix:
 <code class="docutils literal notranslate"><span class="pre">stress_balance.blatter.</span></code>):</p>
@@ -298,7 +300,7 @@ default (approximately <span class="math notranslate nohighlight">\(\sqrt{M}\)</
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.coarsening_factor"><code class="docutils literal notranslate"><span class="pre">coarsening_factor</span></code></a> (2) Coarsening factor in the <span class="math notranslate nohighlight">\(z\)</span> direction</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">enhancement_factor</span></code></a> (1) Flow enhancement factor for the Blatter stress balance flow law</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The flow law used by the Blatter-Pattyn stress balance model</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.use_eta_transform"><code class="docutils literal notranslate"><span class="pre">use_eta_transform</span></code></a> (no) Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id19">[33]</a> for details).</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.blatter.use_eta_transform"><code class="docutils literal notranslate"><span class="pre">use_eta_transform</span></code></a> (no) Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <span id="id19">[<a class="reference internal" href="../../../zzz_references_html.html#id40" title="E. Bueler, C. S. Lingle, J. A. Kallen-Brown, D. N. Covey, and L. N. Bowman. Exact solutions and verification of numerical models for isothermal ice sheets. J. Glaciol., 51(173):291–306, 2005. doi:10.3189/172756505781829449.">58</a>]</span> for details).</p></li>
 </ol>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
@@ -308,11 +310,11 @@ hierarchy, i.e. each grid is “extruded” from PISM’s 2D grid with
 uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> directions.</p>
 </dd>
 <dt class="label" id="bp-pc-settings"><span class="brackets"><a class="fn-backref" href="#id11">2</a></span></dt>
-<dd><p>These settings are inspired by <a class="bibtex reference internal" href="../../../zzz_references_html.html#brownsmithahmadia2013" id="id20">[57]</a>.</p>
+<dd><p>These settings are inspired by <span id="id20">[<a class="reference internal" href="../../../zzz_references_html.html#id73" title="Jed Brown, Barry Smith, and Aron Ahmadia. Achieving textbook multigrid efficiency for hydrostatic ice sheet flow. SIAM J. Sci. Comp., 35(2):B359–B375, 2013.">56</a>]</span>.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -387,7 +389,7 @@ uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -398,9 +400,9 @@ uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

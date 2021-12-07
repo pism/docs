@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Notes about the flow-line SSA &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="BOMBPROOF, PISM’s numerical scheme for conservation of energy" href="bombproof.html" />
     <link rel="prev" title="Calving front stress boundary condition" href="ssafd-cfbc.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="notes-about-the-flow-line-ssa">
+  <section id="notes-about-the-flow-line-ssa">
 <span id="sec-flow-line-ssa"></span><h1>Notes about the flow-line SSA<a class="headerlink" href="#notes-about-the-flow-line-ssa" title="Permalink to this headline">¶</a></h1>
 <p>Using the same notation as in the rest of the manual, the flow-line case the shallow shelf
 approximation reads</p>
@@ -50,7 +52,7 @@ floating, so</p>
 <p class="admonition-title">Note</p>
 <p>This is a non-linear <em>first-order</em> ODE for the ice velocity <span class="math notranslate nohighlight">\(u\)</span>.</p>
 </div>
-<div class="section" id="an-observation">
+<section id="an-observation">
 <span id="sec-ssa-flow-line-invariance"></span><h2>An observation<a class="headerlink" href="#an-observation" title="Permalink to this headline">¶</a></h2>
 <p>Consider a boundary-value problem for the velocity <span class="math notranslate nohighlight">\(u\)</span> of a floating ice shelf on an
 interval <span class="math notranslate nohighlight">\([0, L]\)</span>:</p>
@@ -68,8 +70,8 @@ i.e. <span class="math notranslate nohighlight">\(u(x) = v(x)\)</span> for all <
 <a class="reference internal" href="#equation-eq-ssa-flowline-bvp">(57)</a> is not sensitive to ice geometry perturbations at locations
 downstream from <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </div>
-</div>
-<div class="section" id="discrete-analog-of-this-property">
+</section>
+<section id="discrete-analog-of-this-property">
 <span id="sec-ssa-flow-line-discretized"></span><h2>Discrete analog of this property<a class="headerlink" href="#discrete-analog-of-this-property" title="Permalink to this headline">¶</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(N &gt; 2\)</span> be an integer and define the <span class="math notranslate nohighlight">\(N\)</span>-point grid <span class="math notranslate nohighlight">\(x_{j} = 0 + j\dx\)</span>, <span class="math notranslate nohighlight">\(\dx =
 L/(N-1)\)</span>.</p>
@@ -84,8 +86,8 @@ system (call it <span class="math notranslate nohighlight">\(S_{a}\)</span>) has
 <span class="math notranslate nohighlight">\(S_{a}\)</span>, then <span class="math notranslate nohighlight">\(u_{k} = v_{k}\)</span> for all <span class="math notranslate nohighlight">\(k = 1,\dots,N-2\)</span>.</p>
 </div></blockquote>
 <p>Note that the first <span class="math notranslate nohighlight">\(N-3\)</span> equations in <span class="math notranslate nohighlight">\(S_{L}\)</span> and <span class="math notranslate nohighlight">\(S_{a}\)</span> are the same.</p>
-</div>
-<div class="section" id="discretization">
+</section>
+<section id="discretization">
 <span id="sec-ssa-flow-line-discrete"></span><h2>Discretization<a class="headerlink" href="#discretization" title="Permalink to this headline">¶</a></h2>
 <p>Let <span class="math notranslate nohighlight">\([X]_{j}\)</span> be an approximation of <span class="math notranslate nohighlight">\(X\)</span> at a grid location <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p>The standard approach <em>within</em> the domain is to use centered finite differences and linear
@@ -93,13 +95,13 @@ interpolation to approximate staggered-grid values, i.e. averaging values at imm
 regular grid point neighbors:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ssa-flow-line-fd-basics">
 <span class="eqno">(59)<a class="headerlink" href="#equation-eq-ssa-flow-line-fd-basics" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}{}[f]_{i + \frac12} &amp;= \frac12 (f_i + f_{i+1}),\\{}[f']_{i} &amp;= \frac1{\dx}([f]_{i+\frac12} + [f]_{i-\frac12}).\end{aligned}\end{align} \]</div>
-<div class="section" id="interior">
+<section id="interior">
 <span id="sec-ssafd-flow-line-generic"></span><h3>Interior<a class="headerlink" href="#interior" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight" id="equation-eq-ssa-flow-line-interior">
 <span class="eqno">(60)<a class="headerlink" href="#equation-eq-ssa-flow-line-interior" title="Permalink to this equation">¶</a></span>\[\frac1{\dx} \left( [4\nu(u')H u']_{i+\frac12} - [4\nu(u')H u']_{i-\frac12} \right)
 = [\rhoi\, g\, \alpha\, H\, H']_{i}.\]</div>
-</div>
-<div class="section" id="ice-front">
+</section>
+<section id="ice-front">
 <span id="sec-ssa-flow-line-ice-front"></span><h3>Ice front<a class="headerlink" href="#ice-front" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(n\)</span> be the last grid point with non-zero ice thickness, i.e. assume that <span class="math notranslate nohighlight">\(H_{k} = 0\)</span>
 for <span class="math notranslate nohighlight">\(k &gt; n\)</span>.</p>
@@ -113,8 +115,8 @@ more equation (see <a class="reference internal" href="ssafd-cfbc.html#equation-
 <span class="eqno">(62)<a class="headerlink" href="#equation-eq-ssa-flow-line-cf" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\frac1{\dx}\left( [\tau_{\text{stat}}]_{n+\frac12} - [4\nu(u')H u']_{n-\frac12} \right)
 &amp;= \rhoi\, g\, \alpha\, [H\, H']_{n},\\- [4\nu(u')H u']_{n-\frac12}
 &amp;= \dx\rhoi\, g\, \alpha\, [H\, H']_{n} - [\tau_{\text{stat}}]_{n+\frac12}.\end{aligned}\end{align} \]</div>
-</div>
-<div class="section" id="choosing-fd-approximations">
+</section>
+<section id="choosing-fd-approximations">
 <span id="sec-ssa-flow-line-fd"></span><h3>Choosing FD approximations<a class="headerlink" href="#choosing-fd-approximations" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Assuming that the ice front is at <span class="math notranslate nohighlight">\(n\)</span></p>
 <p>If we assume that the ice front is at <span class="math notranslate nohighlight">\(n\)</span>, the last equation in the system looks like
@@ -201,9 +203,9 @@ we seek:</p>
 <div><p>modeled ice velocity at a given location <span class="math notranslate nohighlight">\(x\)</span> along a flow-line ice shelf is not
 sensitive to geometry perturbations downstream from <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </div></blockquote>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
       <hr>
@@ -273,7 +275,7 @@ sensitive to geometry perturbations downstream from <span class="math notranslat
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -284,9 +286,9 @@ sensitive to geometry perturbations downstream from <span class="math notranslat
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

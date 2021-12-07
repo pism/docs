@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Input data &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="First run" href="run-1.html" />
     <link rel="prev" title="Getting started: a Greenland ice sheet example" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="input-data">
+  <section id="input-data">
 <h1>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">¶</a></h1>
 <p>The NetCDF data used to initialize SeaRISE runs is <a class="reference external" href="http://websrv.cs.umt.edu/isis/index.php/Model_Initialization#Greenland">freely-available online</a>.</p>
 <p>To download the specific file we want, namely <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code>, and preprocess it
@@ -42,26 +44,28 @@ for PISM, do:</p>
 </div>
 <p>The script <code class="docutils literal notranslate"><span class="pre">preprocess.sh</span></code> requires <code class="docutils literal notranslate"><span class="pre">wget</span></code> and also the <a class="reference external" href="http://nco.sourceforge.net/">NetCDF Operators</a>. It
 downloads the version 1.1 of the SeaRISE “master” present-day data set, which contains ice
-thickness and bedrock topography from BEDMAP <a class="bibtex reference internal" href="../../zzz_references_html.html#bamberlayberrygogenini" id="id1">[142]</a>, and modeled
-precipitation and surface mass balance rates from RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id2">[63]</a>, among
+thickness and bedrock topography from BEDMAP <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id46" title="J.L. Bamber, R.L. Layberry, and S.P. Gogenini. A new ice thickness and bed data set for the Greenland ice sheet 1: Measurement, data reduction, and errors. J. Geophys. Res., 106 (D24):33,773–33,780, 2001.">6</a>]</span>, and modeled
+precipitation and surface mass balance rates from RACMO <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id118" title="J. Ettema, M. R. van den Broeke, E. van Meijgaard, W. J. van de Berg, J. L. Bamber, J. E. Box, and R. C. Bales. Higher surface mass balance of the Greenland ice sheet revealed by high-resolution climate modeling. Geophys. Res. Let., 2009. doi:10.1029/2009GL038110.">7</a>]</span>, among
 other fields.</p>
 <p>In particular, it creates three new NetCDF files which can be read by PISM. The
 spatially-varying fields, with adjusted metadata, go in <code class="docutils literal notranslate"><span class="pre">pism_Greenland_5km_v1.1.nc</span></code>.
 The other two new files contain famous time-dependent paleo-climate records from ice and
-seabed cores: <code class="docutils literal notranslate"><span class="pre">pism_dT.nc</span></code> has the GRIP temperature record <a class="bibtex reference internal" href="../../zzz_references_html.html#johnsenetalgrip" id="id3">[8]</a> and
-<code class="docutils literal notranslate"><span class="pre">pism_dSL.nc</span></code> has the SPECMAP sea level record <a class="bibtex reference internal" href="../../zzz_references_html.html#imbrieetal1984" id="id4">[9]</a>.</p>
+seabed cores: <code class="docutils literal notranslate"><span class="pre">pism_dT.nc</span></code> has the GRIP temperature record <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id223" title="S. J. Johnsen, D. Dahl-Jensen, W. Dansgaard, and N. Gundestrup. Greenland paleotemperatures derived from GRIP bore hole temperature and ice core isotope profiles. Tellus, 47B:624–629, 1995.">8</a>]</span> and
+<code class="docutils literal notranslate"><span class="pre">pism_dSL.nc</span></code> has the SPECMAP sea level record <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id214" title="J. Imbrie and eight others. The orbital theory of Pleistocene climate: Support from a revised chronology of the marine delta-O-18 record. In Milankovitch and Climate: Understanding the Response to Astronomical Forcing, pages 269–305. D. Reidel, 1984.">9</a>]</span>.</p>
 <p>Any of these NetCDF files can be viewed with <code class="docutils literal notranslate"><span class="pre">ncview</span></code> or other NetCDF visualization
 tools; see <a class="reference internal" href="../practical-usage/netcdf-tools.html#tab-netcdfview"><span class="std std-numref">Table 20</span></a>. An application of IDV to the master data set produced
 <a class="reference internal" href="#fig-sr-input"><span class="std std-numref">Fig. 1</span></a>, for example. Use <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> to see the metadata and history of
 the files.</p>
-<div class="figure align-default" id="fig-sr-input">
+<figure class="align-default" id="fig-sr-input">
 <img alt="../../_images/sr-greenland-input.png" src="../../_images/sr-greenland-input.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The input file contains present-day ice thickness (left; m), bedrock elevation (center;
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The input file contains present-day ice thickness (left; m), bedrock elevation (center;
 m), and present-day precipitation (right; <span class="math notranslate nohighlight">\(m / year\)</span> ice equivalent) for
 SeaRISE-Greenland. These are fields <code class="variable docutils literal notranslate"><span class="pre">thk</span></code>, <code class="variable docutils literal notranslate"><span class="pre">topg</span></code>, and <code class="variable docutils literal notranslate"><span class="pre">precipitation</span></code>,
 respectively, in <code class="docutils literal notranslate"><span class="pre">pism_Greenland_5km_v1.1.nc</span></code>.</span><a class="headerlink" href="#fig-sr-input" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
       <hr>
@@ -137,7 +141,7 @@ respectively, in <code class="docutils literal notranslate"><span class="pre">pi
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -148,9 +152,9 @@ respectively, in <code class="docutils literal notranslate"><span class="pre">pi
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

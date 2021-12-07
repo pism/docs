@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Three-equation ocean model (implementation details) &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Blatter stress balance solver: technical details" href="blatter-pattyn.html" />
     <link rel="prev" title="Computing steady-state subglacial water flux" href="steady-hydrology.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,16 +33,16 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="three-equation-ocean-model-implementation-details">
+  <section id="three-equation-ocean-model-implementation-details">
 <span id="sec-ocean-th-details"></span><h1>Three-equation ocean model (implementation details)<a class="headerlink" href="#three-equation-ocean-model-implementation-details" title="Permalink to this headline">¶</a></h1>
-<p>This model is based on <a class="bibtex reference internal" href="../zzz_references_html.html#hellmerolbers1989" id="id1">[14]</a> and <a class="bibtex reference internal" href="../zzz_references_html.html#hollandjenkins1999" id="id2">[11]</a>.</p>
+<p>This model is based on <span id="id1">[<a class="reference internal" href="../zzz_references_html.html#id178" title="HH Hellmer and DJ Olbers. A two-dimensional model for the thermohaline circulation under an ice shelf. Antarctic Science, 1(04):325–336, 1989.">156</a>]</span> and <span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>.</p>
 <p>We use equations for the heat and salt flux balance at the base of the shelf to compute
 the temperature at the base of the shelf and the sub-shelf melt rate.</p>
-<p>Following <a class="bibtex reference internal" href="../zzz_references_html.html#hellmerolbers1989" id="id3">[14]</a>, let <span class="math notranslate nohighlight">\(Q_T\)</span> be the total heat flux crossing the
+<p>Following <span id="id3">[<a class="reference internal" href="../zzz_references_html.html#id178" title="HH Hellmer and DJ Olbers. A two-dimensional model for the thermohaline circulation under an ice shelf. Antarctic Science, 1(04):325–336, 1989.">156</a>]</span>, let <span class="math notranslate nohighlight">\(Q_T\)</span> be the total heat flux crossing the
 interface between the shelf base and the ocean, <span class="math notranslate nohighlight">\(Q_T^B\)</span> be the amount of heat lost by the
 ocean due to melting of glacial ice, and <span class="math notranslate nohighlight">\(Q_T^I\)</span> be the conductive flux into the ice
 column.</p>
-<p><span class="math notranslate nohighlight">\(Q_{T}\)</span> is parameterized by (see <a class="bibtex reference internal" href="../zzz_references_html.html#hellmerolbers1989" id="id4">[14]</a>, equation 10):</p>
+<p><span class="math notranslate nohighlight">\(Q_{T}\)</span> is parameterized by (see <span id="id4">[<a class="reference internal" href="../zzz_references_html.html#id178" title="HH Hellmer and DJ Olbers. A two-dimensional model for the thermohaline circulation under an ice shelf. Antarctic Science, 1(04):325–336, 1989.">156</a>]</span>, equation 10):</p>
 <div class="math notranslate nohighlight">
 \[Q_{T} = \rho_W\, c_{pW}\, \gamma_{T}\, (T^B - T^W),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho_{W}\)</span> is the sea water density, <span class="math notranslate nohighlight">\(c_{pW}\)</span> is the heat capacity of sea water, and
@@ -48,12 +50,12 @@ column.</p>
 <p>We assume that the difference between the basal temperature and adjacent ocean temperature
 <span class="math notranslate nohighlight">\(T^B - T^W\)</span> is well approximated by <span class="math notranslate nohighlight">\(\Theta_B - \Theta_W,\)</span> where <span class="math notranslate nohighlight">\(\Theta_{\cdot}\)</span> is the
 corresponding potential temperature.</p>
-<p><span class="math notranslate nohighlight">\(Q_T^B\)</span> is (see <a class="bibtex reference internal" href="../zzz_references_html.html#hellmerolbers1989" id="id5">[14]</a>, equation 11):</p>
+<p><span class="math notranslate nohighlight">\(Q_T^B\)</span> is (see <span id="id5">[<a class="reference internal" href="../zzz_references_html.html#id178" title="HH Hellmer and DJ Olbers. A two-dimensional model for the thermohaline circulation under an ice shelf. Antarctic Science, 1(04):325–336, 1989.">156</a>]</span>, equation 11):</p>
 <div class="math notranslate nohighlight">
 \[Q_T^B = \rho_I\, L\, \frac{\partial h}{\partial t},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho_I\)</span> is the ice density, <span class="math notranslate nohighlight">\(L\)</span> is the latent heat of fusion, and <span class="math notranslate nohighlight">\(\partial
 h\, /\, \partial t\)</span> is the ice thickening rate (equal to minus the melt rate).</p>
-<p>The conductive flux into the ice column is (<a class="bibtex reference internal" href="../zzz_references_html.html#hellmeretal1998" id="id6">[12]</a>, equation 7):</p>
+<p>The conductive flux into the ice column is (<span id="id6">[<a class="reference internal" href="../zzz_references_html.html#id179" title="Hartmut H. Hellmer, Stanley S. Jacobs, and Adrian Jenkins. Oceanic erosion of a floating Antarctic glacier in the Amundsen Sea. American Geophysical Union, 1998.">154</a>]</span>, equation 7):</p>
 <div class="math notranslate nohighlight">
 \[Q_T^I = \rho_I\, c_{pI}\, \kappa\, T_{\text{grad}},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho_I\)</span> is the ice density, <span class="math notranslate nohighlight">\(c_{pI}\)</span> is the heat capacity of ice, <span class="math notranslate nohighlight">\(\kappa\)</span> is the
@@ -68,12 +70,12 @@ base of a column of ice.</p>
 <p>where <span class="math notranslate nohighlight">\(Q_S\)</span> is the total salt flux across the interface, <span class="math notranslate nohighlight">\(Q_S^B\)</span> is the basal salt flux
 (negative for melting), <span class="math notranslate nohighlight">\(Q_S^I = 0\)</span> is the salt flux due to molecular diffusion of salt
 through ice.</p>
-<p><span class="math notranslate nohighlight">\(Q_S\)</span> is parameterized by (<a class="bibtex reference internal" href="../zzz_references_html.html#hellmeretal1998" id="id7">[12]</a>, equation 13)</p>
+<p><span class="math notranslate nohighlight">\(Q_S\)</span> is parameterized by (<span id="id7">[<a class="reference internal" href="../zzz_references_html.html#id179" title="Hartmut H. Hellmer, Stanley S. Jacobs, and Adrian Jenkins. Oceanic erosion of a floating Antarctic glacier in the Amundsen Sea. American Geophysical Union, 1998.">154</a>]</span>, equation 13)</p>
 <div class="math notranslate nohighlight">
 \[Q_S = \rho_W\, \gamma_S\, (S^B - S^W),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\gamma_S\)</span> is a turbulent salt exchange coefficient, <span class="math notranslate nohighlight">\(S^B\)</span> is salinity at the shelf
 base, and <span class="math notranslate nohighlight">\(S^W\)</span> is the salinity of adjacent ocean.</p>
-<p>The basal salt flux <span class="math notranslate nohighlight">\(Q_S^B\)</span> is (<a class="bibtex reference internal" href="../zzz_references_html.html#hellmeretal1998" id="id8">[12]</a>, equation 10)</p>
+<p>The basal salt flux <span class="math notranslate nohighlight">\(Q_S^B\)</span> is (<span id="id8">[<a class="reference internal" href="../zzz_references_html.html#id179" title="Hartmut H. Hellmer, Stanley S. Jacobs, and Adrian Jenkins. Oceanic erosion of a floating Antarctic glacier in the Amundsen Sea. American Geophysical Union, 1998.">154</a>]</span>, equation 10)</p>
 <div class="math notranslate nohighlight">
 \[Q_S^B = \rho_I\, S^B\, {\frac{\partial h}{\partial t}}.\]</div>
 <p>To avoid converting shelf base temperature to shelf base potential temperature and back,
@@ -86,16 +88,16 @@ potential temperature, respectively:</p>
 <p class="admonition-title">Note</p>
 <p>The linearized equation for the freezing point of seawater as a function of salinity
 and pressure (ice thickness) is only valid for salinity ranges from 4 to 40 psu (see
-<a class="bibtex reference internal" href="../zzz_references_html.html#hollandjenkins1999" id="id9">[11]</a>).</p>
+<span id="id9">[<a class="reference internal" href="../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>).</p>
 </div>
 <p>The linearization coefficients for the basal temperature <span class="math notranslate nohighlight">\(T^B(S,h)\)</span> are taken from
-<a class="bibtex reference internal" href="../zzz_references_html.html#hellmeretal1998" id="id10">[12]</a>, going back to <a class="bibtex reference internal" href="../zzz_references_html.html#foldvikkvinge1974" id="id11">[167]</a>.</p>
+<span id="id10">[<a class="reference internal" href="../zzz_references_html.html#id179" title="Hartmut H. Hellmer, Stanley S. Jacobs, and Adrian Jenkins. Oceanic erosion of a floating Antarctic glacier in the Amundsen Sea. American Geophysical Union, 1998.">154</a>]</span>, going back to <span id="id11">[<a class="reference internal" href="../zzz_references_html.html#id128" title="Arne Foldvik and Thor Kvinge. Conditional instability of sea water at the freezing point. In Deep Sea Research and Oceanographic Abstracts, volume 21, 169–174. Elsevier, 1974.">162</a>]</span>.</p>
 <p>Given <span class="math notranslate nohighlight">\(T^B(S,h)\)</span> and a function <span class="math notranslate nohighlight">\(\Theta_T^B(T)\)</span> one can define
 <span class="math notranslate nohighlight">\(\Theta^B_{*}(S,h) = \Theta_T^B\left(T^B(S,h)\right)\)</span>.</p>
 <p>The parameterization <span class="math notranslate nohighlight">\(\Theta^B(S,h)\)</span> used here was produced by linearizing
 <span class="math notranslate nohighlight">\(\Theta^B_{*}(S,h)\)</span> near the melting point. (The definition of <span class="math notranslate nohighlight">\(\Theta_T^B(T)\)</span>, converting
 in situ temperature into potential temperature, was adopted from FESOM
-<a class="bibtex reference internal" href="../zzz_references_html.html#wangetal2013" id="id12">[168]</a>).</p>
+<span id="id12">[<a class="reference internal" href="../zzz_references_html.html#id453" title="Q. Wang, S. Danilov, D. Sidorenko, R. Timmermann, C. Wekerle, X. Wang, T. Jung, and J. Schröter. The Finite Element Sea ice-Ocean Model (FESOM): formulation of an unstructured-mesh ocean general circulation model. Geoscientific Model Development Discussions, 6:3893-3976, July 2013. doi:10.5194/gmdd-6-3893-2013.">163</a>]</span>).</p>
 <p>Treating ice thickness, sea water salinity, and sea water potential temperature as “known”
 and choosing an approximation of the temperature gradient at the base <span class="math notranslate nohighlight">\(T_{\text{grad}}\)</span>
 (see below) we can write down a system of equations</p>
@@ -110,7 +112,7 @@ for the sub-shelf melt, sub-shelf freeze-on, and diffusion-only cases.</p>
 <li><p>Melt at the base:</p>
 <div class="math notranslate nohighlight">
 \[T_{\text{grad}} = -\Delta T\, \frac{\partial h\, /\, \partial t}{\kappa}.\]</div>
-<p>See equation 13 in <a class="bibtex reference internal" href="../zzz_references_html.html#hellmeretal1998" id="id13">[12]</a>.</p>
+<p>See equation 13 in <span id="id13">[<a class="reference internal" href="../zzz_references_html.html#id179" title="Hartmut H. Hellmer, Stanley S. Jacobs, and Adrian Jenkins. Oceanic erosion of a floating Antarctic glacier in the Amundsen Sea. American Geophysical Union, 1998.">154</a>]</span>.</p>
 </li>
 <li><p>Freeze on at the base: we assume that</p>
 <div class="math notranslate nohighlight">
@@ -119,7 +121,7 @@ for the sub-shelf melt, sub-shelf freeze-on, and diffusion-only cases.</p>
 <li><p>No melt and no freeze on:</p>
 <div class="math notranslate nohighlight">
 \[T_{\text{grad}} = \frac{\Delta T}{h}.\]</div>
-<p>See <a class="bibtex reference internal" href="../zzz_references_html.html#hollandjenkins1999" id="id14">[11]</a>, equation 21.</p>
+<p>See <span id="id14">[<a class="reference internal" href="../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>, equation 21.</p>
 </li>
 </ul>
 <p>One remaining problem is that we cannot compute the basal melt rate without making an
@@ -134,7 +136,7 @@ h}{\partial t}},\)</span> obtaining</p>
 <div class="math notranslate nohighlight">
 \[w_b = -\frac{\partial h}{\partial t} = \frac{\gamma_S\, \rho_W\, (S^W - S^B)}{\rho_I\, S^B}.\]</div>
 <p>See <a class="reference internal" href="../climate_forcing/ocean.html#sec-ocean-th"><span class="std std-ref">Basal melt rate and temperature from thermodynamics in boundary layer</span></a> for the user’s documentation of this model.</p>
-</div>
+</section>
 
 
       <hr>
@@ -199,7 +201,7 @@ h}{\partial t}},\)</span> obtaining</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -210,9 +212,9 @@ h}{\partial t}},\)</span> obtaining</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

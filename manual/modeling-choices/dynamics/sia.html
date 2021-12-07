@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Shallow ice approximation (SIA) &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Weertman-style sliding law" href="weertman.html" />
     <link rel="prev" title="Shallow shelf approximation (SSA)" href="ssa.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="shallow-ice-approximation-sia">
+  <section id="shallow-ice-approximation-sia">
 <span id="sec-sia"></span><h1>Shallow ice approximation (SIA)<a class="headerlink" href="#shallow-ice-approximation-sia" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -53,7 +55,7 @@ the SIA diffusivity at any grid point exceeds
 problematic model configurations: in many cases it does not make sense to continue a
 simulation if <span class="math notranslate nohighlight">\(D\)</span> is very large.</p>
 </div>
-<div class="section" id="surface-gradient-method">
+<section id="surface-gradient-method">
 <span id="sec-sia-gradient"></span><h2>Surface gradient method<a class="headerlink" href="#surface-gradient-method" title="Permalink to this headline">¶</a></h2>
 <p>PISM computes surface gradients to determine the “driving stress”</p>
 <div class="math notranslate nohighlight">
@@ -64,7 +66,7 @@ the following three finite-difference approximations (selected using
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.surface_gradient_method"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.surface_gradient_method</span></code></a>):</p>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">mahaffy</span></code>: This most “standard” way computes the surface slope onto the staggered
-grid for the SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#mahaffy" id="id1">[81]</a>. It makes <span class="math notranslate nohighlight">\(O(\dx^2,\dy^2)\)</span> errors.</p></li>
+grid for the SIA <span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id288" title="M. W. Mahaffy. A three–dimensional numerical model of ice sheets: tests on the Barnes Ice Cap, Northwest Territories. J. Geophys. Res., 81(6):1059–1066, 1976.">64</a>]</span>. It makes <span class="math notranslate nohighlight">\(O(\dx^2,\dy^2)\)</span> errors.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">haseloff</span></code>: This is the default method. It only differs from <code class="docutils literal notranslate"><span class="pre">mahaffy</span></code> at
 ice-margin locations, where the slope is approximated using one-sided finite
 differences in cases where an adjacent ice-free bedrock surface elevation is above the
@@ -77,8 +79,8 @@ and then differentiate the sum of the thickness and the bed using centered diffe
 <p>Here <span class="math notranslate nohighlight">\(b\)</span> is the bed elevation, <span class="math notranslate nohighlight">\(h\)</span> is the surface elevation, and <span class="math notranslate nohighlight">\(n\)</span> is the Glen
 exponent. This transformation sometimes has the benefits that the surface values of the
 horizontal velocity and vertical velocity, and the driving stress, are better behaved
-near the margin. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkcb" id="id2">[33]</a> for technical explanation of this transformation and
-compare <a class="bibtex reference internal" href="../../../zzz_references_html.html#saitomargin" id="id3">[82]</a>. The actual finite difference schemes applied to compute
+near the margin. See <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id40" title="E. Bueler, C. S. Lingle, J. A. Kallen-Brown, D. N. Covey, and L. N. Bowman. Exact solutions and verification of numerical models for isothermal ice sheets. J. Glaciol., 51(173):291–306, 2005. doi:10.3189/172756505781829449.">58</a>]</span> for technical explanation of this transformation and
+compare <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id388" title="F. Saito, A. Abe-Ouchi, and H. Blatter. An improved numerical scheme to compute horizontal gradients at the ice-sheet margin: its effect on the simulated ice thickness and temperature. Ann. Glaciol., 46:87–96, 2007.">65</a>]</span>. The actual finite difference schemes applied to compute
 the surface slope are similar to option <code class="docutils literal notranslate"><span class="pre">mahaffy</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -89,10 +91,10 @@ should not be used in simulations of marine ice sheets.</p>
 </ol>
 <p>To the best of our knowledge there is no theoretical advice on the best, most robust
 mechanism.</p>
-</div>
-<div class="section" id="parameterization-of-bed-roughness">
+</section>
+<section id="parameterization-of-bed-roughness">
 <span id="sec-bedsmooth"></span><h2>Parameterization of bed roughness<a class="headerlink" href="#parameterization-of-bed-roughness" title="Permalink to this headline">¶</a></h2>
-<p>Schoof <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id4">[83]</a> describes how to alter the SIA stress balance to model
+<p>Schoof <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span> describes how to alter the SIA stress balance to model
 ice flow over bumpy bedrock topgraphy. One computes the amount by which bumpy topography
 lowers the SIA diffusivity. An internal quantity used in this method is a smoothed version
 of the bedrock topography. As a practical matter for PISM, this theory improves the SIA’s
@@ -104,7 +106,7 @@ of PISM’s implementation, see <a class="reference internal" href="../../../tec
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.range"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.range</span></code></a> gives the half-width of the square
 smoothing domain in meters. If zero is given then the mechanism is turned off. The
 mechanism is on by default using executable <code class="docutils literal notranslate"><span class="pre">pismr</span></code>, with the half-width set to 5 km,
-giving Schoof’s recommended smoothing size of 10 km <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id5">[83]</a>.</p></li>
+giving Schoof’s recommended smoothing size of 10 km <span id="id5">[<a class="reference internal" href="../../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.theta_min"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.theta_min</span></code></a> is the minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in
 the parameterization.</p></li>
 </ul>
@@ -118,18 +120,18 @@ this or any other smoothed bed. The field <code class="variable docutils literal
 between <a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.theta_min"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.theta_min</span></code></a> (usually zero) and <span class="math notranslate nohighlight">\(1\)</span>, with
 values significantly below one indicating a reduction in diffusivity, essentially a drag
 coefficient, from bumpy bed.</p>
-</div>
-<div class="section" id="coupling-to-the-age-of-the-ice">
+</section>
+<section id="coupling-to-the-age-of-the-ice">
 <span id="sec-sia-age-coupling"></span><h2>Coupling to the age of the ice<a class="headerlink" href="#coupling-to-the-age-of-the-ice" title="Permalink to this headline">¶</a></h2>
 <p>The age of the ice can be used in two parameterizations in the SIA stress balance model:</p>
 <ol class="arabic">
-<li><p>Ice grain size parameterization based on data from <a class="bibtex reference internal" href="../../../zzz_references_html.html#delachapelleetal98" id="id6">[84]</a> and
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#lipenkovetal89" id="id7">[85]</a> (Vostok core data). In PISM, only the Goldsby-Kohlstedt flow law
+<li><p>Ice grain size parameterization based on data from <span id="id6">[<a class="reference internal" href="../../../zzz_references_html.html#id103" title="S. De La Chapelle, O. Castelnau, V. Lipenkov, and P. Duval. Dynamic recrystallization and texture development in ice as revealed by the study of deep cores in Antarctica and Greenland. J. Geophys. Res., 103(B3):5091–5105, 1998.">67</a>]</span> and
+<span id="id7">[<a class="reference internal" href="../../../zzz_references_html.html#id274" title="V. Lipenkov, N. I. Barkov, P. Duval, and P. Pimienta. Crystalline texture of the 2083 m ice core at Vostok Station, Antarctica. J. Glaciol., 35(1):392–398, 1989.">68</a>]</span> (Vostok core data). In PISM, only the Goldsby-Kohlstedt flow law
 (see <a class="reference internal" href="rheology.html#sec-rheology"><span class="std std-ref">Ice rheology</span></a>) uses the grain size.</p>
 <p>Set <a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.grain_size_age_coupling"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.grain_size_age_coupling</span></code></a> to enable this parameterization.</p>
 </li>
 <li><p>The flow enhancement factor can be coupled to the age of the ice as in
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#greve97greenland" id="id8">[86]</a>: <span class="math notranslate nohighlight">\(e\)</span> in <a class="reference internal" href="rheology.html#equation-eq-sia-enhancement">(12)</a> is set to</p>
+<span id="id8">[<a class="reference internal" href="../../../zzz_references_html.html#id158" title="Ralf Greve. Application of a polythermal three-dimensional ice sheet model to the Greenland ice sheet: Response to steady-state and transient climate scenarios. J. Climate, 10(5):901–918, 1997.">69</a>]</span>: <span class="math notranslate nohighlight">\(e\)</span> in <a class="reference internal" href="rheology.html#equation-eq-sia-enhancement">(12)</a> is set to</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor_interglacial"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enhancement_factor_interglacial</span></code></a> during Eemian and Holocene,</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enhancement_factor</span></code></a> otherwise.</p></li>
@@ -139,25 +141,25 @@ coefficient, from bumpy bed.</p>
 <p>Set <a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.e_age_coupling"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.e_age_coupling</span></code></a> to enable this parameterization.</p>
 </li>
 </ol>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <span id="sec-sia-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">stress_balance.sia.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.Glen_exponent"><code class="docutils literal notranslate"><span class="pre">Glen_exponent</span></code></a> (3) Glen exponent in ice flow law for SIA</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.range"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.range</span></code></a> (5000<em> meters</em>) half-width of smoothing domain in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id9">[83]</a>; set to zero to disable</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.theta_min"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.theta_min</span></code></a> (0) minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofbasaltopg2003" id="id10">[83]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.e_age_coupling"><code class="docutils literal notranslate"><span class="pre">e_age_coupling</span></code></a> (no) Couple the SIA enhancement factor to age as in <a class="bibtex reference internal" href="../../../zzz_references_html.html#greve" id="id11">[36]</a>.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.range"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.range</span></code></a> (5000<em> meters</em>) half-width of smoothing domain in the bed roughness parameterization for SIA <span id="id9">[<a class="reference internal" href="../../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span>; set to zero to disable</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.bed_smoother.theta_min"><code class="docutils literal notranslate"><span class="pre">bed_smoother</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.theta_min</span></code></a> (0) minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in the bed roughness parameterization for SIA <span id="id10">[<a class="reference internal" href="../../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.e_age_coupling"><code class="docutils literal notranslate"><span class="pre">e_age_coupling</span></code></a> (no) Couple the SIA enhancement factor to age as in <span id="id11">[<a class="reference internal" href="../../../zzz_references_html.html#id154" title="R. Greve. A continuum–mechanical formulation for shallow polythermal ice sheets. Phil. Trans. Royal Soc. London A, 355:921–974, 1997.">44</a>]</span>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">enhancement_factor</span></code></a> (1) Flow enhancement factor for SIA</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.enhancement_factor_interglacial"><code class="docutils literal notranslate"><span class="pre">enhancement_factor_interglacial</span></code></a> (1) Flow enhancement factor for SIA; used for ice accumulated during interglacial periods.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The SIA flow law.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.grain_size_age_coupling"><code class="docutils literal notranslate"><span class="pre">grain_size_age_coupling</span></code></a> (no) Use age of the ice to compute grain size to use with the Goldsby-Kohlstedt <a class="bibtex reference internal" href="../../../zzz_references_html.html#goldsbykohlstedt" id="id12">[25]</a> flow law</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.grain_size_age_coupling"><code class="docutils literal notranslate"><span class="pre">grain_size_age_coupling</span></code></a> (no) Use age of the ice to compute grain size to use with the Goldsby-Kohlstedt <span id="id12">[<a class="reference internal" href="../../../zzz_references_html.html#id145" title="D. L. Goldsby and D. L. Kohlstedt. Superplastic deformation of ice: experimental observations. J. Geophys. Res., 106(M6):11017–11030, 2001.">70</a>]</span> flow law</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.limit_diffusivity"><code class="docutils literal notranslate"><span class="pre">limit_diffusivity</span></code></a> (no) Limit SIA diffusivity by <a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.max_diffusivity"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.max_diffusivity</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.max_diffusivity"><code class="docutils literal notranslate"><span class="pre">max_diffusivity</span></code></a> (100<em> m2 s-1</em>) Maximum allowed diffusivity of the SIA flow. PISM stops with an error message if the SIA diffusivity exceeds this limit.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.sia.surface_gradient_method"><code class="docutils literal notranslate"><span class="pre">surface_gradient_method</span></code></a> (<code class="docutils literal notranslate"><span class="pre">haseloff</span></code>) method used for surface gradient calculation at staggered grid points</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -232,7 +234,7 @@ coefficient, from bumpy bed.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -243,9 +245,9 @@ coefficient, from bumpy bed.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

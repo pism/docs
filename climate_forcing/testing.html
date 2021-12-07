@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Testing if forcing data is used correctly &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Surface mass and energy process model components" href="surface.html" />
     <link rel="prev" title="Examples and corresponding options" href="examples.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,13 +33,13 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="testing-if-forcing-data-is-used-correctly">
+  <section id="testing-if-forcing-data-is-used-correctly">
 <h1>Testing if forcing data is used correctly<a class="headerlink" href="#testing-if-forcing-data-is-used-correctly" title="Permalink to this headline">¶</a></h1>
 <p>It is very important to ensure that selected forcing options produce the result you
 expect: we find that the ice sheet response is very sensitive to provided climate forcing,
 especially in short-scale simulations.</p>
 <p>This section describes how to use PISM to inspect climate forcing.</p>
-<div class="section" id="visualizing-climate-inputs-without-ice-dynamics">
+<section id="visualizing-climate-inputs-without-ice-dynamics">
 <h2>Visualizing climate inputs, without ice dynamics<a class="headerlink" href="#visualizing-climate-inputs-without-ice-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>Recall that internally in PISM there is a <a class="reference internal" href="../manual/highlevelview/climate-inputs.html#sec-climate-inputs"><span class="std std-ref">separation of climate inputs from ice
 dynamics</span></a>. This makes it possible to turn “off” the ice dynamics
@@ -62,7 +64,7 @@ pismr -i state.nc -surface given -extra_times 0.0:0.1:2.5 \
 </pre></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">pismr</span> <span class="pre">-eisII</span> <span class="pre">A</span></code> merely generates demonstration climate data, using EISMINT II
-choices <a class="bibtex reference internal" href="../zzz_references_html.html#eismint00" id="id1">[22]</a>. The next run extracts the surface mass balance
+choices <span id="id1">[<a class="reference internal" href="../zzz_references_html.html#id110" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>. The next run extracts the surface mass balance
 <code class="variable docutils literal notranslate"><span class="pre">climatic_mass_balance</span></code> and surface temperature <code class="variable docutils literal notranslate"><span class="pre">ice_surface_temp</span></code> from
 <code class="docutils literal notranslate"><span class="pre">state.nc</span></code>. It then does nothing interesting, exactly because a constant climate is
 used. Viewing <code class="docutils literal notranslate"><span class="pre">movie.nc</span></code> we see these same values as from <code class="docutils literal notranslate"><span class="pre">state.nc</span></code>, in variables
@@ -83,9 +85,9 @@ get the surface mass balance <code class="variable docutils literal notranslate"
 <code class="variable docutils literal notranslate"><span class="pre">air_temp</span></code> and a noticeable decrease in the surface mass balance during summer months
 (see variable <code class="variable docutils literal notranslate"><span class="pre">climatic_mass_balance</span></code>). Note that <code class="variable docutils literal notranslate"><span class="pre">ice_surface_temp</span></code> is constant
 in time: this is the temperature <em>at the ice surface but below firn</em> and it does not
-include seasonal variations <a class="bibtex reference internal" href="../zzz_references_html.html#hock05" id="id2">[23]</a>.</p>
-</div>
-<div class="section" id="using-low-resolution-test-runs">
+include seasonal variations <span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id193" title="R. Hock. Glacier melt: a review of processes and their modelling. Prog. Phys. Geog., 29(3):362–391, 2005.">30</a>]</span>.</p>
+</section>
+<section id="using-low-resolution-test-runs">
 <h2>Using low-resolution test runs<a class="headerlink" href="#using-low-resolution-test-runs" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes a run like the one above is still too costly. In this case it might be helpful
 to replace it with a similar run on a coarser grid, with or without the option
@@ -107,8 +109,8 @@ previous run, but including the full influence of ice dynamics.</p>
 time-series. The variable <code class="docutils literal notranslate"><span class="pre">surface_ice_flux</span></code> (the <em>total over the ice-covered area</em> of
 the surface mass flux) can be used to detect if climate forcing is applied at the right
 time.</p>
-</div>
-<div class="section" id="visualizing-the-climate-inputs-in-the-greenland-case">
+</section>
+<section id="visualizing-the-climate-inputs-in-the-greenland-case">
 <h2>Visualizing the climate inputs in the Greenland case<a class="headerlink" href="#visualizing-the-climate-inputs-in-the-greenland-case" title="Permalink to this headline">¶</a></h2>
 <p>Assuming that <code class="docutils literal notranslate"><span class="pre">g20km_pre100.nc</span></code> was produced by the run described in section
 <a class="reference internal" href="../manual/std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a>), one can run the following to check if the PDD model in PISM (see
@@ -140,12 +142,14 @@ positive degree-days in the given period, because of highs of the air temperatur
 Recall the air temperature graph does not show random daily variations. Even though it
 has the maximum of about <span class="math notranslate nohighlight">\(266\)</span> Kelvin, the parameterized instantaneous air
 temperature can be above freezing. A positive value for positive degree-days is
-expected <a class="bibtex reference internal" href="../zzz_references_html.html#calovgreve05" id="id3">[18]</a>.</p></li>
+expected <span id="id3">[<a class="reference internal" href="../zzz_references_html.html#id85" title="Reinhard Calov and Ralf Greve. Correspondence: A semi-analytical solution for the positive degree-day model with stochastic temperature variations. J. Glaciol, 51(172):173–175, 2005.">147</a>]</span>.</p></li>
 </ol>
-<div class="figure align-default" id="fig-pddseries">
+<figure class="align-default" id="fig-pddseries">
 <img alt="../_images/pdd-movie.png" src="../_images/pdd-movie.png" />
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Time series of the surface mass balance rate and near-surface air temperature.</span><a class="headerlink" href="#fig-pddseries" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Time series of the surface mass balance rate and near-surface air temperature.</span><a class="headerlink" href="#fig-pddseries" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>We can also test the surface temperature forcing code with the following command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i g20km_pre100.nc -surface simple \
       -atmosphere searise_greenland,delta_T \
@@ -161,12 +165,14 @@ expected <a class="bibtex reference internal" href="../zzz_references_html.html#
 <p>This figure shows the GRIP temperature offsets and the time-series of the temperature at
 the ice surface at a point in southern Greenland (bottom graph), confirming that the
 temperature offsets are used correctly.</p>
-<div class="figure align-default" id="fig-artm-timeseries">
+<figure class="align-default" id="fig-artm-timeseries">
 <img alt="../_images/dT-movie.png" src="../_images/dT-movie.png" />
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Time series of the surface temperature compared to GRIP temperature offsets</span><a class="headerlink" href="#fig-artm-timeseries" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Time series of the surface temperature compared to GRIP temperature offsets</span><a class="headerlink" href="#fig-artm-timeseries" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
       <hr>
@@ -232,7 +238,7 @@ temperature offsets are used correctly.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -243,9 +249,9 @@ temperature offsets are used correctly.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

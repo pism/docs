@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>CF standard names used by PISM &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -18,6 +19,7 @@
     <link rel="prev" title="Release checklist" href="release_checklist.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -29,9 +31,9 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="cf-standard-names-used-by-pism">
+  <section id="cf-standard-names-used-by-pism">
 <span id="sec-cf-standard-names"></span><h1>CF standard names used by PISM<a class="headerlink" href="#cf-standard-names-used-by-pism" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="existing-standard-names">
+<section id="existing-standard-names">
 <h2>Existing standard names<a class="headerlink" href="#existing-standard-names" title="Permalink to this headline">¶</a></h2>
 <p>We start by listing standard names from the CF Standard Name Table. The subset here is a
 small subset of the <a class="reference external" href="http://cfconventions.org/standard-names.html">table</a>; we list only</p>
@@ -172,8 +174,8 @@ the canonical units. Generally within PISM, the canonical units are used interna
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="proposed-standard-names">
+</section>
+<section id="proposed-standard-names">
 <h2><em>Proposed</em> standard names<a class="headerlink" href="#proposed-standard-names" title="Permalink to this headline">¶</a></h2>
 <p>These are <em>unofficially</em> proposed by Bueler and Aschwanden, for now.</p>
 <table class="colwidths-given docutils align-default" id="id1">
@@ -244,8 +246,8 @@ of enthalpy</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="final-technical-notes">
+</section>
+<section id="final-technical-notes">
 <h2>Final technical notes<a class="headerlink" href="#final-technical-notes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>PISM also uses attributes <code class="docutils literal notranslate"><span class="pre">grid_mapping</span> <span class="pre">=</span> <span class="pre">&quot;mapping&quot;</span> <span class="pre">;</span></code> and <code class="docutils literal notranslate"><span class="pre">coordinates</span> <span class="pre">=</span> <span class="pre">&quot;lat</span> <span class="pre">lon&quot;;</span></code>
@@ -255,8 +257,8 @@ of the SI units listed above, for instance velocities in m year-1 instead of m s
 is allowed under CF. When PISM reads such a field from a NetCDF file, the conversion is
 handled automatically by <a class="reference external" href="https://www.unidata.ucar.edu/software/udunits/">UDUNITS</a>.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -326,7 +328,7 @@ handled automatically by <a class="reference external" href="https://www.unidata
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -337,9 +339,9 @@ handled automatically by <a class="reference external" href="https://www.unidata
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

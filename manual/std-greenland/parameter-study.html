@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>An ice dynamics parameter study &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Ice dynamics, the PISM view" href="../highlevelview/index.html" />
     <link rel="prev" title="Grid sequencing" href="grid-sequencing.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="an-ice-dynamics-parameter-study">
+  <section id="an-ice-dynamics-parameter-study">
 <span id="sec-paramstudy"></span><h1>An ice dynamics parameter study<a class="headerlink" href="#an-ice-dynamics-parameter-study" title="Permalink to this headline">¶</a></h1>
 <p>The readers of this manual should not assume the PISM authors know all the correct
 parameters for describing ice flow. While PISM must have <em>default</em> values of all
@@ -45,7 +47,7 @@ experimental uncertainty is unlikely to affect model results in any important ma
 <code class="docutils literal notranslate"><span class="pre">constants.sea_water.density</span></code>). For others, however, for instance for the exponent in
 the basal sliding law, changing the value is highly-significant to model results, as we’ll
 see in this subsection. This is also a parameter which is very uncertain given current
-glaciological understanding <a class="bibtex reference internal" href="../../zzz_references_html.html#cuffeypaterson" id="id2">[80]</a>.</p>
+glaciological understanding <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id99" title="K. M. Cuffey and W. S. B. Paterson. The Physics of Glaciers. Elsevier, 4th edition, 2010.">34</a>]</span>.</p>
 <p>To illustrate a parameter study in this Manual we restrict consideration to just two
 important parameters for ice dynamics,</p>
 <ul class="simple">
@@ -54,7 +56,7 @@ the sliding law which relates basal sliding velocity to basal shear stress in th
 stress balance; see subsection <a class="reference internal" href="../modeling-choices/subglacier/basal-strength.html#sec-basestrength"><span class="std std-ref">Controlling basal strength</span></a> for more on this parameter, and</p></li>
 <li><p><span class="math notranslate nohighlight">\(e=\)</span> <a class="reference internal" href="../parameters/index.html#config-stress_balance.sia.enhancement_factor"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enhancement_factor</span></code></a>: values larger
 than one give flow “enhancement” by making the ice deform more easily in shear than is
-determined by the standard flow law <a class="bibtex reference internal" href="../../zzz_references_html.html#lliboutryduval1985" id="id3">[77]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id4">[76]</a>;
+determined by the standard flow law <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id276" title="L. A. Lliboutry and P. Duval. Various isotropic and anisotropic ices found in glaciers and polar ice caps and their corresponding rheologies. Annales Geophys., 3:207–224, 1985.">35</a>]</span>, <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span>;
 applied only in the SIA stress balance; see section <a class="reference internal" href="../modeling-choices/dynamics/rheology.html#sec-rheology"><span class="std std-ref">Ice rheology</span></a> for more on this
 parameter.</p></li>
 </ul>
@@ -106,11 +108,13 @@ p10km_1.0_1.sh  p10km_1.0_3.sh  p10km_1.0_6.sh
 <p>The reader should inspect a few of these scripts. They are all very similar, of course,
 but, for instance, the <code class="docutils literal notranslate"><span class="pre">p10km_0.1_1.sh</span></code> script uses options <code class="docutils literal notranslate"><span class="pre">-pseudo_plastic_q</span> <span class="pre">0.1</span></code>
 and <code class="docutils literal notranslate"><span class="pre">-sia_e</span> <span class="pre">1</span></code>.</p>
-<div class="figure align-default" id="fig-ivolparamstudy">
+<figure class="align-default" id="fig-ivolparamstudy">
 <img alt="../../_images/ivol-param.png" src="../../_images/ivol-param.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from nine runs in our parameter study
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from nine runs in our parameter study
 example, with parameter choices <span class="math notranslate nohighlight">\((q,e)\)</span> given.</span><a class="headerlink" href="#fig-ivolparamstudy" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>We have not yet run PISM, but only asked one script to create nine others. We now have the
 option of running them sequentially or in parallel. Each script itself does a parallel
 run, over the <code class="docutils literal notranslate"><span class="pre">NN=4</span></code> processes specified by <code class="docutils literal notranslate"><span class="pre">param.sh</span></code> when generating the run
@@ -143,14 +147,16 @@ that even small changes in overall ice sheet state (geometry, energy, …) will 
 <em>some</em> location to exceed its yield stress and suddenly change flow regime. This will
 shorten the time steps. By contrast, the <span class="math notranslate nohighlight">\(e\)</span> value is much less significant in
 determining run times.</p>
-<div class="figure align-default" id="fig-paramstudy">
+<figure class="align-default" id="fig-paramstudy">
 <img alt="../../_images/p10km-comparison.png" src="../../_images/p10km-comparison.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Surface speed <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from a 10 km grid parameter study. Right-most subfigure
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Surface speed <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from a 10 km grid parameter study. Right-most subfigure
 is observed data from <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code>. Top row: <span class="math notranslate nohighlight">\(q=0.1\)</span> and
 <span class="math notranslate nohighlight">\(e=1,3,6\)</span> (left-to-right). Middle row: <span class="math notranslate nohighlight">\(q=0.5\)</span>. Bottom row: <span class="math notranslate nohighlight">\(q=1.0\)</span>.
 All subfigures have common color scale (velocity m/year), as shown in the right-most
 figure, with 100 m/year contour shown in all cases (solid black).</span><a class="headerlink" href="#fig-paramstudy" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>On a supercomputer, the <code class="docutils literal notranslate"><span class="pre">runparallel.sh</span></code> script generally should be modified to submit
 jobs to the scheduler. See example scripts <code class="docutils literal notranslate"><span class="pre">advanced/paramspawn.sh</span></code> and
 <code class="docutils literal notranslate"><span class="pre">advanced/paramsubmit.sh</span></code> for a parameter study that does this. (But see your system
@@ -174,15 +180,15 @@ nearly-plastic at top to linear at bottom.</p>
 objective assessment is important. Example objective functionals include:</p>
 <ol class="arabic simple">
 <li><p>compute the integral of the square (or other power) of the difference between the model
-and observed surface velocity <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id5">[66]</a>, or</p></li>
+and observed surface velocity <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id29" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>, or</p></li>
 <li><p>compute the model-observed differences between the histogram of the number of cells
-with a given surface speed <a class="bibtex reference internal" href="../../zzz_references_html.html#bkajs" id="id6">[143]</a>.</p></li>
+with a given surface speed <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id38" title="Ed Bueler, Constantine Khroulev, Andy Aschwanden, Ian Joughin, and Ben E. Smith. Modeled and observed fast flow in the Greenland ice sheet. submitted, 2009.">37</a>]</span>.</p></li>
 </ol>
 <p>Note that these functionals are measuring the effects of changing a small number of
 parameters, namely two parameters in the current study. So-called “inversion” might use
 the same objective functionals but with a much larger parameter space. Inversion is
-therefore capable of achieving much smaller objective measures <a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id7">[67]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#larouretal2012" id="id8">[144]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#priceetal2011" id="id9">[145]</a>, though at the cost of less understanding,
+therefore capable of achieving much smaller objective measures <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id171" title="M. Habermann, M. Truffer, and D. Maxwell. Changing basal conditions during the speed-up of Jakobshavn Isbrae, Greenland. The Cryosphere, 7(6):1679–1692, 2013. doi:10.5194/tc-7-1679-2013.">27</a>]</span>,
+<span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id253" title="E. Larour, H. Seroussi, M. Morlighem, and E. Rignot. Continental scale, high order, high spatial resolution, ice sheet modeling using the Ice Sheet System Model (ISSM). J. Geophys. Res., 2012. doi:10.1029/2011JF002140.">25</a>]</span>, <span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id359" title="S. Price, A. Payne, I. Howat, and B. Smith. Committed sea-level rise for the next century from Greenland ice sheet dynamics during the past decade. Proc. Nat. Acad. Sci., 108(22):8978–8983, 2011. doi:10.1073/pnas.1017313108.">24</a>]</span>, though at the cost of less understanding,
 perhaps, of the meaning of the optimal parameter values.</p>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
@@ -190,7 +196,7 @@ perhaps, of the meaning of the optimal parameter values.</p>
 <dd><p>See <a class="reference internal" href="../parameters/index.html#sec-parameter-list"><span class="std std-ref">Configuration parameters</span></a> for the full list.</p>
 </dd>
 </dl>
-</div>
+</section>
 
 
       <hr>
@@ -266,7 +272,7 @@ perhaps, of the meaning of the optimal parameter values.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -277,9 +283,9 @@ perhaps, of the meaning of the optimal parameter values.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

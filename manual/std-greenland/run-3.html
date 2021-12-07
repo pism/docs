@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Third run: higher resolution &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fourth run: paleo-climate model spin-up" href="run-4.html" />
     <link rel="prev" title="Second run: a better ice-dynamics model" href="run-2.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="third-run-higher-resolution">
+  <section id="third-run-higher-resolution">
 <span id="sec-higherresrun"></span><h1>Third run: higher resolution<a class="headerlink" href="#third-run-higher-resolution" title="Permalink to this headline">¶</a></h1>
 <p>Now we change one key parameter, the grid resolution. Model results differ even when the
 only change is the resolution. Using higher resolution “picks up” more detail in the bed
@@ -43,10 +45,11 @@ elevation and climate data.</p>
 <p>This run might take 4 to 6 hours. However, supposing you have a larger parallel computer,
 you can change “<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">4</span></code>” to “<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">N</span></code>” where <code class="docutils literal notranslate"><span class="pre">N</span></code> is a substantially
 larger number, up to 100 or so with an expectation of reasonable scaling on this grid
-<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id1">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#dickensmorey2013" id="id2">[140]</a>.</p>
-<div class="figure align-default" id="fig-secondoutputfiner">
+<span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id106" title="P. Dickens and T. Morey. Increasing the scalability of PISM for high resolution ice sheet models. In Proceedings of the 14th IEEE International Workshop on Parallel and Distributed Scientific and Engineering Computing, May 2013, Boston. 2013.">11</a>]</span>.</p>
+<figure class="align-default" id="fig-secondoutputfiner">
 <img alt="../../_images/g10km-10ka-hy-usurf-csurf-cbase.png" src="../../_images/g10km-10ka-hy-usurf-csurf-cbase.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g10km_10ka_hy.nc</span></code>.</span><a class="headerlink" href="#fig-secondoutputfiner" title="Permalink to this image">¶</a></p>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g10km_10ka_hy.nc</span></code>.</span><a class="headerlink" href="#fig-secondoutputfiner" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>Compare to <a class="reference internal" href="run-2.html#fig-secondoutputcoarse"><span class="std std-numref">Fig. 4</span></a>, which only differs by resolution.</p>
 <dl class="field-list simple">
@@ -61,14 +64,15 @@ larger number, up to 100 or so with an expectation of reasonable scaling on this
 </dd>
 </dl>
 </div>
-</div>
+</figcaption>
+</figure>
 <p>Some fields from the result <code class="docutils literal notranslate"><span class="pre">g10km_10ka_hy.nc</span></code> are shown in
 <a class="reference internal" href="#fig-secondoutputfiner"><span class="std std-numref">Fig. 6</span></a>. <a class="reference internal" href="run-2.html#fig-csurfvsobserved"><span class="std std-numref">Fig. 5</span></a> also compares observed
 velocity to the model results from 20 km and 10 km grids. As a different comparison,
 <a class="reference internal" href="#fig-ivolboth"><span class="std std-numref">Fig. 7</span></a> shows ice volume time series <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> for 20 km and
 10 km runs done here. We see that this result depends on resolution, in particular because
 higher resolution grids allow the model to better resolve the flux through
-topographically-controlled outlet glaciers (compare <a class="bibtex reference internal" href="../../zzz_references_html.html#pfefferetal2008" id="id3">[148]</a>). However,
+topographically-controlled outlet glaciers (compare <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id346" title="W. T. Pfeffer, J. T. Harper, and S. O'Neel. Kinematic constraints on glacier contributions to 21st-century sea-level rise. Science, 321:1340–1343, 2008.">28</a>]</span>). However,
 because the total ice sheet volume is a highly-averaged quantity, the
 <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> difference from 20 km and 10 km resolution runs is only about one
 part in 60 (about 1.5%) at the final time. By contrast, as is seen in the near-margin ice
@@ -79,13 +83,15 @@ demonstrated to be robust across a range of model parameters, and, in particular
 are shown to be relatively-stable among relatively-high resolution results for a
 particular case. Using a supercomputer is justified merely to confirm that
 lower-resolution runs were already “getting” a given feature or result.</p>
-<div class="figure align-default" id="fig-ivolboth">
+<figure class="align-default" id="fig-ivolboth">
 <img alt="../../_images/ivol-both-g20km-g10km.png" src="../../_images/ivol-both-g20km-g10km.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Time series of modeled ice sheet volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> on 20km and 10km grids.
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Time series of modeled ice sheet volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> on 20km and 10km grids.
 The present-day ice sheet has volume about <span class="math notranslate nohighlight">\(2.9\times 10^6\,\text{km}^3\)</span>
-<a class="bibtex reference internal" href="../../zzz_references_html.html#bamberlayberrygogenini" id="id4">[142]</a>, the initial value seen in both runs.</span><a class="headerlink" href="#fig-ivolboth" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id46" title="J.L. Bamber, R.L. Layberry, and S.P. Gogenini. A new ice thickness and bed data set for the Greenland ice sheet 1: Measurement, data reduction, and errors. J. Geophys. Res., 106 (D24):33,773–33,780, 2001.">6</a>]</span>, the initial value seen in both runs.</span><a class="headerlink" href="#fig-ivolboth" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
       <hr>
@@ -161,7 +167,7 @@ The present-day ice sheet has volume about <span class="math notranslate nohighl
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -172,9 +178,9 @@ The present-day ice sheet has volume about <span class="math notranslate nohighl
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>

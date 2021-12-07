@@ -4,22 +4,24 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Computing steady-state subglacial water flux &#8212; PISM, a Parallel Ice Sheet Model 2.0 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Three-equation ocean model (implementation details)" href="ocean-th.html" />
     <link rel="prev" title="BOMBPROOF, PISM’s numerical scheme for conservation of energy" href="bombproof.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,19 +33,19 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="computing-steady-state-subglacial-water-flux">
+  <section id="computing-steady-state-subglacial-water-flux">
 <span id="sec-steady-hydro"></span><h1>Computing steady-state subglacial water flux<a class="headerlink" href="#computing-steady-state-subglacial-water-flux" title="Permalink to this headline">¶</a></h1>
 <p>The “routing” subglacial hydrology model is described by equations</p>
 <div class="math notranslate nohighlight" id="equation-eq-hydrology-routing">
 <span class="eqno">(85)<a class="headerlink" href="#equation-eq-hydrology-routing" title="Permalink to this equation">¶</a></span>\[ \begin{align}\begin{aligned}\diff{W}{t} + \diff{\Wtill}{t} + \Div \bq = \frac{m}{\rho_w}\\\diff{\Wtill}{t} = \frac{m}{\rho_w} - C_d\\\bq = -k W^{\alpha} |\nabla \psi|^{\beta - 2} \nabla \psi\\\psi = P_o + \rho_w g (b + W)\end{aligned}\end{align} \]</div>
 <p>on a an ice covered area <span class="math notranslate nohighlight">\(\Omega\)</span>. We assume zero flux boundary conditions on the inflow
 part of the boundary and no boundary condition on the outflow boundary. See
-<a class="bibtex reference internal" href="../zzz_references_html.html#buelervanpelt2015" id="id1">[110]</a> (equations 1, 2, 6, 16, 26) for details and the notation. Here
+<span id="id1">[<a class="reference internal" href="../zzz_references_html.html#id79" title="E. Bueler and W. van Pelt. Mass-conserving subglacial hydrology in the parallel ice sheet model version 0.6. Geoscientific Model Development, 8(6):1613–1635, 2015. doi:10.5194/gmd-8-1613-2015.">86</a>]</span> (equations 1, 2, 6, 16, 26) for details and the notation. Here
 we also assume that <span class="math notranslate nohighlight">\(m \ge 0\)</span>.</p>
 <p>Our goal is to estimate <span class="math notranslate nohighlight">\(Q = \bq \cdot \n\)</span>, the flux through the outflow part of the
 boundary of <span class="math notranslate nohighlight">\(\Omega\)</span> corresponding to the steady state of <a class="reference internal" href="#equation-eq-hydrology-routing">(85)</a> using
 a method that is computationally cheaper than using the explicit in time approximation
-of <a class="reference internal" href="#equation-eq-hydrology-routing">(85)</a> described by <a class="bibtex reference internal" href="../zzz_references_html.html#buelervanpelt2015" id="id2">[110]</a>.</p>
+of <a class="reference internal" href="#equation-eq-hydrology-routing">(85)</a> described by <span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id79" title="E. Bueler and W. van Pelt. Mass-conserving subglacial hydrology in the parallel ice sheet model version 0.6. Geoscientific Model Development, 8(6):1613–1635, 2015. doi:10.5194/gmd-8-1613-2015.">86</a>]</span>.</p>
 <p>Pick a contiguous section <span class="math notranslate nohighlight">\(\omega\)</span> of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> (the terminus of an outlet
 glacier, for example). Let <span class="math notranslate nohighlight">\(B\)</span> be the union of all the trajectories of the vector field
 <span class="math notranslate nohighlight">\(\bq\)</span> in <span class="math notranslate nohighlight">\(\Omega\)</span> that pass through <span class="math notranslate nohighlight">\(\omega\)</span>. The area <span class="math notranslate nohighlight">\(B\)</span> is the “drainage basin”
@@ -119,7 +121,7 @@ plus a small increment <span class="math notranslate nohighlight">\(\Delta \psi\
 <span class="math notranslate nohighlight">\(\omega\)</span>: it is defined by <span class="math notranslate nohighlight">\(\psi\)</span> and therefore an approximation of
 <a class="reference internal" href="#equation-eq-emptying-problem">(87)</a> will automatically distribute water inputs from the ice surface
 (or melting) along the ice margin.</p>
-<div class="section" id="the-algorithm">
+<section id="the-algorithm">
 <span id="sec-steady-hydro-algorithm"></span><h2>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>Using an explicit time stepping approximation of <a class="reference internal" href="#equation-eq-emptying-problem">(87)</a> we can estimate
 <span class="math notranslate nohighlight">\(\int_{\omega} \bq \cdot \n \; ds\)</span> as follows.</p>
@@ -153,8 +155,8 @@ as described above.</p></li>
 <dd><p>The constant <span class="math notranslate nohighlight">\(\tau\)</span> is needed to get appropriate units, but its value is irrelevant.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -222,7 +224,7 @@ as described above.</p></li>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -233,9 +235,9 @@ as described above.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0
+      Git revision v2.0-3-g8ae5d69d3
       committed by Constantine Khrulev
-      on 2021-12-03 14:57:56 -0900 |
+      on 2021-12-07 13:18:02 -0900 |
       &copy; 2004--2021, the PISM authors.
       
     </div>
