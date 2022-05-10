@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Installing parallel I/O libraries &#8212; PISM, a Parallel Ice Sheet Model 2.0.2 documentation</title>
+    <title>Installing parallel I/O libraries &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -99,26 +99,29 @@ hides numerous compiler warnings emitted when building HDF5.</p>
 <span class="linenos"> 6</span><span class="nv">version</span><span class="o">=</span><span class="m">4</span>.7.4
 <span class="linenos"> 7</span><span class="nv">prefix</span><span class="o">=</span><span class="nv">$HOME</span>/local/netcdf
 <span class="linenos"> 8</span><span class="nv">build_dir</span><span class="o">=</span>~/local/build/netcdf
-<span class="linenos"> 9</span><span class="nv">url</span><span class="o">=</span>ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-c-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
+<span class="linenos"> 9</span><span class="nv">url</span><span class="o">=</span>https://github.com/Unidata/netcdf-c/archive/refs/tags/v<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
 <span class="linenos">10</span>
 <span class="linenos">11</span>mkdir -p <span class="si">${</span><span class="nv">build_dir</span><span class="si">}</span>
 <span class="linenos">12</span><span class="nb">pushd</span> <span class="si">${</span><span class="nv">build_dir</span><span class="si">}</span>
 <span class="linenos">13</span>
 <span class="linenos">14</span>wget -nc <span class="si">${</span><span class="nv">url</span><span class="si">}</span>
-<span class="linenos">15</span>tar zxf netcdf-c-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
+<span class="linenos">15</span>tar zxf v<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
 <span class="linenos">16</span>
 <span class="linenos">17</span><span class="nb">pushd</span> netcdf-c-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>
 <span class="linenos">18</span>
-<span class="linenos">19</span><span class="nv">CC</span><span class="o">=</span>mpicc <span class="nv">CPPFLAGS</span><span class="o">=</span>-I<span class="si">${</span><span class="nv">hdf5</span><span class="si">}</span>/include <span class="nv">LDFLAGS</span><span class="o">=</span>-L<span class="si">${</span><span class="nv">hdf5</span><span class="si">}</span>/lib ./configure <span class="se">\</span>
-<span class="linenos">20</span>        --enable-netcdf4 <span class="se">\</span>
-<span class="linenos">21</span>        --disable-dap <span class="se">\</span>
-<span class="linenos">22</span>        --prefix<span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_configure.log
-<span class="linenos">23</span>
-<span class="linenos">24</span>make all <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_compile.log
-<span class="linenos">25</span>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_install.log
+<span class="linenos">19</span><span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O0&quot;</span>
+<span class="linenos">20</span><span class="nb">unset</span> CFLAGS
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="nv">CC</span><span class="o">=</span>mpicc <span class="nv">CPPFLAGS</span><span class="o">=</span>-I<span class="si">${</span><span class="nv">hdf5</span><span class="si">}</span>/include <span class="nv">LDFLAGS</span><span class="o">=</span>-L<span class="si">${</span><span class="nv">hdf5</span><span class="si">}</span>/lib ./configure <span class="se">\</span>
+<span class="linenos">23</span>        --enable-netcdf4 <span class="se">\</span>
+<span class="linenos">24</span>        --disable-dap <span class="se">\</span>
+<span class="linenos">25</span>        --prefix<span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_configure.log
 <span class="linenos">26</span>
-<span class="linenos">27</span><span class="nb">popd</span>
-<span class="linenos">28</span><span class="nb">popd</span>
+<span class="linenos">27</span>make all <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_compile.log
+<span class="linenos">28</span>make install <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee netcdf_install.log
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="nb">popd</span>
+<span class="linenos">31</span><span class="nb">popd</span>
 </pre></div>
 </div>
 <p>Here we use the same compiler wrapper and set <code class="docutils literal notranslate"><span class="pre">CPPFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> to select the
@@ -181,7 +184,7 @@ PISM).</p>
 <span class="linenos">16</span>git clone <span class="si">${</span><span class="nv">url</span><span class="si">}</span> <span class="si">${</span><span class="nv">build</span><span class="si">}</span>/sources
 <span class="linenos">17</span>
 <span class="linenos">18</span><span class="nb">pushd</span> <span class="si">${</span><span class="nv">build</span><span class="si">}</span>/sources
-<span class="linenos">19</span>git checkout -b 2_5_4 pio2_5_4
+<span class="linenos">19</span>git checkout -b 2_5_7 pio2_5_7
 <span class="linenos">20</span><span class="nb">popd</span>
 <span class="linenos">21</span>
 <span class="linenos">22</span><span class="nb">pushd</span> <span class="si">${</span><span class="nv">build</span><span class="si">}</span>/build
@@ -281,9 +284,9 @@ disable ParallelIO features not used by PISM.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.1-11-g55dfa6447
+      Git revision v2.0.2-19-gb2584a1d8
       committed by Constantine Khrulev
-      on 2022-02-07 13:53:57 -0900 |
+      on 2022-05-10 15:09:41 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>
