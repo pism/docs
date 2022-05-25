@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>ISMIP6 Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISMIP6 Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Simplified geometry experiments" href="../simplified-geometry/index.html" />
     <link rel="prev" title="Managing source code modifications" href="modifying-pism.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,12 +31,12 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="sec-ismip6">
+  <div class="section" id="sec-ismip6">
 <span id="id1"></span><h1>ISMIP6 Greenland<a class="headerlink" href="#sec-ismip6" title="Permalink to this headline">¶</a></h1>
 <p>Running <a class="reference external" href="https://www.climate-cryosphere.org/wiki/index.php?title=ISMIP6-Projections-Greenland">ISMIP6-Greenland</a> projections required implementing some additional sub-models as
 well as several modifications needed to follow ISMIP6 conventions. This section describes
 these modifications and explains how to use PISM to run ISMIP6 projections.</p>
-<section id="top-surface-mass-balance-and-temperature">
+<div class="section" id="top-surface-mass-balance-and-temperature">
 <h2>Top surface mass balance and temperature<a class="headerlink" href="#top-surface-mass-balance-and-temperature" title="Permalink to this headline">¶</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">ismip6</span></code> surface model to implement ISMIP6 surface mass balance forcing.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pismr -surface ismip6 <span class="se">\</span>
@@ -63,8 +61,8 @@ these modifications and explains how to use PISM to run ISMIP6 projections.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SMB(x,y,t) = SMB_ref(x,y) + aSMB(x,y,t) + dSMBdz(x,y) * [h(x,y,t) - h_ref(x,y)]
 </pre></div>
 </div>
-</section>
-<section id="frontal-melt-parameterization">
+</div>
+<div class="section" id="frontal-melt-parameterization">
 <span id="sec-ismip6-frontal-melt"></span><h2>Frontal melt parameterization<a class="headerlink" href="#frontal-melt-parameterization" title="Permalink to this headline">¶</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">discharge_given</span></code> frontal melt model to implement the ISMIP6 frontal melt
 parameterization.</p>
@@ -76,13 +74,13 @@ parameterization.</p>
 of adjacent ocean, <em>degrees Celsius</em>) and <code class="variable docutils literal notranslate"><span class="pre">subglacial_discharge</span></code> (water flux per unit
 area of submerged ice front, <span class="math notranslate nohighlight">\(kg / (m^2 s)\)</span>).</p>
 <p>These inputs are used in the frontal melt parameterization described in
-<span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id374" title="E. Rignot, Y. Xu, D. Menemenlis, J. Mouginot, B. Scheuchl, X. Li, M. Morlighem, H. Seroussi, M. van den Broeke, I. Fenty, C. Cai, L. An, and B. de Fleurian. Modeling of ocean-induced ice melt rates of five west greenland glaciers over the past two decades. Geophysical Research Letters, 43(12):6374-6382, 2016. doi:10.1002/2016GL068784.">109</a>]</span>:</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#rignotetal2016" id="id2">[121]</a>:</p>
 <div class="math notranslate nohighlight">
 \[q_m = (A\, h\, q_{sg}^{\alpha} + B)\, \theta^{\beta}\]</div>
 <p>Here <span class="math notranslate nohighlight">\(q_m\)</span> is the frontal melt rate in <em>m/day</em>, <span class="math notranslate nohighlight">\(h\)</span> is the water depth at an ice front,
 <span class="math notranslate nohighlight">\(\theta\)</span> in the <em>thermal forcing</em> and <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> are model parameters.</p>
-</section>
-<section id="parameterized-front-retreat">
+</div>
+<div class="section" id="parameterized-front-retreat">
 <h2>Parameterized front retreat<a class="headerlink" href="#parameterized-front-retreat" title="Permalink to this headline">¶</a></h2>
 <p>To use the <a class="reference external" href="https://www.climate-cryosphere.org/wiki/index.php?title=ISMIP6-Projections-Greenland">parameterized front retreat mechanism</a> use the
 <a class="reference internal" href="../modeling-choices/marine/calving.html#sec-prescribed-retreat"><span class="std std-ref">Prescribed front retreat</span></a> mechanism.</p>
@@ -94,8 +92,8 @@ area of submerged ice front, <span class="math notranslate nohighlight">\(kg / (
 <p>Mass losses resulting from applying this mechanism are reported as a part of
 <code class="variable docutils literal notranslate"><span class="pre">tendency_of_ice_amount_due_to_discharge</span></code> and related diagnostics (i.e. they are
 <em>not</em> attributed to calving or frontal melt).</p>
-</section>
-<section id="output-variables">
+</div>
+<div class="section" id="output-variables">
 <h2>Output variables<a class="headerlink" href="#output-variables" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference internal" href="#tab-ismip6-variables"><span class="std std-numref">Table 30</span></a> for a list of variables requested by ISMIP6. Note that
 they have names different from the ones listed in <a class="reference internal" href="../diagnostics/index.html#sec-extra-vars"><span class="std std-ref">Spatially-variable fields</span></a> and use MKS units.
@@ -282,8 +280,8 @@ required to provide. (Add <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-</section>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -367,7 +365,7 @@ required to provide. (Add <code class="docutils literal notranslate"><span class
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -378,9 +376,9 @@ required to provide. (Add <code class="docutils literal notranslate"><span class
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

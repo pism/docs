@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Atmosphere model components &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atmosphere model components &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ocean model components" href="ocean.html" />
     <link rel="prev" title="Surface mass and energy process model components" href="surface.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,7 +31,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="atmosphere-model-components">
+  <div class="section" id="atmosphere-model-components">
 <h1><a class="toc-backref" href="#id25">Atmosphere model components</a><a class="headerlink" href="#atmosphere-model-components" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
@@ -56,7 +54,7 @@
 </li>
 </ul>
 </div>
-<section id="reading-boundary-conditions-from-a-file">
+<div class="section" id="reading-boundary-conditions-from-a-file">
 <span id="sec-atmosphere-given"></span><h2><a class="toc-backref" href="#id26">Reading boundary conditions from a file</a><a class="headerlink" href="#reading-boundary-conditions-from-a-file" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -89,8 +87,8 @@ data, e.g. using monthly records of <code class="variable docutils literal notra
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.given.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing climate forcing fields.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.given.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="cosine-yearly-cycle">
+</div>
+<div class="section" id="cosine-yearly-cycle">
 <span id="sec-atmosphere-yearly-cycle"></span><h2><a class="toc-backref" href="#id27">Cosine yearly cycle</a><a class="headerlink" href="#cosine-yearly-cycle" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -128,8 +126,8 @@ option. Without this option <span class="math notranslate nohighlight">\(A(\math
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.yearly_cycle.scaling.file"><code class="docutils literal notranslate"><span class="pre">scaling</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a> Name of the file containing amplitude scaling (<code class="variable docutils literal notranslate"><span class="pre">amplitude_scaling</span></code>) for the near-surface air temperature.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.yearly_cycle.scaling.periodic"><code class="docutils literal notranslate"><span class="pre">scaling</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="sec-atmosphere-searise-greenland">
+</div>
+<div class="section" id="sec-atmosphere-searise-greenland">
 <span id="id1"></span><h2><a class="toc-backref" href="#id28">SeaRISE-Greenland</a><a class="headerlink" href="#sec-atmosphere-searise-greenland" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -149,29 +147,29 @@ option. Without this option <span class="math notranslate nohighlight">\(A(\math
 </dl>
 <p>This atmosphere model component implements a longitude, latitude, and elevation dependent
 near-surface air temperature parameterization and a cosine yearly cycle described in
-<span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span> and uses a constant in time ice-equivalent precipitation field (in units
+<a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id2">[1]</a> and uses a constant in time ice-equivalent precipitation field (in units
 of thickness per time, variable <code class="variable docutils literal notranslate"><span class="pre">precipitation</span></code>) that is read from an input (<code class="docutils literal notranslate"><span class="pre">-i</span></code>)
 file. To read time-independent precipitation from a different file, use the option
 <code class="option docutils literal notranslate"><span class="pre">-atmosphere_searise_greenland_file</span></code>.</p>
 <p>The air temperature parameterization is controlled by configuration parameters with the
 prefix <code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp</span></code>:</p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.c_ma"><code class="docutils literal notranslate"><span class="pre">c_ma</span></code></a> (-0.7189<em> Kelvin / degree_north</em>) latitude-dependence coefficient for formula (1) in <span id="id3">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.c_mj"><code class="docutils literal notranslate"><span class="pre">c_mj</span></code></a> (-0.1585<em> Kelvin / degree_north</em>) latitude-dependence coefficient for formula (2) in <span id="id4">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.d_ma"><code class="docutils literal notranslate"><span class="pre">d_ma</span></code></a> (314.98<em> Kelvin</em>) 41.83+273.15; base temperature for formula (1) in <span id="id5">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.d_mj"><code class="docutils literal notranslate"><span class="pre">d_mj</span></code></a> (287.85<em> Kelvin</em>) = 14.70+273.15; base temperature for formula (2) in <span id="id6">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.gamma_ma"><code class="docutils literal notranslate"><span class="pre">gamma_ma</span></code></a> (-0.006309<em> Kelvin / meter</em>) = -6.309 / 1km; mean slope lapse rate for formula (1) in <span id="id7">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.gamma_mj"><code class="docutils literal notranslate"><span class="pre">gamma_mj</span></code></a> (-0.005426<em> Kelvin / meter</em>) = -5.426 / 1km; mean slope lapse rate for formula (2) in <span id="id8">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.kappa_ma"><code class="docutils literal notranslate"><span class="pre">kappa_ma</span></code></a> (0.0672<em> Kelvin / degree_west</em>) longitude-dependence coefficient for formula (1) in <span id="id9">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.kappa_mj"><code class="docutils literal notranslate"><span class="pre">kappa_mj</span></code></a> (0.0518<em> Kelvin / degree_west</em>) longitude-dependence coefficient for formula (2) in <span id="id10">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.summer_peak_day"><code class="docutils literal notranslate"><span class="pre">summer_peak_day</span></code></a> (196<em> ordinal day number</em>) day of year for July 15; used in corrected formula (4) in <span id="id11">[<a class="reference internal" href="../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.c_ma"><code class="docutils literal notranslate"><span class="pre">c_ma</span></code></a> (-0.7189<em> Kelvin / degree_north</em>) latitude-dependence coefficient for formula (1) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id3">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.c_mj"><code class="docutils literal notranslate"><span class="pre">c_mj</span></code></a> (-0.1585<em> Kelvin / degree_north</em>) latitude-dependence coefficient for formula (2) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id4">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.d_ma"><code class="docutils literal notranslate"><span class="pre">d_ma</span></code></a> (314.98<em> Kelvin</em>) 41.83+273.15; base temperature for formula (1) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id5">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.d_mj"><code class="docutils literal notranslate"><span class="pre">d_mj</span></code></a> (287.85<em> Kelvin</em>) = 14.70+273.15; base temperature for formula (2) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id6">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.gamma_ma"><code class="docutils literal notranslate"><span class="pre">gamma_ma</span></code></a> (-0.006309<em> Kelvin / meter</em>) = -6.309 / 1km; mean slope lapse rate for formula (1) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id7">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.gamma_mj"><code class="docutils literal notranslate"><span class="pre">gamma_mj</span></code></a> (-0.005426<em> Kelvin / meter</em>) = -5.426 / 1km; mean slope lapse rate for formula (2) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id8">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.kappa_ma"><code class="docutils literal notranslate"><span class="pre">kappa_ma</span></code></a> (0.0672<em> Kelvin / degree_west</em>) longitude-dependence coefficient for formula (1) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id9">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.kappa_mj"><code class="docutils literal notranslate"><span class="pre">kappa_mj</span></code></a> (0.0518<em> Kelvin / degree_west</em>) longitude-dependence coefficient for formula (2) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id10">[1]</a></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.fausto_air_temp.summer_peak_day"><code class="docutils literal notranslate"><span class="pre">summer_peak_day</span></code></a> (196<em> ordinal day number</em>) day of year for July 15; used in corrected formula (4) in <a class="bibtex reference internal" href="../zzz_references_html.html#faustoetal2009" id="id11">[1]</a></p></li>
 </ol>
 <p>See <a class="reference internal" href="#sec-atmosphere-precip-scaling"><span class="std std-ref">Precipitation correction using scalar temperature offsets</span></a> for an implementation of the SeaRISE-Greenland
 formula for precipitation adjustment using air temperature offsets relative to present; a
 7.3% change of precipitation rate for every one degree Celsius of temperature change
-<span id="id12">[<a class="reference internal" href="../zzz_references_html.html#id208" title="P. Huybrechts. Sea-level changes at the LGM from ice-dynamic reconstructions of the Greenland and Antarctic ice sheets during the glacial cycles. Quat. Sci. Rev., 21:203–231, 2002.">31</a>]</span>.</p>
-</section>
-<section id="pik">
+<a class="bibtex reference internal" href="../zzz_references_html.html#huybrechts02" id="id12">[2]</a>.</p>
+</div>
+<div class="section" id="pik">
 <span id="sec-atmosphere-pik"></span><h2><a class="toc-backref" href="#id29">PIK</a><a class="headerlink" href="#pik" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -209,16 +207,16 @@ near-surface air temperature.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">martin</span></code> (default)</p></td>
-<td><p>Uses equation (1) from <span id="id13">[<a class="reference internal" href="../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span> to parameterize mean annual
+<td><p>Uses equation (1) from <a class="bibtex reference internal" href="../zzz_references_html.html#martinetal2011" id="id13">[3]</a> to parameterize mean annual
 temperature with <em>no seasonal variation in temperature.</em></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">huybrechts_dewolde</span></code></p></td>
 <td><p>Mean annual and mean summer temperatures are computed using parameterizations for
-the Antarctic ice sheet described in <span id="id14">[<a class="reference internal" href="../zzz_references_html.html#id211" title="P. Huybrechts and J. de Wolde. The dynamic response of the Greenland and Antarctic ice sheets to multiple-century climatic warming. J. Climate, 12:2169–2188, 1999.">45</a>]</span> (equations C1 and C2).</p></td>
+the Antarctic ice sheet described in <a class="bibtex reference internal" href="../zzz_references_html.html#huybrechtsdewolde" id="id14">[4]</a> (equations C1 and C2).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">martin_huybrechts_dewolde</span></code></p></td>
-<td><p>Hybrid of the two above: mean annual temperature as in <span id="id15">[<a class="reference internal" href="../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span> with
-the amplitude of the annual cycle from <span id="id16">[<a class="reference internal" href="../zzz_references_html.html#id211" title="P. Huybrechts and J. de Wolde. The dynamic response of the Greenland and Antarctic ice sheets to multiple-century climatic warming. J. Climate, 12:2169–2188, 1999.">45</a>]</span>.</p></td>
+<td><p>Hybrid of the two above: mean annual temperature as in <a class="bibtex reference internal" href="../zzz_references_html.html#martinetal2011" id="id15">[3]</a> with
+the amplitude of the annual cycle from <a class="bibtex reference internal" href="../zzz_references_html.html#huybrechtsdewolde" id="id16">[4]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">era_interim</span></code></p></td>
 <td><p>Mean annual and mean summer temperatures use parameterizations based on multiple
@@ -236,8 +234,8 @@ regression analysis of ERA INTERIM data with a <span class="math notranslate noh
 </table>
 <p>See <a class="reference internal" href="surface.html#sec-surface-pik"><span class="std std-ref">PIK</span></a> for a surface model that implements the <code class="docutils literal notranslate"><span class="pre">martin</span></code> choice as a
 parameterization of the ice temperature at its top surface.</p>
-</section>
-<section id="one-weather-station">
+</div>
+<div class="section" id="one-weather-station">
 <span id="sec-atmosphere-one-station"></span><h2><a class="toc-backref" href="#id30">One weather station</a><a class="headerlink" href="#one-weather-station" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -259,8 +257,8 @@ are constant in space but not necessarily in time.</p>
 <p>The <code class="option docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">one_station</span></code> model should be used with a modifier such as
 <code class="docutils literal notranslate"><span class="pre">elevation_change</span></code> (see section <a class="reference internal" href="#sec-atmosphere-elevation-change"><span class="std std-ref">Adjustments using modeled change in surface elevation</span></a>) to create spatial
 variablitity.</p>
-</section>
-<section id="scalar-temperature-offsets">
+</div>
+<div class="section" id="scalar-temperature-offsets">
 <span id="sec-atmosphere-delta-t"></span><h2><a class="toc-backref" href="#id31">Scalar temperature offsets</a><a class="headerlink" href="#scalar-temperature-offsets" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -282,8 +280,8 @@ atmosphere model.</p>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.delta_T.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing temperature offsets.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.delta_T.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="scalar-precipitation-offsets">
+</div>
+<div class="section" id="scalar-precipitation-offsets">
 <span id="sec-atmosphere-delta-p"></span><h2><a class="toc-backref" href="#id32">Scalar precipitation offsets</a><a class="headerlink" href="#scalar-precipitation-offsets" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -304,8 +302,8 @@ atmosphere model.</p>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.delta_P.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing scalar precipitation offsets.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.delta_P.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="precipitation-scaling">
+</div>
+<div class="section" id="precipitation-scaling">
 <span id="sec-atmosphere-frac-p"></span><h2><a class="toc-backref" href="#id33">Precipitation scaling</a><a class="headerlink" href="#precipitation-scaling" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -331,8 +329,8 @@ time-and-space-dependent scaling factor.</p>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.frac_P.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing scalar precipitation scaling.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.frac_P.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="precipitation-correction-using-scalar-temperature-offsets">
+</div>
+<div class="section" id="precipitation-correction-using-scalar-temperature-offsets">
 <span id="sec-atmosphere-precip-scaling"></span><h2><a class="toc-backref" href="#id34">Precipitation correction using scalar temperature offsets</a><a class="headerlink" href="#precipitation-correction-using-scalar-temperature-offsets" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -347,7 +345,7 @@ time-and-space-dependent scaling factor.</p>
 </dl>
 <p>This modifier implements the SeaRISE-Greenland formula for a precipitation correction from
 present; a 7.3% change of precipitation rate for every one degree Celsius of air
-temperature change <span id="id17">[<a class="reference internal" href="../zzz_references_html.html#id208" title="P. Huybrechts. Sea-level changes at the LGM from ice-dynamic reconstructions of the Greenland and Antarctic ice sheets during the glacial cycles. Quat. Sci. Rev., 21:203–231, 2002.">31</a>]</span>. See <a class="reference external" href="http://websrv.cs.umt.edu/isis/index.php/Model_Initialization#Greenland">SeaRISE Greenland model initialization</a> for details. The input file should contain air temperature offsets
+temperature change <a class="bibtex reference internal" href="../zzz_references_html.html#huybrechts02" id="id17">[2]</a>. See <a class="reference external" href="http://websrv.cs.umt.edu/isis/index.php/Model_Initialization#Greenland">SeaRISE Greenland model initialization</a> for details. The input file should contain air temperature offsets
 in the format used by <code class="docutils literal notranslate"><span class="pre">-atmosphere</span> <span class="pre">...,delta_T</span></code> modifier, see section <a class="reference internal" href="#sec-atmosphere-delta-t"><span class="std std-ref">Scalar temperature offsets</span></a>.</p>
 <p>This mechanisms increases precipitation by <span class="math notranslate nohighlight">\(100(\exp(C) - 1)\)</span> percent for each degree of
 temperature increase, where</p>
@@ -358,8 +356,8 @@ temperature increase, where</p>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.precip_scaling.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing temperature offsets to use for a precipitation correction.</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.precip_scaling.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</section>
-<section id="adjustments-using-modeled-change-in-surface-elevation">
+</div>
+<div class="section" id="adjustments-using-modeled-change-in-surface-elevation">
 <span id="sec-atmosphere-elevation-change"></span><h2><a class="toc-backref" href="#id35">Adjustments using modeled change in surface elevation</a><a class="headerlink" href="#adjustments-using-modeled-change-in-surface-elevation" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -419,8 +417,8 @@ temperature increase.</p>
 surface elevation records to use lapse rate corrections relative to a time-dependent
 surface. If one record is provided, the reference surface elevation is assumed to be
 time-independent.</p>
-</section>
-<section id="using-climate-data-anomalies">
+</div>
+<div class="section" id="using-climate-data-anomalies">
 <span id="sec-atmosphere-anomaly"></span><h2><a class="toc-backref" href="#id36">Using climate data anomalies</a><a class="headerlink" href="#using-climate-data-anomalies" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -444,8 +442,8 @@ time-independent.</p>
 </ol>
 <p>See also to <code class="docutils literal notranslate"><span class="pre">-surface</span> <span class="pre">...,anomaly</span></code> (section <a class="reference internal" href="surface.html#sec-surface-anomaly"><span class="std std-ref">Using climate data anomalies</span></a>), which is
 similar but applies anomalies at the surface level.</p>
-</section>
-<section id="orographic-precipitation">
+</div>
+<div class="section" id="orographic-precipitation">
 <span id="sec-orographic-precipitation"></span><h2><a class="toc-backref" href="#id37">Orographic precipitation</a><a class="headerlink" href="#orographic-precipitation" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Options</dt>
@@ -459,17 +457,17 @@ similar but applies anomalies at the surface level.</p>
 </dd>
 </dl>
 <p>This modifier implements the linear orographic precipitation model described in
-<span id="id18">[<a class="reference internal" href="../zzz_references_html.html#id52" title="Ronald B Smith and Idar Barstad. A linear theory of orographic precipitation. Journal of the Atmospheric Sciences, 61(12):1377–1391, 2004.">151</a>]</span> with a modification incorporating the influence of the Coriolis
-force from <span id="id19">[<a class="reference internal" href="../zzz_references_html.html#id53" title="Ronald B Smith, Idar Barstad, and Laurent Bonneau. Orographic precipitation and oregon’s climate transition. Journal of the Atmospheric Sciences, 62(1):177–191, 2005.">152</a>]</span>.</p>
+<a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstad2004" id="id18">[5]</a> with a modification incorporating the influence of the Coriolis
+force from <a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstadbonneau2005" id="id19">[6]</a>.</p>
 <p>We compute the Fourier transform of the precipitation field using the formula below (see
-equation 49 in <span id="id20">[<a class="reference internal" href="../zzz_references_html.html#id52" title="Ronald B Smith and Idar Barstad. A linear theory of orographic precipitation. Journal of the Atmospheric Sciences, 61(12):1377–1391, 2004.">151</a>]</span> or equation 3 in <span id="id21">[<a class="reference internal" href="../zzz_references_html.html#id53" title="Ronald B Smith, Idar Barstad, and Laurent Bonneau. Orographic precipitation and oregon’s climate transition. Journal of the Atmospheric Sciences, 62(1):177–191, 2005.">152</a>]</span>).</p>
+equation 49 in <a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstad2004" id="id20">[5]</a> or equation 3 in <a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstadbonneau2005" id="id21">[6]</a>).</p>
 <div class="math notranslate nohighlight" id="equation-eq-orographic-precipitation">
 <span class="eqno">(43)<a class="headerlink" href="#equation-eq-orographic-precipitation" title="Permalink to this equation">¶</a></span>\[\hat P_{\text{LT}}(k, l) = \frac{C_w i \sigma \hat h(k, l)}
 {(1 - i m H_w) (1 + i \sigma \tau_c) (1 + i \sigma \tau_f)},\]</div>
 <p>where <span class="math notranslate nohighlight">\(h\)</span> is the surface elevation, <span class="math notranslate nohighlight">\(C_w = \rho_{S_{\text{ref}}} \Gamma_m / \gamma\)</span>
 relates the condensation rate to vertical motion (see the appendix of
-<span id="id22">[<a class="reference internal" href="../zzz_references_html.html#id52" title="Ronald B Smith and Idar Barstad. A linear theory of orographic precipitation. Journal of the Atmospheric Sciences, 61(12):1377–1391, 2004.">151</a>]</span>), <span class="math notranslate nohighlight">\(m\)</span> is the vertical wavenumber (see equation 6 in
-<span id="id23">[<a class="reference internal" href="../zzz_references_html.html#id53" title="Ronald B Smith, Idar Barstad, and Laurent Bonneau. Orographic precipitation and oregon’s climate transition. Journal of the Atmospheric Sciences, 62(1):177–191, 2005.">152</a>]</span>), and <span class="math notranslate nohighlight">\(\sigma\)</span> is the intrinsic frequency. The rest of the
+<a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstad2004" id="id22">[5]</a>), <span class="math notranslate nohighlight">\(m\)</span> is the vertical wavenumber (see equation 6 in
+<a class="bibtex reference internal" href="../zzz_references_html.html#smithbarstadbonneau2005" id="id23">[6]</a>), and <span class="math notranslate nohighlight">\(\sigma\)</span> is the intrinsic frequency. The rest of the
 constants are defined below.</p>
 <p>The spatial pattern of precipitation is recovered using an inverse Fourier transform
 followed by post-processing:</p>
@@ -523,8 +521,8 @@ modeled by PISM.</p>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.orographic_precipitation.wind_direction"><code class="docutils literal notranslate"><span class="pre">wind_direction</span></code></a> (270<em> degrees</em>) The direction the wind is coming from</p></li>
 <li><p><a class="reference internal" href="../manual/parameters/index.html#config-atmosphere.orographic_precipitation.wind_speed"><code class="docutils literal notranslate"><span class="pre">wind_speed</span></code></a> (10<em> m/s</em>) The wind speed.</p></li>
 </ol>
-</section>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -599,7 +597,7 @@ modeled by PISM.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -610,9 +608,9 @@ modeled by PISM.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

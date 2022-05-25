@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Building PISM &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building PISM &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="Building PETSc" href="petsc.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +29,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="building-pism">
+  <div class="section" id="building-pism">
 <span id="sec-install-pism"></span><h1>Building PISM<a class="headerlink" href="#building-pism" title="Permalink to this headline">¶</a></h1>
 <p>To make sure that the key PETSc and MPI prerequisites work properly together, so that you
 can run PISM in parallel, you might want to make sure that the correct <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> can be
@@ -132,7 +130,7 @@ instance, this command can be done in the <a class="reference external" href="ht
 </li>
 <li><p>Now see section <a class="reference internal" href="quick-tests.html#sec-install-quick-tests"><span class="std std-ref">Quick tests of the installation</span></a> or <a class="reference internal" href="../manual/std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a> to continue.</p></li>
 </ol>
-<section id="pism-s-build-time-configuration">
+<div class="section" id="pism-s-build-time-configuration">
 <span id="sec-install-pism-cmake-options"></span><h2>PISM’s build-time configuration<a class="headerlink" href="#pism-s-build-time-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Some of PISM’s features (the ones requiring additional libraries, for example) need to be
 enabled when building PISM. This section lists important build-time options.</p>
@@ -186,8 +184,8 @@ enabled when building PISM. This section lists important build-time options.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DPism_USE_PROJ <span class="o">[</span>other options<span class="o">]</span> ..
 </pre></div>
 </div>
-</section>
-<section id="building-pism-with-libraries-in-non-standard-locations">
+</div>
+<div class="section" id="building-pism-with-libraries-in-non-standard-locations">
 <span id="sec-install-local-libraries"></span><h2>Building PISM with libraries in non-standard locations<a class="headerlink" href="#building-pism-with-libraries-in-non-standard-locations" title="Permalink to this headline">¶</a></h2>
 <p>To build PISM with libraries installed in a non-standard location such as <code class="docutils literal notranslate"><span class="pre">~/local/</span></code>,
 use CMake’s variable <code class="docutils literal notranslate"><span class="pre">CMAKE_FIND_ROOT_PATH</span></code>. Set it to a semicolon-separated list of
@@ -224,8 +222,8 @@ for example.</p>
 <dd><p>Install the <code class="docutils literal notranslate"><span class="pre">cmake-curses-gui</span></code> package to get <code class="docutils literal notranslate"><span class="pre">ccmake</span></code> on <a class="reference external" href="https://ubuntu.com/desktop">Ubuntu</a>.</p>
 </dd>
 </dl>
-</section>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -295,7 +293,7 @@ for example.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -306,9 +304,9 @@ for example.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Configuration parameters &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration parameters &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Diagnostic quantities" href="../diagnostics/index.html" />
     <link rel="prev" title="Example: A regional model of the Jakobshavn outlet glacier in Greenland" href="../jakobshavn/index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,7 +31,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="configuration-parameters">
+  <div class="section" id="configuration-parameters">
 <span id="sec-parameter-list"></span><h1>Configuration parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this headline">¶</a></h1>
 <p>Every parameter corresponds to a command-line option; some options map to a combination of
 parameters.</p>
@@ -244,7 +242,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.c_ma"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.c_ma</span></code></p>
-<p>latitude-dependence coefficient for formula (1) in <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>latitude-dependence coefficient for formula (1) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id1">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -254,7 +252,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.c_mj"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.c_mj</span></code></p>
-<p>latitude-dependence coefficient for formula (2) in <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>latitude-dependence coefficient for formula (2) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id2">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -264,7 +262,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.d_ma"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.d_ma</span></code></p>
-<p>41.83+273.15; base temperature for formula (1) in <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>41.83+273.15; base temperature for formula (1) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id3">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -274,7 +272,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.d_mj"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.d_mj</span></code></p>
-<p>= 14.70+273.15; base temperature for formula (2) in <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>= 14.70+273.15; base temperature for formula (2) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id4">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -284,7 +282,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.gamma_ma"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.gamma_ma</span></code></p>
-<p>= -6.309 / 1km; mean slope lapse rate for formula (1) in <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>= -6.309 / 1km; mean slope lapse rate for formula (1) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id5">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -294,7 +292,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.gamma_mj"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.gamma_mj</span></code></p>
-<p>= -5.426 / 1km; mean slope lapse rate for formula (2) in <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>= -5.426 / 1km; mean slope lapse rate for formula (2) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id6">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -304,7 +302,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.kappa_ma"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.kappa_ma</span></code></p>
-<p>longitude-dependence coefficient for formula (1) in <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>longitude-dependence coefficient for formula (1) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id7">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -314,7 +312,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.kappa_mj"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.kappa_mj</span></code></p>
-<p>longitude-dependence coefficient for formula (2) in <span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>longitude-dependence coefficient for formula (2) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id8">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -324,7 +322,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.fausto_air_temp.summer_peak_day"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.fausto_air_temp.summer_peak_day</span></code></p>
-<p>day of year for July 15; used in corrected formula (4) in <span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>day of year for July 15; used in corrected formula (4) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id9">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> integer</dd>
 <dt class="field-even">Default value</dt>
@@ -637,7 +635,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-atmosphere.precip_exponential_factor_for_temperature"></span><code class="docutils literal notranslate"><span class="pre">atmosphere.precip_exponential_factor_for_temperature</span></code></p>
-<p>= 0.169/2.4; in SeaRISE-Greenland formula for precipitation correction using air temperature offsets relative to present; a 7.3% change of precipitation rate for every one degC of temperature change <span id="id10">[<a class="reference internal" href="../../zzz_references_html.html#id208" title="P. Huybrechts. Sea-level changes at the LGM from ice-dynamic reconstructions of the Greenland and Antarctic ice sheets during the glacial cycles. Quat. Sci. Rev., 21:203–231, 2002.">31</a>]</span><dl class="field-list simple">
+<p>= 0.169/2.4; in SeaRISE-Greenland formula for precipitation correction using air temperature offsets relative to present; a 7.3% change of precipitation rate for every one degC of temperature change <a class="bibtex reference internal" href="../../zzz_references_html.html#huybrechts02" id="id10">[2]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -739,7 +737,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_resistance.beta_ice_free_bedrock"></span><code class="docutils literal notranslate"><span class="pre">basal_resistance.beta_ice_free_bedrock</span></code></p>
-<p>value is for ice stream E from <span id="id11">[<a class="reference internal" href="../../zzz_references_html.html#id201" title="Christina L. Hulbe and Douglas R. MacAyeal. A new numerical model of coupled inland ice sheet, ice stream, and ice shelf flow and its application to the West Antarctic Ice Sheet. J. Geophys. Res., 104(B11):25349–25366, 1999.">141</a>]</span>; thus sliding velocity, but we hope it doesn’t matter much; at 100 m/year the linear sliding law gives 57040 Pa basal shear stress<dl class="field-list simple">
+<p>value is for ice stream E from <a class="bibtex reference internal" href="../../zzz_references_html.html#hulbemacayeal" id="id11">[117]</a>; thus sliding velocity, but we hope it doesn’t matter much; at 100 m/year the linear sliding law gives 57040 Pa basal shear stress<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -759,7 +757,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_resistance.plastic.regularization"></span><code class="docutils literal notranslate"><span class="pre">basal_resistance.plastic.regularization</span></code></p>
-<p>Set the value of <span class="math notranslate nohighlight">\(\epsilon\)</span> regularization of plastic till; this is the second <span class="math notranslate nohighlight">\(\epsilon\)</span> in formula (4.1) in <span id="id12">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span><dl class="field-list simple">
+<p>Set the value of <span class="math notranslate nohighlight">\(\epsilon\)</span> regularization of plastic till; this is the second <span class="math notranslate nohighlight">\(\epsilon\)</span> in formula (4.1) in <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id12">[45]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -824,7 +822,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_resistance.regularized_coulomb.enabled"></span><code class="docutils literal notranslate"><span class="pre">basal_resistance.regularized_coulomb.enabled</span></code></p>
-<p>Use the regularized Coulomb till friction model (basal sliding law) as in equation (3) in <span id="id13">[<a class="reference internal" href="../../zzz_references_html.html#id466" title="Lucas K Zoet and Neal R Iverson. A slip law for glaciers on deformable beds. Science, 368(6486):76–78, 2020.">83</a>]</span><dl class="field-list simple">
+<p>Use the regularized Coulomb till friction model (basal sliding law) as in equation (3) in <a class="bibtex reference internal" href="../../zzz_references_html.html#zoetiverson20" id="id13">[106]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -941,7 +939,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_yield_stress.mohr_coulomb.till_compressibility_coefficient"></span><code class="docutils literal notranslate"><span class="pre">basal_yield_stress.mohr_coulomb.till_compressibility_coefficient</span></code></p>
-<p>coefficient of compressiblity of till; value from <span id="id14">[<a class="reference internal" href="../../zzz_references_html.html#id438" title="S. Tulaczyk, W. B. Kamb, and H. F. Engelhardt. Basal mechanics of Ice Stream B, West Antarctica 1. Till mechanics. J. Geophys. Res., 105(B1):463–481, 2000.">19</a>]</span><dl class="field-list simple">
+<p>coefficient of compressiblity of till; value from <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id14">[109]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -954,7 +952,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_yield_stress.mohr_coulomb.till_effective_fraction_overburden"></span><code class="docutils literal notranslate"><span class="pre">basal_yield_stress.mohr_coulomb.till_effective_fraction_overburden</span></code></p>
-<p><span class="math notranslate nohighlight">\(\delta\)</span> in notes; <span class="math notranslate nohighlight">\(N_0 = \delta P_o\)</span> where <span class="math notranslate nohighlight">\(P_o\)</span> is overburden pressure; <span class="math notranslate nohighlight">\(N_0\)</span> is reference (low) value of effective pressure (i.e. normal stress); <span class="math notranslate nohighlight">\(N_0\)</span> scales with overburden pressure unlike <span id="id15">[<a class="reference internal" href="../../zzz_references_html.html#id438" title="S. Tulaczyk, W. B. Kamb, and H. F. Engelhardt. Basal mechanics of Ice Stream B, West Antarctica 1. Till mechanics. J. Geophys. Res., 105(B1):463–481, 2000.">19</a>]</span>; default value from Greenland and Antarctic model runs<dl class="field-list simple">
+<p><span class="math notranslate nohighlight">\(\delta\)</span> in notes; <span class="math notranslate nohighlight">\(N_0 = \delta P_o\)</span> where <span class="math notranslate nohighlight">\(P_o\)</span> is overburden pressure; <span class="math notranslate nohighlight">\(N_0\)</span> is reference (low) value of effective pressure (i.e. normal stress); <span class="math notranslate nohighlight">\(N_0\)</span> scales with overburden pressure unlike <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id15">[109]</a>; default value from Greenland and Antarctic model runs<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -993,7 +991,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_yield_stress.mohr_coulomb.till_reference_effective_pressure"></span><code class="docutils literal notranslate"><span class="pre">basal_yield_stress.mohr_coulomb.till_reference_effective_pressure</span></code></p>
-<p>reference effective pressure <span class="math notranslate nohighlight">\(N_0\)</span>; value from <span id="id16">[<a class="reference internal" href="../../zzz_references_html.html#id438" title="S. Tulaczyk, W. B. Kamb, and H. F. Engelhardt. Basal mechanics of Ice Stream B, West Antarctica 1. Till mechanics. J. Geophys. Res., 105(B1):463–481, 2000.">19</a>]</span><dl class="field-list simple">
+<p>reference effective pressure <span class="math notranslate nohighlight">\(N_0\)</span>; value from <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id16">[109]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1003,7 +1001,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_yield_stress.mohr_coulomb.till_reference_void_ratio"></span><code class="docutils literal notranslate"><span class="pre">basal_yield_stress.mohr_coulomb.till_reference_void_ratio</span></code></p>
-<p>void ratio at reference effective pressure <span class="math notranslate nohighlight">\(N_0\)</span>; value from <span id="id17">[<a class="reference internal" href="../../zzz_references_html.html#id438" title="S. Tulaczyk, W. B. Kamb, and H. F. Engelhardt. Basal mechanics of Ice Stream B, West Antarctica 1. Till mechanics. J. Geophys. Res., 105(B1):463–481, 2000.">19</a>]</span><dl class="field-list simple">
+<p>void ratio at reference effective pressure <span class="math notranslate nohighlight">\(N_0\)</span>; value from <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id17">[109]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1274,7 +1272,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-bed_deformation.lc.grid_size_factor"></span><code class="docutils literal notranslate"><span class="pre">bed_deformation.lc.grid_size_factor</span></code></p>
-<p>The spectral grid size is <code class="docutils literal notranslate"><span class="pre">(Z*(grid.Mx</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">Z*(grid.My</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1)</span></code> where <code class="docutils literal notranslate"><span class="pre">Z</span></code> is given by this parameter. See <span id="id18">[<a class="reference internal" href="../../zzz_references_html.html#id272" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">91</a>]</span>, <span id="id19">[<a class="reference internal" href="../../zzz_references_html.html#id41" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>.<dl class="field-list simple">
+<p>The spectral grid size is <code class="docutils literal notranslate"><span class="pre">(Z*(grid.Mx</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">Z*(grid.My</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1)</span></code> where <code class="docutils literal notranslate"><span class="pre">Z</span></code> is given by this parameter. See <a class="bibtex reference internal" href="../../zzz_references_html.html#lingleclark" id="id18">[112]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id19">[27]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> integer</dd>
 <dt class="field-even">Default value</dt>
@@ -1294,7 +1292,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-bed_deformation.lithosphere_flexural_rigidity"></span><code class="docutils literal notranslate"><span class="pre">bed_deformation.lithosphere_flexural_rigidity</span></code></p>
-<p>lithosphere flexural rigidity used by the bed deformation model. See <span id="id20">[<a class="reference internal" href="../../zzz_references_html.html#id272" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">91</a>]</span>, <span id="id21">[<a class="reference internal" href="../../zzz_references_html.html#id41" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span><dl class="field-list simple">
+<p>lithosphere flexural rigidity used by the bed deformation model. See <a class="bibtex reference internal" href="../../zzz_references_html.html#lingleclark" id="id20">[112]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id21">[27]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1304,7 +1302,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-bed_deformation.mantle_density"></span><code class="docutils literal notranslate"><span class="pre">bed_deformation.mantle_density</span></code></p>
-<p>half-space (mantle) density used by the bed deformation model. See <span id="id22">[<a class="reference internal" href="../../zzz_references_html.html#id272" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">91</a>]</span>, <span id="id23">[<a class="reference internal" href="../../zzz_references_html.html#id41" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span><dl class="field-list simple">
+<p>half-space (mantle) density used by the bed deformation model. See <a class="bibtex reference internal" href="../../zzz_references_html.html#lingleclark" id="id22">[112]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id23">[27]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1314,7 +1312,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-bed_deformation.mantle_viscosity"></span><code class="docutils literal notranslate"><span class="pre">bed_deformation.mantle_viscosity</span></code></p>
-<p>half-space (mantle) viscosity used by the bed deformation model. See <span id="id24">[<a class="reference internal" href="../../zzz_references_html.html#id272" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">91</a>]</span>, <span id="id25">[<a class="reference internal" href="../../zzz_references_html.html#id41" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span><dl class="field-list simple">
+<p>half-space (mantle) viscosity used by the bed deformation model. See <a class="bibtex reference internal" href="../../zzz_references_html.html#lingleclark" id="id24">[112]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#blkfastearth" id="id25">[27]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1324,7 +1322,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-bed_deformation.model"></span><code class="docutils literal notranslate"><span class="pre">bed_deformation.model</span></code></p>
-<p>Selects a bed deformation model to use. <code class="docutils literal notranslate"><span class="pre">iso</span></code> is point-wise isostasy, <code class="docutils literal notranslate"><span class="pre">lc</span></code> is the Lingle-Clark model (see <span id="id26">[<a class="reference internal" href="../../zzz_references_html.html#id272" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">91</a>]</span>, requires <a class="reference external" href="http://www.fftw.org/">FFTW</a>), <code class="docutils literal notranslate"><span class="pre">given</span></code> uses prescribed bed topography changes read from a file.<dl class="field-list simple">
+<p>Selects a bed deformation model to use. <code class="docutils literal notranslate"><span class="pre">iso</span></code> is point-wise isostasy, <code class="docutils literal notranslate"><span class="pre">lc</span></code> is the Lingle-Clark model (see <a class="bibtex reference internal" href="../../zzz_references_html.html#lingleclark" id="id26">[112]</a>, requires <a class="reference external" href="http://www.fftw.org/">FFTW</a>), <code class="docutils literal notranslate"><span class="pre">given</span></code> uses prescribed bed topography changes read from a file.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> keyword</dd>
 <dt class="field-even">Default value</dt>
@@ -1446,7 +1444,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-calving.eigen_calving.K"></span><code class="docutils literal notranslate"><span class="pre">calving.eigen_calving.K</span></code></p>
-<p>Set proportionality constant to determine calving rate from strain rates.  Note references <span id="id27">[<a class="reference internal" href="../../zzz_references_html.html#id268" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. URL: https://www.the-cryosphere.net/6/273/2012/tc-6-273-2012.html.">94</a>]</span>, <span id="id28">[<a class="reference internal" href="../../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span> use K in range <span class="math notranslate nohighlight">\(10^{9}\)</span> to <span class="math notranslate nohighlight">\(3 \times 10^{11}\)</span> m a, that is, <span class="math notranslate nohighlight">\(3 \times 10^{16}\)</span> to <span class="math notranslate nohighlight">\(10^{19}\)</span> m s.<dl class="field-list simple">
+<p>Set proportionality constant to determine calving rate from strain rates.  Note references <a class="bibtex reference internal" href="../../zzz_references_html.html#levermannetal2012" id="id27">[89]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#martinetal2011" id="id28">[3]</a> use K in range <span class="math notranslate nohighlight">\(10^{9}\)</span> to <span class="math notranslate nohighlight">\(3 \times 10^{11}\)</span> m a, that is, <span class="math notranslate nohighlight">\(3 \times 10^{16}\)</span> to <span class="math notranslate nohighlight">\(10^{19}\)</span> m s.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1485,7 +1483,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-calving.hayhurst_calving.B_tilde"></span><code class="docutils literal notranslate"><span class="pre">calving.hayhurst_calving.B_tilde</span></code></p>
-<p>Effective damage rate <span id="id29">[<a class="reference internal" href="../../zzz_references_html.html#id13" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">99</a>]</span><dl class="field-list simple">
+<p>Effective damage rate <a class="bibtex reference internal" href="../../zzz_references_html.html#mercenier2018" id="id29">[91]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1495,7 +1493,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-calving.hayhurst_calving.exponent_r"></span><code class="docutils literal notranslate"><span class="pre">calving.hayhurst_calving.exponent_r</span></code></p>
-<p>Damage law exponent <span id="id30">[<a class="reference internal" href="../../zzz_references_html.html#id13" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">99</a>]</span><dl class="field-list simple">
+<p>Damage law exponent <a class="bibtex reference internal" href="../../zzz_references_html.html#mercenier2018" id="id30">[91]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1505,7 +1503,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-calving.hayhurst_calving.sigma_threshold"></span><code class="docutils literal notranslate"><span class="pre">calving.hayhurst_calving.sigma_threshold</span></code></p>
-<p>Damage threshold stress <span id="id31">[<a class="reference internal" href="../../zzz_references_html.html#id13" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">99</a>]</span><dl class="field-list simple">
+<p>Damage threshold stress <a class="bibtex reference internal" href="../../zzz_references_html.html#mercenier2018" id="id31">[91]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1610,7 +1608,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-calving.vonmises_calving.sigma_max"></span><code class="docutils literal notranslate"><span class="pre">calving.vonmises_calving.sigma_max</span></code></p>
-<p>Set maximum tensile stress.  Note references <span id="id32">[<a class="reference internal" href="../../zzz_references_html.html#id304" title="M. Morlighem, J. Bondzio, H. Seroussi, E. Rignot, E. Larour, A. Humbert, and S. Rebuffi. Modeling of Store Gletscher's calving dynamics, West Greenland, in response to ocean thermal forcing. Geophysical Research Letters, pages n/a–n/a, 2016. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL067695, doi:10.1002/2016GL067695.">98</a>]</span> use 1.0e6 Pa.<dl class="field-list simple">
+<p>Set maximum tensile stress.  Note references <a class="bibtex reference internal" href="../../zzz_references_html.html#morlighem2016" id="id32">[90]</a> use 1.0e6 Pa.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1659,7 +1657,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-constants.fresh_water.latent_heat_of_fusion"></span><code class="docutils literal notranslate"><span class="pre">constants.fresh_water.latent_heat_of_fusion</span></code></p>
-<p>latent heat of fusion for water <span id="id33">[<a class="reference internal" href="../../zzz_references_html.html#id30" title="A. Aschwanden and H. Blatter. Mathematical modeling and numerical simulation of polythermal glaciers. J. Geophys. Res., 2009. F01027. doi:10.1029/2008JF001028.">80</a>]</span><dl class="field-list simple">
+<p>latent heat of fusion for water <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenblatter" id="id33">[75]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1679,7 +1677,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-constants.fresh_water.specific_heat_capacity"></span><code class="docutils literal notranslate"><span class="pre">constants.fresh_water.specific_heat_capacity</span></code></p>
-<p>at melting point T_0 <span id="id34">[<a class="reference internal" href="../../zzz_references_html.html#id30" title="A. Aschwanden and H. Blatter. Mathematical modeling and numerical simulation of polythermal glaciers. J. Geophys. Res., 2009. F01027. doi:10.1029/2008JF001028.">80</a>]</span><dl class="field-list simple">
+<p>at melting point T_0 <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenblatter" id="id34">[75]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1689,7 +1687,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-constants.global_ocean_area"></span><code class="docutils literal notranslate"><span class="pre">constants.global_ocean_area</span></code></p>
-<p>area of the global ocean <span id="id35">[<a class="reference internal" href="../../zzz_references_html.html#id94" title="JG Cogley, R Hock, LA Rasmussen, AA Arendt, A Bauder, RJ Braithwaite, P Jansson, G Kaser, M Möller, L Nicholson, and others. Glossary of glacier mass balance and related terms. IHP-VII technical documents in hydrology, 86:965, 2011.">107</a>]</span><dl class="field-list simple">
+<p>area of the global ocean <a class="bibtex reference internal" href="../../zzz_references_html.html#cogley2011" id="id35">[118]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1699,7 +1697,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-constants.ice.beta_Clausius_Clapeyron"></span><code class="docutils literal notranslate"><span class="pre">constants.ice.beta_Clausius_Clapeyron</span></code></p>
-<p>Clausius-Clapeyron constant relating melting temperature and pressure: <span class="math notranslate nohighlight">\(\beta = dT / dP\)</span> <span id="id36">[<a class="reference internal" href="../../zzz_references_html.html#id277" title="M. Lüthi, M. Funk, A. Iken, S. Gogineni, and M. Truffer. Mechanisms of fast flow in Jakobshavns Isbræ, Greenland; Part III: measurements of ice deformation, temperature and cross-borehole conductivity in boreholes to the bedrock. J. Glaciol., 48(162):369\,–\,385, 2002.">142</a>]</span><dl class="field-list simple">
+<p>Clausius-Clapeyron constant relating melting temperature and pressure: <span class="math notranslate nohighlight">\(\beta = dT / dP\)</span> <a class="bibtex reference internal" href="../../zzz_references_html.html#luethi2002" id="id36">[24]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1719,7 +1717,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-constants.ice.grain_size"></span><code class="docutils literal notranslate"><span class="pre">constants.ice.grain_size</span></code></p>
-<p>Default constant ice grain size to use with the Goldsby-Kohlstedt <span id="id37">[<a class="reference internal" href="../../zzz_references_html.html#id145" title="D. L. Goldsby and D. L. Kohlstedt. Superplastic deformation of ice: experimental observations. J. Geophys. Res., 106(M6):11017–11030, 2001.">70</a>]</span> flow law<dl class="field-list simple">
+<p>Default constant ice grain size to use with the Goldsby-Kohlstedt <a class="bibtex reference internal" href="../../zzz_references_html.html#goldsbykohlstedt" id="id37">[25]</a> flow law<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1825,7 +1823,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.bedrock_thermal.conductivity"></span><code class="docutils literal notranslate"><span class="pre">energy.bedrock_thermal.conductivity</span></code></p>
-<p>= W m-1 K-1; for bedrock used in thermal model <span id="id38">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span><dl class="field-list simple">
+<p>= W m-1 K-1; for bedrock used in thermal model <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id38">[7]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1855,7 +1853,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.bedrock_thermal.specific_heat_capacity"></span><code class="docutils literal notranslate"><span class="pre">energy.bedrock_thermal.specific_heat_capacity</span></code></p>
-<p>for bedrock used in thermal model <span id="id39">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span><dl class="field-list simple">
+<p>for bedrock used in thermal model <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id39">[7]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1905,7 +1903,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.drainage_maximum_rate"></span><code class="docutils literal notranslate"><span class="pre">energy.drainage_maximum_rate</span></code></p>
-<p>0.05 year-1; maximum rate at which liquid water fraction in temperate ice could possibly drain; see <span id="id40">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span><dl class="field-list simple">
+<p>0.05 year-1; maximum rate at which liquid water fraction in temperate ice could possibly drain; see <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id40">[35]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1915,7 +1913,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.drainage_target_water_fraction"></span><code class="docutils literal notranslate"><span class="pre">energy.drainage_target_water_fraction</span></code></p>
-<p>liquid water fraction (omega) above which drainage occurs, but below which there is no drainage; see <span id="id41">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span><dl class="field-list simple">
+<p>liquid water fraction (omega) above which drainage occurs, but below which there is no drainage; see <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id41">[35]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1945,7 +1943,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.enthalpy.temperate_ice_thermal_conductivity_ratio"></span><code class="docutils literal notranslate"><span class="pre">energy.enthalpy.temperate_ice_thermal_conductivity_ratio</span></code></p>
-<p>K in cold ice is multiplied by this fraction to give K0 in <span id="id42">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span><dl class="field-list simple">
+<p>K in cold ice is multiplied by this fraction to give K0 in <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id42">[35]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2031,7 +2029,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-energy.temperature_dependent_thermal_conductivity"></span><code class="docutils literal notranslate"><span class="pre">energy.temperature_dependent_thermal_conductivity</span></code></p>
-<p>If yes, use varkenthSystemCtx class in the energy step. It is base on formula (4.37) in <span id="id43">[<a class="reference internal" href="../../zzz_references_html.html#id159" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>. Otherwise use enthSystemCtx, which has temperature-independent thermal conductivity set by constant ice.thermal_conductivity.<dl class="field-list simple">
+<p>If yes, use varkenthSystemCtx class in the energy step. It is base on formula (4.37) in <a class="bibtex reference internal" href="../../zzz_references_html.html#greveblatter2009" id="id43">[56]</a>. Otherwise use enthSystemCtx, which has temperature-independent thermal conductivity set by constant ice.thermal_conductivity.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2044,7 +2042,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-enthalpy_converter.T_reference"></span><code class="docutils literal notranslate"><span class="pre">enthalpy_converter.T_reference</span></code></p>
-<p>= T_0 in enthalpy formulas in <span id="id44">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span><dl class="field-list simple">
+<p>= T_0 in enthalpy formulas in <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id44">[35]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2064,7 +2062,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Hooke.A"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.A</span></code></p>
-<p><span class="math notranslate nohighlight">\(A_{\text{Hooke}} = (1/B_0)^n\)</span> where n=3 and <span class="math notranslate nohighlight">\(B_0\)</span> = 1.928 <span class="math notranslate nohighlight">\(a^{1/3}\)</span> Pa. See <span id="id45">[<a class="reference internal" href="../../zzz_references_html.html#id198" title="R. Hooke. Flow law for polycrystalline ice in glaciers: comparison of theoretical predictions, laboratory data, and field measurements. Rev. Geophys. Space. Phys., 19(4):664–672, 1981.">79</a>]</span><dl class="field-list simple">
+<p><span class="math notranslate nohighlight">\(A_{\text{Hooke}} = (1/B_0)^n\)</span> where n=3 and <span class="math notranslate nohighlight">\(B_0\)</span> = 1.928 <span class="math notranslate nohighlight">\(a^{1/3}\)</span> Pa. See <a class="bibtex reference internal" href="../../zzz_references_html.html#hooke" id="id45">[79]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2074,7 +2072,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Hooke.C"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.C</span></code></p>
-<p>See <span id="id46">[<a class="reference internal" href="../../zzz_references_html.html#id198" title="R. Hooke. Flow law for polycrystalline ice in glaciers: comparison of theoretical predictions, laboratory data, and field measurements. Rev. Geophys. Space. Phys., 19(4):664–672, 1981.">79</a>]</span><dl class="field-list simple">
+<p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#hooke" id="id46">[79]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2084,7 +2082,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Hooke.Q"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.Q</span></code></p>
-<p>Activation energy, see <span id="id47">[<a class="reference internal" href="../../zzz_references_html.html#id198" title="R. Hooke. Flow law for polycrystalline ice in glaciers: comparison of theoretical predictions, laboratory data, and field measurements. Rev. Geophys. Space. Phys., 19(4):664–672, 1981.">79</a>]</span><dl class="field-list simple">
+<p>Activation energy, see <a class="bibtex reference internal" href="../../zzz_references_html.html#hooke" id="id47">[79]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2094,7 +2092,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Hooke.Tr"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.Tr</span></code></p>
-<p>See <span id="id48">[<a class="reference internal" href="../../zzz_references_html.html#id198" title="R. Hooke. Flow law for polycrystalline ice in glaciers: comparison of theoretical predictions, laboratory data, and field measurements. Rev. Geophys. Space. Phys., 19(4):664–672, 1981.">79</a>]</span><dl class="field-list simple">
+<p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#hooke" id="id48">[79]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2104,7 +2102,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Hooke.k"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Hooke.k</span></code></p>
-<p>See <span id="id49">[<a class="reference internal" href="../../zzz_references_html.html#id198" title="R. Hooke. Flow law for polycrystalline ice in glaciers: comparison of theoretical predictions, laboratory data, and field measurements. Rev. Geophys. Space. Phys., 19(4):664–672, 1981.">79</a>]</span><dl class="field-list simple">
+<p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#hooke" id="id49">[79]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2114,7 +2112,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Paterson_Budd.A_cold"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.A_cold</span></code></p>
-<p>Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{cold}\)</span>, see <span id="id50">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span><dl class="field-list simple">
+<p>Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{cold}\)</span>, see <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id50">[76]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2124,7 +2122,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Paterson_Budd.A_warm"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.A_warm</span></code></p>
-<p>Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{warm}\)</span>, see <span id="id51">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span><dl class="field-list simple">
+<p>Paterson-Budd <span class="math notranslate nohighlight">\(A_\text{warm}\)</span>, see <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id51">[76]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2134,7 +2132,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Paterson_Budd.Q_cold"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.Q_cold</span></code></p>
-<p>Paterson-Budd <span class="math notranslate nohighlight">\(Q_\text{cold}\)</span>, see <span id="id52">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span><dl class="field-list simple">
+<p>Paterson-Budd <span class="math notranslate nohighlight">\(Q_\text{cold}\)</span>, see <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id52">[76]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2144,7 +2142,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Paterson_Budd.Q_warm"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.Q_warm</span></code></p>
-<p>Paterson-Budd <span class="math notranslate nohighlight">\(Q_\text{warm}\)</span>, see <span id="id53">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span><dl class="field-list simple">
+<p>Paterson-Budd <span class="math notranslate nohighlight">\(Q_\text{warm}\)</span>, see <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id53">[76]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2154,7 +2152,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.Paterson_Budd.T_critical"></span><code class="docutils literal notranslate"><span class="pre">flow_law.Paterson_Budd.T_critical</span></code></p>
-<p>Paterson-Budd critical temperature, see <span id="id54">[<a class="reference internal" href="../../zzz_references_html.html#id332" title="W. S. B. Paterson and W. F. Budd. Flow parameters for ice sheet modeling. Cold Reg. Sci. Technol., 6(2):175–177, 1982.">36</a>]</span><dl class="field-list simple">
+<p>Paterson-Budd critical temperature, see <a class="bibtex reference internal" href="../../zzz_references_html.html#patersonbudd" id="id54">[76]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2184,7 +2182,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.gpbld.water_frac_coeff"></span><code class="docutils literal notranslate"><span class="pre">flow_law.gpbld.water_frac_coeff</span></code></p>
-<p>coefficient in Glen-Paterson-Budd flow law for extra dependence of softness on liquid water fraction (omega) <span id="id55">[<a class="reference internal" href="../../zzz_references_html.html#id159" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>, <span id="id56">[<a class="reference internal" href="../../zzz_references_html.html#id276" title="L. A. Lliboutry and P. Duval. Various isotropic and anisotropic ices found in glaciers and polar ice caps and their corresponding rheologies. Annales Geophys., 3:207–224, 1985.">35</a>]</span><dl class="field-list simple">
+<p>coefficient in Glen-Paterson-Budd flow law for extra dependence of softness on liquid water fraction (omega) <a class="bibtex reference internal" href="../../zzz_references_html.html#greveblatter2009" id="id55">[56]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#lliboutryduval1985" id="id56">[77]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2194,7 +2192,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.gpbld.water_frac_observed_limit"></span><code class="docutils literal notranslate"><span class="pre">flow_law.gpbld.water_frac_observed_limit</span></code></p>
-<p>maximum value of liquid water fraction omega for which softness values are parameterized by <span id="id57">[<a class="reference internal" href="../../zzz_references_html.html#id276" title="L. A. Lliboutry and P. Duval. Various isotropic and anisotropic ices found in glaciers and polar ice caps and their corresponding rheologies. Annales Geophys., 3:207–224, 1985.">35</a>]</span>; used in Glen-Paterson-Budd-Lliboutry-Duval flow law; compare <span id="id58">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span><dl class="field-list simple">
+<p>maximum value of liquid water fraction omega for which softness values are parameterized by <a class="bibtex reference internal" href="../../zzz_references_html.html#lliboutryduval1985" id="id57">[77]</a>; used in Glen-Paterson-Budd-Lliboutry-Duval flow law; compare <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id58">[35]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2204,7 +2202,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-flow_law.isothermal_Glen.ice_softness"></span><code class="docutils literal notranslate"><span class="pre">flow_law.isothermal_Glen.ice_softness</span></code></p>
-<p>ice softness used by the isothermal Glen flow law <span id="id59">[<a class="reference internal" href="../../zzz_references_html.html#id111" title="P. Huybrechts and others. The EISMINT benchmarks for testing ice-sheet models. Ann. Glaciol., 23:1–12, 1996.">59</a>]</span><dl class="field-list simple">
+<p>ice softness used by the isothermal Glen flow law <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint96" id="id59">[34]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2214,7 +2212,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-fracture_density.borstad_limit"></span><code class="docutils literal notranslate"><span class="pre">fracture_density.borstad_limit</span></code></p>
-<p>Model fracture growth according to the constitutive law in <span id="id60">[<a class="reference internal" href="../../zzz_references_html.html#id63" title="Chris Borstad, Ala Khazendar, Bernd Scheuchl, Mathieu Morlighem, Eric Larour, and Eric Rignot. A constitutive framework for predicting weakening and reduced buttressing of ice shelves based on observations of the progressive deterioration of the remnant larsen b ice shelf. Geophysical Research Letters, 43(5):2027–2035, 2016.">105</a>]</span> (Eq. 4), ignoring <a class="reference internal" href="#config-fracture_density.gamma"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.gamma</span></code></a>.<dl class="field-list simple">
+<p>Model fracture growth according to the constitutive law in <a class="bibtex reference internal" href="../../zzz_references_html.html#borstad2016constitutive" id="id60">[96]</a> (Eq. 4), ignoring <a class="reference internal" href="#config-fracture_density.gamma"><code class="docutils literal notranslate"><span class="pre">fracture_density</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.gamma</span></code></a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2266,7 +2264,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-fracture_density.fd2d_scheme"></span><code class="docutils literal notranslate"><span class="pre">fracture_density.fd2d_scheme</span></code></p>
-<p>Use an alternative transport scheme to reduce numerical diffusion (Eq. 10 in <span id="id61">[<a class="reference internal" href="../../zzz_references_html.html#id21" title="T. Albrecht and A. Levermann. Fracture-induced softening for large-scale ice dynamics. The Cryosphere, 8(2):587–605, 2014. URL: https://www.the-cryosphere.net/8/587/2014/, doi:10.5194/tc-8-587-2014.">104</a>]</span>)<dl class="field-list simple">
+<p>Use an alternative transport scheme to reduce numerical diffusion (Eq. 10 in <a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtlevermann2014softening" id="id61">[95]</a>)<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2357,7 +2355,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-fracture_density.lefm"></span><code class="docutils literal notranslate"><span class="pre">fracture_density.lefm</span></code></p>
-<p>Use the mixed-mode fracture toughness stress criterion based on Linear Elastic Fracture Mechanics, Eqs. 8-9 in <span id="id62">[<a class="reference internal" href="../../zzz_references_html.html#id21" title="T. Albrecht and A. Levermann. Fracture-induced softening for large-scale ice dynamics. The Cryosphere, 8(2):587–605, 2014. URL: https://www.the-cryosphere.net/8/587/2014/, doi:10.5194/tc-8-587-2014.">104</a>]</span><dl class="field-list simple">
+<p>Use the mixed-mode fracture toughness stress criterion based on Linear Elastic Fracture Mechanics, Eqs. 8-9 in <a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtlevermann2014softening" id="id62">[95]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2370,7 +2368,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-fracture_density.max_shear_stress"></span><code class="docutils literal notranslate"><span class="pre">fracture_density.max_shear_stress</span></code></p>
-<p>Use the maximum shear stress criterion for fracture formation (Tresca or Guest criterion in literature), which is more stringent than the default von Mises criterion, see Eq. 7 in <span id="id63">[<a class="reference internal" href="../../zzz_references_html.html#id21" title="T. Albrecht and A. Levermann. Fracture-induced softening for large-scale ice dynamics. The Cryosphere, 8(2):587–605, 2014. URL: https://www.the-cryosphere.net/8/587/2014/, doi:10.5194/tc-8-587-2014.">104</a>]</span><dl class="field-list simple">
+<p>Use the maximum shear stress criterion for fracture formation (Tresca or Guest criterion in literature), which is more stringent than the default von Mises criterion, see Eq. 7 in <a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtlevermann2014softening" id="id63">[95]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2396,7 +2394,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-fracture_density.softening_lower_limit"></span><code class="docutils literal notranslate"><span class="pre">fracture_density.softening_lower_limit</span></code></p>
-<p>Parameter controlling the strength of the feedback of damage on the ice flow. If <span class="math notranslate nohighlight">\(1\)</span>: no feedback, if <span class="math notranslate nohighlight">\(0\)</span>: full feedback (<span class="math notranslate nohighlight">\(\epsilon\)</span> in Eq. 6 in <span id="id64">[<a class="reference internal" href="../../zzz_references_html.html#id21" title="T. Albrecht and A. Levermann. Fracture-induced softening for large-scale ice dynamics. The Cryosphere, 8(2):587–605, 2014. URL: https://www.the-cryosphere.net/8/587/2014/, doi:10.5194/tc-8-587-2014.">104</a>]</span>)<dl class="field-list simple">
+<p>Parameter controlling the strength of the feedback of damage on the ice flow. If <span class="math notranslate nohighlight">\(1\)</span>: no feedback, if <span class="math notranslate nohighlight">\(0\)</span>: full feedback (<span class="math notranslate nohighlight">\(\epsilon\)</span> in Eq. 6 in <a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtlevermann2014softening" id="id64">[95]</a>)<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2504,7 +2502,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-frontal_melt.routing.parameter_a"></span><code class="docutils literal notranslate"><span class="pre">frontal_melt.routing.parameter_a</span></code></p>
-<p>parameter A in eqn. 1 in <span id="id65">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>parameter A in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id65">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2514,7 +2512,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-frontal_melt.routing.parameter_b"></span><code class="docutils literal notranslate"><span class="pre">frontal_melt.routing.parameter_b</span></code></p>
-<p>parameter B in eqn. 1 in <span id="id66">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>parameter B in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id66">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2534,7 +2532,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-frontal_melt.routing.power_alpha"></span><code class="docutils literal notranslate"><span class="pre">frontal_melt.routing.power_alpha</span></code></p>
-<p>exponent <span class="math notranslate nohighlight">\(\alpha\)</span> in eqn. 1 in <span id="id67">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>exponent <span class="math notranslate nohighlight">\(\alpha\)</span> in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id67">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2544,7 +2542,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-frontal_melt.routing.power_beta"></span><code class="docutils literal notranslate"><span class="pre">frontal_melt.routing.power_beta</span></code></p>
-<p>exponent <span class="math notranslate nohighlight">\(\beta\)</span> in eqn. 1 in <span id="id68">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>exponent <span class="math notranslate nohighlight">\(\beta\)</span> in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id68">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -2988,7 +2986,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-hydrology.null_diffuse_till_water"></span><code class="docutils literal notranslate"><span class="pre">hydrology.null_diffuse_till_water</span></code></p>
-<p>Diffuse stored till water laterally. See equation (11) of <span id="id69">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span><dl class="field-list simple">
+<p>Diffuse stored till water laterally. See equation (11) of <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id69">[29]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -2998,7 +2996,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-hydrology.null_diffusion_distance"></span><code class="docutils literal notranslate"><span class="pre">hydrology.null_diffusion_distance</span></code></p>
-<p>diffusion distance for till water thickness; see equation (11) in <span id="id70">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>; only active if hydrology.null_diffuse_till_water is set<dl class="field-list simple">
+<p>diffusion distance for till water thickness; see equation (11) in <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id70">[29]</a>; only active if hydrology.null_diffuse_till_water is set<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -3008,7 +3006,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-hydrology.null_diffusion_time"></span><code class="docutils literal notranslate"><span class="pre">hydrology.null_diffusion_time</span></code></p>
-<p>diffusion time for till water thickness; see equation (11) in <span id="id71">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>; only active if hydrology.null_diffuse_till_water is set<dl class="field-list simple">
+<p>diffusion time for till water thickness; see equation (11) in <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id71">[29]</a>; only active if hydrology.null_diffuse_till_water is set<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -3979,7 +3977,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.pik_melt_factor"></span><code class="docutils literal notranslate"><span class="pre">ocean.pik_melt_factor</span></code></p>
-<p>dimensionless tuning parameter in the <code class="docutils literal notranslate"><span class="pre">-ocean</span> <span class="pre">pik</span></code> ocean heat flux parameterization; see <span id="id72">[<a class="reference internal" href="../../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span><dl class="field-list simple">
+<p>dimensionless tuning parameter in the <code class="docutils literal notranslate"><span class="pre">-ocean</span> <span class="pre">pik</span></code> ocean heat flux parameterization; see <a class="bibtex reference internal" href="../../zzz_references_html.html#martinetal2011" id="id72">[3]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -3992,7 +3990,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.runoff_to_ocean_melt.b"></span><code class="docutils literal notranslate"><span class="pre">ocean.runoff_to_ocean_melt.b</span></code></p>
-<p>parameter B in eqn. 1 in <span id="id73">[<a class="reference internal" href="../../zzz_references_html.html#id28" title="Andy Aschwanden, Mark A Fahnestock, Martin Truffer, Douglas J Brinkerhoff, Regine Hock, Constantine Khroulev, Ruth Mottram, and S Abbas Khan. Contribution of the greenland ice sheet to sea level over the next millennium. Science Advances, 5(6):eaav9396, 2019.">145</a>]</span><dl class="field-list simple">
+<p>parameter B in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwanden2019" id="id73">[120]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4015,7 +4013,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.runoff_to_ocean_melt.power_alpha"></span><code class="docutils literal notranslate"><span class="pre">ocean.runoff_to_ocean_melt.power_alpha</span></code></p>
-<p>exponent <span class="math notranslate nohighlight">\(\alpha\)</span> in eqn. 1 in <span id="id74">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>exponent <span class="math notranslate nohighlight">\(\alpha\)</span> in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id74">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4025,7 +4023,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.runoff_to_ocean_melt.power_beta"></span><code class="docutils literal notranslate"><span class="pre">ocean.runoff_to_ocean_melt.power_beta</span></code></p>
-<p>exponent <span class="math notranslate nohighlight">\(\beta\)</span> in eqn. 1 in <span id="id75">[<a class="reference internal" href="../../zzz_references_html.html#id464" title="Yun Xu, Eric Rignot, Ian Fenty, Dimitris Menemenlis, and M. Mar Flexas. Subaqueous melting of Store Glacier, west Greenland from three-dimensional, high-resolution numerical modeling and ocean observations. Geophysical Research Letters, 40(17):4648–4653, 2013. doi:10.1002/grl.50825.">144</a>]</span><dl class="field-list simple">
+<p>exponent <span class="math notranslate nohighlight">\(\beta\)</span> in eqn. 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#xu2013" id="id75">[119]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4045,7 +4043,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.th.clip_salinity"></span><code class="docutils literal notranslate"><span class="pre">ocean.th.clip_salinity</span></code></p>
-<p>Clip shelf base salinity so that it is in the range [4, 40] k/kg. See <span id="id76">[<a class="reference internal" href="../../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>.<dl class="field-list simple">
+<p>Clip shelf base salinity so that it is in the range [4, 40] k/kg. See <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandjenkins1999" id="id76">[11]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -4071,7 +4069,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.th.gamma_S"></span><code class="docutils literal notranslate"><span class="pre">ocean.th.gamma_S</span></code></p>
-<p>Turbulent salt transfer coefficient. See <span id="id77">[<a class="reference internal" href="../../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>.<dl class="field-list simple">
+<p>Turbulent salt transfer coefficient. See <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandjenkins1999" id="id77">[11]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4084,7 +4082,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-ocean.th.gamma_T"></span><code class="docutils literal notranslate"><span class="pre">ocean.th.gamma_T</span></code></p>
-<p>Turbulent heat transfer coefficient. See <span id="id78">[<a class="reference internal" href="../../zzz_references_html.html#id195" title="David M Holland and Adrian Jenkins. Modeling thermodynamic ice-ocean interactions at the base of an ice shelf. Journal of Physical Oceanography, 29(8):1787–1800, 1999.">146</a>]</span>.<dl class="field-list simple">
+<p>Turbulent heat transfer coefficient. See <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandjenkins1999" id="id78">[11]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4725,7 +4723,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.blatter.use_eta_transform"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.blatter.use_eta_transform</span></code></p>
-<p>Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <span id="id79">[<a class="reference internal" href="../../zzz_references_html.html#id40" title="E. Bueler, C. S. Lingle, J. A. Kallen-Brown, D. N. Covey, and L. N. Bowman. Exact solutions and verification of numerical models for isothermal ice sheets. J. Glaciol., 51(173):291–306, 2005. doi:10.3189/172756505781829449.">58</a>]</span> for details).<dl class="field-list simple">
+<p>Use the <span class="math notranslate nohighlight">\(\eta\)</span> transform to improve the accuracy of the surface gradient approximation near grounded margins (see <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id79">[33]</a> for details).<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -4735,7 +4733,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.calving_front_stress_bc"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.calving_front_stress_bc</span></code></p>
-<p>Apply CFBC condition as in <span id="id80">[<a class="reference internal" href="../../zzz_references_html.html#id22" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">93</a>]</span>, <span id="id81">[<a class="reference internal" href="../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>.  May only apply to some stress balances; e.g. SSAFD as of May 2011.  If not set then a strength-extension is used, as in <span id="id82">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>.<dl class="field-list simple">
+<p>Apply CFBC condition as in <a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtetal2011" id="id80">[98]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#winkelmannetal2011" id="id81">[37]</a>.  May only apply to some stress balances; e.g. SSAFD as of May 2011.  If not set then a strength-extension is used, as in <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id82">[29]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -4797,7 +4795,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.sia.bed_smoother.range"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.sia.bed_smoother.range</span></code></p>
-<p>half-width of smoothing domain in the bed roughness parameterization for SIA <span id="id83">[<a class="reference internal" href="../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span>; set to zero to disable<dl class="field-list simple">
+<p>half-width of smoothing domain in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofbasaltopg2003" id="id83">[83]</a>; set to zero to disable<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4810,7 +4808,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.sia.bed_smoother.theta_min"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.sia.bed_smoother.theta_min</span></code></p>
-<p>minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in the bed roughness parameterization for SIA <span id="id84">[<a class="reference internal" href="../../zzz_references_html.html#id405" title="C. Schoof. The effect of basal topography on ice sheet dynamics. Continuum Mech. Thermodyn., 15:295–307, 2003. doi:10.1007/s00161-003-0119-3.">66</a>]</span><dl class="field-list simple">
+<p>minimum value of <span class="math notranslate nohighlight">\(\theta\)</span> in the bed roughness parameterization for SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofbasaltopg2003" id="id84">[83]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -4820,7 +4818,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.sia.e_age_coupling"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.sia.e_age_coupling</span></code></p>
-<p>Couple the SIA enhancement factor to age as in <span id="id85">[<a class="reference internal" href="../../zzz_references_html.html#id154" title="R. Greve. A continuum–mechanical formulation for shallow polythermal ice sheets. Phil. Trans. Royal Soc. London A, 355:921–974, 1997.">44</a>]</span>.<dl class="field-list simple">
+<p>Couple the SIA enhancement factor to age as in <a class="bibtex reference internal" href="../../zzz_references_html.html#greve" id="id85">[36]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -4875,7 +4873,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.sia.grain_size_age_coupling"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.sia.grain_size_age_coupling</span></code></p>
-<p>Use age of the ice to compute grain size to use with the Goldsby-Kohlstedt <span id="id86">[<a class="reference internal" href="../../zzz_references_html.html#id145" title="D. L. Goldsby and D. L. Kohlstedt. Superplastic deformation of ice: experimental observations. J. Geophys. Res., 106(M6):11017–11030, 2001.">70</a>]</span> flow law<dl class="field-list simple">
+<p>Use age of the ice to compute grain size to use with the Goldsby-Kohlstedt <a class="bibtex reference internal" href="../../zzz_references_html.html#goldsbykohlstedt" id="id86">[25]</a> flow law<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -4976,7 +4974,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.ssa.epsilon"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.ssa.epsilon</span></code></p>
-<p>Initial amount of regularization in computation of product of effective viscosity and thickness (<span class="math notranslate nohighlight">\(\nu H\)</span>).  This default value for <span class="math notranslate nohighlight">\(\nu H\)</span> comes e.g. from a hardness for the Ross ice shelf (<span class="math notranslate nohighlight">\(\bar B\)</span>) = 1.9e8 Pa <span class="math notranslate nohighlight">\(s^{1/3}\)</span> <span id="id87">[<a class="reference internal" href="../../zzz_references_html.html#id286" title="D. R. MacAyeal, V. Rommelaere, Ph. Huybrechts, C.L. Hulbe, J. Determann, and C. Ritz. An ice-shelf model test based on the Ross ice shelf. Ann. Glaciol., 23:46–51, 1996.">62</a>]</span> and a typical strain rate of 0.001 1/year for the Ross ice shelf, giving <span class="math notranslate nohighlight">\(\nu = (\bar B) / (2 \cdot 0.001^{2/3})\)</span> = 9.49e+14 Pa s ~ 30 MPa year, the value in <span id="id88">[<a class="reference internal" href="../../zzz_references_html.html#id377" title="Catherine Ritz, Vincent Rommelaere, and Christophe Dumas. Modeling the evolution of Antarctic ice sheet over the last 420,000 years: Implications for altitude changes in the Vostok region. J. Geophys. Res., 106(D23):31943–31964, 2001.">63</a>]</span>, but with a tiny thickness <span class="math notranslate nohighlight">\(H\)</span> of about 1 cm.<dl class="field-list simple">
+<p>Initial amount of regularization in computation of product of effective viscosity and thickness (<span class="math notranslate nohighlight">\(\nu H\)</span>).  This default value for <span class="math notranslate nohighlight">\(\nu H\)</span> comes e.g. from a hardness for the Ross ice shelf (<span class="math notranslate nohighlight">\(\bar B\)</span>) = 1.9e8 Pa <span class="math notranslate nohighlight">\(s^{1/3}\)</span> <a class="bibtex reference internal" href="../../zzz_references_html.html#macayealetal" id="id87">[68]</a> and a typical strain rate of 0.001 1/year for the Ross ice shelf, giving <span class="math notranslate nohighlight">\(\nu = (\bar B) / (2 \cdot 0.001^{2/3})\)</span> = 9.49e+14 Pa s ~ 30 MPa year, the value in <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzetal2001" id="id88">[87]</a>, but with a tiny thickness <span class="math notranslate nohighlight">\(H\)</span> of about 1 cm.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5155,7 +5153,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.ssa.strength_extension.constant_nu"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.ssa.strength_extension.constant_nu</span></code></p>
-<p>The SSA is made elliptic by use of a constant value for the product of viscosity (nu) and thickness (H).  This value for nu comes from hardness (bar B)=1.9e8 <span class="math notranslate nohighlight">\(Pa s^{1/3}\)</span> <span id="id89">[<a class="reference internal" href="../../zzz_references_html.html#id286" title="D. R. MacAyeal, V. Rommelaere, Ph. Huybrechts, C.L. Hulbe, J. Determann, and C. Ritz. An ice-shelf model test based on the Ross ice shelf. Ann. Glaciol., 23:46–51, 1996.">62</a>]</span> and a typical strain rate of 0.001 year-1:  <span class="math notranslate nohighlight">\(\nu = (\bar B) / (2 \cdot 0.001^{2/3})\)</span>.  Compare the value of 9.45e14 Pa s = 30 MPa year in <span id="id90">[<a class="reference internal" href="../../zzz_references_html.html#id377" title="Catherine Ritz, Vincent Rommelaere, and Christophe Dumas. Modeling the evolution of Antarctic ice sheet over the last 420,000 years: Implications for altitude changes in the Vostok region. J. Geophys. Res., 106(D23):31943–31964, 2001.">63</a>]</span>.<dl class="field-list simple">
+<p>The SSA is made elliptic by use of a constant value for the product of viscosity (nu) and thickness (H).  This value for nu comes from hardness (bar B)=1.9e8 <span class="math notranslate nohighlight">\(Pa s^{1/3}\)</span> <a class="bibtex reference internal" href="../../zzz_references_html.html#macayealetal" id="id89">[68]</a> and a typical strain rate of 0.001 year-1:  <span class="math notranslate nohighlight">\(\nu = (\bar B) / (2 \cdot 0.001^{2/3})\)</span>.  Compare the value of 9.45e14 Pa s = 30 MPa year in <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzetal2001" id="id90">[87]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5191,7 +5189,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-stress_balance.weertman_sliding.A"></span><code class="docutils literal notranslate"><span class="pre">stress_balance.weertman_sliding.A</span></code></p>
-<p>Sliding parameter in the Weertman-style sliding parameterization <span id="id91">[<a class="reference internal" href="../../zzz_references_html.html#id429" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span><dl class="field-list simple">
+<p>Sliding parameter in the Weertman-style sliding parameterization <a class="bibtex reference internal" href="../../zzz_references_html.html#tomkin2007" id="id91">[88]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5519,7 +5517,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.factor_ice"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.factor_ice</span></code></p>
-<p>EISMINT-Greenland value <span id="id92">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span>; = (8 mm liquid-water-equivalent) / (pos degree day)<dl class="field-list simple">
+<p>EISMINT-Greenland value <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id92">[7]</a>; = (8 mm liquid-water-equivalent) / (pos degree day)<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5529,7 +5527,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.factor_snow"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.factor_snow</span></code></p>
-<p>EISMINT-Greenland value <span id="id93">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span>; = (3 mm liquid-water-equivalent) / (pos degree day)<dl class="field-list simple">
+<p>EISMINT-Greenland value <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id93">[7]</a>; = (3 mm liquid-water-equivalent) / (pos degree day)<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5539,7 +5537,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.T_c"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.T_c</span></code></p>
-<p>= -1 + 273.15; for formula (6) in <span id="id94">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>= -1 + 273.15; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id94">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5549,7 +5547,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.T_w"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.T_w</span></code></p>
-<p>= 10 + 273.15; for formula (6) in <span id="id95">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>= 10 + 273.15; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id95">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5559,7 +5557,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.beta_ice_c"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.beta_ice_c</span></code></p>
-<p>water-equivalent thickness; for formula (6) in <span id="id96">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>water-equivalent thickness; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id96">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5569,7 +5567,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.beta_ice_w"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.beta_ice_w</span></code></p>
-<p>water-equivalent thickness; for formula (6) in <span id="id97">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>water-equivalent thickness; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id97">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5579,7 +5577,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.beta_snow_c"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.beta_snow_c</span></code></p>
-<p>water-equivalent thickness; for formula (6) in <span id="id98">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>water-equivalent thickness; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id98">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5589,7 +5587,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.beta_snow_w"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.beta_snow_w</span></code></p>
-<p>water-equivalent thickness; for formula (6) in <span id="id99">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>water-equivalent thickness; for formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id99">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5599,7 +5597,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.enabled"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.enabled</span></code></p>
-<p>Set PDD parameters using formulas (6) and (7) in <span id="id100">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>Set PDD parameters using formulas (6) and (7) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id100">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> flag</dd>
 <dt class="field-even">Default value</dt>
@@ -5612,7 +5610,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.fausto.latitude_beta_w"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.fausto.latitude_beta_w</span></code></p>
-<p>latitude below which to use warm case, in formula (6) in <span id="id101">[<a class="reference internal" href="../../zzz_references_html.html#id123" title="R. S. Fausto, A. P. Ahlstrom, D. Van As, C. E. Boggild, and S. J. Johnsen. A new present-day temperature parameterization for Greenland. J. Glaciol., 55(189):95–105, 2009.">140</a>]</span><dl class="field-list simple">
+<p>latitude below which to use warm case, in formula (6) in <a class="bibtex reference internal" href="../../zzz_references_html.html#faustoetal2009" id="id101">[1]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5691,7 +5689,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.refreeze"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.refreeze</span></code></p>
-<p>EISMINT-Greenland value <span id="id102">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span><dl class="field-list simple">
+<p>EISMINT-Greenland value <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id102">[7]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5784,7 +5782,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-surface.pdd.std_dev.value"></span><code class="docutils literal notranslate"><span class="pre">surface.pdd.std_dev.value</span></code></p>
-<p>standard deviation of daily temp variation; = EISMINT-Greenland value <span id="id103">[<a class="reference internal" href="../../zzz_references_html.html#id375" title="C. Ritz. EISMINT Intercomparison Experiment: Comparison of existing Greenland models. 1997. URL: http://homepages.vub.ac.be/~phuybrec/eismint/greenland.html.">143</a>]</span><dl class="field-list simple">
+<p>standard deviation of daily temp variation; = EISMINT-Greenland value <a class="bibtex reference internal" href="../../zzz_references_html.html#ritzeismint" id="id103">[7]</a><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5840,7 +5838,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-time.eemian_end"></span><code class="docutils literal notranslate"><span class="pre">time.eemian_end</span></code></p>
-<p>End of the Eemian interglacial period. See <span id="id104">[<a class="reference internal" href="../../zzz_references_html.html#id158" title="Ralf Greve. Application of a polythermal three-dimensional ice sheet model to the Greenland ice sheet: Response to steady-state and transient climate scenarios. J. Climate, 10(5):901–918, 1997.">69</a>]</span>.<dl class="field-list simple">
+<p>End of the Eemian interglacial period. See <a class="bibtex reference internal" href="../../zzz_references_html.html#greve97greenland" id="id104">[86]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5850,7 +5848,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-time.eemian_start"></span><code class="docutils literal notranslate"><span class="pre">time.eemian_start</span></code></p>
-<p>Start of the Eemian interglacial period. See <span id="id105">[<a class="reference internal" href="../../zzz_references_html.html#id158" title="Ralf Greve. Application of a polythermal three-dimensional ice sheet model to the Greenland ice sheet: Response to steady-state and transient climate scenarios. J. Climate, 10(5):901–918, 1997.">69</a>]</span>.<dl class="field-list simple">
+<p>Start of the Eemian interglacial period. See <a class="bibtex reference internal" href="../../zzz_references_html.html#greve97greenland" id="id105">[86]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5896,7 +5894,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-time.holocene_start"></span><code class="docutils literal notranslate"><span class="pre">time.holocene_start</span></code></p>
-<p>Start of the Holocene interglacial period. See <span id="id106">[<a class="reference internal" href="../../zzz_references_html.html#id158" title="Ralf Greve. Application of a polythermal three-dimensional ice sheet model to the Greenland ice sheet: Response to steady-state and transient climate scenarios. J. Climate, 10(5):901–918, 1997.">69</a>]</span>.<dl class="field-list simple">
+<p>Start of the Holocene interglacial period. See <a class="bibtex reference internal" href="../../zzz_references_html.html#greve97greenland" id="id106">[86]</a>.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5942,7 +5940,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-time_stepping.adaptive_ratio"></span><code class="docutils literal notranslate"><span class="pre">time_stepping.adaptive_ratio</span></code></p>
-<p>Adaptive time stepping ratio for the explicit scheme for the mass balance equation; <span id="id107">[<a class="reference internal" href="../../zzz_references_html.html#id34" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span>, inequality (25)<dl class="field-list simple">
+<p>Adaptive time stepping ratio for the explicit scheme for the mass balance equation; <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id107">[30]</a>, inequality (25)<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -5950,6 +5948,16 @@ removed in a later PISM version.</p>
 </dd>
 <dt class="field-odd">Option</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">-adapt_ratio</span></code></p>
+</dd>
+</dl>
+</p>
+</li>
+<li><p><span class="target" id="config-time_stepping.assume_bed_elevation_changed"></span><code class="docutils literal notranslate"><span class="pre">time_stepping.assume_bed_elevation_changed</span></code></p>
+<p>If set, assume that bed elevation changes every time step. If not set, PISM tries to avoid unnecessary computations if the bed deformation model did not update bed elevation (to reduce the computational cost a little bit).<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"> flag</dd>
+<dt class="field-even">Default value</dt>
+<dd class="field-even"><p>no</p>
 </dd>
 </dl>
 </p>
@@ -6066,7 +6074,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 </ol>
-</section>
+</div>
 
 
       <hr>
@@ -6132,7 +6140,7 @@ removed in a later PISM version.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -6143,9 +6151,9 @@ removed in a later PISM version.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

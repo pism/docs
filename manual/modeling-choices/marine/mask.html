@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Flotation criterion, mask, and sea level &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flotation criterion, mask, and sea level &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="PIK options for marine ice sheets" href="pik.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,11 +29,11 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="flotation-criterion-mask-and-sea-level">
+  <div class="section" id="flotation-criterion-mask-and-sea-level">
 <span id="sec-floatmask"></span><h1>Flotation criterion, mask, and sea level<a class="headerlink" href="#flotation-criterion-mask-and-sea-level" title="Permalink to this headline">¶</a></h1>
 <p>The most basic decision about marine ice sheet dynamics made internally by PISM is whether
 a ice-filled grid cell is floating. That is, PISM applies the “flotation criterion”
-<span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span> at every time step and at every grid location to determine whether
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id1">[37]</a> at every time step and at every grid location to determine whether
 the ice is floating on the ocean or not. The result is stored in the <code class="docutils literal notranslate"><span class="pre">mask</span></code> variable.
 The <code class="docutils literal notranslate"><span class="pre">mask</span></code> variable has <code class="docutils literal notranslate"><span class="pre">pism_intent</span></code> = <code class="docutils literal notranslate"><span class="pre">diagnostic</span></code>, and thus it does <em>not</em> need to
 be included in the input file set using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> option.</p>
@@ -76,7 +74,7 @@ namely the SSA stress balance, by using options <code class="option docutils lit
 option <code class="docutils literal notranslate"><span class="pre">-no_mass</span></code>), and assuming an ocean exists so that a sea level is used in the
 flotation criterion (which can be turned off by option <code class="option docutils literal notranslate"><span class="pre">-dry</span></code>), then at each time
 step the mask will be updated.</p>
-</section>
+</div>
 
 
       <hr>
@@ -151,7 +149,7 @@ step the mask will be updated.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -162,9 +160,9 @@ step the mask will be updated.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

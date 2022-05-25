@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Stress balance models: SIA, SSA, and the First Order Approximation &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stress balance models: SIA, SSA, and the First Order Approximation &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="Ice dynamics, the PISM view" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,59 +29,59 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="stress-balance-models-sia-ssa-and-the-first-order-approximation">
+  <div class="section" id="stress-balance-models-sia-ssa-and-the-first-order-approximation">
 <span id="sec-stress-balance-models"></span><h1>Stress balance models: SIA, SSA, and the First Order Approximation<a class="headerlink" href="#stress-balance-models-sia-ssa-and-the-first-order-approximation" title="Permalink to this headline">¶</a></h1>
 <p>At each time-step of a typical PISM run, the geometry, temperature, and basal strength of
 the ice sheet are included into stress (momentum) balance equations to determine the
 velocity of the flowing ice. The “full” stress balance equations for flowing ice form a
-non-Newtonian Stokes model <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id130" title="A. C. Fowler. Mathematical Models in the Applied Sciences. Cambridge Univ. Press, 1997.">38</a>]</span>. PISM does not attempt to solve the Stokes equations
+non-Newtonian Stokes model <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id1">[31]</a>. PISM does not attempt to solve the Stokes equations
 themselves, however. Instead it can numerically solve, in parallel, three different shallow
 approximations which are well-suited to ice sheet and ice shelf systems:</p>
 <ul class="simple">
-<li><p>the non-sliding shallow ice approximation (SIA) <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id205" title="K. Hutter. Theoretical Glaciology. D. Reidel, 1983.">39</a>]</span>, also called the “lubrication
-approximation” <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id130" title="A. C. Fowler. Mathematical Models in the Applied Sciences. Cambridge Univ. Press, 1997.">38</a>]</span>, which describes ice as flowing by shear in planes parallel to
+<li><p>the non-sliding shallow ice approximation (SIA) <a class="bibtex reference internal" href="../../zzz_references_html.html#hutter" id="id2">[41]</a>, also called the “lubrication
+approximation” <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id3">[31]</a>, which describes ice as flowing by shear in planes parallel to
 the geoid, with a strong connection of the ice base to the bedrock, and</p></li>
-<li><p>the shallow shelf approximation (SSA) <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id457" title="M. Weis, R. Greve, and K. Hutter. Theory of shallow ice shelves. Continuum Mech. Thermodyn., 11(1):15–50, 1999.">15</a>]</span>, which describes a
-membrane-type flow of floating ice <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id300" title="L. W. Morland. Unconfined ice-shelf flow. In C. J. van der Veen and J. Oerlemans, editors, Dynamics of the West Antarctic ice sheet, 99–116. Kluwer Academic Publishers, 1987.">40</a>]</span>, or of grounded ice which is sliding over
-a weak base <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id283" title="D. R. MacAyeal. Large-scale ice flow over a viscous basal sediment: theory and application to ice stream B, Antarctica. J. Geophys. Res., 94(B4):4071–4087, 1989.">14</a>]</span>, <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span>.</p></li>
-<li><p>a first order approximation to the Stokes equations due to Blatter (<span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id59" title="H. Blatter. Velocity and stress fields in grounded glaciers: a simple algorithm for including deviatoric stress gradients. J. Glaciol., 41(138):333–344, 1995.">41</a>]</span>,
-<span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id333" title="Frank Pattyn. A new three-dimensional higher-order thermomechanical ice sheet model: Basic sensitivity, ice stream development, and ice flow across subglacial lakes. J. Geophys. Res., 2003. doi:10.1029/2002JB002329.">42</a>]</span>). In the remainder, we refer to is as the “Blatter’s model.”</p></li>
+<li><p>the shallow shelf approximation (SSA) <a class="bibtex reference internal" href="../../zzz_references_html.html#weisgrevehutter" id="id4">[42]</a>, which describes a
+membrane-type flow of floating ice <a class="bibtex reference internal" href="../../zzz_references_html.html#morland" id="id5">[43]</a>, or of grounded ice which is sliding over
+a weak base <a class="bibtex reference internal" href="../../zzz_references_html.html#macayeal" id="id6">[44]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id7">[45]</a>.</p></li>
+<li><p>a first order approximation to the Stokes equations due to Blatter (<a class="bibtex reference internal" href="../../zzz_references_html.html#blatter" id="id8">[38]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#pattyn03" id="id9">[39]</a>). In the remainder, we refer to is as the “Blatter’s model.”</p></li>
 </ul>
 <p>The SIA equations are easier to solve numerically than the SSA and Blatter’s model, and
 easier to parallelize, because they are local in each column of ice. Specifically, they
 describe the vertical shear stress as a local function of the driving stress
-<span id="id10">[<a class="reference internal" href="../../zzz_references_html.html#id331" title="W. S. B. Paterson. The Physics of Glaciers. Pergamon, 3rd edition, 1994.">43</a>]</span>. They can confidently be applied to those grounded parts of ice sheets
+<a class="bibtex reference internal" href="../../zzz_references_html.html#paterson" id="id10">[46]</a>. They can confidently be applied to those grounded parts of ice sheets
 for which the basal ice is frozen to the bedrock, or which is minimally sliding, and where
-the bed topography is relatively slowly-varying in the map-plane <span id="id11">[<a class="reference internal" href="../../zzz_references_html.html#id130" title="A. C. Fowler. Mathematical Models in the Applied Sciences. Cambridge Univ. Press, 1997.">38</a>]</span>. These
+the bed topography is relatively slowly-varying in the map-plane <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id11">[31]</a>. These
 characteristics apply to the majority (by area) of the Greenland and Antarctic ice sheets.</p>
-<p>We solve the SIA with a non-sliding base because the traditional <span id="id12">[<a class="reference internal" href="../../zzz_references_html.html#id154" title="R. Greve. A continuum–mechanical formulation for shallow polythermal ice sheets. Phil. Trans. Royal Soc. London A, 355:921–974, 1997.">44</a>]</span>,
-<span id="id13">[<a class="reference internal" href="../../zzz_references_html.html#id211" title="P. Huybrechts and J. de Wolde. The dynamic response of the Greenland and Antarctic ice sheets to multiple-century climatic warming. J. Climate, 12:2169–2188, 1999.">45</a>]</span>, <span id="id14">[<a class="reference internal" href="../../zzz_references_html.html#id336" title="A. J. Payne and D. J. Baldwin. Analysis of ice–flow instabilities identified in the EISMINT intercomparison exercise. Ann. Glaciol., 30:204–210, 2000.">46</a>]</span> additions of ad hoc “sliding laws” into
+<p>We solve the SIA with a non-sliding base because the traditional <a class="bibtex reference internal" href="../../zzz_references_html.html#greve" id="id12">[36]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#huybrechtsdewolde" id="id13">[4]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id14">[47]</a> additions of ad hoc “sliding laws” into
 the SIA stress balance, and especially schemes which “switch on” at the pressure-melting
-temperature <span id="id15">[<a class="reference internal" href="../../zzz_references_html.html#id110" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>, have bad continuum <span id="id16">[<a class="reference internal" href="../../zzz_references_html.html#id131" title="Andrew C. Fowler. Modelling the flow of glaciers and ice sheets. In Brian Straughan and others, editors, Continuum Mechanics and Applications in Geophysics and the Environment, 201–221. Springer, 2001.">47</a>]</span> and numerical (see
-<span id="id17">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, appendix B) modeling consequences.</p>
+temperature <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id15">[22]</a>, have bad continuum <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler01" id="id16">[48]</a> and numerical (see
+<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id17">[29]</a>, appendix B) modeling consequences.</p>
 <p>The SSA equations can confidently be applied to large floating ice shelves, which have
-small depth-to-width ratio and negligible basal resistance <span id="id18">[<a class="reference internal" href="../../zzz_references_html.html#id300" title="L. W. Morland. Unconfined ice-shelf flow. In C. J. van der Veen and J. Oerlemans, editors, Dynamics of the West Antarctic ice sheet, 99–116. Kluwer Academic Publishers, 1987.">40</a>]</span>,
-<span id="id19">[<a class="reference internal" href="../../zzz_references_html.html#id303" title="L. W. Morland and R. Zainuddin. Plane and radial ice-shelf flow with prescribed temperature profile. In C. J. van der Veen and J. Oerlemans, editors, Dynamics of the West Antarctic ice sheet, 117–140. Kluwer Academic Publishers, 1987.">48</a>]</span>. The flow speeds in ice shelves are frequently an order-of-magnitude
+small depth-to-width ratio and negligible basal resistance <a class="bibtex reference internal" href="../../zzz_references_html.html#morland" id="id18">[43]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#morlandzainuddin" id="id19">[49]</a>. The flow speeds in ice shelves are frequently an order-of-magnitude
 higher than in the non-sliding, grounded parts of ice sheets.</p>
 <p>Terrestrial ice sheets also have fast-flowing grounded parts, however, called “ice
-streams” or “outlet glaciers” <span id="id20">[<a class="reference internal" href="../../zzz_references_html.html#id433" title="M. Truffer and K. Echelmeyer. Of isbrae and ice streams. Ann. Glaciol., 36(1):66–72, 2003.">49</a>]</span>. Such features appear at the
-margin of, and sometimes well into the interior of, the Greenland <span id="id21">[<a class="reference internal" href="../../zzz_references_html.html#id231" title="I. Joughin, M. Fahnestock, D. MacAyeal, J. L. Bamber, and P. Gogineni. Observation and analysis of ice flow in the largest Greenland ice stream. J. Geophys. Res., 106(D24):34021–34034, 2001.">13</a>]</span>
-and Antarctic <span id="id22">[<a class="reference internal" href="../../zzz_references_html.html#id47" title="J. L. Bamber, D. G. Vaughan, and I. Joughin. Widespread complex flow in the interior of the Antarctic ice sheet. Science, 287:1248–1250, 2000.">50</a>]</span> ice sheets. Describing these faster-flowing
+streams” or “outlet glaciers” <a class="bibtex reference internal" href="../../zzz_references_html.html#trufferechelmeyer" id="id20">[50]</a>. Such features appear at the
+margin of, and sometimes well into the interior of, the Greenland <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal2001" id="id21">[51]</a>
+and Antarctic <a class="bibtex reference internal" href="../../zzz_references_html.html#bambervaughanjoughin" id="id22">[52]</a> ice sheets. Describing these faster-flowing
 grounded parts of ice sheets requires something more than the non-sliding SIA. This is
 because adjacent columns of ice which have different amounts of basal resistance exert
-strong “longitudinal” or “membrane” stresses <span id="id23">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span> on each other.</p>
+strong “longitudinal” or “membrane” stresses <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id23">[45]</a> on each other.</p>
 <p>In PISM the SSA may be used as a “sliding law” for grounded ice which is already modeled
-everywhere by the non-sliding SIA <span id="id24">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, <span id="id25">[<a class="reference internal" href="../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>. For
+everywhere by the non-sliding SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id24">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#winkelmannetal2011" id="id25">[37]</a>. For
 grounded ice, in addition to including shear in planes parallel to the geoid, we must
 balance the membrane stresses where there is sliding. This inclusion of a membrane stress
 balance is especially important when there are spatial and/or temporal changes in basal
 strength. This “sliding law” role for the SSA is in addition to its more obvious role in
 ice shelf modeling. The SSA plays both roles in a PISM whole ice sheet model in which
-there are large floating ice shelves (e.g. as in Antarctica <span id="id26">[<a class="reference internal" href="../../zzz_references_html.html#id148" title="N. Golledge, C. Fogwill, A. Mackintosh, and K. Buckley. Dynamics of the Last Glacial Maximum Antarctic ice-sheet and its response to ocean forcing. Proc. Nat. Acad. Sci., 109(40):16052–16056, 2012. doi:10.1073/pnas.1205385109.">51</a>]</span>,
-<span id="id27">[<a class="reference internal" href="../../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span>, <span id="id28">[<a class="reference internal" href="../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>; see also <a class="reference internal" href="../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a>).</p>
+there are large floating ice shelves (e.g. as in Antarctica <a class="bibtex reference internal" href="../../zzz_references_html.html#golledgeetal2012ant" id="id26">[53]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#martinetal2011" id="id27">[3]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#winkelmannetal2011" id="id28">[37]</a>; see also <a class="reference internal" href="../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a>).</p>
 <p>The “SIA+SSA hybrid” model is recommended for most whole ice sheet modeling purposes
 because it seems to be a good compromise given currently-available data and computational
-power. A related hybrid model described by Pollard and deConto <span id="id29">[<a class="reference internal" href="../../zzz_references_html.html#id353" title="D. Pollard and R. M. DeConto. A coupled ice-sheet/ice-shelf/sediment model applied to a marine-margin flowline: Forced and unforced variations. In M. J. Hambrey and others, editors, Glacial Sedimentary Processes and Products. Blackwell Publishing Ltd., 2007.">53</a>]</span> adds
+power. A related hybrid model described by Pollard and deConto <a class="bibtex reference internal" href="../../zzz_references_html.html#pollarddeconto" id="id29">[54]</a> adds
 the shear to the SSA solution in a slightly-different manner, but it confirms the success
 of the hybrid concept.</p>
 <p>By default, however, PISM does not turn on (activate) the SSA solver. This is because a
@@ -95,33 +93,33 @@ uncertainties in basal strength boundary conditions usually dominate the modelin
 made by not including higher-order stresses in the balance.</p>
 <p>When the SSA model is applied a parameterized sliding relation must be chosen. A
 well-known SSA model with a linear basal resistance relation is the Siple Coast
-(Antarctica) ice stream model by MacAyeal <span id="id30">[<a class="reference internal" href="../../zzz_references_html.html#id283" title="D. R. MacAyeal. Large-scale ice flow over a viscous basal sediment: theory and application to ice stream B, Antarctica. J. Geophys. Res., 94(B4):4071–4087, 1989.">14</a>]</span>. The linear sliding law choice is
+(Antarctica) ice stream model by MacAyeal <a class="bibtex reference internal" href="../../zzz_references_html.html#macayeal" id="id30">[44]</a>. The linear sliding law choice is
 explained by supposing the saturated till is a linearly-viscous fluid. A free boundary
 problem with the same SSA balance equations but a different sliding law is the Schoof
-<span id="id31">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span> model of ice streams, using a plastic (Coulomb) sliding relation. In this
-model ice streams appear where there is “till failure” <span id="id32">[<a class="reference internal" href="../../zzz_references_html.html#id331" title="W. S. B. Paterson. The Physics of Glaciers. Pergamon, 3rd edition, 1994.">43</a>]</span>, i.e. where the basal
+<a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id31">[45]</a> model of ice streams, using a plastic (Coulomb) sliding relation. In this
+model ice streams appear where there is “till failure” <a class="bibtex reference internal" href="../../zzz_references_html.html#paterson" id="id32">[46]</a>, i.e. where the basal
 shear stress exceeds the yield stress. In this model the location of ice streams is not
 imposed in advance.</p>
 <p>As noted, both the SIA and SSA models are <em>shallow</em> approximations. These equations are
 derived from the Stokes equations by distinct small-parameter arguments, both based on a
 small depth-to-width ratio for the ice sheet. For the small-parameter argument in the SIA
-case see <span id="id33">[<a class="reference internal" href="../../zzz_references_html.html#id130" title="A. C. Fowler. Mathematical Models in the Applied Sciences. Cambridge Univ. Press, 1997.">38</a>]</span>. For the corresponding SSA argument, see <span id="id34">[<a class="reference internal" href="../../zzz_references_html.html#id457" title="M. Weis, R. Greve, and K. Hutter. Theory of shallow ice shelves. Continuum Mech. Thermodyn., 11(1):15–50, 1999.">15</a>]</span>
-or the appendices of <span id="id35">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span>. Schoof and Hindmarsh <span id="id36">[<a class="reference internal" href="../../zzz_references_html.html#id399" title="C. Schoof and R. Hindmarsh. Thin-film flows with wall slip: an asymptotic analysis of higher order glacier flow models. Quart. J. Mech. Appl. Math., 63(1):73–114, 2010. doi:10.1093/qjmam/hbp025.">54</a>]</span>
+case see <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id33">[31]</a>. For the corresponding SSA argument, see <a class="bibtex reference internal" href="../../zzz_references_html.html#weisgrevehutter" id="id34">[42]</a>
+or the appendices of <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id35">[45]</a>. Schoof and Hindmarsh <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofhindmarsh" id="id36">[55]</a>
 have analyzed the connections between these shallowest models and higher-order models,
-while <span id="id37">[<a class="reference internal" href="../../zzz_references_html.html#id159" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span> discusses ice dynamics and stress balances comprehensively.
+while <a class="bibtex reference internal" href="../../zzz_references_html.html#greveblatter2009" id="id37">[56]</a> discusses ice dynamics and stress balances comprehensively.
 Note that SIA, SSA, and higher-order models all approximate the pressure as hydrostatic.</p>
 <p>Instead of a SIA+SSA hybrid model implemented in PISM one might use the Stokes equations,
-or a “higher-order” model (e.g. Blatter’s model <span id="id38">[<a class="reference internal" href="../../zzz_references_html.html#id59" title="H. Blatter. Velocity and stress fields in grounded glaciers: a simple algorithm for including deviatoric stress gradients. J. Glaciol., 41(138):333–344, 1995.">41</a>]</span>, <span id="id39">[<a class="reference internal" href="../../zzz_references_html.html#id333" title="Frank Pattyn. A new three-dimensional higher-order thermomechanical ice sheet model: Basic sensitivity, ice stream development, and ice flow across subglacial lakes. J. Geophys. Res., 2003. doi:10.1029/2002JB002329.">42</a>]</span>), but
+or a “higher-order” model (e.g. Blatter’s model <a class="bibtex reference internal" href="../../zzz_references_html.html#blatter" id="id38">[38]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#pattyn03" id="id39">[39]</a>), but
 this immediately leads to a resolution-versus-stress-inclusion tradeoff. The amount of
 computation per map-plane grid location is much higher in higher-order models, although
 careful numerical analysis can generate large performance improvements for such equations
-<span id="id40">[<a class="reference internal" href="../../zzz_references_html.html#id73" title="Jed Brown, Barry Smith, and Aron Ahmadia. Achieving textbook multigrid efficiency for hydrostatic ice sheet flow. SIAM J. Sci. Comp., 35(2):B359–B375, 2013.">56</a>]</span>.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#brownsmithahmadia2013" id="id40">[57]</a>.</p>
 <p>Time-stepping solutions of the mass conservation and energy conservation equations, which
 use the ice velocity for advection, can use any of the SIA or SSA or SIA+SSA hybrid stress
 balances. No user action is required to turn on these conservation models. They can be
 turned off by user options <code class="docutils literal notranslate"><span class="pre">-no_mass</span></code> (ice geometry does not evolve) or <code class="docutils literal notranslate"><span class="pre">-energy</span> <span class="pre">none</span></code>
 (ice enthalpy and temperature does not evolve), respectively.</p>
-</section>
+</div>
 
 
       <hr>
@@ -193,7 +191,7 @@ turned off by user options <code class="docutils literal notranslate"><span clas
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -204,9 +202,9 @@ turned off by user options <code class="docutils literal notranslate"><span clas
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

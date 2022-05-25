@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>PIK options for marine ice sheets &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIK options for marine ice sheets &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Flotation criterion, mask, and sea level" href="mask.html" />
     <link rel="prev" title="Marine ice sheet modeling" href="index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,7 +31,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="pik-options-for-marine-ice-sheets">
+  <div class="section" id="pik-options-for-marine-ice-sheets">
 <span id="sec-pism-pik"></span><h1><a class="toc-backref" href="#id20">PIK options for marine ice sheets</a><a class="headerlink" href="#pik-options-for-marine-ice-sheets" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
@@ -48,13 +46,13 @@
 </li>
 </ul>
 </div>
-<p>References <span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id22" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">93</a>]</span>, <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id268" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. URL: https://www.the-cryosphere.net/6/273/2012/tc-6-273-2012.html.">94</a>]</span>, <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>
+<p>References <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id1">[98]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id2">[89]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id3">[37]</a>
 by the research group of Prof. Anders Levermann at the Potsdam Institute for Climate
 Impact Research (“PIK”), Germany, describe most of the mechanisms covered in this section.
 These are all improvements to the grounded, SSA-as-a-sliding law model of
-<span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>. These improvements make PISM an effective Antarctic model, as
-demonstrated by <span id="id5">[<a class="reference internal" href="../../../zzz_references_html.html#id149" title="N. Golledge and twelve others. Glaciology and geological signature of the Last Glacial Maximum Antarctic ice sheet. Quaternary Sci. Rev., 78(0):225–247, 2013. doi:10.1016/j.quascirev.2013.08.011.">5</a>]</span>, <span id="id6">[<a class="reference internal" href="../../../zzz_references_html.html#id293" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span>,
-<span id="id7">[<a class="reference internal" href="../../../zzz_references_html.html#id462" title="R. Winkelmann, A. Levermann, K. Frieler, and M.A. Martin. Increased future ice discharge from antarctica owing to higher snowfall. Nature, 492:239–242, 2012.">95</a>]</span>, among other publications. These improvements had a separate
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id4">[29]</a>. These improvements make PISM an effective Antarctic model, as
+demonstrated by <a class="bibtex reference internal" href="../../../zzz_references_html.html#golledgeetal2013" id="id5">[99]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id6">[3]</a>,
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2012" id="id7">[100]</a>, among other publications. These improvements had a separate
 existence as the “PISM-PIK” model from 2009–2010, but since PISM stable0.4 are part of
 PISM itself.</p>
 <p>A summary of options to turn on most of these “PIK” mechanisms is in
@@ -76,23 +74,23 @@ Table.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-cfbc</span></code></p></td>
 <td><p>apply the stress boundary condition along the ice shelf calving front
-<span id="id8">[<a class="reference internal" href="../../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span></p></td>
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id8">[37]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-kill_icebergs</span></code></p></td>
 <td><p>identify and eliminate free-floating icebergs, which cause well-posedness problems
-for the SSA stress balance solver <span id="id9">[<a class="reference internal" href="../../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span></p></td>
+for the SSA stress balance solver <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id9">[37]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-part_grid</span></code></p></td>
 <td><p>allow the ice shelf front to advance by a part of a grid cell, avoiding
-the development of unphysically-thinned ice shelves <span id="id10">[<a class="reference internal" href="../../../zzz_references_html.html#id22" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">93</a>]</span></p></td>
+the development of unphysically-thinned ice shelves <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id10">[98]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-subgl</span></code></p></td>
 <td><p>apply interpolation to compute basal shear stress and basal melt near the grounding
-line <span id="id11">[<a class="reference internal" href="../../../zzz_references_html.html#id124" title="J. Feldmann, T. Albrecht, C. Khroulev, F. Pattyn, and A. Levermann. Resolution-dependent performance of grounding line motion in a shallow model compared to a full-Stokes model according to the MISMIP3d intercomparison. J. Glaciol., 60(220):353–360, 2014. doi:10.3189/2014JoG13J093.">96</a>]</span></p></td>
+line <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id11">[101]</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-no_subgl_basal_melt</span></code></p></td>
 <td><p><strong>don’t</strong> apply interpolation to compute basal melt near the grounding line if
-<code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> is set <span id="id12">[<a class="reference internal" href="../../../zzz_references_html.html#id124" title="J. Feldmann, T. Albrecht, C. Khroulev, F. Pattyn, and A. Levermann. Resolution-dependent performance of grounding line motion in a shallow model compared to a full-Stokes model according to the MISMIP3d intercomparison. J. Glaciol., 60(220):353–360, 2014. doi:10.3189/2014JoG13J093.">96</a>]</span></p></td>
+<code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> is set <a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id12">[101]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-pik</span></code></p></td>
 <td><p>equivalent to option combination <code class="docutils literal notranslate"><span class="pre">-cfbc</span> <span class="pre">-kill_icebergs</span> <span class="pre">-part_grid</span> <span class="pre">-subgl</span></code></p></td>
@@ -106,10 +104,10 @@ line <span id="id11">[<a class="reference internal" href="../../../zzz_reference
 <a class="reference internal" href="calving.html#sec-calving"><span class="std std-ref">Calving and front retreat</span></a>. However, the <code class="option docutils literal notranslate"><span class="pre">-pik</span></code> mechanisms will not be effective if the
 non-default FEM stress balance <code class="option docutils literal notranslate"><span class="pre">-ssa_method</span> <span class="pre">fem</span></code> is chosen.</p>
 </div>
-<section id="stress-condition-at-calving-fronts">
+<div class="section" id="stress-condition-at-calving-fronts">
 <span id="sec-cfbc"></span><h2><a class="toc-backref" href="#id21">Stress condition at calving fronts</a><a class="headerlink" href="#stress-condition-at-calving-fronts" title="Permalink to this headline">¶</a></h2>
 <p>The vertically integrated force balance at floating calving fronts has been formulated by
-<span id="id13">[<a class="reference internal" href="../../../zzz_references_html.html#id300" title="L. W. Morland. Unconfined ice-shelf flow. In C. J. van der Veen and J. Oerlemans, editors, Dynamics of the West Antarctic ice sheet, 99–116. Kluwer Academic Publishers, 1987.">40</a>]</span> as</p>
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#morland" id="id13">[43]</a> as</p>
 <div class="math notranslate nohighlight" id="equation-eq-cfbc">
 <span class="eqno">(32)<a class="headerlink" href="#equation-eq-cfbc" title="Permalink to this equation">¶</a></span>\[\int_{z_s-\frac{\rho}{\rho_w}H}^{z_s+(1-\frac{\rho}{\rho_w})H}\mathbf{\sigma}\cdot\mathbf{n}\;dz
 = \int_{z_s-\frac{\rho}{\rho_w}H}^{z_s}\rho_w g (z-z_s) \;\mathbf{n}\;dz.\]</div>
@@ -128,11 +126,11 @@ discretization chosen by <code class="option docutils literal notranslate"><span
 scheme. If option <code class="option docutils literal notranslate"><span class="pre">-cfbc</span></code> is set then, during matrix assembly, those equations which
 are for fully-filled grid cells along the ice domain boundary have terms replaced
 according to equation <a class="reference internal" href="#equation-eq-cfbc">(32)</a>, so as to apply the correct stresses
-<span id="id14">[<a class="reference internal" href="../../../zzz_references_html.html#id22" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">93</a>]</span>, <span id="id15">[<a class="reference internal" href="../../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>.</p>
-</section>
-<section id="partially-filled-cells-at-the-boundaries-of-ice-shelves">
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id14">[98]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#winkelmannetal2011" id="id15">[37]</a>.</p>
+</div>
+<div class="section" id="partially-filled-cells-at-the-boundaries-of-ice-shelves">
 <span id="sec-part-grid"></span><h2><a class="toc-backref" href="#id22">Partially-filled cells at the boundaries of ice shelves</a><a class="headerlink" href="#partially-filled-cells-at-the-boundaries-of-ice-shelves" title="Permalink to this headline">¶</a></h2>
-<p>Albrecht et al <span id="id16">[<a class="reference internal" href="../../../zzz_references_html.html#id22" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">93</a>]</span> argue that the correct movement of the ice shelf
+<p>Albrecht et al <a class="bibtex reference internal" href="../../../zzz_references_html.html#albrechtetal2011" id="id16">[98]</a> argue that the correct movement of the ice shelf
 calving front on a finite-difference grid, assuming for the moment that ice velocities are
 correctly determined (see below), requires tracking some cells as being partially-filled
 (option <code class="option docutils literal notranslate"><span class="pre">-part_grid</span></code>). If the calving front is moving forward, for example, then the
@@ -155,8 +153,8 @@ to neighboring partially-filled or empty grid cells.</p>
 fully-filled cells. Adaptive time stepping (specifically: the CFL criterion) limits the
 speed of ice front propagation so that at most one empty cell is filled, or one full cell
 emptied, per time step by the advance or retreat, respectively, of the calving front.</p>
-</section>
-<section id="iceberg-removal">
+</div>
+<div class="section" id="iceberg-removal">
 <span id="sec-kill-icebergs"></span><h2><a class="toc-backref" href="#id23">Iceberg removal</a><a class="headerlink" href="#iceberg-removal" title="Permalink to this headline">¶</a></h2>
 <p>Any calving mechanism (see section <a class="reference internal" href="calving.html#sec-calving"><span class="std std-ref">Calving and front retreat</span></a>) removes ice along the seaward front
 of the ice shelf domain. This can lead to isolated cells either filled or partially-filled
@@ -165,7 +163,7 @@ ocean neighbors. This ice is detached from the flowing and partly-grounded ice s
 is, calving can lead to icebergs.</p>
 <p>In terms of our basic model of ice as a viscous fluid, however, the stress balance for an
 iceberg is not well-posed because the ocean applies no resistance to balance the driving
-stress. (See <span id="id17">[<a class="reference internal" href="../../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span>.) In this situation the numerical SSA stress balance
+stress. (See <a class="bibtex reference internal" href="../../../zzz_references_html.html#schoofstream" id="id17">[45]</a>.) In this situation the numerical SSA stress balance
 solver will fail.</p>
 <p>Option <code class="option docutils literal notranslate"><span class="pre">-kill_icebergs</span></code> turns on the mechanism which cleans this up. This option is
 therefore generally needed if there is nontrivial calving or significant variations in sea
@@ -173,12 +171,12 @@ level during a simulation. The mechanism identifies free-floating icebergs by us
 2-scan connected-component labeling algorithm. It then eliminates such icebergs, with the
 corresponding mass loss reported as a part of the 2D discharge flux diagnostic (see
 section <a class="reference internal" href="../../practical-usage/saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>).</p>
-</section>
-<section id="sub-grid-treatment-of-the-grounding-line-position">
+</div>
+<div class="section" id="sub-grid-treatment-of-the-grounding-line-position">
 <span id="sec-subgrid-grounding-line"></span><h2><a class="toc-backref" href="#id24">Sub-grid treatment of the grounding line position</a><a class="headerlink" href="#sub-grid-treatment-of-the-grounding-line-position" title="Permalink to this headline">¶</a></h2>
 <p>The command-line option <code class="option docutils literal notranslate"><span class="pre">-subgl</span></code> turns on a parameterization of the grounding line
-position based on the “LI” parameterization described in <span id="id18">[<a class="reference internal" href="../../../zzz_references_html.html#id139" title="R. M. Gladstone, A. J. Payne, and S. L. Cornford. Parameterising the grounding line in flow-line ice sheet models. The Cryosphere, 4:605–619, 2010. doi:10.5194/tc-4-605-2010.">97</a>]</span> and
-<span id="id19">[<a class="reference internal" href="../../../zzz_references_html.html#id124" title="J. Feldmann, T. Albrecht, C. Khroulev, F. Pattyn, and A. Levermann. Resolution-dependent performance of grounding line motion in a shallow model compared to a full-Stokes model according to the MISMIP3d intercomparison. J. Glaciol., 60(220):353–360, 2014. doi:10.3189/2014JoG13J093.">96</a>]</span>. With this option PISM computes an extra flotation mask,
+position based on the “LI” parameterization described in <a class="bibtex reference internal" href="../../../zzz_references_html.html#gladstoneetal2010" id="id18">[102]</a> and
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#feldmannetal2014" id="id19">[101]</a>. With this option PISM computes an extra flotation mask,
 available as the <code class="variable docutils literal notranslate"><span class="pre">cell_grounded_fraction</span></code> output variable, which corresponds to the
 fraction of the cell that is grounded. Cells that are ice-free or fully floating are
 assigned the value of <span class="math notranslate nohighlight">\(0\)</span> while fully-grounded icy cells get the value of <span class="math notranslate nohighlight">\(1\)</span>. Partially
@@ -194,8 +192,8 @@ cells the basal melt rate is set to <span class="math notranslate nohighlight">\
 M_{b,\text{grounded}} + (1 - \lambda)M_{b,\text{shelf-base}}\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> is the
 value of the flotation mask. Use <code class="option docutils literal notranslate"><span class="pre">-no_subgl_basal_melt</span></code> to disable this.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -270,7 +268,7 @@ value of the flotation mask. Use <code class="option docutils literal notranslat
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -281,9 +279,9 @@ value of the flotation mask. Use <code class="option docutils literal notranslat
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

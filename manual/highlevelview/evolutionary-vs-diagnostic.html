@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Evolutionary versus diagnostic modeling &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolutionary versus diagnostic modeling &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="A hierarchy of simplifying assumptions for grounded ice flow" href="model-hierarchy.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +29,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="evolutionary-versus-diagnostic-modeling">
+  <div class="section" id="evolutionary-versus-diagnostic-modeling">
 <span id="sec-basicmodes"></span><h1>Evolutionary versus diagnostic modeling<a class="headerlink" href="#evolutionary-versus-diagnostic-modeling" title="Permalink to this headline">¶</a></h1>
 <p>The main goal of a numerical ice sheet model like PISM is to be a dynamical system which
 evolves as similarly as possible to the modeled ice sheet. Such a goal assumes one has the
@@ -45,18 +43,18 @@ establishing mathematical initial conditions when first starting PISM, see secti
 taking small time steps. “Small” may vary from thousandths to tens of model years, in
 practice, depending primarily on grid resolution, but also on modeled ice geometry and
 flow speed. Time steps are chosen adaptively in PISM, according to the stability criteria
-of the combined numerical methods <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id34" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span>.</p>
+of the combined numerical methods <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id1">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id2">[30]</a>.</p>
 <p>However, especially for ice streams and shelves, non-time-stepping “diagnostic” solution
 of the stress balance partial differential equations might be the desired computation, and
 PISM can also produce such “diagnostic” velocity fields. Such computations necessarily
 assume that the ice geometry, viscosity, and boundary stresses are known. Because of the
 slowness of the ice, in the sense that inertia can be neglected in the stress balance
-<span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id130" title="A. C. Fowler. Mathematical Models in the Applied Sciences. Cambridge Univ. Press, 1997.">38</a>]</span>, such computations can determine the ice velocity.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#fowler" id="id3">[31]</a>, such computations can determine the ice velocity.</p>
 <p>Sections <a class="reference internal" href="../std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a> and <a class="reference internal" href="../validation/ross.html#sec-ross"><span class="std std-ref">An SSA flow model for the Ross Ice Shelf in Antarctica</span></a> give examples illustrating evolutionary and
 diagnostic modes of PISM, respectively. The first describes time-stepping evolution models
 for the Greenland ice sheet, while the second describes a diagnostic SSA model for the
 Ross ice shelf.</p>
-</section>
+</div>
 
 
       <hr>
@@ -128,7 +126,7 @@ Ross ice shelf.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -139,9 +137,9 @@ Ross ice shelf.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

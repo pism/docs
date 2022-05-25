@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>On the vertical coordinate in PISM, and a critical change of variable &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On the vertical coordinate in PISM, and a critical change of variable &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using Schoof’s parameterized bed roughness technique in PISM" href="bed_roughness.html" />
     <link rel="prev" title="CF standard names used by PISM" href="cf-standard-names.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,18 +31,16 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="on-the-vertical-coordinate-in-pism-and-a-critical-change-of-variable">
+  <div class="section" id="on-the-vertical-coordinate-in-pism-and-a-critical-change-of-variable">
 <span id="sec-vertchange"></span><h1>On the vertical coordinate in PISM, and a critical change of variable<a class="headerlink" href="#on-the-vertical-coordinate-in-pism-and-a-critical-change-of-variable" title="Permalink to this headline">¶</a></h1>
 <p>In PISM all fields in the ice, including enthalpy, age, velocity, and so on, evolve within
 an ice fluid domain of <em>changing geometry</em>. See <a class="reference internal" href="#fig-freebdry"><span class="std std-numref">Fig. 47</span></a>. In
 particular, the upper and lower surfaces of the ice fluid move with respect to the geoid.</p>
-<figure class="align-default" id="fig-freebdry">
+<div class="figure align-default" id="fig-freebdry">
 <img alt="../_images/tempbdryfig.png" src="../_images/tempbdryfig.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">The ice fluid domain evolves, with both the upper and lower surfaces in motion with
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">The ice fluid domain evolves, with both the upper and lower surfaces in motion with
 respect to the geoid.</span><a class="headerlink" href="#fig-freebdry" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FIXME: This figure should show the floating case too.</p>
@@ -70,13 +66,11 @@ ice and ocean, respectively.</p>
 <p>throughout the PISM code. This replaces <span class="math notranslate nohighlight">\(z=b\)</span> by <span class="math notranslate nohighlight">\(s=0\)</span> as the equation of the
 base surface of the ice. The ice fluid domain in the new coordinates only has a free upper
 surface as shown in <a class="reference internal" href="#fig-sfreebdry"><span class="std std-numref">Fig. 48</span></a>.</p>
-<figure class="align-default" id="fig-sfreebdry">
+<div class="figure align-default" id="fig-sfreebdry">
 <img alt="../_images/stempbdryfig.png" src="../_images/stempbdryfig.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">In (x,y,s) space the ice fluid domain only has an upper surface which moves,
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">In (x,y,s) space the ice fluid domain only has an upper surface which moves,
 <span class="math notranslate nohighlight">\(s=H(x,y,t)\)</span>. Compare to <a class="reference internal" href="#fig-freebdry"><span class="std std-numref">Fig. 47</span></a>.</span><a class="headerlink" href="#fig-sfreebdry" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FIXME: This figure should show the floating case too, and bedrock.”</p>
@@ -86,7 +80,7 @@ surface as shown in <a class="reference internal" href="#fig-sfreebdry"><span cl
 \[\mathcal{R}=\left\{(x,y,s)\big| -L_x\le x \le L_x, -L_y\le y \le L_y, -Lb_z \le s \le
 L_z\right\}\]</div>
 <p>is divided into a three-dimensional grid. See <code class="docutils literal notranslate"><span class="pre">IceGrid</span></code>.</p>
-<p>The change of variable <span class="math notranslate nohighlight">\(z\to s\)</span> used here <em>is not</em> the <span id="id1">[<a class="reference internal" href="../zzz_references_html.html#id221" title="D. Jenssen. A three–dimensional polar ice–sheet model. J. Glaciol., 18:373–389, 1977.">160</a>]</span> change of variable
+<p>The change of variable <span class="math notranslate nohighlight">\(z\to s\)</span> used here <em>is not</em> the <a class="bibtex reference internal" href="../zzz_references_html.html#jenssen" id="id1">[169]</a> change of variable
 <span class="math notranslate nohighlight">\(\tilde s=(z-b)/H\)</span> . That change causes the conservation of energy equation to
 become singular at the boundaries of the ice sheet. Specifically, the Jenssen change
 replaces the vertical conduction term by a manifestly-singular term at ice sheet margins
@@ -171,7 +165,7 @@ three-dimensional field, is written as the diagnostic variable <code class="docu
 . Its surface value is written as <code class="docutils literal notranslate"><span class="pre">wvelsurf</span></code>, and its basal value as <code class="docutils literal notranslate"><span class="pre">wvelbase</span></code>. The
 relative vertical velocity <span class="math notranslate nohighlight">\(\tilde w\)</span> is written to the NetCDF output file as
 <code class="docutils literal notranslate"><span class="pre">wvel_rel</span></code>.</p>
-</section>
+</div>
 
 
       <hr>
@@ -236,7 +230,7 @@ relative vertical velocity <span class="math notranslate nohighlight">\(\tilde w
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -247,9 +241,9 @@ relative vertical velocity <span class="math notranslate nohighlight">\(\tilde w
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

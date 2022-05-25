@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Modeling conservation of energy &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modeling conservation of energy &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="Ice rheology" href="rheology.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,31 +29,31 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="modeling-conservation-of-energy">
+  <div class="section" id="modeling-conservation-of-energy">
 <span id="sec-energy"></span><h1>Modeling conservation of energy<a class="headerlink" href="#modeling-conservation-of-energy" title="Permalink to this headline">¶</a></h1>
 <p>In normal use PISM solves the conservation of energy problem within the ice, the thin
 subglacial layer, and a layer of thermal bedrock. For the ice and the subglacial layer it
-uses an enthalpy-based scheme <span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span> which allows the energy
+uses an enthalpy-based scheme <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id1">[35]</a> which allows the energy
 to be conserved even when the temperature is at the pressure-melting point.</p>
 <p>Ice at the melting point is called “temperate” ice. Part of the thermal energy of
 temperate ice is in the latent heat of the liquid water stored between the crystals of the
 temperate ice. Part of the thermal energy of the whole glacier is in the latent heat of
 the liquid water under the glacier. The enthalpy scheme correctly models these storehouses
 of thermal energy, and thus it allows polythermal and fully-temperate glaciers to be
-modeled <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id30" title="A. Aschwanden and H. Blatter. Mathematical modeling and numerical simulation of polythermal glaciers. J. Geophys. Res., 2009. F01027. doi:10.1029/2008JF001028.">80</a>]</span>.</p>
+modeled <a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenblatter" id="id2">[75]</a>.</p>
 <p>The state of the full conservation of energy model includes the 3D <code class="docutils literal notranslate"><span class="pre">enthalpy</span></code> variable
 plus the 2D <code class="docutils literal notranslate"><span class="pre">bwat</span></code> and <code class="docutils literal notranslate"><span class="pre">tillwat</span></code> subglacial hydrology state variables (subsection
 <a class="reference internal" href="../subglacier/hydrology.html#sec-subhydro"><span class="std std-ref">Subglacial hydrology</span></a>), all of which are seen in output files. The important basal melt rate
 computation involves all of these energy state variables, because the basal melt rate
 (<code class="docutils literal notranslate"><span class="pre">bmelt</span></code> in output files) comes from conserving energy across the ice-bedrock layer
-<span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span>. Fields <code class="docutils literal notranslate"><span class="pre">temp</span></code>, <code class="docutils literal notranslate"><span class="pre">liqfrac</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_pa</span></code> seen in
+<a class="bibtex reference internal" href="../../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id3">[35]</a>. Fields <code class="docutils literal notranslate"><span class="pre">temp</span></code>, <code class="docutils literal notranslate"><span class="pre">liqfrac</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_pa</span></code> seen in
 output files are all actually diagnostic outputs because all of these can be recovered
 from the enthalpy and the ice geometry.</p>
 <p>Because this part of PISM is just a conservation law, there is little need for the user to
 worry about controlling it. If desired, however, conservation of energy can be turned off
 entirely with <code class="option docutils literal notranslate"><span class="pre">-energy</span> <span class="pre">none</span></code>. The default enthalpy-based conservation of energy model
 (i.e. <code class="docutils literal notranslate"><span class="pre">-energy</span> <span class="pre">enthalpy</span></code>) can be replaced by the temperature-based (i.e. “cold ice”)
-method used in <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span> and verified in <span id="id5">[<a class="reference internal" href="../../../zzz_references_html.html#id34" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span> by setting option <code class="option docutils literal notranslate"><span class="pre">-energy</span>
+method used in <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbssasliding" id="id4">[29]</a> and verified in <a class="bibtex reference internal" href="../../../zzz_references_html.html#bbl" id="id5">[30]</a> by setting option <code class="option docutils literal notranslate"><span class="pre">-energy</span>
 <span class="pre">cold</span></code>.</p>
 <p>The thermal bedrock layer model is turned off by setting <code class="docutils literal notranslate"><span class="pre">-Mbz</span> <span class="pre">1</span></code> (i.e. zero spaces)
 while it is turned on by choosing a depth and number of points, as in <code class="docutils literal notranslate"><span class="pre">-Lbz</span> <span class="pre">1000</span> <span class="pre">-Mbz</span>
@@ -63,7 +61,7 @@ while it is turned on by choosing a depth and number of points, as in <code clas
 1000/20). The input geothermal flux (<code class="docutils literal notranslate"><span class="pre">bheatflx</span></code> in output files) is applied at the
 bottom of the bedrock thermal layer if such a layer is present and otherwise it is applied
 at the base of the ice.</p>
-</section>
+</div>
 
 
       <hr>
@@ -138,7 +136,7 @@ at the base of the ice.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -149,9 +147,9 @@ at the base of the ice.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

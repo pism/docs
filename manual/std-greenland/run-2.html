@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Second run: a better ice-dynamics model &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second run: a better ice-dynamics model &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Third run: higher resolution" href="run-3.html" />
     <link rel="prev" title="Watching the first run" href="run-1-watching.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,28 +31,28 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="second-run-a-better-ice-dynamics-model">
+  <div class="section" id="second-run-a-better-ice-dynamics-model">
 <span id="sec-ssarun"></span><h1>Second run: a better ice-dynamics model<a class="headerlink" href="#second-run-a-better-ice-dynamics-model" title="Permalink to this headline">¶</a></h1>
 <p>It is widely-understood that ice sheets slide on their bases, especially when liquid water
-is present at the base (see <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id231" title="I. Joughin, M. Fahnestock, D. MacAyeal, J. L. Bamber, and P. Gogineni. Observation and analysis of ice flow in the largest Greenland ice stream. J. Geophys. Res., 106(D24):34021–34034, 2001.">13</a>]</span>, <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id283" title="D. R. MacAyeal. Large-scale ice flow over a viscous basal sediment: theory and application to ice stream B, Antarctica. J. Geophys. Res., 94(B4):4071–4087, 1989.">14</a>]</span>, among others). An
+is present at the base (see <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal2001" id="id1">[51]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#macayeal" id="id2">[44]</a>, among others). An
 important aspect of modeling such sliding is the inclusion of membrane or “longitudinal”
-stresses into the stress balance <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>. The basic stress balance in PISM
+stresses into the stress balance <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id3">[29]</a>. The basic stress balance in PISM
 which involves membrane stresses is the Shallow Shelf Approximation (SSA)
-<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id457" title="M. Weis, R. Greve, and K. Hutter. Theory of shallow ice shelves. Continuum Mech. Thermodyn., 11(1):15–50, 1999.">15</a>]</span>. The stress balance used in the previous section was, by contrast,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#weisgrevehutter" id="id4">[42]</a>. The stress balance used in the previous section was, by contrast,
 the (thermomechanically-coupled) non-sliding, non-membrane-stress Shallow Ice
-Approximation (SIA) <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id34" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span>, <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id110" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>. The preferred ice dynamics model
+Approximation (SIA) <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id5">[30]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id6">[22]</a>. The preferred ice dynamics model
 within PISM, that allows both sliding balanced by membrane stresses and shear flow as
-described by the SIA, is the SIA+SSA “hybrid” model <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>,
-<span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id461" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>. For more on stress balance theories see section
+described by the SIA, is the SIA+SSA “hybrid” model <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id7">[29]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#winkelmannetal2011" id="id8">[37]</a>. For more on stress balance theories see section
 <a class="reference internal" href="../highlevelview/index.html#sec-dynamics"><span class="std std-ref">Ice dynamics, the PISM view</span></a> of this Manual.</p>
 <p>The practical issue with models of sliding is that a distinctly-uncertain parameter space
 must be introduced. This especially involves parameters controlling the amount and
-pressure of subglacial water (see <span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id29" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>,
-<span id="id10">[<a class="reference internal" href="../../zzz_references_html.html#id91" title="G. K. C. Clarke. Subglacial processes. Annu. Rev. Earth Planet. Sci., 33:247–276, 2005. doi:10.1146/annurev.earth.33.092203.122621.">18</a>]</span>, <span id="id11">[<a class="reference internal" href="../../zzz_references_html.html#id438" title="S. Tulaczyk, W. B. Kamb, and H. F. Engelhardt. Basal mechanics of Ice Stream B, West Antarctica 1. Till mechanics. J. Geophys. Res., 105(B1):463–481, 2000.">19</a>]</span>, <span id="id12">[<a class="reference internal" href="../../zzz_references_html.html#id483" title="W. J. J. van Pelt and J. Oerlemans. Numerical simulations of cyclic behaviour in the parallel ice sheet model (pism). Journal of Glaciology, 58(208):347–360, 2012. URL: https://www.igsoc.org/journal/58/208/t11J217.pdf, doi:10.3189/2012JoG11J217.">20</a>]</span>, among others). In
+pressure of subglacial water (see <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id9">[66]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#clarke05" id="id10">[103]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id11">[109]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id12">[65]</a>, among others). In
 this regard, PISM uses the concept of a saturated and pressurized subglacial till with a
-modeled distribution of yield stress <span id="id13">[<a class="reference internal" href="../../zzz_references_html.html#id35" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, <span id="id14">[<a class="reference internal" href="../../zzz_references_html.html#id403" title="C. Schoof. A variational approach to ice stream flow. J. Fluid Mech., 556:227–251, 2006.">21</a>]</span>. The yield
+modeled distribution of yield stress <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id13">[29]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#schoofstream" id="id14">[45]</a>. The yield
 stress arises from the PISM model of the production of subglacial water, which is itself
-computed through the conservation of energy model <span id="id15">[<a class="reference internal" href="../../zzz_references_html.html#id32" title="A. Aschwanden, E. Bueler, C. Khroulev, and H. Blatter. An enthalpy formulation for glaciers and ice sheets. J. Glaciol., 58(209):441–457, 2012. doi:10.3189/2012JoG11J088.">22</a>]</span>.
+computed through the conservation of energy model <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenbuelerkhroulevblatter" id="id15">[35]</a>.
 We use such models in the rest of this Getting Started section.</p>
 <p>While the <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code> script has default sliding-related parameters, for demonstration
 purposes we change one parameter. We replace the default power <span class="math notranslate nohighlight">\(q=0.25\)</span> in the
@@ -79,10 +77,9 @@ for more on sliding laws. To see the run we propose, do</p>
 sliding speed field <code class="docutils literal notranslate"><span class="pre">velbase_mag</span></code> in this Figure, where <a class="reference internal" href="run-1-watching.html#fig-firstoutput"><span class="std std-numref">Fig. 3</span></a> had
 the <code class="docutils literal notranslate"><span class="pre">mask</span></code>, but the reader can check that <code class="docutils literal notranslate"><span class="pre">velbase_mag</span></code> is zero in the nonsliding
 SIA-only result <code class="docutils literal notranslate"><span class="pre">g20km_10ka.nc</span></code>.</p>
-<figure class="align-default" id="fig-secondoutputcoarse">
+<div class="figure align-default" id="fig-secondoutputcoarse">
 <img alt="../../_images/g20km-10ka-hy-usurf-csurf-cbase.png" src="../../_images/g20km-10ka-hy-usurf-csurf-cbase.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g20km_10ka_hy.nc</span></code>.</span><a class="headerlink" href="#fig-secondoutputcoarse" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g20km_10ka_hy.nc</span></code>.</span><a class="headerlink" href="#fig-secondoutputcoarse" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <dl class="field-list simple">
 <dt class="field-odd">Left</dt>
@@ -97,13 +94,12 @@ contour (solid black).</p>
 </dd>
 </dl>
 </div>
-</figcaption>
-</figure>
+</div>
 <p>The hybrid model includes sliding, and it is important to evaluate that aspect of the
 output. However, though it is critical to the response of the ice to changes in climate,
 basal sliding velocity is essentially unobservable in real ice sheets. On the other hand,
 because of relatively-recent advances in radar and image technology and processing
-<span id="id17">[<a class="reference internal" href="../../zzz_references_html.html#id226" title="I. Joughin. Ice-sheet velocity mapping: a combined interferometric and speckle-tracking approach. Ann. Glaciol., 34:195–201, 2002.">23</a>]</span>, the surface velocity of an ice sheet can be measured.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#joughin2002" id="id17">[146]</a>, the surface velocity of an ice sheet can be measured.</p>
 <p>So, how good is our model result <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code>? <a class="reference internal" href="#fig-csurfvsobserved"><span class="std std-numref">Fig. 5</span></a> compares
 the radar-observed <code class="docutils literal notranslate"><span class="pre">surfvelmag</span></code> field in the downloaded SeaRISE-Greenland data file
 <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code> with the just-computed PISM result. The reader might agree with
@@ -114,10 +110,9 @@ these broad qualitative judgements:</p>
 magnitude, but</p></li>
 <li><p>the observed Northeast Greenland ice stream is more distinct than in the model.</p></li>
 </ul>
-<figure class="align-default" id="fig-csurfvsobserved">
+<div class="figure align-default" id="fig-csurfvsobserved">
 <img alt="../../_images/g-insar-20km-10km-comparison.png" src="../../_images/g-insar-20km-10km-comparison.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparing observed and modeled surface speed.</span><a class="headerlink" href="#fig-csurfvsobserved" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparing observed and modeled surface speed.</span><a class="headerlink" href="#fig-csurfvsobserved" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>All figures have a common scale (m/year), with 100 m/year contour shown (solid black).</p>
 <dl class="field-list simple">
@@ -133,11 +128,10 @@ magnitude, but</p></li>
 </dd>
 </dl>
 </div>
-</figcaption>
-</figure>
+</div>
 <p>We can compare these PISM results to other observed-vs-model comparisons of surface
-velocity maps, for example Figure 1 in <span id="id18">[<a class="reference internal" href="../../zzz_references_html.html#id359" title="S. Price, A. Payne, I. Howat, and B. Smith. Committed sea-level rise for the next century from Greenland ice sheet dynamics during the past decade. Proc. Nat. Acad. Sci., 108(22):8978–8983, 2011. doi:10.1073/pnas.1017313108.">24</a>]</span> and Figure 8 in
-<span id="id19">[<a class="reference internal" href="../../zzz_references_html.html#id253" title="E. Larour, H. Seroussi, M. Morlighem, and E. Rignot. Continental scale, high order, high spatial resolution, ice sheet modeling using the Ice Sheet System Model (ISSM). J. Geophys. Res., 2012. doi:10.1029/2011JF002140.">25</a>]</span>. Only ice-sheet-wide parameters and models were used here in PISM,
+velocity maps, for example Figure 1 in <a class="bibtex reference internal" href="../../zzz_references_html.html#priceetal2011" id="id18">[145]</a> and Figure 8 in
+<a class="bibtex reference internal" href="../../zzz_references_html.html#larouretal2012" id="id19">[144]</a>. Only ice-sheet-wide parameters and models were used here in PISM,
 that is, each location in the ice sheet was modeled by the same physics. By comparison,
 those published comparisons involved tuning a large number of spatially-variable
 subglacial parameters to values which would yield close match to observations of the
@@ -157,17 +151,17 @@ substantially more expensive than the SIA in a per-step sense. However, the SSA
 stress balance in combination with the mass continuity equation causes the maximum
 diffusivity in the ice sheet to be substantially lower during the run. Because the
 maximum diffusivity controls the time-step in the PISM adaptive time-stepping
-scheme <span id="id22">[<a class="reference internal" href="../../zzz_references_html.html#id34" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span>, the number of time steps is reduced in the hybrid run. To see
+scheme <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id22">[30]</a>, the number of time steps is reduced in the hybrid run. To see
 this contrast use <code class="docutils literal notranslate"><span class="pre">ncview</span> <span class="pre">ts_g20km_10ka*nc</span></code> to view variables <code class="docutils literal notranslate"><span class="pre">max_diffusivity</span></code>
 and <code class="docutils literal notranslate"><span class="pre">dt</span></code>.</p>
 </dd>
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id20">2</a></span></dt>
-<dd><p>See <span id="id24">[<a class="reference internal" href="../../zzz_references_html.html#id485" title="W. J. J. van Pelt, J. Oerlemans, C. H. Reijmer, R. Pettersson, V. A. Pohjola, E. Isaksson, and D. Divine. An iterative inverse method to estimate basal topography and initialize ice flow models. The Cryosphere, 7(3):987–1006, 2013. doi:10.5194/tc-7-987-2013.">26</a>]</span> (inversion of DEMs for basal topography) and
-<span id="id25">[<a class="reference internal" href="../../zzz_references_html.html#id171" title="M. Habermann, M. Truffer, and D. Maxwell. Changing basal conditions during the speed-up of Jakobshavn Isbrae, Greenland. The Cryosphere, 7(6):1679–1692, 2013. doi:10.5194/tc-7-1679-2013.">27</a>]</span> (inversion surface velocities for basal shear stress) for
+<dd><p>See <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltetal2013" id="id24">[147]</a> (inversion of DEMs for basal topography) and
+<a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id25">[67]</a> (inversion surface velocities for basal shear stress) for
 PISM-based inversion methods and analysis.</p>
 </dd>
 </dl>
-</section>
+</div>
 
 
       <hr>
@@ -243,7 +237,7 @@ PISM-based inversion methods and analysis.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -254,9 +248,9 @@ PISM-based inversion methods and analysis.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

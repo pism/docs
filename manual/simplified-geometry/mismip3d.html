@@ -4,24 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>MISMIP3d &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MISMIP3d &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ISMIP-HOM" href="ismip-hom.html" />
     <link rel="prev" title="MISMIP" href="mismip.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -33,7 +31,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="mismip3d">
+  <div class="section" id="mismip3d">
 <span id="sec-mismip3d"></span><h1>MISMIP3d<a class="headerlink" href="#mismip3d" title="Permalink to this headline">¶</a></h1>
 <p>The ice2sea MISMIP3d intercomparison is a two-horizontal-dimensional extension of the
 flowline case described above. As before, in MISMIP3d the grounding line position and its
@@ -47,13 +45,13 @@ compare to the numerical results.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://frank.pattyn.web.ulb.be/mismip3d/welcome.html">https://frank.pattyn.web.ulb.be/mismip3d/welcome.html</a></p>
 </div></blockquote>
-<p>and the results are published in <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id281" title="F. Pattyn, L. Perichon, G. Durand, and 25 others. Grounding-line migration in plan-view marine ice-sheet models: results of the ice2sea MISMIP3d intercomparison. J. Glaciol., 59(215):410–422, 2013.">120</a>]</span>.</p>
+<p>and the results are published in <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip3d2013" id="id1">[135]</a>.</p>
 <p>A complete set of MISMIP3d experiments consists of three runs: Firstly, a flowline
 solution on a linearly-sloped bed, similar to the flowline MISMIP experiments of the
 previous section, is run into a steady state (“standard experiment <code class="docutils literal notranslate"><span class="pre">Stnd</span></code>”). Then the
 localized sliding perturbation is applied (“perturbation experiment”) causing the
 grounding line to shift and lose symmetry. Two different amplitudes of the perturbation
-are considered (”<code class="docutils literal notranslate"><span class="pre">P10</span></code>” and “<code class="docutils literal notranslate"><span class="pre">P75</span></code>”). Finally, beginning from the final state of the
+are considered (“<code class="docutils literal notranslate"><span class="pre">P10</span></code>” and “<code class="docutils literal notranslate"><span class="pre">P75</span></code>”). Finally, beginning from the final state of the
 perturbation experiment, the sliding perturbation is removed and the system is run again
 into steady state (“reversibility experiment”). The resulting geometry, in particular the
 grounding line position, is expected to be close to that of the standard experiment.
@@ -77,10 +75,10 @@ corresponds to a free-slip condition for the flow in x-direction. Though this ch
 the symmetric computational domain increases computational cost, it allows us to use
 standard PISM without fixing certain boundary conditions in the code. (That is, it avoids
 the issues addressed in the regional mode of PISM; see section <a class="reference internal" href="../jakobshavn/index.html#sec-jako"><span class="std std-ref">Example: A regional model of the Jakobshavn outlet glacier in Greenland</span></a>.)</p>
-<p>PISM participated in the MISMIP3d intercomparison project <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id281" title="F. Pattyn, L. Perichon, G. Durand, and 25 others. Grounding-line migration in plan-view marine ice-sheet models: results of the ice2sea MISMIP3d intercomparison. J. Glaciol., 59(215):410–422, 2013.">120</a>]</span> using version
+<p>PISM participated in the MISMIP3d intercomparison project <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip3d2013" id="id2">[135]</a> using version
 pism0.5, and the exact results can be reproduced using that version. PISM’s results, and
 the role of resolution and the new subgrid grounding line interpolation scheme are
-discussed in <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id124" title="J. Feldmann, T. Albrecht, C. Khroulev, F. Pattyn, and A. Levermann. Resolution-dependent performance of grounding line motion in a shallow model compared to a full-Stokes model according to the MISMIP3d intercomparison. J. Glaciol., 60(220):353–360, 2014. doi:10.3189/2014JoG13J093.">96</a>]</span>.</p>
+discussed in <a class="bibtex reference internal" href="../../zzz_references_html.html#feldmannetal2014" id="id3">[101]</a>.</p>
 <p>We observed a considerable improvement of the results with respect to the absolute
 grounding line positions compared to other models (e.g. the FE reference model Elmer/Ice)
 and to the reversibility when applying the subgrid grounding line interpolation method;
@@ -93,25 +91,21 @@ surface gradients in the MISMIP3d ice geometries. See <a class="reference intern
 comparison of SSA and SIA velocities in the MISMIP3D geometry. Note that both Figures
 <a class="reference internal" href="#fig-subgl"><span class="std std-numref">Fig. 25</span></a> and <a class="reference internal" href="#fig-compsiassa"><span class="std std-numref">Fig. 26</span></a> were generated with resolution of
 <span class="math notranslate nohighlight">\(\dx = \dy = 1\km\)</span>.</p>
-<figure class="align-default" id="fig-subgl">
+<div class="figure align-default" id="fig-subgl">
 <img alt="../../_images/mismip3d-subgl.png" src="../../_images/mismip3d-subgl.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Comparison between the grounding lines of the higher-amplitude (”<code class="docutils literal notranslate"><span class="pre">P75</span></code>”) MISMIP3d
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Comparison between the grounding lines of the higher-amplitude (“<code class="docutils literal notranslate"><span class="pre">P75</span></code>”) MISMIP3d
 experiments performed with PISM when using the subgrid grounding line interpolation
 method (left) or not using it (right). In both cases the SIA+SSA hybrid is used.</span><a class="headerlink" href="#fig-subgl" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="fig-compsiassa">
+</div>
+<div class="figure align-default" id="fig-compsiassa">
 <img alt="../../_images/comp-SIA-SSA.png" src="../../_images/comp-SIA-SSA.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">The SIA velocities are negligible in the MISMIP3d standard experiment (”<code class="docutils literal notranslate"><span class="pre">Stnd</span></code>”). The
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">The SIA velocities are negligible in the MISMIP3d standard experiment (“<code class="docutils literal notranslate"><span class="pre">Stnd</span></code>”). The
 steady state ice geometry is plotted (black) together with the computed SSA velocity
 (red) and SIA velocity (blue). The SIA velocity reaches its maximum value of about
 <span class="math notranslate nohighlight">\(10\)</span> m/a at the grounding line, about two orders of magnitude less than the maximum of
 the SSA velocity.</span><a class="headerlink" href="#fig-compsiassa" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -183,7 +177,7 @@ the SSA velocity.</span><a class="headerlink" href="#fig-compsiassa" title="Perm
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -194,9 +188,9 @@ the SSA velocity.</span><a class="headerlink" href="#fig-compsiassa" title="Perm
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.3 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -19,7 +18,6 @@
     <link rel="prev" title="An SSA flow model for the Ross Ice Shelf in Antarctica" href="../validation/ross.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,42 +29,40 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <section id="example-a-regional-model-of-the-jakobshavn-outlet-glacier-in-greenland">
+  <div class="section" id="example-a-regional-model-of-the-jakobshavn-outlet-glacier-in-greenland">
 <span id="sec-jako"></span><h1>Example: A regional model of the Jakobshavn outlet glacier in Greenland<a class="headerlink" href="#example-a-regional-model-of-the-jakobshavn-outlet-glacier-in-greenland" title="Permalink to this headline">¶</a></h1>
 <p>Jakobshavn Isbrae is a fast-flowing outlet glacier in western Greenland that drains
 approximately 7% of the area of the Greenland ice sheet. It experienced a large
 acceleration following the loss of its floating tongue in the 1990s
-<span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id227" title="I. Joughin, W. Abdalati, and M. Fahnestock. Large fluctuations in speed on Greenland's Jakobshavn Isbræ glacier. Nature, 432(23):608–610, 2004.">135</a>]</span>, an event which seems to have been driven by warmer
-ocean temperatures <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id196" title="D. M. Holland, R. H. Thomas, B. de Young, M. H. Ribergaard, and B. Lyberth. Acceleration of Jakobshavn Isbræ triggered by warm subsurface ocean waters. Nature Geoscience, 1:659–664, 2008. doi:10.1038/ngeo316.">136</a>]</span>. Because it is thick, has a steep surface
+<a class="bibtex reference internal" href="../../zzz_references_html.html#joughinabdalatifahnestock" id="id1">[58]</a>, an event which seems to have been driven by warmer
+ocean temperatures <a class="bibtex reference internal" href="../../zzz_references_html.html#hollandetal2008" id="id2">[59]</a>. Because it is thick, has a steep surface
 slope, has a deep trough in its bedrock topography (Figure <a class="reference internal" href="#fig-jako-basin-topg"><span class="std std-numref">Fig. 42</span></a>),
-and has a thick layer of low-viscosity temperate ice at its base <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id278" title="M. Lüthi, M. Fahnestock, and M. Truffer. Correspondence: calving icebergs indicate a thick layer of temperate ice at the base of Jakobshavn Isbrae, Greenland. J. Glaciol., 55(191):563\,–\,566, 2009.">137</a>]</span>,
+and has a thick layer of low-viscosity temperate ice at its base <a class="bibtex reference internal" href="../../zzz_references_html.html#luethietal2009" id="id3">[60]</a>,
 this ice flow is different from the ice streams in West Antarctica or Northeast Greenland
-<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id433" title="M. Truffer and K. Echelmeyer. Of isbrae and ice streams. Ann. Glaciol., 36(1):66–72, 2003.">49</a>]</span>.</p>
+<a class="bibtex reference internal" href="../../zzz_references_html.html#trufferechelmeyer" id="id4">[50]</a>.</p>
 <p>This section describes how to build a PISM regional model of this outlet glacier
-<span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id104" title="D. DellaGiustina. Regional modeling of Greenland's outlet glaciers with the Parallel Ice Sheet Model. Master's thesis, University of Alaska, Fairbanks, 2011. M.S. Computational Physics.">138</a>]</span> using scripts from <code class="docutils literal notranslate"><span class="pre">examples/jako/</span></code>. The same strategy should
+<a class="bibtex reference internal" href="../../zzz_references_html.html#dellagiustina2011" id="id5">[61]</a> using scripts from <code class="docutils literal notranslate"><span class="pre">examples/jako/</span></code>. The same strategy should
 work for other outlet glaciers. We also demonstrate the PISM regional mode <code class="docutils literal notranslate"><span class="pre">pismr</span>
 <span class="pre">-regional</span></code>, and Python <a class="reference external" href="https://github.com/pism/regional-tools">drainage-basin-delineation tools</a> which can be
 downloaded from the PISM source code website. Such regional models allow modest-size
 computers to run high resolution models <a class="footnote-reference brackets" href="#id16" id="id6">1</a> and large ensembles. Regional analysis is
 justified if detailed data is available for the region.</p>
-<p>The geometric data used here is the SeaRISE <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id58" title="R. Bindschadler and twenty-seven others. Ice-sheet model sensitivities to environmental forcing and their use in projecting future sea-level (The SeaRISE Project). J. Glaciol, 59(214):195–224, 2013.">3</a>]</span> 1 km dataset
+<p>The geometric data used here is the SeaRISE <a class="bibtex reference internal" href="../../zzz_references_html.html#bindschadler2013searise" id="id7">[62]</a> 1 km dataset
 for the whole Greenland ice sheet. It contains bedrock topography from recent CReSIS radar
 in the Jakobshavn area. We also use the SeaRISE 5 km data set which has climatic mass
-balance from the Greenland-region climate model RACMO <span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id118" title="J. Ettema, M. R. van den Broeke, E. van Meijgaard, W. J. van de Berg, J. L. Bamber, J. E. Box, and R. C. Bales. Higher surface mass balance of the Greenland ice sheet revealed by high-resolution climate modeling. Geophys. Res. Let., 2009. doi:10.1029/2009GL038110.">7</a>]</span>.</p>
+balance from the Greenland-region climate model RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id8">[63]</a>.</p>
 <p>A regional ice flow model generally needs ice flow and stress boundary conditions. For
 this we use a 5 km grid, whole ice sheet, spun-up model state from PISM, described in
 <a class="reference internal" href="../std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a> of this <em>Manual</em>. You can download the large NetCDF result from
 the PISM website, or you can generate it by running a script from <a class="reference internal" href="../std-greenland/index.html#sec-start"><span class="std std-ref">Getting started: a Greenland ice sheet example</span></a>.</p>
-<figure class="align-default" id="fig-jako-basin-topg">
+<div class="figure align-default" id="fig-jako-basin-topg">
 <img alt="../../_images/jako-mask-topg.png" src="../../_images/jako-mask-topg.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">A <code class="docutils literal notranslate"><span class="pre">regional-tools</span></code> script computes a drainage basin mask from the surface DEM (left;
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">A <code class="docutils literal notranslate"><span class="pre">regional-tools</span></code> script computes a drainage basin mask from the surface DEM (left;
 Modis background) and from a user-identified terminus rectangle (blue). The regional
 model can exploit high-resolution bedrock elevations inland from Jakobshavn fjord
 (right; meters asl).</span><a class="headerlink" href="#fig-jako-basin-topg" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-<section id="get-the-drainage-basin-delineation-tool">
+</div>
+<div class="section" id="get-the-drainage-basin-delineation-tool">
 <h2>Get the drainage basin delineation tool<a class="headerlink" href="#get-the-drainage-basin-delineation-tool" title="Permalink to this headline">¶</a></h2>
 <p>The drainage basin tool <code class="docutils literal notranslate"><span class="pre">regional-tools</span></code> is at <a class="reference external" href="https://github.com/pism/regional-tools">https://github.com/pism/regional-tools</a>.
 Get it using <code class="docutils literal notranslate"><span class="pre">git</span></code> and set it up as directed in its <code class="docutils literal notranslate"><span class="pre">README.md</span></code>. Then come back to the
@@ -79,8 +75,8 @@ python setup.py install                              <span class="c1"># may add 
 ln -s ~/usr/local/regional-tools/pism_regional.py .  <span class="c1"># symbolic link to tool</span>
 </pre></div>
 </div>
-</section>
-<section id="preprocess-the-data-and-get-the-whole-ice-sheet-model-file">
+</div>
+<div class="section" id="preprocess-the-data-and-get-the-whole-ice-sheet-model-file">
 <h2>Preprocess the data and get the whole ice sheet model file<a class="headerlink" href="#preprocess-the-data-and-get-the-whole-ice-sheet-model-file" title="Permalink to this headline">¶</a></h2>
 <p>Script <code class="docutils literal notranslate"><span class="pre">preprocess.sh</span></code> downloads and cleans the 1 km SeaRISE data, an 80 Mb file called
 <code class="docutils literal notranslate"><span class="pre">Greenland1km.nc</span></code>. <a class="footnote-reference brackets" href="#id17" id="id9">2</a> The script also downloads the SeaRISE 5 km data set
@@ -119,8 +115,8 @@ may be able to use <code class="docutils literal notranslate"><span class="pre">
 bed topography data only for the vicinity of the Jakobshavn outlet, however, and it is
 otherwise just BEDMAP. Because outlet glacier flows are bed-topography-dominated,
 additional bed elevation data should be sought.</p>
-</section>
-<section id="identify-the-drainage-basin-for-the-modeled-outlet-glacier">
+</div>
+<div class="section" id="identify-the-drainage-basin-for-the-modeled-outlet-glacier">
 <h2>Identify the drainage basin for the modeled outlet glacier<a class="headerlink" href="#identify-the-drainage-basin-for-the-modeled-outlet-glacier" title="Permalink to this headline">¶</a></h2>
 <p>Here we are going to extract a “drainage basin mask” from the surface elevation data (DEM)
 in <code class="docutils literal notranslate"><span class="pre">gr1km.nc</span></code>. The goal is to determine, in part, the locations outside of the drainage
@@ -163,8 +159,8 @@ command to calculate the drainage basin:</p>
 the border width. To see more script options, run with <code class="docutils literal notranslate"><span class="pre">--help</span></code>.</p>
 </li>
 </ul>
-</section>
-<section id="cut-out-the-computational-domain-for-the-regional-model">
+</div>
+<div class="section" id="cut-out-the-computational-domain-for-the-regional-model">
 <h2>Cut out the computational domain for the regional model<a class="headerlink" href="#cut-out-the-computational-domain-for-the-regional-model" title="Permalink to this headline">¶</a></h2>
 <p>We still need to “cut out” from the whole ice sheet geometry data <code class="docutils literal notranslate"><span class="pre">gr1km.nc</span></code> the
 computational domain for the regional model. The climate data file <code class="docutils literal notranslate"><span class="pre">g5km_climate.nc</span></code> and
@@ -191,8 +187,8 @@ drainage basin, outside of which we will use simplified time-independent boundar
 conditions. Specifically, outside of the <code class="docutils literal notranslate"><span class="pre">ftt_mask</span></code> area, but within the computational
 domain defined by the extent of <code class="docutils literal notranslate"><span class="pre">jako.nc</span></code>, we will essentially keep the initial
 thickness. Inside the <code class="docutils literal notranslate"><span class="pre">ftt_mask</span></code> area all fields will evolve normally.</p>
-</section>
-<section id="quick-start">
+</div>
+<div class="section" id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <p>The previous steps starting with the command “<code class="docutils literal notranslate"><span class="pre">./preprocess.sh</span></code>” above, then using the
 command-line version of <code class="docutils literal notranslate"><span class="pre">pism_regional.py</span></code>, and then doing the <code class="docutils literal notranslate"><span class="pre">ncks</span></code> cut-out steps,
@@ -202,8 +198,8 @@ are all accomplished in one script,</p>
 </div>
 <p>Running this takes about a minute on a fast laptop, assuming data files are already
 downloaded.</p>
-</section>
-<section id="spinning-up-the-regional-model-on-a-5-km-grid">
+</div>
+<div class="section" id="spinning-up-the-regional-model-on-a-5-km-grid">
 <h2>Spinning-up the regional model on a 5 km grid<a class="headerlink" href="#spinning-up-the-regional-model-on-a-5-km-grid" title="Permalink to this headline">¶</a></h2>
 <p>To run the PISM regional model we will need to know the number of grid points in the 1 km
 grid in <code class="docutils literal notranslate"><span class="pre">jako.nc</span></code>. Do this:</p>
@@ -279,18 +275,16 @@ other PIK mechanisms are largely inactive because prescribing the maximum ice ex
 but they should do no harm (see section <a class="reference internal" href="../modeling-choices/marine/pik.html#sec-pism-pik"><span class="std std-ref">PIK options for marine ice sheets</span></a>).</p>
 </li>
 </ul>
-<figure class="align-default" id="fig-jako-csurf">
+<div class="figure align-default" id="fig-jako-csurf">
 <img alt="../../_images/jako-csurf.png" src="../../_images/jako-csurf.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Left: modeled surface speed at the end of a 2 km grid, 100 model year, steady
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Left: modeled surface speed at the end of a 2 km grid, 100 model year, steady
 present-day climate run. Right: observed surface speed, an average of four winter
 velocity maps (2000,2006–2008) derived from RADARSAT data, as included in the SeaRISE
-5 km data set <span id="id12">[<a class="reference internal" href="../../zzz_references_html.html#id234" title="I. Joughin, B. E. Smith, I. M. Howat, T. Scambos, and T. Moon. Greenland flow variability from ice-sheet-wide velocity mapping. J. Glaciol., 56(197):415–430, 2010.">139</a>]</span>, for the same region. Scales are in meters per
+5 km data set <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal2010" id="id12">[64]</a>, for the same region. Scales are in meters per
 year.</span><a class="headerlink" href="#fig-jako-csurf" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="century-run-on-a-2-km-grid">
+</div>
+</div>
+<div class="section" id="century-run-on-a-2-km-grid">
 <h2>Century run on a 2 km grid<a class="headerlink" href="#century-run-on-a-2-km-grid" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have a spun-up state, here is a 100 model year run on a 2 km grid with a 10 m
 grid in the vertical:</p>
@@ -309,17 +303,17 @@ comparison to observations.</p>
 <p>Over this 100 year period the flow appears to be relatively steady state. Though this is
 not surprising because the climate forcing and boundary conditions are time-independent, a
 longer run reveals ongoing speed variability associated to subglacially-driven sliding
-cyclicity; compare <span id="id13">[<a class="reference internal" href="../../zzz_references_html.html#id483" title="W. J. J. van Pelt and J. Oerlemans. Numerical simulations of cyclic behaviour in the parallel ice sheet model (pism). Journal of Glaciology, 58(208):347–360, 2012. URL: https://www.igsoc.org/journal/58/208/t11J217.pdf, doi:10.3189/2012JoG11J217.">20</a>]</span>.</p>
+cyclicity; compare <a class="bibtex reference internal" href="../../zzz_references_html.html#vanpeltoerlemans2012" id="id13">[65]</a>.</p>
 <p>The ice dynamics parameters chosen in <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">century.sh</span></code>, especially the
 combination</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-topg_to_phi 15.0,40.0,-300.0,700.0 -till_effective_fraction_overburden 0.02 \
    -pseudo_plastic -pseudo_plastic_q 0.25 -tauc_slippery_grounding_lines
 </pre></div>
 </div>
-<p>are a topic for a parameter study (compare <span id="id14">[<a class="reference internal" href="../../zzz_references_html.html#id29" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>) or a
-study of their relation to inverse modeling results (e.g. <span id="id15">[<a class="reference internal" href="../../zzz_references_html.html#id171" title="M. Habermann, M. Truffer, and D. Maxwell. Changing basal conditions during the speed-up of Jakobshavn Isbrae, Greenland. The Cryosphere, 7(6):1679–1692, 2013. doi:10.5194/tc-7-1679-2013.">27</a>]</span>).</p>
-</section>
-<section id="plotting-results">
+<p>are a topic for a parameter study (compare <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id14">[66]</a>) or a
+study of their relation to inverse modeling results (e.g. <a class="bibtex reference internal" href="../../zzz_references_html.html#habermannetal2013" id="id15">[67]</a>).</p>
+</div>
+<div class="section" id="plotting-results">
 <h2>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="#fig-jako-csurf"><span class="std std-numref">Fig. 43</span></a> was generated using <a class="reference external" href="https://github.com/pism/pypismtools">pypismtools</a>, <a class="reference external" href="http://nco.sourceforge.net/">NCO</a> and <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO</a>.  Do</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncpdq -a time,z,y,x spunjako_0.nc jako5km.nc
@@ -352,8 +346,8 @@ modeled region.</p>
 <dd><p>Calculate <code class="docutils literal notranslate"><span class="pre">620/5</span> <span class="pre">+</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">425/5</span> <span class="pre">+</span> <span class="pre">1</span></code>, for example.</p>
 </dd>
 </dl>
-</section>
-</section>
+</div>
+</div>
 
 
       <hr>
@@ -429,7 +423,7 @@ modeled region.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -440,9 +434,9 @@ modeled region.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.2-19-gb2584a1d8
+      Git revision v2.0.3-16-gad24975a0
       committed by Constantine Khrulev
-      on 2022-05-10 15:09:41 -0800 |
+      on 2022-05-25 10:48:10 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>
