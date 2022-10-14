@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configuration parameters &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <title>Configuration parameters &#8212; PISM, a Parallel Ice Sheet Model 2.0.5 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -952,7 +952,7 @@ removed in a later PISM version.</p>
 </p>
 </li>
 <li><p><span class="target" id="config-basal_yield_stress.mohr_coulomb.till_effective_fraction_overburden"></span><code class="docutils literal notranslate"><span class="pre">basal_yield_stress.mohr_coulomb.till_effective_fraction_overburden</span></code></p>
-<p><span class="math notranslate nohighlight">\(\delta\)</span> in notes; <span class="math notranslate nohighlight">\(N_0 = \delta P_o\)</span> where <span class="math notranslate nohighlight">\(P_o\)</span> is overburden pressure; <span class="math notranslate nohighlight">\(N_0\)</span> is reference (low) value of effective pressure (i.e. normal stress); <span class="math notranslate nohighlight">\(N_0\)</span> scales with overburden pressure unlike <a class="bibtex reference internal" href="../../zzz_references_html.html#tulaczyketal2000" id="id15">[109]</a>; default value from Greenland and Antarctic model runs<dl class="field-list simple">
+<p><span class="math notranslate nohighlight">\(\delta\)</span> in <a class="bibtex reference internal" href="../../zzz_references_html.html#buelervanpelt2015" id="id15">[110]</a>; <span class="math notranslate nohighlight">\(\delta P_o \le N_{\text{till}} \le P_o\)</span> where <span class="math notranslate nohighlight">\(P_o\)</span> is overburden pressure and <span class="math notranslate nohighlight">\(N_{\text{till}}\)</span> is the effective pressure of the overlying ice on the saturated till; default value of <span class="math notranslate nohighlight">\(\delta\)</span> corresponds to  Greenland and Antarctic model runs<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
@@ -1373,16 +1373,6 @@ removed in a later PISM version.</p>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
 <dd class="field-even"><p>0<em> (Pascal)</em></p>
-</dd>
-</dl>
-</p>
-</li>
-<li><p><span class="target" id="config-bootstrapping.defaults.enwat"></span><code class="docutils literal notranslate"><span class="pre">bootstrapping.defaults.enwat</span></code></p>
-<p>effective englacial water thickness value to use if variable enwat is absent in bootstrapping file<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>0<em> (meters)</em></p>
 </dd>
 </dl>
 </p>
@@ -3015,16 +3005,6 @@ removed in a later PISM version.</p>
 </dl>
 </p>
 </li>
-<li><p><span class="target" id="config-hydrology.null_strip_width"></span><code class="docutils literal notranslate"><span class="pre">hydrology.null_strip_width</span></code></p>
-<p>if negative then mechanism is inactive; width of strip around computational domain in which water velocity and water amount are set to zero; used by hydrology::Routing and hydrology::Distributed<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>-1<em> (meters)</em></p>
-</dd>
-</dl>
-</p>
-</li>
 <li><p><span class="target" id="config-hydrology.regularizing_porosity"></span><code class="docutils literal notranslate"><span class="pre">hydrology.regularizing_porosity</span></code></p>
 <p>phi_0 in notes; regularizes pressure equation by multiplying time derivative term<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -3190,19 +3170,6 @@ removed in a later PISM version.</p>
 </dl>
 </p>
 </li>
-<li><p><span class="target" id="config-hydrology.use_const_bmelt"></span><code class="docutils literal notranslate"><span class="pre">hydrology.use_const_bmelt</span></code></p>
-<p>if “yes”, subglacial hydrology model sees basal melt rate which is constant and given by hydrology.const_bmelt<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> flag</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>no</p>
-</dd>
-<dt class="field-odd">Option</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">-hydrology_use_const_bmelt</span></code></p>
-</dd>
-</dl>
-</p>
-</li>
 <li><p><span class="target" id="config-input.bootstrap"></span><code class="docutils literal notranslate"><span class="pre">input.bootstrap</span></code></p>
 <p>It true, use bootstrapping heuristics when initializing PISM.<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -3333,26 +3300,6 @@ removed in a later PISM version.</p>
 </dl>
 </p>
 </li>
-<li><p><span class="target" id="config-inverse.design.param_hardav_eps"></span><code class="docutils literal notranslate"><span class="pre">inverse.design.param_hardav_eps</span></code></p>
-<p>tiny vertically-averaged hardness used as a substitute for 0 in some tauc parameterizations<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>10000<em> (Pascal second^(1/3))</em></p>
-</dd>
-</dl>
-</p>
-</li>
-<li><p><span class="target" id="config-inverse.design.param_hardav_scale"></span><code class="docutils literal notranslate"><span class="pre">inverse.design.param_hardav_scale</span></code></p>
-<p>typical size of ice hardness<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>1e+08<em> (Pascal second^(1/3))</em></p>
-</dd>
-</dl>
-</p>
-</li>
 <li><p><span class="target" id="config-inverse.design.param_tauc_eps"></span><code class="docutils literal notranslate"><span class="pre">inverse.design.param_tauc_eps</span></code></p>
 <p>tiny yield stress used as a substitute for 0 in some tauc parameterizations<dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -3369,16 +3316,6 @@ removed in a later PISM version.</p>
 <dd class="field-odd"> number</dd>
 <dt class="field-even">Default value</dt>
 <dd class="field-even"><p>100000<em> (Pascal)</em></p>
-</dd>
-</dl>
-</p>
-</li>
-<li><p><span class="target" id="config-inverse.design.param_trunc_hardav0"></span><code class="docutils literal notranslate"><span class="pre">inverse.design.param_trunc_hardav0</span></code></p>
-<p>transition point of change to linear behaviour for design variable parameterization type <code class="docutils literal notranslate"><span class="pre">trunc</span></code><dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>1e+06<em> (Pascal second^(1/3))</em></p>
 </dd>
 </dl>
 </p>
@@ -3530,19 +3467,6 @@ removed in a later PISM version.</p>
 </dd>
 <dt class="field-even">Option</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">-inv_state_func</span></code></p>
-</dd>
-</dl>
-</p>
-</li>
-<li><p><span class="target" id="config-inverse.target_misfit"></span><code class="docutils literal notranslate"><span class="pre">inverse.target_misfit</span></code></p>
-<p>desired root misfit for SSA inversions<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"> number</dd>
-<dt class="field-even">Default value</dt>
-<dd class="field-even"><p>100<em> (meter / year)</em></p>
-</dd>
-<dt class="field-odd">Option</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">-inv_target_misfit</span></code></p>
 </dd>
 </dl>
 </p>
@@ -6151,9 +6075,9 @@ removed in a later PISM version.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.4
+      Git revision v2.0.5
       committed by Constantine Khrulev
-      on 2022-05-25 12:02:27 -0800 |
+      on 2022-10-14 09:56:26 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

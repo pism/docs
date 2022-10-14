@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.0.4 documentation</title>
+    <title>Diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.0.5 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -534,14 +534,28 @@ the seasonal snow cover.</p>
 </dl>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">flux_staggered</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flux_staggered[0]</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Units</dt>
 <dd class="field-odd"><p>m2 year-1</p>
 </dd>
 <dt class="field-even">Description</dt>
-<dd class="field-even"><p>fluxes through cell interfaces (sides) on the staggered grid</p>
+<dd class="field-even"><p>fluxes through cell interfaces (sides) on the staggered grid (x-offset)</p>
 </dd>
 </dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flux_staggered[1]</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Units</dt>
+<dd class="field-odd"><p>m2 year-1</p>
+</dd>
+<dt class="field-even">Description</dt>
+<dd class="field-even"><p>fluxes through cell interfaces (sides) on the staggered grid (y-offset)</p>
+</dd>
+</dl>
+</li>
+</ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">frontal_melt_rate</span></code></p>
 <dl class="field-list simple">
@@ -2517,9 +2531,9 @@ the seasonal snow cover.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.4
+      Git revision v2.0.5
       committed by Constantine Khrulev
-      on 2022-05-25 12:02:27 -0800 |
+      on 2022-10-14 09:56:26 -0800 |
       &copy; 2004--2022, the PISM authors.
       
     </div>
