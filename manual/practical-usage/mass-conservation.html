@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.0.5 documentation</title>
+    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -35,7 +35,7 @@
 <span id="sec-mass-conservation"></span><h1>Balancing the books<a class="headerlink" href="#balancing-the-books" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="d-diagnostics">
 <h2>2D diagnostics<a class="headerlink" href="#d-diagnostics" title="Permalink to this headline">¶</a></h2>
-<p>PISM provides a number of 2D diagnostics to keep track of mass conservation.<a class="footnote-reference brackets" href="#id6" id="id1">1</a></p>
+<p>PISM provides a number of 2D diagnostics to keep track of mass conservation.<a class="footnote-reference brackets" href="#f1" id="id1">1</a></p>
 <p>All of them are computed as time-averaged fluxes over requested reporting intervals.
 Positive values correspond to mass gain.</p>
 <p>For ice mass, at every grid point we have</p>
@@ -52,7 +52,7 @@ Positive values correspond to mass gain.</p>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/57065d8c5fa6eb66e06106f6fd011bee/ice_mass_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
 <p>All names on the right-hand side correspond to valid PISM diagnostic quantities.</p>
-<p>To check that all changes in mass are accounted for, download the script above and run<a class="footnote-reference brackets" href="#id7" id="id2">2</a></p>
+<p>To check that all changes in mass are accounted for, download the script above and run<a class="footnote-reference brackets" href="#f2" id="id2">2</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2 -v -S ice_mass_accounting_error.txt <span class="se">\</span>
       pism_output.nc mass_accounting_error.nc
 </pre></div>
@@ -82,23 +82,20 @@ equal to zero. They are not zero (in general) due to rounding errors, though.</p
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -extra_file ex.nc -extra_times N -extra_vars amount_fluxes,...
 </pre></div>
 </div>
-<div class="section" id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Comments</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_flow</span></code> is the change in ice mass corresponding to flux
 divergence</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_conservation_error</span></code> is the artificial change in ice mass
-needed to “balance the books”. This includes changes needed to preserve non-negativity
-of ice thickness. <a class="footnote-reference brackets" href="#f1" id="id3">4</a></p></li>
+needed to “balance the books”. It is uniformly zero in most simulations.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_surface_mass_balance</span></code> is the change due to the surface
 mass balance; note that this is <em>not</em> the same as the provided SMB: in ablation areas
-this is the <em>effective</em> mass balance taking into account the amount of ice present</p></li>
+this is the <em>effective</em> mass balance taking into account the amount of ice present.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_basal_mass_balance</span></code> is the <em>effective</em> change due to
-basal (grounded and sub-shelf) melting</p></li>
+basal (grounded and sub-shelf) melting.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_discharge</span></code> combines changes due to calving and frontal
-melt</p></li>
+melt.</p></li>
 </ul>
-</div>
 </div>
 <div class="section" id="scalar-diagnostics">
 <h2>Scalar diagnostics<a class="headerlink" href="#scalar-diagnostics" title="Permalink to this headline">¶</a></h2>
@@ -117,8 +114,7 @@ computational domain. The “integrated” mass accounting error can be computed
 </div>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/a2f27a68f9bcbc7fe59c6f9ab7e17442/scalar_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
-<div class="section" id="id4">
-<h3>Comments<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Comments</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_flow</span></code> is the integral of <span class="math notranslate nohighlight">\(-\nabla \cdot Q\)</span> over the
 computational domain. This should be zero (up to the effect of rounding errors) in
@@ -129,11 +125,16 @@ influence.</p></li>
 most simulations</p></li>
 </ul>
 </div>
-</div>
 <div class="section" id="mass-accounting-in-subglacial-hydrology-models">
 <span id="sec-mass-conservation-hydrology"></span><h2>Mass accounting in subglacial hydrology models<a class="headerlink" href="#mass-accounting-in-subglacial-hydrology-models" title="Permalink to this headline">¶</a></h2>
 <p>PISM’s hydrology models provide all the diagnostic fields needed to keep track of changes
-in subglacial water thickness. <a class="footnote-reference brackets" href="#id8" id="id5">3</a></p>
+in subglacial water thickness.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We keep track of <span class="math notranslate nohighlight">\(W_{\text{till}} + W\)</span>, i.e. the sum of the effective thickness
+of subglacial water stored in till <em>and</em> the effective thickness of subglacial water in
+the transport layer (if applicable).</p>
+</div>
 <p>At every grid point we have</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">water_mass_accounting_error</span> <span class="o">=</span> <span class="n">tendency_of_subglacial_water_mass</span> <span class="o">-</span>
   <span class="p">(</span><span class="n">tendency_of_subglacial_water_mass_due_to_input</span> <span class="o">+</span>
@@ -164,22 +165,43 @@ runoff to the effective mass balance. Use diagnostic quantities
 per area per time) and <code class="docutils literal notranslate"><span class="pre">surface_accumulation_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">surface_melt_rate</span></code>,
 <code class="docutils literal notranslate"><span class="pre">surface_runoff_rate</span></code> (units of mass per time).</p>
 <p>To save all these, use <code class="docutils literal notranslate"><span class="pre">-extra_vars</span></code> shortcuts <code class="docutils literal notranslate"><span class="pre">pdd_fluxes</span></code> and <code class="docutils literal notranslate"><span class="pre">pdd_rates</span></code>.</p>
+</div>
+<div class="section" id="mass-conservation-and-rough-bed-topography">
+<span id="sec-mass-conservation-rough-bed"></span><h2>Mass conservation and “rough” bed topography<a class="headerlink" href="#mass-conservation-and-rough-bed-topography" title="Permalink to this headline">¶</a></h2>
+<p>Jarosch and others <a class="bibtex reference internal" href="../../zzz_references_html.html#jaroschschoofanslow2013" id="id3">[122]</a> show that Mahaffy’s <a class="bibtex reference internal" href="../../zzz_references_html.html#mahaffy" id="id4">[81]</a> SIA
+discretization used by PISM suffers from mass conservation errors near sufficiently abrupt
+changes in bed elevation. (It may overestimate ice fluxes through the boundary of a grid
+cell and remove more ice than available, producing a negative ice thickness.)</p>
+<p>PISM uses a “projection step” to ensure non-negativity of ice thickness <span class="math notranslate nohighlight">\(H\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-h-projection-step">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-h-projection-step" title="Permalink to this equation">¶</a></span>\[H^{n+1}_{i,j} = \max(\widetilde H^{n+1}_{i,j}, 0),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\widetilde H^{n+1}_{i,j}\)</span> is the “tentative” ice thickness at a grid point
+<span class="math notranslate nohighlight">\((i,j)\)</span> and the time step <span class="math notranslate nohighlight">\(n+1\)</span> computed using an explicit-in-time
+finite-volume discretization of the mass continuity equation.</p>
+<p>This step is performed <em>after</em> computing the change in ice thickness due to flow and
+<em>before</em> applying top surface and basal mass balance fluxes (i.e. PISM uses operator
+splitting in its approximation of the mass continuity equation).</p>
+<p>Prior to version <code class="docutils literal notranslate"><span class="pre">2.0.6</span></code> PISM fully relied on <a class="reference internal" href="#equation-eq-h-projection-step">(43)</a> to maintain
+non-negativity of ice thickness and <code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_conservation_error</span></code>
+reported the rate at which mass is created by the projection step.</p>
+<p>The current mass transport scheme includes a flux limiter (see section 3 and the appendix
+of <a class="bibtex reference internal" href="../../zzz_references_html.html#smolarkiewicz1989" id="id5">[123]</a>) that ensures non-negativity of <span class="math notranslate nohighlight">\(\widetilde
+H^{n+1}_{i,j}\)</span>, making the projection step <a class="reference internal" href="#equation-eq-h-projection-step">(43)</a> unnecessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>PISM still performs the projections step to guarantee that <span class="math notranslate nohighlight">\(H \ge 0\)</span> is true
+even if the flux limiter fails.</p></li>
+<li><p>See <code class="docutils literal notranslate"><span class="pre">examples/bedrock_step</span></code> for PISM’s implementation of the “cliff benchmark”
+described in <a class="bibtex reference internal" href="../../zzz_references_html.html#jaroschschoofanslow2013" id="id6">[122]</a>.</p></li>
+</ul>
+</div>
 <dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>See <a class="reference internal" href="../diagnostics/index.html#sec-diagnostics-list"><span class="std std-ref">Diagnostic quantities</span></a> for the full list of diagnostics.</p>
 </dd>
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">ncap2</span></code> is a part of <a class="reference external" href="http://nco.sourceforge.net/">NCO</a>.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
-<dd><p>We keep track of <span class="math notranslate nohighlight">\(W_{\text{till}} + W\)</span>, i.e. the sum of the effective
-thickness of subglacial water stored in till <em>and</em> the effective thickness of
-subglacial water in the transport layer (if applicable).</p>
-</dd>
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id3">4</a></span></dt>
-<dd><p>While PISM’s mass transport scheme is not proven to be mass-conserving <em>in every
-case</em> (see <a class="bibtex reference internal" href="../../zzz_references_html.html#jaroschschoofanslow2013" id="id9">[122]</a>), in most simulations the field is uniformly
-zero.</p>
 </dd>
 </dl>
 </div>
@@ -278,9 +300,9 @@ zero.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.5
+      Git revision v2.0.6
       committed by Constantine Khrulev
-      on 2022-10-14 09:56:26 -0800 |
+      on 2023-01-23 15:14:38 -0900 |
       &copy; 2004--2022, the PISM authors.
       
     </div>

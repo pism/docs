@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simplified geometry experiments &#8212; PISM, a Parallel Ice Sheet Model 2.0.5 documentation</title>
+    <title>Simplified geometry experiments &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -32,22 +32,22 @@
   <div class="section" id="simplified-geometry-experiments">
 <span id="sec-simp"></span><h1>Simplified geometry experiments<a class="headerlink" href="#simplified-geometry-experiments" title="Permalink to this headline">¶</a></h1>
 <p>There have been three stages of ice sheet model intercomparisons based on simplified
-geometry experiments since the early 1990s <a class="bibtex reference internal" href="../../zzz_references_html.html#buelerspray" id="id1">[125]</a>.</p>
+geometry experiments since the early 1990s <a class="bibtex reference internal" href="../../zzz_references_html.html#buelerspray" id="id1">[126]</a>.</p>
 <p>EISMINT I (European Ice Sheet Modeling INiTiative) <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint96" id="id2">[34]</a><a class="footnote-reference brackets" href="#id27" id="id3">1</a> was the first of
 these and involved only the isothermal shallow ice approximation (SIA). Both fixed margin
 and moving margin experiments were performed in EISMINT I, and various conclusions were
 drawn about the several numerical schemes used in the intercomparison. EISMINT I is
 superceded, however, by verification using the full variety of known exact solutions to
 the isothermal SIA <a class="bibtex reference internal" href="../../zzz_references_html.html#blkcb" id="id4">[33]</a>. The “rediscovery”, since EISMINT I, of the Halfar similarity
-solution with zero accumulation <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id5">[126]</a>, and verification runs using that solution,
+solution with zero accumulation <a class="bibtex reference internal" href="../../zzz_references_html.html#halfar83" id="id5">[127]</a>, and verification runs using that solution,
 already suffices to measure the isothermal SIA performance of PISM more precisely than
 would be allowed by comparison to EISMINT I results.</p>
 <p>EISMINT II <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id6">[22]</a> pointed out interesting and surprising properties of the
-thermocoupled SIA. References <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[30]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh04" id="id8">[127]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh06" id="id9">[128]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id10">[47]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#saitoeismint" id="id11">[129]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id12">[29]</a> each interpret the
+thermocoupled SIA. References <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[30]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh04" id="id8">[128]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#hindmarsh06" id="id9">[129]</a>,
+<a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id10">[47]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#saitoeismint" id="id11">[130]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id12">[29]</a> each interpret the
 EISMINT II experiments and/or describe attempts to add more complete physical models to
 “fix” the (perceived and real) shortfalls of ice sheet model behavior on EISMINT II
-experiments. We believe that the discussion in <a class="bibtex reference internal" href="../../zzz_references_html.html#paynedongelmans" id="id13">[130]</a>,
+experiments. We believe that the discussion in <a class="bibtex reference internal" href="../../zzz_references_html.html#paynedongelmans" id="id13">[131]</a>,
 <a class="bibtex reference internal" href="../../zzz_references_html.html#paynebaldwin" id="id14">[47]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id15">[30]</a> adequately explains the “spokes” in EISMINT II
 experiment F as a genuine fluid instability, while <a class="bibtex reference internal" href="../../zzz_references_html.html#fowler01" id="id16">[48]</a> and Appendix B of
 <a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id17">[29]</a> adequately cautions against the continuum model that generates the
@@ -56,8 +56,8 @@ any case, PISM has built-in support for all of the published and unpublished EIS
 experiments; these are described in the next subsection.</p>
 <p>The ISMIP (Ice Sheet Model Intercomparison Project) <a class="footnote-reference brackets" href="#id28" id="id18">2</a> round of intercomparisons covers
 2008–2013 (at least). There are four components of ISMIP substantially completed, namely
-HOM = Higher Order Models <a class="bibtex reference internal" href="../../zzz_references_html.html#ismiphom" id="id19">[131]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#homelmer" id="id20">[132]</a>, HEINO = Heinrich Event
-INtercOmparison <a class="bibtex reference internal" href="../../zzz_references_html.html#grevetakahamacalov" id="id21">[133]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#calovetal2009heinofinal" id="id22">[104]</a>, MISMIP
+HOM = Higher Order Models <a class="bibtex reference internal" href="../../zzz_references_html.html#ismiphom" id="id19">[132]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#homelmer" id="id20">[133]</a>, HEINO = Heinrich Event
+INtercOmparison <a class="bibtex reference internal" href="../../zzz_references_html.html#grevetakahamacalov" id="id21">[134]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#calovetal2009heinofinal" id="id22">[104]</a>, MISMIP
 (below), and MISMIP3d (also below).</p>
 <p>PISM did not participate in ISMIP-HOM but does support most of prescribed experiments (see
 <a class="reference internal" href="ismip-hom.html#sec-ismip-hom"><span class="std std-ref">ISMIP-HOM</span></a>).</p>
@@ -71,7 +71,7 @@ continuum model described in <a class="bibtex reference internal" href="../../zz
 continuum model used in ISMIP-HEINO and EISMINT II experiment H. Indeed the SIA+SSA hybrid
 is offered as a unified shallow model for real ice sheets (section <a class="reference internal" href="../highlevelview/index.html#sec-dynamics"><span class="std std-ref">Ice dynamics, the PISM view</span></a>).</p>
 <p>A third and fourth ISMIP parts are the two parts of the Marine Ice Sheet Model
-Intercomparison Project, MISMIP <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip2012" id="id25">[134]</a> and MISMIP3D <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip3d2013" id="id26">[135]</a>. These
+Intercomparison Project, MISMIP <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip2012" id="id25">[135]</a> and MISMIP3D <a class="bibtex reference internal" href="../../zzz_references_html.html#mismip3d2013" id="id26">[136]</a>. These
 experiments are supported in PISM, as described in subsections <a class="reference internal" href="mismip.html#sec-mismip"><span class="std std-ref">MISMIP</span></a> and
 <a class="reference internal" href="mismip3d.html#sec-mismip3d"><span class="std std-ref">MISMIP3d</span></a> below.</p>
 <div class="toctree-wrapper compound">
@@ -179,9 +179,9 @@ experiments are supported in PISM, as described in subsections <a class="referen
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.5
+      Git revision v2.0.6
       committed by Constantine Khrulev
-      on 2022-10-14 09:56:26 -0800 |
+      on 2023-01-23 15:14:38 -0900 |
       &copy; 2004--2022, the PISM authors.
       
     </div>
