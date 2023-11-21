@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input and output &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Input and output &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -142,7 +142,7 @@ files, or backup files can become significant.</p>
 match the order used by PISM in memory, so we use the <code class="docutils literal notranslate"><span class="pre">time,y,x,z</span></code> storage order instead of
 the more convenient (e.g. for NetCDF tools) order <code class="docutils literal notranslate"><span class="pre">time,z,y,x</span></code>.</p>
 <p>To transpose dimensions in an existing file, use the <code class="docutils literal notranslate"><span class="pre">ncpdq</span></code> (“permute dimensions
-quickly”) tool from the <a class="reference external" href="http://nco.sourceforge.net/">NCO</a> suite. For example, run</p>
+quickly”) tool from the <a class="reference external" href="https://nco.sourceforge.net/">NCO</a> suite. For example, run</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncpdq -a time,z,zb,y,x bad.nc good.nc
 </pre></div>
 </div>
@@ -333,10 +333,10 @@ available targets.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

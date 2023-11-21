@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Development workflow &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Development workflow &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -99,7 +99,7 @@ MPI implementation</p>
 <ul class="simple">
 <li><p>has headers that compile without warnings,</p></li>
 <li><p>provides type checking for pointer arguments in MPI calls, and</p></li>
-<li><p>does not produce “false positives” when debugging memory access with <a class="reference external" href="https://www.valgrind.org/">Valgrind</a>.</p></li>
+<li><p>does not produce “false positives” when debugging memory access with <a class="reference external" href="https://valgrind.org/">Valgrind</a>.</p></li>
 </ul>
 <p>When working on a fix for a stubborn bug it <em>may</em> be helpful to use PETSc compiled with
 debugging enabled (option <code class="docutils literal notranslate"><span class="pre">--with-debugging=1</span></code>), but in our experience this is rarely
@@ -152,7 +152,7 @@ overall productivity.</p>
 relevant part of the code. In Emacs, use <code class="docutils literal notranslate"><span class="pre">M-x</span> <span class="pre">compile</span></code> to start a compilation and <code class="docutils literal notranslate"><span class="pre">M-x</span>
 <span class="pre">recompile</span></code> to re-run it.</p>
 <p>An editor that can help you navigate the code and find function definitions, etc is also
-helpful; try an IDE such as <a class="reference external" href="https://www.kdevelop.org/">KDevelop</a>, for example.</p>
+helpful; try an IDE such as <a class="reference external" href="https://kdevelop.org/">KDevelop</a>, for example.</p>
 </div>
 <div class="section" id="compiling-pism">
 <span id="sec-compiling-pism"></span><h2><a class="toc-backref" href="#id12">Compiling PISM</a><a class="headerlink" href="#compiling-pism" title="Permalink to this headline">¶</a></h2>
@@ -208,7 +208,7 @@ in the code where you would like to stop if <code class="docutils literal notran
 </div>
 <p>will stop execution at the grid point where <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">228</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">==</span> <span class="pre">146</span></code>.</p>
 <p>Some of the more troublesome bugs involve memory access errors (<em>segmentation fault</em>
-errors are often caused by these). Consider using <a class="reference external" href="https://www.valgrind.org/">Valgrind</a> to detect them.</p>
+errors are often caused by these). Consider using <a class="reference external" href="https://valgrind.org/">Valgrind</a> to detect them.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Your code will run much, much slower when using Valgrind, so it is important to find
@@ -255,7 +255,7 @@ have experience with it and cannot give any advice.</p></li>
 integration system attempts to build PISM and (if it was built successfully) run a suite
 of tests.</p>
 <p>It is often helpful to be able to run the same tests locally. To do this, install <a class="reference external" href="https://www.docker.com/">Docker</a>
-and <a class="reference external" href="https://circleci.com/docs/2.0/local-cli/">CircleCI CLI</a> (command-line interface), then run</p>
+and <a class="reference external" href="https://circleci.com/docs/local-cli/">CircleCI CLI</a> (command-line interface), then run</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>circleci <span class="nb">local</span> execute --job<span class="o">={</span>job<span class="o">}</span>
 <span class="c1"># where job is one of</span>
 <span class="c1"># build-gcc build-clang</span>
@@ -488,10 +488,10 @@ make sure that it is up to date, run <code class="docutils literal notranslate">
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

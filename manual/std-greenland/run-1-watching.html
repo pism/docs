@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Watching the first run &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Watching the first run &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -75,8 +75,11 @@ state (see <a class="bibtex reference internal" href="../../zzz_references_html.
 <a class="reference internal" href="#fig-firstoutput"><span class="std std-numref">Fig. 3</span></a> shows some fields from this file. In the next subsections we
 consider their “quality” as model results. To see a report on computational performance,
 we do:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncdump -h g20km_10ka.nc |grep history
-:history = &quot;user@machine 2017-10-04 19:16:08 AKDT: PISM done.  Performance stats: 0.1784 wall clock hours, 0.7136 proc.-hours, 14005.0054 model years per proc.-hour.\n&quot;,
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncdump -h g20km_10ka.nc | grep history
+</pre></div>
+</div>
+<p>which prints</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:history = &quot;user@machine 2017-10-04 19:16:08 AKDT: PISM done.  Performance stats: 0.1784 wall clock hours, 0.7136 proc.-hours, 14005.0054 model years per proc.-hour.\n&quot;,
 </pre></div>
 </div>
 <div class="figure align-default" id="fig-firstoutput">
@@ -184,10 +187,10 @@ contour (solid black).</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

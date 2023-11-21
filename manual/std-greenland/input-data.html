@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input data &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Input data &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -33,14 +33,14 @@
       
   <div class="section" id="input-data">
 <h1>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">¶</a></h1>
-<p>The NetCDF data used to initialize SeaRISE runs is <a class="reference external" href="http://websrv.cs.umt.edu/isis/index.php/Model_Initialization#Greenland">freely-available online</a>.</p>
+<p>The NetCDF data used to initialize SeaRISE runs is <a class="reference external" href="https://web.archive.org/web/20221220001121/http://websrv.cs.umt.edu/isis/index.php/Model_Initialization#Greenland">freely-available online</a>.</p>
 <p>To download the specific file we want, namely <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code>, and preprocess it
 for PISM, do:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd examples/std-greenland
 ./preprocess.sh
 </pre></div>
 </div>
-<p>The script <code class="docutils literal notranslate"><span class="pre">preprocess.sh</span></code> requires <code class="docutils literal notranslate"><span class="pre">wget</span></code> and also the <a class="reference external" href="http://nco.sourceforge.net/">NetCDF Operators</a>. It
+<p>The script <code class="docutils literal notranslate"><span class="pre">preprocess.sh</span></code> requires <code class="docutils literal notranslate"><span class="pre">wget</span></code> and also the <a class="reference external" href="https://nco.sourceforge.net/">NetCDF Operators</a>. It
 downloads the version 1.1 of the SeaRISE “master” present-day data set, which contains ice
 thickness and bedrock topography from BEDMAP <a class="bibtex reference internal" href="../../zzz_references_html.html#bamberlayberrygogenini" id="id1">[143]</a>, and modeled
 precipitation and surface mass balance rates from RACMO <a class="bibtex reference internal" href="../../zzz_references_html.html#ettemaetal2009" id="id2">[63]</a>, among
@@ -148,10 +148,10 @@ respectively, in <code class="docutils literal notranslate"><span class="pre">pi
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

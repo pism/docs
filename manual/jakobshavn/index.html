@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -315,7 +315,7 @@ study of their relation to inverse modeling results (e.g. <a class="bibtex refer
 </div>
 <div class="section" id="plotting-results">
 <h2>Plotting results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#fig-jako-csurf"><span class="std std-numref">Fig. 43</span></a> was generated using <a class="reference external" href="https://github.com/pism/pypismtools">pypismtools</a>, <a class="reference external" href="http://nco.sourceforge.net/">NCO</a> and <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO</a>.  Do</p>
+<p><a class="reference internal" href="#fig-jako-csurf"><span class="std std-numref">Fig. 43</span></a> was generated using <a class="reference external" href="https://github.com/pism/pypismtools">pypismtools</a>, <a class="reference external" href="https://nco.sourceforge.net/">NCO</a> and <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO</a>.  Do</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncpdq -a time,z,y,x spunjako_0.nc jako5km.nc
 nc2cdo.py jako5km.nc
 cdo remapbil,jako5km.nc Greenland_5km_v1.1.nc Greenland_5km_v1.1_jako.nc  # FIXME: if fails, proceed?
@@ -330,7 +330,7 @@ For this example <code class="docutils literal notranslate"><span class="pre">Py
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
 <dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id6">1</a></span></dt>
-<dd><p>PISM can also do 1 km runs for the whole Greenland ice sheet; see this <a class="reference external" href="http://www.pism.io/news/2012/04/12/first1km/">news item</a>.</p>
+<dd><p>PISM can also do 1 km runs for the whole Greenland ice sheet; see this <a class="reference external" href="https://www.pism.io/news/2012/04/12/first1km/">news item</a>.</p>
 </dd>
 <dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id9">2</a></span></dt>
 <dd><p>If this file is already present then no actual download occurs, and preprocessing
@@ -434,10 +434,10 @@ modeled region.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

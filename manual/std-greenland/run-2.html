@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Second run: a better ice-dynamics model &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Second run: a better ice-dynamics model &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -102,8 +102,8 @@ because of relatively-recent advances in radar and image technology and processi
 <a class="bibtex reference internal" href="../../zzz_references_html.html#joughin2002" id="id17">[147]</a>, the surface velocity of an ice sheet can be measured.</p>
 <p>So, how good is our model result <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code>? <a class="reference internal" href="#fig-csurfvsobserved"><span class="std std-numref">Fig. 5</span></a> compares
 the radar-observed <code class="docutils literal notranslate"><span class="pre">surfvelmag</span></code> field in the downloaded SeaRISE-Greenland data file
-<code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code> with the just-computed PISM result. The reader might agree with
-these broad qualitative judgements:</p>
+<code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code> with the just-computed PISM result (20 km) and results from the next step in the tutorial (10 km).
+The reader might agree with these broad qualitative judgements:</p>
 <ul class="simple">
 <li><p>the model results and the observed surface velocity look similar, and</p></li>
 <li><p>slow near-divide flow is generally in the right areas and of generally the right
@@ -121,10 +121,10 @@ magnitude, but</p></li>
 <code class="docutils literal notranslate"><span class="pre">Greenland_5km_v1.1.nc</span></code>.</p>
 </dd>
 <dt class="field-even">Middle</dt>
-<dd class="field-even"><p><code class="variable docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from <code class="docutils literal notranslate"><span class="pre">g20km_10ka_hy.nc</span></code>.</p>
+<dd class="field-even"><p><code class="variable docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from <code class="docutils literal notranslate"><span class="pre">g10km_10ka_hy.nc</span></code> (will be run in next step of tutorial).</p>
 </dd>
 <dt class="field-odd">Right</dt>
-<dd class="field-odd"><p><code class="variable docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from <code class="docutils literal notranslate"><span class="pre">g10km_10ka_hy.nc</span></code>.</p>
+<dd class="field-odd"><p><code class="variable docutils literal notranslate"><span class="pre">velsurf_mag</span></code> from <code class="docutils literal notranslate"><span class="pre">g20km_10ka_hy.nc</span></code>.</p>
 </dd>
 </dl>
 </div>
@@ -248,10 +248,10 @@ PISM-based inversion methods and analysis.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

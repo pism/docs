@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fourth run: paleo-climate model spin-up &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Fourth run: paleo-climate model spin-up &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -74,15 +74,18 @@ elevation <a class="bibtex reference internal" href="../../zzz_references_html.h
 </div>
 <p>You will see an impressively-long command, which you can compare to the <a class="reference internal" href="run-1.html#firstcommand"><span class="std std-ref">first one</span></a>. There are several key changes. First, we do not start from scratch but
 instead from a previously computed near-equilibrium result:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-regrid_file g20km_10ka_hy.nc -regrid_vars litho_temp,thk,enthalpy,tillwat,bmelt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-regrid_file g20km_10ka_hy.nc <span class="se">\</span>
+-regrid_vars litho_temp,thk,enthalpy,tillwat,basal_melt_rate_grounded
 </pre></div>
 </div>
 <p>For more on regridding see section <a class="reference internal" href="../practical-usage/regridding.html#sec-regridding"><span class="std std-ref">Regridding</span></a>. Then we turn on the earth
 deformation model with option <code class="docutils literal notranslate"><span class="pre">-bed_def</span> <span class="pre">lc</span></code>; see section <a class="reference internal" href="../modeling-choices/subglacier/bed-deformation.html#sec-beddef"><span class="std std-ref">Earth deformation models</span></a>. After
 that the atmosphere and surface (PDD) models are turned on and the files they need are
 identified:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-atmosphere searise_greenland,delta_T,precip_scaling -surface pdd \
--atmosphere_precip_scaling_file pism_dT.nc -atmosphere_delta_T_file pism_dT.nc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-atmosphere searise_greenland,delta_T,precip_scaling <span class="se">\</span>
+-atmosphere_precip_scaling_file pism_dT.nc <span class="se">\</span>
+-atmosphere_delta_T_file pism_dT.nc <span class="se">\</span>
+-surface pdd
 </pre></div>
 </div>
 <p>Then the sea level forcing module providing both a time-dependent sea level to the ice
@@ -219,10 +222,10 @@ fraction of temperate ice. Note different volume scale compared to that in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

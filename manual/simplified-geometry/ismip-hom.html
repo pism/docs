@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ISMIP-HOM &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>ISMIP-HOM &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -95,47 +95,63 @@ models distorts the vertical scale of the plot.</p>
 <p>Unlike simplified-geometry experiments A–D, the diagnostic simulation of the flow along
 the central flowline of Haut Glacier d’Arolla does not require any code modifications and
 uses the <code class="docutils literal notranslate"><span class="pre">pismr</span></code> executable. Please see <code class="docutils literal notranslate"><span class="pre">examples/ismip-hom/e-arolla</span></code> for details.</p>
-<p>The complete command used to produce <a class="reference internal" href="#fig-ismiphom-e-surface"><span class="std std-numref">Fig. 31</span></a>,
+<p>The complete script used to produce data for <a class="reference internal" href="#fig-ismiphom-e-surface"><span class="std std-numref">Fig. 31</span></a>,
 <a class="reference internal" href="#fig-ismiphom-e-no-slip"><span class="std std-numref">Fig. 32</span></a>, and <a class="reference internal" href="#fig-ismiphom-e-sliding"><span class="std std-numref">Fig. 33</span></a> is below:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># set ice softness</span>
-<span class="nv">A</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;scale=50; 10^(-16) / (365.2524 * 86400.0)&quot;</span> <span class="p">|</span> bc -l<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The ISMIP-HOM paper uses 1e-16</span>
+<span class="nv">A</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;scale=50; 10^(-16) / (365 * 86400.0)&quot;</span> <span class="p">|</span> bc -l<span class="k">)</span>
 
-pismr -i <span class="si">${</span><span class="nv">input</span><span class="si">}</span> -bootstrap <span class="se">\</span>
-   -Mx <span class="m">401</span> <span class="se">\</span>
-   -grid.registration corner <span class="se">\</span>
-   -grid.periodicity y <span class="se">\</span>
-   -stress_balance.model blatter <span class="se">\</span>
-   -stress_balance.blatter.flow_law isothermal_glen <span class="se">\</span>
-   -flow_law.isothermal_Glen.ice_softness <span class="si">${</span><span class="nv">A</span><span class="si">}</span> <span class="se">\</span>
-   -stress_balance.blatter.coarsening_factor <span class="m">7</span> <span class="se">\</span>
-   -blatter_Mz <span class="m">50</span> <span class="se">\</span>
-   -bp_snes_monitor_ratio <span class="se">\</span>
-   -bp_ksp_type gmres <span class="se">\</span>
-   -bp_pc_type mg <span class="se">\</span>
-   -bp_pc_mg_levels <span class="m">3</span> <span class="se">\</span>
-   -bp_mg_levels_ksp_type richardson <span class="se">\</span>
-   -bp_mg_levels_pc_type sor <span class="se">\</span>
-   -bp_mg_coarse_ksp_type preonly <span class="se">\</span>
-   -bp_mg_coarse_pc_type lu <span class="se">\</span>
-   -basal_resistance.pseudo_plastic.enabled <span class="se">\</span>
-   -basal_resistance.pseudo_plastic.q <span class="m">1</span>.0 <span class="se">\</span>
-   -basal_resistance.pseudo_plastic.u_threshold <span class="m">3</span>.1556926e7 <span class="se">\</span>
-   -basal_yield_stress.model constant <span class="se">\</span>
-   -energy none <span class="se">\</span>
-   -geometry.update.enabled <span class="nb">false</span> <span class="se">\</span>
-   -atmosphere uniform <span class="se">\</span>
-   -atmosphere.uniform.precipitation <span class="m">0</span> <span class="se">\</span>
-   -surface simple <span class="se">\</span>
-   -y 1e-16 <span class="se">\</span>
-   -o <span class="si">${</span><span class="nv">output</span><span class="si">}</span>
+<span class="nv">input</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">output</span><span class="o">=</span><span class="nv">$2</span>
+<span class="c1"># number of grid points in the X direction</span>
+<span class="nv">Mx</span><span class="o">=</span><span class="nv">$3</span>
+<span class="c1"># number of MG levels</span>
+<span class="nv">M</span><span class="o">=</span><span class="nv">$4</span>
+
+<span class="c1"># coarsening factor</span>
+<span class="nv">C</span><span class="o">=</span><span class="m">4</span>
+<span class="c1"># number of vertical levels in the stress balance solver</span>
+<span class="nv">bp_Mz</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$C</span><span class="s2">^(</span><span class="nv">$M</span><span class="s2"> - 1) + 1&quot;</span> <span class="p">|</span> bc<span class="k">)</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Using </span><span class="si">${</span><span class="nv">bp_Mz</span><span class="si">}</span><span class="s2"> vertical levels...&quot;</span>
+
+mpiexec -n <span class="m">8</span> pismr -i <span class="si">${</span><span class="nv">input</span><span class="si">}</span> -bootstrap <span class="se">\</span>
+      -Mx <span class="si">${</span><span class="nv">Mx</span><span class="si">}</span> <span class="se">\</span>
+      -Mz <span class="m">216</span> <span class="se">\</span>
+      -Lz <span class="m">215</span> <span class="se">\</span>
+      -z_spacing equal <span class="se">\</span>
+      -grid.registration corner <span class="se">\</span>
+      -grid.periodicity y <span class="se">\</span>
+      -stress_balance.model blatter <span class="se">\</span>
+      -stress_balance.blatter.flow_law isothermal_glen <span class="se">\</span>
+      -flow_law.isothermal_Glen.ice_softness <span class="si">${</span><span class="nv">A</span><span class="si">}</span> <span class="se">\</span>
+      -stress_balance.blatter.coarsening_factor <span class="si">${</span><span class="nv">C</span><span class="si">}</span> <span class="se">\</span>
+      -blatter_Mz <span class="si">${</span><span class="nv">bp_Mz</span><span class="si">}</span> <span class="se">\</span>
+      -bp_snes_monitor_ratio <span class="se">\</span>
+      -bp_ksp_type gmres <span class="se">\</span>
+      -bp_pc_type mg <span class="se">\</span>
+      -bp_pc_mg_levels <span class="si">${</span><span class="nv">M</span><span class="si">}</span> <span class="se">\</span>
+      -bp_mg_levels_ksp_type richardson <span class="se">\</span>
+      -bp_mg_levels_pc_type sor <span class="se">\</span>
+      -bp_mg_coarse_ksp_type cg <span class="se">\</span>
+      -bp_mg_coarse_pc_type gamg <span class="se">\</span>
+      -basal_resistance.pseudo_plastic.enabled <span class="se">\</span>
+      -basal_resistance.pseudo_plastic.q <span class="m">1</span>.0 <span class="se">\</span>
+      -basal_resistance.pseudo_plastic.u_threshold 1m.s-1 <span class="se">\</span>
+      -basal_yield_stress.model constant <span class="se">\</span>
+      -energy none <span class="se">\</span>
+      -geometry.update.enabled <span class="nb">false</span> <span class="se">\</span>
+      -atmosphere uniform <span class="se">\</span>
+      -atmosphere.uniform.precipitation <span class="m">0</span> <span class="se">\</span>
+      -surface simple <span class="se">\</span>
+      -y 1e-16 <span class="se">\</span>
+      -o_size big <span class="se">\</span>
+      -o <span class="si">${</span><span class="nv">output</span><span class="si">}</span>
 </pre></div>
 </div>
-<p>This run uses the <span class="math notranslate nohighlight">\(12.5\)</span> m grid resolution along the flowline and <span class="math notranslate nohighlight">\(50\)</span> vertical levels,
-which corresponds to the vertical resolution of under <span class="math notranslate nohighlight">\(5\)</span> meters where the ice is
-thickest.</p>
-<p>This grid is small enough to perform the diagnostic computation serially, avoiding
-dependence on parallel direct solvers (e.g. MUMPS) that may be needed in parallel.</p>
-<p>We use 3 multigrid levels with a <em>very</em> aggressive coarsening factor (<span class="math notranslate nohighlight">\(7\)</span>).</p>
+<p>This run uses the <span class="math notranslate nohighlight">\(12\)</span> m grid resolution along the flowline and <span class="math notranslate nohighlight">\(65\)</span> vertical levels in
+the stress balance solver, which corresponds to the vertical resolution of under <span class="math notranslate nohighlight">\(4\)</span>
+meters where the ice is thickest.</p>
+<p>We use 4 multigrid levels with a rather aggressive coarsening factor (<span class="math notranslate nohighlight">\(4\)</span>).</p>
 <div class="figure align-default" id="fig-ismiphom-e-surface">
 <img alt="../../_images/uvelsurf.png" src="../../_images/uvelsurf.png" />
 <p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Surface ice velocity for the Experiment E</span><a class="headerlink" href="#fig-ismiphom-e-surface" title="Permalink to this image">¶</a></p>
@@ -232,10 +248,10 @@ dependence on parallel direct solvers (e.g. MUMPS) that may be needed in paralle
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

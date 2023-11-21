@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>An SSA flow model for the Ross Ice Shelf in Antarctica &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>An SSA flow model for the Ross Ice Shelf in Antarctica &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -63,7 +63,7 @@ of it (<code class="docutils literal notranslate"><span class="pre">antarctica_i
 </div></blockquote>
 <p>Put this file in <code class="docutils literal notranslate"><span class="pre">examples/ross</span></code>.</p>
 <p>The script <code class="docutils literal notranslate"><span class="pre">preprocess.py</span></code> then downloads ALBMAP using <code class="docutils literal notranslate"><span class="pre">wget</span></code>; these two files total
-around 350 Mb. Then it uses <a class="reference external" href="http://nco.sourceforge.net/">NCO</a> to cut out the relevant portion of the grid and <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO</a> to
+around 350 Mb. Then it uses <a class="reference external" href="https://nco.sourceforge.net/">NCO</a> to cut out the relevant portion of the grid and <a class="reference external" href="https://code.mpimet.mpg.de/projects/cdo">CDO</a> to
 conservatively-interpolate the high-resolution (900 m) velocity data onto the coarser (5
 km) geometry grid used in ALBMAP. The script <code class="docutils literal notranslate"><span class="pre">nc2cdo.py</span></code> from directory <code class="docutils literal notranslate"><span class="pre">util/</span></code>,
 prepares the NetCDF file for the application of CDO, which requires complete projection
@@ -300,10 +300,10 @@ marine ice may all generate significant variation in shelf density.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

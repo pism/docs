@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using PISM for flow-line modeling &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Using PISM for flow-line modeling &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -66,7 +66,7 @@ input file in the <span class="math notranslate nohighlight">\(y\)</span>-direct
         -y 10000 -o pism-out.nc
 </pre></div>
 </div>
-<p>To make it easier to visualize data in the file created by PISM, “collapse” it using <a class="reference external" href="http://nco.sourceforge.net/">NCO</a>:</p>
+<p>To make it easier to visualize data in the file created by PISM, “collapse” it using <a class="reference external" href="https://nco.sourceforge.net/">NCO</a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ncks -O -d y,1 pism-out.nc slab-out.nc
 ncwa -O -a time,y slab-out.nc slab-out.nc
 </pre></div>
@@ -173,10 +173,10 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>

@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blatter’s model &#8212; PISM, a Parallel Ice Sheet Model 2.0.6 documentation</title>
+    <title>Blatter’s model &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -240,7 +240,7 @@ the initial guess is zero (beginning of a simulation) or if the solver fails wit
 <code class="docutils literal notranslate"><span class="pre">-bp_snes_ksp_ew</span></code>.</p>
 </div>
 <p>Some simulations may benefit from using a direct solver on the coarse MG level. For
-example, the following would use <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a> on the coarse grid:</p>
+example, the following would use <a class="reference external" href="https://mumps-solver.org/">MUMPS</a> on the coarse grid:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bp_pc_type mg <span class="se">\</span>
 -bp_pc_mg_levels N <span class="se">\</span>
 -bp_snes_ksp_ew  <span class="se">\</span>
@@ -251,7 +251,7 @@ example, the following would use <a class="reference external" href="http://mump
 -bp_mg_coarse_pc_type lu
 </pre></div>
 </div>
-<p><em>if</em> PETSc is built with <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a>.</p>
+<p><em>if</em> PETSc is built with <a class="reference external" href="https://mumps-solver.org/">MUMPS</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Parallel direct solvers such as MUMPS really benefit from using optimized BLAS and
@@ -398,10 +398,10 @@ uniform spacing in <span class="math notranslate nohighlight">\(x\)</span> and <
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.6
+      Git revision v2.0.7
       committed by Constantine Khrulev
-      on 2023-01-23 15:14:38 -0900 |
-      &copy; 2004--2022, the PISM authors.
+      on 2023-11-21 12:49:11 -0900 |
+      &copy; 2004--2023, the PISM authors.
       
     </div>
   </body>
