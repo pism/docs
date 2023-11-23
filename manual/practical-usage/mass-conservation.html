@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="PETSc options for PISM users" href="petsc-options.html" />
     <link rel="prev" title="Signals, to control a running PISM model" href="signals.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,9 +33,9 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="balancing-the-books">
+  <section id="balancing-the-books">
 <span id="sec-mass-conservation"></span><h1>Balancing the books<a class="headerlink" href="#balancing-the-books" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="d-diagnostics">
+<section id="d-diagnostics">
 <h2>2D diagnostics<a class="headerlink" href="#d-diagnostics" title="Permalink to this headline">¶</a></h2>
 <p>PISM provides a number of 2D diagnostics to keep track of mass conservation.<a class="footnote-reference brackets" href="#f1" id="id1">1</a></p>
 <p>All of them are computed as time-averaged fluxes over requested reporting intervals.
@@ -96,8 +98,8 @@ basal (grounded and sub-shelf) melting.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_discharge</span></code> combines changes due to calving and frontal
 melt.</p></li>
 </ul>
-</div>
-<div class="section" id="scalar-diagnostics">
+</section>
+<section id="scalar-diagnostics">
 <h2>Scalar diagnostics<a class="headerlink" href="#scalar-diagnostics" title="Permalink to this headline">¶</a></h2>
 <p>Diagnostics listed above are also available as scalars, integrated over the whole
 computational domain. The “integrated” mass accounting error can be computed using the
@@ -124,8 +126,8 @@ influence.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_conservation_error</span></code> should be zero (or close to zero) in
 most simulations</p></li>
 </ul>
-</div>
-<div class="section" id="mass-accounting-in-subglacial-hydrology-models">
+</section>
+<section id="mass-accounting-in-subglacial-hydrology-models">
 <span id="sec-mass-conservation-hydrology"></span><h2>Mass accounting in subglacial hydrology models<a class="headerlink" href="#mass-accounting-in-subglacial-hydrology-models" title="Permalink to this headline">¶</a></h2>
 <p>PISM’s hydrology models provide all the diagnostic fields needed to keep track of changes
 in subglacial water thickness.</p>
@@ -156,8 +158,8 @@ the transport layer (if applicable).</p>
 </div>
 <p>to save all diagnostics mentioned above.</p>
 <p>See <a class="reference internal" href="../modeling-choices/subglacier/hydrology.html#sec-subhydro"><span class="std std-ref">Subglacial hydrology</span></a> for more information about hydrology models.</p>
-</div>
-<div class="section" id="mass-accounting-in-the-pdd-model">
+</section>
+<section id="mass-accounting-in-the-pdd-model">
 <h2>Mass accounting in the PDD model<a class="headerlink" href="#mass-accounting-in-the-pdd-model" title="Permalink to this headline">¶</a></h2>
 <p>PISM’s PDD model provides diagnostics needed to compare computed accumulation, melt, and
 runoff to the effective mass balance. Use diagnostic quantities
@@ -165,10 +167,10 @@ runoff to the effective mass balance. Use diagnostic quantities
 per area per time) and <code class="docutils literal notranslate"><span class="pre">surface_accumulation_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">surface_melt_rate</span></code>,
 <code class="docutils literal notranslate"><span class="pre">surface_runoff_rate</span></code> (units of mass per time).</p>
 <p>To save all these, use <code class="docutils literal notranslate"><span class="pre">-extra_vars</span></code> shortcuts <code class="docutils literal notranslate"><span class="pre">pdd_fluxes</span></code> and <code class="docutils literal notranslate"><span class="pre">pdd_rates</span></code>.</p>
-</div>
-<div class="section" id="mass-conservation-and-rough-bed-topography">
+</section>
+<section id="mass-conservation-and-rough-bed-topography">
 <span id="sec-mass-conservation-rough-bed"></span><h2>Mass conservation and “rough” bed topography<a class="headerlink" href="#mass-conservation-and-rough-bed-topography" title="Permalink to this headline">¶</a></h2>
-<p>Jarosch and others <a class="bibtex reference internal" href="../../zzz_references_html.html#jaroschschoofanslow2013" id="id3">[122]</a> show that Mahaffy’s <a class="bibtex reference internal" href="../../zzz_references_html.html#mahaffy" id="id4">[81]</a> SIA
+<p>Jarosch and others <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id230" title="A. H. Jarosch, C. G. Schoof, and F. S. Anslow. Restoring mass conservation to shallow ice flow models over complex terrain. The Cryosphere, 7(1):229–240, 2013. doi:10.5194/tc-7-229-2013.">113</a>]</span> show that Mahaffy’s <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id299" title="M. W. Mahaffy. A three–dimensional numerical model of ice sheets: tests on the Barnes Ice Cap, Northwest Territories. J. Geophys. Res., 81(6):1059–1066, 1976.">64</a>]</span> SIA
 discretization used by PISM suffers from mass conservation errors near sufficiently abrupt
 changes in bed elevation. (It may overestimate ice fluxes through the boundary of a grid
 cell and remove more ice than available, producing a negative ice thickness.)</p>
@@ -185,7 +187,7 @@ splitting in its approximation of the mass continuity equation).</p>
 non-negativity of ice thickness and <code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_conservation_error</span></code>
 reported the rate at which mass is created by the projection step.</p>
 <p>The current mass transport scheme includes a flux limiter (see section 3 and the appendix
-of <a class="bibtex reference internal" href="../../zzz_references_html.html#smolarkiewicz1989" id="id5">[123]</a>) that ensures non-negativity of <span class="math notranslate nohighlight">\(\widetilde
+of <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id8" title="Piotr K. Smolarkiewicz. Comment on &quot;A Positive Definite Advection Scheme Obtained by Nonlinear Renormalization of the Advective Fluxes&quot;. Monthly Weather Review, 117(11):2626 - 2632, 1989. URL: https://journals.ametsoc.org/view/journals/mwre/117/11/1520-0493_1989_117_2626_copdas_2_0_co_2.xml, doi:10.1175/1520-0493(1989)117&lt;2626:COPDAS&gt;2.0.CO;2.">114</a>]</span>) that ensures non-negativity of <span class="math notranslate nohighlight">\(\widetilde
 H^{n+1}_{i,j}\)</span>, making the projection step <a class="reference internal" href="#equation-eq-h-projection-step">(43)</a> unnecessary.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -193,7 +195,7 @@ H^{n+1}_{i,j}\)</span>, making the projection step <a class="reference internal"
 <li><p>PISM still performs the projections step to guarantee that <span class="math notranslate nohighlight">\(H \ge 0\)</span> is true
 even if the flux limiter fails.</p></li>
 <li><p>See <code class="docutils literal notranslate"><span class="pre">examples/bedrock_step</span></code> for PISM’s implementation of the “cliff benchmark”
-described in <a class="bibtex reference internal" href="../../zzz_references_html.html#jaroschschoofanslow2013" id="id6">[122]</a>.</p></li>
+described in <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id230" title="A. H. Jarosch, C. G. Schoof, and F. S. Anslow. Restoring mass conservation to shallow ice flow models over complex terrain. The Cryosphere, 7(1):229–240, 2013. doi:10.5194/tc-7-229-2013.">113</a>]</span>.</p></li>
 </ul>
 </div>
 <dl class="footnote brackets">
@@ -204,8 +206,8 @@ described in <a class="bibtex reference internal" href="../../zzz_references_htm
 <dd><p><code class="docutils literal notranslate"><span class="pre">ncap2</span></code> is a part of <a class="reference external" href="https://nco.sourceforge.net/">NCO</a>.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -289,7 +291,7 @@ described in <a class="bibtex reference internal" href="../../zzz_references_htm
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -300,9 +302,9 @@ described in <a class="bibtex reference internal" href="../../zzz_references_htm
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

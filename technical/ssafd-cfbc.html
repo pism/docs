@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calving front stress boundary condition &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Calving front stress boundary condition &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Notes about the flow-line SSA" href="ssafd-flow-line.html" />
     <link rel="prev" title="Using Schoof’s parameterized bed roughness technique in PISM" href="bed_roughness.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="calving-front-stress-boundary-condition">
+  <section id="calving-front-stress-boundary-condition">
 <h1><a class="toc-backref" href="#id6">Calving front stress boundary condition</a><a class="headerlink" href="#calving-front-stress-boundary-condition" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
@@ -46,7 +48,7 @@
 </li>
 </ul>
 </div>
-<div class="section" id="notation">
+<section id="notation">
 <h2><a class="toc-backref" href="#id7">Notation</a><a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default" id="tab-cfbc-notation">
 <colgroup>
@@ -94,10 +96,10 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2><a class="toc-backref" href="#id8">Calving front stress boundary condition</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>In the 3D case the calving front stress boundary condition (<a class="bibtex reference internal" href="../zzz_references_html.html#greveblatter2009" id="id2">[56]</a>, equation
+<p>In the 3D case the calving front stress boundary condition (<span id="id2">[<a class="reference internal" href="../zzz_references_html.html#id170" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>, equation
 (6.19)) reads</p>
 <div class="math notranslate nohighlight">
 \[\left.t\right|_{\text{cf}} \cdot \n = -\psw \n.\]</div>
@@ -114,12 +116,12 @@ vertically-integrated forms of the stresses <span class="math notranslate nohigh
 separately from the shear stresses <span class="math notranslate nohighlight">\(\td{xz},\td{yz}\)</span>, the third of the above equations can
 be omitted from the remaining analysis.</p>
 <p>Let <span class="math notranslate nohighlight">\(\pice=\rhoi g (h-z)\)</span>. In the hydrostatic approximation, <span class="math notranslate nohighlight">\(t_{zz}=-\pice\)</span>
-(<a class="bibtex reference internal" href="../zzz_references_html.html#greveblatter2009" id="id3">[56]</a>, equation (5.59)). Next, since <span class="math notranslate nohighlight">\(\td{}\)</span> has trace zero,</p>
+(<span id="id3">[<a class="reference internal" href="../zzz_references_html.html#id170" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>, equation (5.59)). Next, since <span class="math notranslate nohighlight">\(\td{}\)</span> has trace zero,</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}p &amp;= p - \td{xx} - \td{yy} - \td{zz}\\&amp;= - t_{zz} - \td{xx} - \td{yy}\\&amp;= \pice - \td{xx} - \td{yy}.\end{aligned}\end{align} \]</div>
 <p>Thus</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-1">
-<span class="eqno">(50)<a class="headerlink" href="#equation-ssafd-cfbc-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(59)<a class="headerlink" href="#equation-ssafd-cfbc-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   (2\td{xx} + \td{yy}) \nx &amp;+&amp; \td{xy} \ny &amp;=&amp; (\pice - \psw) \nx,\\
   \td{xy} \nx &amp;+&amp; (2\td{yy} + \td{xx}) \ny &amp;=&amp; (\pice - \psw) \ny.\\
 \end{array}\end{split}\]</div>
@@ -131,28 +133,28 @@ can define the membrane stress <span class="math notranslate nohighlight">\(N\)<
 <div class="math notranslate nohighlight">
 \[N_{ij} = \int_{b}^{h} t^{D}_{ij} dz = 2\, \bar \viscosity\, H\, D_{ij}.\]</div>
 <p>Here <span class="math notranslate nohighlight">\(\bar \viscosity\)</span> is the vertically-averaged effective viscosity.</p>
-<p>Integrating <a class="reference internal" href="#equation-ssafd-cfbc-1">(50)</a> with respect to <span class="math notranslate nohighlight">\(z\)</span>, we get</p>
+<p>Integrating <a class="reference internal" href="#equation-ssafd-cfbc-1">(59)</a> with respect to <span class="math notranslate nohighlight">\(z\)</span>, we get</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-3">
-<span class="eqno">(51)<a class="headerlink" href="#equation-ssafd-cfbc-3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(60)<a class="headerlink" href="#equation-ssafd-cfbc-3" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   (2N_{xx} + N_{yy}) \nx &amp;+&amp; N_{xy} \ny &amp;=&amp; \displaystyle \int_{b}^{h}(\pice - \psw) dz\, \nx,\\
   N_{xy} \nx &amp;+&amp; (2N_{yy} + N_{xx}) \ny &amp;=&amp; \displaystyle \int_{b}^{h}(\pice - \psw) dz\, \ny.
 \end{array}\end{split}\]</div>
-</div>
-<div class="section" id="shallow-shelf-approximation">
+</section>
+<section id="shallow-shelf-approximation">
 <h2><a class="toc-backref" href="#id9">Shallow shelf approximation</a><a class="headerlink" href="#shallow-shelf-approximation" title="Permalink to this headline">¶</a></h2>
 <p>The shallow shelf approximation written in terms of <span class="math notranslate nohighlight">\(N_{ij}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-2">
-<span class="eqno">(52)<a class="headerlink" href="#equation-ssafd-cfbc-2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
+<span class="eqno">(61)<a class="headerlink" href="#equation-ssafd-cfbc-2" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcrcl}
   \D \diff{}{x}(2N_{xx} + N_{yy}) &amp;+&amp; \D \diff{N_{xy}}{y} &amp;=&amp; \D \rho g H \diff{h}{x},\\
   \D \diff{N_{xy}}{x} &amp;+&amp; \D \diff{}{y}(2N_{yy} + N_{xx}) &amp;=&amp; \D \rho g H \diff{h}{y}.
 \end{array}\end{split}\]</div>
-</div>
-<div class="section" id="implementing-the-calving-front-boundary-condition">
+</section>
+<section id="implementing-the-calving-front-boundary-condition">
 <h2><a class="toc-backref" href="#id10">Implementing the calving front boundary condition</a><a class="headerlink" href="#implementing-the-calving-front-boundary-condition" title="Permalink to this headline">¶</a></h2>
 <p>We use centered finite difference approximations in the discretization of the SSA
-<a class="reference internal" href="#equation-ssafd-cfbc-2">(52)</a>. Consider the first equation:</p>
+<a class="reference internal" href="#equation-ssafd-cfbc-2">(61)</a>. Consider the first equation:</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-4">
-<span class="eqno">(53)<a class="headerlink" href="#equation-ssafd-cfbc-4" title="Permalink to this equation">¶</a></span>\[\diff{}{x}(2N_{xx} + N_{yy}) + \D \diff{N_{xy}}{y} = \D \rho g H \diff{h}{x}.\]</div>
+<span class="eqno">(62)<a class="headerlink" href="#equation-ssafd-cfbc-4" title="Permalink to this equation">¶</a></span>\[\diff{}{x}(2N_{xx} + N_{yy}) + \D \diff{N_{xy}}{y} = \D \rho g H \diff{h}{x}.\]</div>
 <p>Let <span class="math notranslate nohighlight">\(\tilde F\)</span> be an approximation of <span class="math notranslate nohighlight">\(F\)</span> using a finite-difference scheme. Then the first
 SSA equation is approximated by</p>
 <div class="math notranslate nohighlight">
@@ -160,13 +162,13 @@ SSA equation is approximated by</p>
 \frac1{\dy}\left(\partII_{i,j+\frac12} - \partII_{i,j-\frac12}\right) =
 \rho g H \frac{h_{i+\frac12,j} - h_{i-\frac12,j}}{\dx}.\]</div>
 <p>Now, assume that the cell boundary (face) at <span class="math notranslate nohighlight">\(i+\frac12,j\)</span> is at the
-calving front. Then <span class="math notranslate nohighlight">\(\n = (1,0)\)</span> and from <a class="reference internal" href="#equation-ssafd-cfbc-3">(51)</a> we have</p>
+calving front. Then <span class="math notranslate nohighlight">\(\n = (1,0)\)</span> and from <a class="reference internal" href="#equation-ssafd-cfbc-3">(60)</a> we have</p>
 <div class="math notranslate nohighlight" id="equation-ssafd-cfbc-vertintbdry">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ssafd-cfbc-vertintbdry" title="Permalink to this equation">¶</a></span>\[2N_{xx} + N_{yy} = \int_{b}^{h}(\pice - \psw) dz.\]</div>
-<p>We call the right-hand side of <a class="reference internal" href="#equation-ssafd-cfbc-vertintbdry">(54)</a> the “pressure difference term.”</p>
-<p>In forming the matrix approximation of the SSA <a class="bibtex reference internal" href="../zzz_references_html.html#bbssasliding" id="id4">[29]</a>,
-<a class="bibtex reference internal" href="../zzz_references_html.html#winkelmannetal2011" id="id5">[37]</a>, instead of assembling a matrix row corresponding to the
-generic equation <a class="reference internal" href="#equation-ssafd-cfbc-4">(53)</a> we use</p>
+<span class="eqno">(63)<a class="headerlink" href="#equation-ssafd-cfbc-vertintbdry" title="Permalink to this equation">¶</a></span>\[2N_{xx} + N_{yy} = \int_{b}^{h}(\pice - \psw) dz.\]</div>
+<p>We call the right-hand side of <a class="reference internal" href="#equation-ssafd-cfbc-vertintbdry">(63)</a> the “pressure difference term.”</p>
+<p>In forming the matrix approximation of the SSA <span id="id4">[<a class="reference internal" href="../zzz_references_html.html#id46" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>,
+<span id="id5">[<a class="reference internal" href="../zzz_references_html.html#id472" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>, instead of assembling a matrix row corresponding to the
+generic equation <a class="reference internal" href="#equation-ssafd-cfbc-4">(62)</a> we use</p>
 <div class="math notranslate nohighlight">
 \[\frac1{\dx}\left(\left[\int_{b}^{h}(\pice - \psw) dz\right]_{i+\frac12,j} - \partI_{i-\frac12,j}\right) +
 \frac1{\dy}\left(\partII_{i,j+\frac12} - \partII_{i,j-\frac12}\right) =
@@ -178,8 +180,8 @@ right-hand side, we get</p>
 \frac1{\dy}\left(\partII_{i,j+\frac12} - \partII_{i,j-\frac12}\right) =
 \rho g H \frac{h_{i+\frac12,j} - h_{i-\frac12,j}}{\dx} + \left[\frac{\int_{b}^{h}(\psw - \pice) dz}{\dx}\right]_{i+\frac12,j}.\]</div>
 <p>The second equation and other cases (<span class="math notranslate nohighlight">\(\n = (-1,0)\)</span>, etc) are treated similarly.</p>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -250,7 +252,7 @@ right-hand side, we get</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -261,9 +263,9 @@ right-hand side, we get</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

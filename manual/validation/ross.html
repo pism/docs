@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>An SSA flow model for the Ross Ice Shelf in Antarctica &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>An SSA flow model for the Ross Ice Shelf in Antarctica &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Example: A regional model of the Jakobshavn outlet glacier in Greenland" href="../jakobshavn/index.html" />
     <link rel="prev" title="An SIA flow model for a table-top laboratory experiment" href="labgum.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,29 +33,29 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="an-ssa-flow-model-for-the-ross-ice-shelf-in-antarctica">
+  <section id="an-ssa-flow-model-for-the-ross-ice-shelf-in-antarctica">
 <span id="sec-ross"></span><h1>An SSA flow model for the Ross Ice Shelf in Antarctica<a class="headerlink" href="#an-ssa-flow-model-for-the-ross-ice-shelf-in-antarctica" title="Permalink to this headline">¶</a></h1>
-<p>As part of the EISMINT series of intercomparisons, MacAyeal and others <a class="bibtex reference internal" href="../../zzz_references_html.html#macayealetal" id="id1">[68]</a>
+<p>As part of the EISMINT series of intercomparisons, MacAyeal and others <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id297" title="D. R. MacAyeal, V. Rommelaere, Ph. Huybrechts, C.L. Hulbe, J. Determann, and C. Ritz. An ice-shelf model test based on the Ross ice shelf. Ann. Glaciol., 23:46–51, 1996.">62</a>]</span>
 successfully validated early-1990s ice shelf numerical models using velocity data for the
-Ross ice shelf. The data were from the RIGGS survey <a class="bibtex reference internal" href="../../zzz_references_html.html#riggs2" id="id2">[155]</a>, acquired in the period
+Ross ice shelf. The data were from the RIGGS survey <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id373" title="C. R. Bentley. Glaciological studies on the Ross Ice Shelf, Antarctica, 1973–1978. Antarctic Research Series, 42(2):21–53, 1984.">135</a>]</span>, acquired in the period
 1973–1978 and measured at a few hundred locations in a grid across the shelf. Substantial
 modelling developments followed EISMINT-Ross, including inverse modeling to recover
-depth-averaged viscosity <a class="bibtex reference internal" href="../../zzz_references_html.html#rommelaeremacayeal" id="id3">[156]</a> and parameter-sensitivity studies
-<a class="bibtex reference internal" href="../../zzz_references_html.html#humbertgrevehutter" id="id4">[157]</a>. Previous PISM versions set up the EISMINT-Ross flow model and
+depth-averaged viscosity <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id395" title="V. Rommelaere and D. R. MacAyeal. Large-scale rheology of the Ross Ice Shelf, Antarctica, computed by a control method. Ann. Glaciol., 24:43–48, 1997.">136</a>]</span> and parameter-sensitivity studies
+<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id213" title="A. Humbert, R. Greve, and K. Hutter. Parameter sensitivity studies for the ice flow of the Ross Ice Shelf, Antarctica. J. Geophys. Res., 2005. doi:10.1029/2004JF000170.">137</a>]</span>. Previous PISM versions set up the EISMINT-Ross flow model and
 performed the diagnostic computation, with RIGGS data for validation.</p>
 <p>However, availability of rich new data sets for ice sheet modeling, including the ALBMAP
-v1 <a class="bibtex reference internal" href="../../zzz_references_html.html#lebrocqetal2010" id="id5">[158]</a> ice sheet geometry, bedrock, and climate data set, and the
-radar-derived (InSAR) MEaSUREs Antarctica Velocity Map <a class="bibtex reference internal" href="../../zzz_references_html.html#rignotetal2011" id="id6">[159]</a>, allows us to
+v1 <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id270" title="A. M. Le Brocq, A. J. Payne, and A. Vieli. An improved Antarctic dataset for high resolution numerical ice sheet models (ALBMAP v1). Earth System Science Data, 2(2):247–260, 2010. doi:10.5194/essd-2-247-2010.">138</a>]</span> ice sheet geometry, bedrock, and climate data set, and the
+radar-derived (InSAR) MEaSUREs Antarctica Velocity Map <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id384" title="E. Rignot, J. Mouginot, and B. Scheuchl. Ice flow of the Antarctic Ice Sheet. Science, 333(6048):1427–1430, 2011. doi:10.1126/science.1208336.">139</a>]</span>, allows us to
 use more complete, recent, and higher-resolution data for the same basic job. Furthermore
 one can extend the diagnostic Ross ice shelf calculation both to other ice shelves around
 Antarctica and to time-evolving (“prognostic”) cases using the eigencalving
-<a class="bibtex reference internal" href="../../zzz_references_html.html#levermannetal2012" id="id7">[89]</a> mechanisms.</p>
+<span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id279" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. doi:10.5194/tc-6-273-2012.">99</a>]</span> mechanisms.</p>
 <p>The scripts in this subsection are found in directory <code class="docutils literal notranslate"><span class="pre">examples/ross/</span></code>. In summary, the
 script <code class="docutils literal notranslate"><span class="pre">preprocess.py</span></code> downloads easily-available data and builds a NetCDF input file
 for PISM. For the diagnostic computation we document first, the script <code class="docutils literal notranslate"><span class="pre">run_diag.sh</span></code> (in
 subdirectory <code class="docutils literal notranslate"><span class="pre">examples/ross/diagnostic/</span></code>) runs PISM. The script <code class="docutils literal notranslate"><span class="pre">plot.py</span></code> shows a
-comparison of observations and model results, as in <a class="reference internal" href="#fig-rosspython"><span class="std std-numref">Fig. 41</span></a>.</p>
-<div class="section" id="preprocessing-input-data">
+comparison of observations and model results, as in <a class="reference internal" href="#fig-rosspython"><span class="std std-numref">Fig. 42</span></a>.</p>
+<section id="preprocessing-input-data">
 <h2>Preprocessing input data<a class="headerlink" href="#preprocessing-input-data" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://nsidc.org">NSIDC</a> requires registration to download the <a class="reference external" href="https://nsidc.org/data/NSIDC-0484">MEaSUREs InSAR-Based Antarctica Ice Velocity
 Map</a>; please register, log in, and get the <em>first</em>, 900 m version
@@ -83,8 +85,8 @@ and prognostic) computation of velocity. They are used at all grounded locations
 ice shelf cells that are immediate neighbors of grounded ice. The variable <code class="docutils literal notranslate"><span class="pre">vel_bc_mask</span></code>
 specifies these locations. Finally the variables <code class="docutils literal notranslate"><span class="pre">u_bc,v_bc</span></code>, which contain
 observed values, are used after the run to compare to the computed interior velocities.</p>
-</div>
-<div class="section" id="diagnostic-computation-of-ice-shelf-velocity">
+</section>
+<section id="diagnostic-computation-of-ice-shelf-velocity">
 <h2>Diagnostic computation of ice shelf velocity<a class="headerlink" href="#diagnostic-computation-of-ice-shelf-velocity" title="Permalink to this headline">¶</a></h2>
 <p>The diagnostic velocity computation bootstraps from <code class="docutils literal notranslate"><span class="pre">Ross_combined.nc</span></code> and performs a
 short run; in the <span class="math notranslate nohighlight">\(211\times 211\)</span> grid case we demonstrate below, the key parts of the
@@ -144,36 +146,38 @@ for tuning the ice softness is uncertain. One could instead use the temperature 
 the ice density<a class="footnote-reference brackets" href="#id14" id="id8">1</a> as tuning parameters, and these are worthwhile experiments for the
 interested PISM user.</p>
 <p>The script <code class="docutils literal notranslate"><span class="pre">plot.py</span></code> takes PISM output such as <code class="docutils literal notranslate"><span class="pre">diag_Mx211.nc</span></code> to produce
-<a class="reference internal" href="#fig-rosspython"><span class="std std-numref">Fig. 41</span></a>. The run shown in the figure used an enhancement factor of
+<a class="reference internal" href="#fig-rosspython"><span class="std std-numref">Fig. 42</span></a>. The run shown in the figure used an enhancement factor of
 <span class="math notranslate nohighlight">\(0.6\)</span> as above. The thin black line outlines the floating shelf, which is the actual
 modeling domain here. To generate this figure yourself, run</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>../plot.py diag_Mx211.nc
 </pre></div>
 </div>
-<div class="figure align-default" id="fig-rosspython">
+<figure class="align-default" id="fig-rosspython">
 <img alt="../../_images/ross-results.png" src="../../_images/ross-results.png" />
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text"><em>Left</em>: Color is speed in m/a. Arrows are observed (white) and modeled (black)
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text"><em>Left</em>: Color is speed in m/a. Arrows are observed (white) and modeled (black)
 velocities. <em>Right</em>: Comparison between modeled and observed speeds at points plotted
 on the left.</span><a class="headerlink" href="#fig-rosspython" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="extending-this-example-to-other-ice-shelves">
+</figcaption>
+</figure>
+</section>
+<section id="extending-this-example-to-other-ice-shelves">
 <h2>Extending this example to other ice shelves<a class="headerlink" href="#extending-this-example-to-other-ice-shelves" title="Permalink to this headline">¶</a></h2>
 <p>The SSA diagnostic solution described in this section can be easily applied to other ice
 shelves in Antarctica, such as the Filchner-Ronne Ice Shelf modeled using PISM in
-<a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtlevermann2012" id="id9">[92]</a>, for example.</p>
+<span id="id9">[<a class="reference internal" href="../../zzz_references_html.html#id30" title="T. Albrecht and A. Levermann. Fracture field for large-scale ice dynamics. J. Glaciol., 58(207):165–176, 2012. doi:10.3189/2012JoG11J191.">106</a>]</span>, for example.</p>
 <p>Simply choose a different rectangular domain, within the area covered by the
 whole-Antarctic data-sets used here, at the preprocessing stage. In particular you should
 modify the lines “<code class="docutils literal notranslate"><span class="pre">ncks</span> <span class="pre">-O</span> <span class="pre">-d</span> <span class="pre">x1,439,649</span> <span class="pre">-d</span> <span class="pre">y1,250,460</span> <span class="pre">...</span></code>” (for ALBMAP data) and
 “<code class="docutils literal notranslate"><span class="pre">ncks</span> <span class="pre">-d</span> <span class="pre">x,2200,3700</span> <span class="pre">-d</span> <span class="pre">y,3500,4700</span> <span class="pre">...</span></code>” (for MEaSUREs velocity data) in the
 script <code class="docutils literal notranslate"><span class="pre">examples/ross/preprocess.py</span></code>.</p>
-</div>
-<div class="section" id="prognostic-modelling-using-eigencalving">
+</section>
+<section id="prognostic-modelling-using-eigencalving">
 <h2>Prognostic modelling using eigencalving<a class="headerlink" href="#prognostic-modelling-using-eigencalving" title="Permalink to this headline">¶</a></h2>
 <p>Next we summarize how you can create an evolving-geometry model of the Ross ice shelf with
 constant-in-time inflow across the fixed grounding line. See <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and
 <code class="docutils literal notranslate"><span class="pre">run_prog.sh</span></code> in <code class="docutils literal notranslate"><span class="pre">examples/ross/prognostic/</span></code>. This example also demonstrates the
-<code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">eigen_calving</span></code> model for a moving calving front <a class="bibtex reference internal" href="../../zzz_references_html.html#levermannetal2012" id="id10">[89]</a>.</p>
+<code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">eigen_calving</span></code> model for a moving calving front <span id="id10">[<a class="reference internal" href="../../zzz_references_html.html#id279" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. doi:10.5194/tc-6-273-2012.">99</a>]</span>.</p>
 <p>Start by running <code class="docutils literal notranslate"><span class="pre">preprocess.py</span></code> in <code class="docutils literal notranslate"><span class="pre">examples/ross/</span></code> as described above. If
 you have already done the diagnostic example above, then this stage is complete.</p>
 <p>Then change to the <code class="docutils literal notranslate"><span class="pre">prognostic/</span></code> directory and run the default example:</p>
@@ -199,8 +203,8 @@ while the command <code class="docutils literal notranslate"><span class="pre">-
 <code class="docutils literal notranslate"><span class="pre">-cfbc</span> <span class="pre">-part_grid</span> <span class="pre">-kill_icebergs</span> <span class="pre">-subgl</span></code>, is important. As the calving front evolves
 (i.e. regardless of the calving law choices), option <code class="docutils literal notranslate"><span class="pre">-part_grid</span></code> moves the calving
 front by one grid cell only when the cell is full of the ice flowing into it; see
-<a class="bibtex reference internal" href="../../zzz_references_html.html#albrechtetal2011" id="id11">[98]</a>. The option <code class="docutils literal notranslate"><span class="pre">-kill_icebergs</span></code> is essential to maintain well-posedness
-of the SSA velocity problem at each time step <a class="bibtex reference internal" href="../../zzz_references_html.html#winkelmannetal2011" id="id12">[37]</a>. See section
+<span id="id11">[<a class="reference internal" href="../../zzz_references_html.html#id33" title="T. Albrecht, M. Martin, M. Haseloff, R. Winkelmann, and A. Levermann. Parameterization for subgrid-scale motion of ice-shelf calving fronts. The Cryosphere, 5:35–44, 2011.">98</a>]</span>. The option <code class="docutils literal notranslate"><span class="pre">-kill_icebergs</span></code> is essential to maintain well-posedness
+of the SSA velocity problem at each time step <span id="id12">[<a class="reference internal" href="../../zzz_references_html.html#id472" title="R. Winkelmann, M. A. Martin, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) Part 1: Model description. The Cryosphere, 5:715–726, 2011.">17</a>]</span>. See section
 <a class="reference internal" href="../modeling-choices/marine/pik.html#sec-pism-pik"><span class="std std-ref">PIK options for marine ice sheets</span></a>.</p>
 <p>Option combination</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-calving eigen_calving,thickness_calving -eigen_calving_K 1e17 \
@@ -208,7 +212,7 @@ of the SSA velocity problem at each time step <a class="bibtex reference interna
 </pre></div>
 </div>
 <p>specifies that ice at the calving front will be removed if either a criterion on the
-product of principal stresses is satisfied <a class="bibtex reference internal" href="../../zzz_references_html.html#levermannetal2012" id="id13">[89]</a>, namely <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code>
+product of principal stresses is satisfied <span id="id13">[<a class="reference internal" href="../../zzz_references_html.html#id279" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. doi:10.5194/tc-6-273-2012.">99</a>]</span>, namely <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code>
 with the given constant <span class="math notranslate nohighlight">\(K\)</span>, or if the ice thickness goes below the given threshold of 50
 meters. See section <a class="reference internal" href="../modeling-choices/marine/calving.html#sec-calving"><span class="std std-ref">Calving and front retreat</span></a>.</p>
 <p class="rubric">Footnotes</p>
@@ -218,8 +222,8 @@ meters. See section <a class="reference internal" href="../modeling-choices/mari
 marine ice may all generate significant variation in shelf density.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -289,7 +293,7 @@ marine ice may all generate significant variation in shelf density.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -300,9 +304,9 @@ marine ice may all generate significant variation in shelf density.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

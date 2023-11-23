@@ -4,11 +4,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Watching the first run &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Watching the first run &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -18,6 +19,7 @@
     <link rel="prev" title="First run" href="run-1.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -29,7 +31,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="watching-the-first-run">
+  <section id="watching-the-first-run">
 <span id="sec-watchrun"></span><h1>Watching the first run<a class="headerlink" href="#watching-the-first-run" title="Permalink to this headline">¶</a></h1>
 <p>As soon as the run starts it creates time-dependent NetCDF files <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka.nc</span></code> and
 <code class="docutils literal notranslate"><span class="pre">ex_g20km_10ka.nc</span></code>. The latter file, which has spatially-dependent fields at each time,
@@ -54,10 +56,11 @@ running</p>
 (right). Recall that our intention was to generate a minimal model of the Greenland ice
 sheet in approximate steady-state with a steady (constant-in-time) climate. The measurable
 steadiness of the <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> time series is a possible standard for steady
-state (see <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id1">[22]</a>, for exampe).</p>
-<div class="figure align-default" id="fig-growing">
+state (see <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id121" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>, for exampe).</p>
+<figure class="align-default" id="fig-growing">
 <img alt="../../_images/growing-thk-ivol-g20km.png" src="../../_images/growing-thk-ivol-g20km.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Two views produced by <code class="docutils literal notranslate"><span class="pre">ncview</span></code> during a PISM model run.</span><a class="headerlink" href="#fig-growing" title="Permalink to this image">¶</a></p>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Two views produced by <code class="docutils literal notranslate"><span class="pre">ncview</span></code> during a PISM model run.</span><a class="headerlink" href="#fig-growing" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <dl class="field-list simple">
 <dt class="field-odd">Left</dt>
@@ -70,7 +73,8 @@ state (see <a class="bibtex reference internal" href="../../zzz_references_html.
 </dd>
 </dl>
 </div>
-</div>
+</figcaption>
+</figure>
 <p>At the end of the run the output file <code class="docutils literal notranslate"><span class="pre">g20km_10ka.nc</span></code> is generated.
 <a class="reference internal" href="#fig-firstoutput"><span class="std std-numref">Fig. 3</span></a> shows some fields from this file. In the next subsections we
 consider their “quality” as model results. To see a report on computational performance,
@@ -82,9 +86,10 @@ we do:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:history = &quot;user@machine 2017-10-04 19:16:08 AKDT: PISM done.  Performance stats: 0.1784 wall clock hours, 0.7136 proc.-hours, 14005.0054 model years per proc.-hour.\n&quot;,
 </pre></div>
 </div>
-<div class="figure align-default" id="fig-firstoutput">
+<figure class="align-default" id="fig-firstoutput">
 <img alt="../../_images/g20km-10ka-usurf-csurf-mask.png" src="../../_images/g20km-10ka-usurf-csurf-mask.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g20km_10ka.nc</span></code>.</span><a class="headerlink" href="#fig-firstoutput" title="Permalink to this image">¶</a></p>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Fields from output file <code class="docutils literal notranslate"><span class="pre">g20km_10ka.nc</span></code>.</span><a class="headerlink" href="#fig-firstoutput" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <dl class="field-list simple">
 <dt class="field-odd">Left</dt>
@@ -99,8 +104,9 @@ contour (solid black).</p>
 </dd>
 </dl>
 </div>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
       <hr>
@@ -176,7 +182,7 @@ contour (solid black).</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -187,9 +193,9 @@ contour (solid black).</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

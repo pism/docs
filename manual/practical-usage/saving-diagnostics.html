@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spatially-varying diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Spatially-varying diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Snapshots of the model state" href="saving-snapshots.html" />
     <link rel="prev" title="Scalar diagnostic quantities" href="saving-time-series.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="spatially-varying-diagnostic-quantities">
+  <section id="spatially-varying-diagnostic-quantities">
 <span id="sec-saving-diagnostics"></span><h1>Spatially-varying diagnostic quantities<a class="headerlink" href="#spatially-varying-diagnostic-quantities" title="Permalink to this headline">¶</a></h1>
 <p>Sometimes it is useful to have PISM save a handful of diagnostic <em>maps</em> at some interval,
 for example every 10 years or even every month. One can use snapshots (section
@@ -107,25 +109,25 @@ into <code class="docutils literal notranslate"><span class="pre">foo.nc</span><
 with only one vertical grid level in the bedrock thermal layer will not be able to save
 <code class="docutils literal notranslate"><span class="pre">litho_temp</span></code>, an SIA-only run does not use a basal yield stress model and so will not
 provide <code class="docutils literal notranslate"><span class="pre">tauc</span></code>, etc. To see which quantities are available in a particular setup, use
-the <code class="option docutils literal notranslate"><span class="pre">-list_diagnostics</span></code> option, which prints the list of diagnostics and stops.</p>
+the option <code class="option docutils literal notranslate"><span class="pre">-list_diagnostics</span> <span class="pre">spatial</span></code>, which prints the list of diagnostics and stops.</p>
 <p>The <code class="option docutils literal notranslate"><span class="pre">-extra_file</span></code> mechanism modifies PISM’s adaptive time-stepping scheme so as to
 step to, and save at, <em>exactly</em> the times requested. By contrast, as noted in subsection
 <a class="reference internal" href="saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>, the <code class="option docutils literal notranslate"><span class="pre">-ts_file</span></code> mechanism does not alter PISM’s
 time-steps and instead uses linear interpolation to save at the requested times in between
 PISM’s actual time-steps.</p>
-<div class="section" id="parameters">
+<section id="parameters">
 <span id="sec-extra-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">output.extra.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.append"><code class="docutils literal notranslate"><span class="pre">append</span></code></a> (no) Append to an existing output file.  No effect if file does not yet exist, and no effect if <a class="reference internal" href="../parameters/index.html#config-output.extra.split"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.extra</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.split</span></code></a> is set.</p></li>
-<li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file that will contain spatially-variable diagnostics. Should be different from <a class="reference internal" href="../parameters/index.html#config-output.file_name"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file_name</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file that will contain spatially-variable diagnostics. Should be different from <a class="reference internal" href="../parameters/index.html#config-output.file"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.split"><code class="docutils literal notranslate"><span class="pre">split</span></code></a> (no) Save spatially-variable diagnostics to separate files (one per time record).</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.stop_missing"><code class="docutils literal notranslate"><span class="pre">stop_missing</span></code></a> (yes) Stop if requested variable is not available instead of warning.</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.times"><code class="docutils literal notranslate"><span class="pre">times</span></code></a> List or a range of times defining reporting intervals for spatially-variable diagnostics.</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.vars"><code class="docutils literal notranslate"><span class="pre">vars</span></code></a> Comma-separated list of spatially-variable diagnostics.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -209,7 +211,7 @@ PISM’s actual time-steps.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -220,9 +222,9 @@ PISM’s actual time-steps.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

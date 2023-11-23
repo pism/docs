@@ -4,11 +4,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PISM 2.0.7 documentation &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PISM 2.1 documentation &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -17,6 +18,7 @@
     <link rel="next" title="Acknowledgements" href="acknowledgements.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -28,9 +30,9 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="pism-version-documentation">
-<h1>PISM 2.0.7 documentation<a class="headerlink" href="#pism-version-documentation" title="Permalink to this headline">¶</a></h1>
-<p>This <em>Manual</em> was built using revision <code class="docutils literal notranslate"><span class="pre">v2.0.7</span></code> committed on <code class="docutils literal notranslate"><span class="pre">2023-11-21</span> <span class="pre">12:49:11</span> <span class="pre">-0900</span></code>.</p>
+  <section id="pism-version-documentation">
+<h1>PISM 2.1 documentation<a class="headerlink" href="#pism-version-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This <em>Manual</em> was built using revision <code class="docutils literal notranslate"><span class="pre">v2.1</span></code> committed on <code class="docutils literal notranslate"><span class="pre">2023-11-23</span> <span class="pre">11:24:22</span> <span class="pre">-0900</span></code>.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
@@ -178,6 +180,7 @@
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#reading-top-surface-boundary-conditions-from-a-file">Reading top-surface boundary conditions from a file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#elevation-dependent-temperature-and-mass-balance">Elevation-dependent temperature and mass balance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#temperature-index-scheme">Temperature-index scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#diurnal-energy-balance-model-debm-simple">Diurnal Energy Balance Model “dEBM-simple”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#pik">PIK</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#scalar-temperature-offsets">Scalar temperature offsets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/surface.html#adjustments-using-modeled-change-in-surface-elevation">Adjustments using modeled change in surface elevation</a></li>
@@ -188,7 +191,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="climate_forcing/atmosphere.html">Atmosphere model components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="climate_forcing/atmosphere.html#reading-boundary-conditions-from-a-file">Reading boundary conditions from a file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate_forcing/atmosphere.html#boundary-conditions-read-from-a-file">Boundary conditions read from a file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/atmosphere.html#cosine-yearly-cycle">Cosine yearly cycle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/atmosphere.html#sec-atmosphere-searise-greenland">SeaRISE-Greenland</a></li>
 <li class="toctree-l3"><a class="reference internal" href="climate_forcing/atmosphere.html#pik">PIK</a></li>
@@ -319,7 +322,7 @@
 <li class="toctree-l1"><a class="reference internal" href="zzz_references_html.html">References</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
       <hr>
@@ -370,7 +373,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -381,9 +384,9 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

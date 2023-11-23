@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EISMINT II &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>EISMINT II &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="MISMIP" href="mismip.html" />
     <link rel="prev" title="Simplified geometry experiments" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,9 +33,9 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="eismint-ii">
+  <section id="eismint-ii">
 <span id="sec-eismintii"></span><h1>EISMINT II<a class="headerlink" href="#eismint-ii" title="Permalink to this headline">¶</a></h1>
-<p>There are seven experiments described in the published EISMINT II writeup <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id1">[22]</a>.
+<p>There are seven experiments described in the published EISMINT II writeup <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id121" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>.
 They are named A, B, C, D, F, G, and H. They have these common features:</p>
 <ul class="simple">
 <li><p>runs are for <span class="math notranslate nohighlight">\(2\times 10^5\)</span> years, with no prescribed time step;</p></li>
@@ -41,16 +43,16 @@ They are named A, B, C, D, F, G, and H. They have these common features:</p>
 <li><p>surface inputs (temperature and mass balance) have angular symmetry around the grid center;</p></li>
 <li><p>the bed is flat and does not move (no isostasy);</p></li>
 <li><p>the temperature in the bedrock is not modeled;</p></li>
-<li><p>only the cold (not polythermal) thermomechanically-coupled SIA is used <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id2">[22]</a>; and</p></li>
+<li><p>only the cold (not polythermal) thermomechanically-coupled SIA is used <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id121" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>; and</p></li>
 <li><p>basal melt rates do not affect the evolution of the ice sheet.</p></li>
 </ul>
 <p>The experiments differ from each other in their various combinations of surface
 temperature and mass balance parameterizations. Experiments H and G involve basal sliding,
-under the physically-dubious SIA sliding rubric (<a class="bibtex reference internal" href="../../zzz_references_html.html#bbssasliding" id="id3">[29]</a>, Appendix B), while the
+under the physically-dubious SIA sliding rubric (<span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id46" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, Appendix B), while the
 others don’t. Four experiments start with zero ice (A,F,G,H), while the other experiments
 (B,C,D) start from the final state of experiment A.</p>
-<p>In addition to the seven experiments published in <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id4">[22]</a>, there were an additional
-five experiments described in the EISMINT II intercomparison description <a class="bibtex reference internal" href="../../zzz_references_html.html#eisiidescribe" id="id5">[125]</a>,
+<p>In addition to the seven experiments published in <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id121" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span>, there were an additional
+five experiments described in the EISMINT II intercomparison description <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id120" title="A. Payne. EISMINT: Ice sheet model intercomparison exercise phase two. Proposed simplified geometry experiments. 1997. URL: https://web.archive.org/web/20220119191557/http://homepages.vub.ac.be/~phuybrec/eismint/thermo-descr.pdf.">85</a>]</span>,
 labeled E, I, J, K, and L. These experiments share most features listed above, but with
 the following differences. Experiment E is the same as experiment A except that the peak
 of the accumulation, and also the low point of the surface temperature, are shifted by 100
@@ -59,7 +61,7 @@ experiment A. Experiments I and J are similar to experiment A but with non-flat 
 bed topography. Experiments K and L are similar to experiment C but with non-flat “mound”
 bed topography.</p>
 <p>See <a class="reference internal" href="#tab-eisii"><span class="std std-numref">Table 31</span></a> for how to run supported EISMINT II experiments in PISM.
-Experiments E – L are only documented in <a class="bibtex reference internal" href="../../zzz_references_html.html#eisiidescribe" id="id6">[125]</a>.</p>
+Experiments E – L are only documented in <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id120" title="A. Payne. EISMINT: Ice sheet model intercomparison exercise phase two. Proposed simplified geometry experiments. 1997. URL: https://web.archive.org/web/20220119191557/http://homepages.vub.ac.be/~phuybrec/eismint/thermo-descr.pdf.">85</a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Experiments G and H are not supported.</p>
@@ -90,7 +92,7 @@ Experiments E – L are only documented in <a class="bibtex reference internal" 
 <td><p>smaller area of accumulation</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-eisII</span> <span class="pre">F</span> <span class="pre">-Mx</span> <span class="pre">61</span> <span class="pre">-My</span> <span class="pre">61</span> <span class="pre">-Mz</span> <span class="pre">81</span> <span class="pre">-Lz</span> <span class="pre">6000</span> <span class="pre">-y</span> <span class="pre">2e5</span> <span class="pre">-o</span> <span class="pre">eisIIF.nc</span></code></p></td>
-<td><p>colder; famous spokes <a class="bibtex reference internal" href="../../zzz_references_html.html#bbl" id="id7">[30]</a></p></td>
+<td><p>colder; famous spokes <span id="id7">[<a class="reference internal" href="../../zzz_references_html.html#id45" title="E. Bueler, J. Brown, and C. Lingle. Exact solutions to the thermomechanically coupled shallow ice approximation: effective tools for verification. J. Glaciol., 53(182):499–516, 2007.">16</a>]</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-eisII</span> <span class="pre">E</span> <span class="pre">-i</span> <span class="pre">eisIIA.nc</span> <span class="pre">-y</span> <span class="pre">2e5</span> <span class="pre">-o</span> <span class="pre">eisIIE.nc</span></code></p></td>
 <td><p>shifted climate maps</p></td>
@@ -149,7 +151,7 @@ EISMINT II experiments.</p>
 <tr class="row-even"><td><p><code class="option docutils literal notranslate"><span class="pre">-eisII</span></code></p></td>
 <td><p>A</p></td>
 <td></td>
-<td><p>Choose single character name of EISMINT II <a class="bibtex reference internal" href="../../zzz_references_html.html#eismint00" id="id8">[22]</a> simplified geometry
+<td><p>Choose single character name of EISMINT II <span id="id8">[<a class="reference internal" href="../../zzz_references_html.html#id121" title="A. Payne and others. Results from the EISMINT model intercomparison: the effects of thermomechanical coupling. J. Glaciol., 153:227–238, 2000.">12</a>]</span> simplified geometry
 experiment. See <a class="reference internal" href="#tab-eisii"><span class="std std-numref">Table 31</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="option docutils literal notranslate"><span class="pre">-Mmax</span></code></p></td>
@@ -193,7 +195,7 @@ II default.</p></td>
 </tbody>
 </table>
 <p>See subdirectory <code class="docutils literal notranslate"><span class="pre">examples/eismintII/</span></code> for a simple helper script <code class="docutils literal notranslate"><span class="pre">runexp.sh</span></code>.</p>
-</div>
+</section>
 
 
       <hr>
@@ -265,7 +267,7 @@ II default.</p></td>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -276,9 +278,9 @@ II default.</p></td>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

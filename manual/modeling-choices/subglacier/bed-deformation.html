@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Earth deformation models &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Earth deformation models &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Marine ice sheet modeling" href="../marine/index.html" />
     <link rel="prev" title="Subglacial hydrology" href="hydrology.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,11 +33,11 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="earth-deformation-models">
+  <section id="earth-deformation-models">
 <span id="sec-beddef"></span><h1>Earth deformation models<a class="headerlink" href="#earth-deformation-models" title="Permalink to this headline">¶</a></h1>
 <p>The option <code class="option docutils literal notranslate"><span class="pre">-bed_def</span></code> <code class="docutils literal notranslate"><span class="pre">[iso,</span> <span class="pre">lc,</span> <span class="pre">given]</span></code> (flag <a class="reference internal" href="../../parameters/index.html#config-bed_deformation.model"><code class="docutils literal notranslate"><span class="pre">bed_deformation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a>) turns one
 of the three available bed deformation models.</p>
-<div class="section" id="point-wise-isostasy">
+<section id="point-wise-isostasy">
 <span id="sec-bed-def-iso"></span><h2>Point-wise isostasy<a class="headerlink" href="#point-wise-isostasy" title="Permalink to this headline">¶</a></h2>
 <p>The first model <code class="docutils literal notranslate"><span class="pre">-bed_def</span> <span class="pre">iso</span></code>, is instantaneous pointwise isostasy. This model assumes
 that the bed at the starting time is in equilibrium with the load. Then, as the ice
@@ -47,15 +49,15 @@ multiple of the increase in ice thickness from the starting time:</p>
 determined by the values of <a class="reference internal" href="../../parameters/index.html#config-bed_deformation.mantle_density"><code class="docutils literal notranslate"><span class="pre">bed_deformation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.mantle_density</span></code></a> and
 <a class="reference internal" href="../../parameters/index.html#config-constants.ice.density"><code class="docutils literal notranslate"><span class="pre">constants</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.ice</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.density</span></code></a> in the configuration file.
 For an example and verification, see Test H in <a class="reference internal" href="../../verification/index.html#sec-verif"><span class="std std-ref">Verification</span></a>.</p>
-</div>
-<div class="section" id="lingle-clark">
+</section>
+<section id="lingle-clark">
 <span id="sec-bed-def-lc"></span><h2>Lingle-Clark<a class="headerlink" href="#lingle-clark" title="Permalink to this headline">¶</a></h2>
 <p>The second model <code class="docutils literal notranslate"><span class="pre">-bed_def</span> <span class="pre">lc</span></code> is much more physical. It is based on papers by Lingle
-and Clark <a class="bibtex reference internal" href="../../../zzz_references_html.html#lingleclark" id="id1">[112]</a> and Bueler and others <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id2">[27]</a>. It generalizes
+and Clark <span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id283" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">96</a>]</span> and Bueler and others <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>. It generalizes
 and improves the most widely-used earth deformation model in ice sheet modeling, the flat
-earth Elastic Lithosphere Relaxing Asthenosphere (ELRA) model <a class="bibtex reference internal" href="../../../zzz_references_html.html#greve2001" id="id3">[113]</a>. It
+earth Elastic Lithosphere Relaxing Asthenosphere (ELRA) model <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id167" title="Ralf Greve. Glacial isostasy: Models for the response of the Earth to varying ice loads. In Brian Straughan and others, editors, Continuum Mechanics and Applications in Geophysics and the Environment, 307–325. Springer, 2001.">97</a>]</span>. It
 imposes essentially no computational burden because the Fast Fourier Transform is used to
-solve the linear differential equation <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id4">[27]</a>. When using this model in
+solve the linear differential equation <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>. When using this model in
 PISM, the rate of bed movement (uplift) and the viscous plate displacement are stored in
 the PISM output file and then used to initialize the next part of the run. In fact, if
 gridded “observed” uplift data is available, for instance from a combination of actual
@@ -68,11 +70,11 @@ model are listed below (they all have the prefix <code class="docutils literal n
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">bed_deformation.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lc.elastic_model"><code class="docutils literal notranslate"><span class="pre">lc</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.elastic_model</span></code></a> (yes) Use the elastic part of the Lingle-Clark bed deformation model.</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lc.grid_size_factor"><code class="docutils literal notranslate"><span class="pre">lc</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.grid_size_factor</span></code></a> (4) The spectral grid size is <code class="docutils literal notranslate"><span class="pre">(Z*(grid.Mx</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">Z*(grid.My</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1)</span></code> where <code class="docutils literal notranslate"><span class="pre">Z</span></code> is given by this parameter. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#lingleclark" id="id5">[112]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id6">[27]</a>.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lc.grid_size_factor"><code class="docutils literal notranslate"><span class="pre">lc</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.grid_size_factor</span></code></a> (4) The spectral grid size is <code class="docutils literal notranslate"><span class="pre">(Z*(grid.Mx</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">Z*(grid.My</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1)</span></code> where <code class="docutils literal notranslate"><span class="pre">Z</span></code> is given by this parameter. See <span id="id5">[<a class="reference internal" href="../../../zzz_references_html.html#id283" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">96</a>]</span>, <span id="id6">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lc.update_interval"><code class="docutils literal notranslate"><span class="pre">lc</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.update_interval</span></code></a> (10<em> 365days</em>) Interval between updates of the Lingle-Clark model</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lithosphere_flexural_rigidity"><code class="docutils literal notranslate"><span class="pre">lithosphere_flexural_rigidity</span></code></a> (5e+24<em> Newton meter</em>) lithosphere flexural rigidity used by the bed deformation model. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#lingleclark" id="id7">[112]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id8">[27]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.mantle_density"><code class="docutils literal notranslate"><span class="pre">mantle_density</span></code></a> (3300<em> kg meter-3</em>) half-space (mantle) density used by the bed deformation model. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#lingleclark" id="id9">[112]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id10">[27]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.mantle_viscosity"><code class="docutils literal notranslate"><span class="pre">mantle_viscosity</span></code></a> (1e+21<em> Pascal second</em>) half-space (mantle) viscosity used by the bed deformation model. See <a class="bibtex reference internal" href="../../../zzz_references_html.html#lingleclark" id="id11">[112]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id12">[27]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.lithosphere_flexural_rigidity"><code class="docutils literal notranslate"><span class="pre">lithosphere_flexural_rigidity</span></code></a> (5e+24<em> Newton meter</em>) lithosphere flexural rigidity used by the bed deformation model. See <span id="id7">[<a class="reference internal" href="../../../zzz_references_html.html#id283" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">96</a>]</span>, <span id="id8">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.mantle_density"><code class="docutils literal notranslate"><span class="pre">mantle_density</span></code></a> (3300<em> kg meter-3</em>) half-space (mantle) density used by the bed deformation model. See <span id="id9">[<a class="reference internal" href="../../../zzz_references_html.html#id283" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">96</a>]</span>, <span id="id10">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-bed_deformation.mantle_viscosity"><code class="docutils literal notranslate"><span class="pre">mantle_viscosity</span></code></a> (1e+21<em> Pascal second</em>) half-space (mantle) viscosity used by the bed deformation model. See <span id="id11">[<a class="reference internal" href="../../../zzz_references_html.html#id283" title="C. S. Lingle and J. A. Clark. A numerical model of interactions between a marine ice sheet and the solid earth: Application to a West Antarctic ice stream. J. Geophys. Res., 90(C1):1100–1114, 1985.">96</a>]</span>, <span id="id12">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span></p></li>
 </ol>
 <p>Here are minimal example runs to compare these models:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 4 pismr -eisII A -y 8000 -o eisIIA_nobd.nc
@@ -81,7 +83,7 @@ mpiexec -n 4 pismr -eisII A -bed_def lc -y 8000 -o eisIIA_bdlc.nc
 </pre></div>
 </div>
 <p>Compare the <code class="variable docutils literal notranslate"><span class="pre">topg</span></code>, <code class="variable docutils literal notranslate"><span class="pre">usurf</span></code>, and <code class="variable docutils literal notranslate"><span class="pre">dbdt</span></code> variables in the resulting output
-files. See also the comparison done in <a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id13">[27]</a>.</p>
+files. See also the comparison done in <span id="id13">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>.</p>
 <p>To include “measured” uplift rates during initialization, use the option
 <code class="option docutils literal notranslate"><span class="pre">-uplift_file</span></code> (parameter <a class="reference internal" href="../../parameters/index.html#config-bed_deformation.bed_uplift_file"><code class="docutils literal notranslate"><span class="pre">bed_deformation</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.bed_uplift_file</span></code></a>) to specify the
 name of the file containing the field <code class="variable docutils literal notranslate"><span class="pre">dbdt</span></code> (CF standard name:
@@ -103,14 +105,14 @@ elevations that are closer to observed values.</p>
 <p class="admonition-title">Warning</p>
 <p>The variable <code class="variable docutils literal notranslate"><span class="pre">viscous_bed_displacement</span></code> does not correspond to any measured
 physical quantity. Do not even attempt to analyze it without a careful reading of
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#blkfastearth" id="id14">[27]</a>.</p>
+<span id="id14">[<a class="reference internal" href="../../../zzz_references_html.html#id52" title="E. Bueler, C. S. Lingle, and J. A. Kallen-Brown. Fast computation of a viscoelastic deformable Earth model for ice sheet simulation. Ann. Glaciol., 46:97–105, 2007.">32</a>]</span>.</p>
 <p>Trying to provide a “hand-crafted” <code class="variable docutils literal notranslate"><span class="pre">viscous_bed_displacement</span></code> field to PISM is not
 a good idea.</p>
 <p>Keep in mind that zero <code class="variable docutils literal notranslate"><span class="pre">viscous_bed_displacement</span></code> does <em>not</em> mean that the bed
 deformation model is in equilibrium.</p>
 </div>
-</div>
-<div class="section" id="given-bed-deformation-history">
+</section>
+<section id="given-bed-deformation-history">
 <span id="sec-bed-def-given"></span><h2>Given bed deformation history<a class="headerlink" href="#given-bed-deformation-history" title="Permalink to this headline">¶</a></h2>
 <p>The last option <code class="docutils literal notranslate"><span class="pre">-bed_def</span> <span class="pre">given</span></code> can be used if a bed deformation history (i.e. bed
 elevation changes relative to a reference topography) is known from an external
@@ -144,8 +146,8 @@ projection and cover the modeling domain but they <strong>do not</strong> have t
 <dd><p>E.g. a relative sea level model.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -220,7 +222,7 @@ projection and cover the modeling domain but they <strong>do not</strong> have t
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -231,9 +233,9 @@ projection and cover the modeling domain but they <strong>do not</strong> have t
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

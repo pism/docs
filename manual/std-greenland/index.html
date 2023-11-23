@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getting started: a Greenland ice sheet example &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting started: a Greenland ice sheet example &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Input data" href="input-data.html" />
     <link rel="prev" title="PISM User’s Manual" href="../index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="getting-started-a-greenland-ice-sheet-example">
+  <section id="getting-started-a-greenland-ice-sheet-example">
 <span id="sec-start"></span><h1>Getting started: a Greenland ice sheet example<a class="headerlink" href="#getting-started-a-greenland-ice-sheet-example" title="Permalink to this headline">¶</a></h1>
 <p>This introduction is intended to be interactive and participatory, and it should work on
 <em>your personal machine</em> as well as on a supercomputer. Please try the commands and view
@@ -42,8 +44,8 @@ going. Give it a try!</p>
 prognostic model experiments on the Greenland ice sheet. Ice sheet and glacier model
 studies often involve modeling present and past states using actions like the ones
 demonstrated here. Our particular choices made here are motivated by the evaluation of
-initialization methods in <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id1">[66]</a>.</p>
-<p>We use data assembled by the <a class="reference external" href="https://web.archive.org/web/20221220001110/http://websrv.cs.umt.edu/isis/index.php/SeaRISE_Assessment">Sea-level Response to Ice Sheet Evolution (SeaRISE)</a> assessment process <a class="bibtex reference internal" href="../../zzz_references_html.html#bindschadler2013searise" id="id2">[62]</a>. SeaRISE is a
+initialization methods in <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id40" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>.</p>
+<p>We use data assembled by the <a class="reference external" href="https://web.archive.org/web/20221220001110/http://websrv.cs.umt.edu/isis/index.php/SeaRISE_Assessment">Sea-level Response to Ice Sheet Evolution (SeaRISE)</a> assessment process <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id69" title="R. Bindschadler and twenty-seven others. Ice-sheet model sensitivities to environmental forcing and their use in projecting future sea-level (The SeaRISE Project). J. Glaciol, 59(214):195–224, 2013.">3</a>]</span>. SeaRISE is a
 community-organized assessment process that provided an upper bound on ice sheet
 contributions to sea level in the next 100–200 years for the IPCC AR5 report in 2013.</p>
 <p>This example is a hands-on first look at PISM. It is not an in-depth tutorial, and some
@@ -53,8 +55,8 @@ discusses PISM options, nontrivial modeling choices, and how to preprocess input
 done on a typical workstation or laptop. PISM is, however, designed to make high
 resolution (e.g. <span class="math notranslate nohighlight">\(5\km\)</span> to <span class="math notranslate nohighlight">\(\sim 500\,\text{m}\)</span> grids for
 whole-Greenland ice sheet modeling) possible by exploiting large-scale parallel
-processing. See <a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id3">[66]</a>, <a class="bibtex reference internal" href="../../zzz_references_html.html#golledgeetal2012" id="id4">[142]</a>,
-<a class="bibtex reference internal" href="../../zzz_references_html.html#golledgeetal2013" id="id5">[99]</a>, among other published high-resolution PISM examples.</p>
+processing. See <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id40" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>, <span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id158" title="N. Golledge, A. Mackintosh, and 8 others. Last Glacial Maximum climate in New Zealand inferred from a modelled Southern Alps icefield. Quaternary Science Reviews, 46:30–45, 2012. doi:10.1016/j.quascirev.2012.05.004.">4</a>]</span>,
+<span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id160" title="N. Golledge and twelve others. Glaciology and geological signature of the Last Glacial Maximum Antarctic ice sheet. Quaternary Sci. Rev., 78(0):225–247, 2013. doi:10.1016/j.quascirev.2013.08.011.">5</a>]</span>, among other published high-resolution PISM examples.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
@@ -67,7 +69,7 @@ processing. See <a class="bibtex reference internal" href="../../zzz_references_
 <li class="toctree-l1"><a class="reference internal" href="parameter-study.html">An ice dynamics parameter study</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
       <hr>
@@ -143,7 +145,7 @@ processing. See <a class="bibtex reference internal" href="../../zzz_references_
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -154,9 +156,9 @@ processing. See <a class="bibtex reference internal" href="../../zzz_references_
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

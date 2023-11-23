@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calving and front retreat &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Calving and front retreat &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Modeling melange back-pressure" href="melange.html" />
     <link rel="prev" title="Flotation criterion, mask, and sea level" href="mask.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,9 +33,9 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="calving-and-front-retreat">
+  <section id="calving-and-front-retreat">
 <span id="sec-calving"></span><h1>Calving and front retreat<a class="headerlink" href="#calving-and-front-retreat" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
+<section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>All mechanisms described below fall into two categories:</p>
 <ul class="simple">
@@ -66,7 +68,7 @@ the calving mechanism cannot “keep up” with the computed calving rate.</p>
 <p>Setting the flag <a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.wrap_around"><code class="docutils literal notranslate"><span class="pre">geometry</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.front_retreat</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.wrap_around</span></code></a> to <code class="docutils literal notranslate"><span class="pre">true</span></code> allows the front
 retreat to “wrap around” the computational domain. (This is appropriate in some regional
 synthetic geometry setups.)</p>
-<div class="section" id="scaling-calving-rates">
+<section id="scaling-calving-rates">
 <span id="sec-calving-rate-modulation"></span><h3>Scaling calving rates<a class="headerlink" href="#scaling-calving-rates" title="Permalink to this headline">¶</a></h3>
 <p>Set <a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.file"><code class="docutils literal notranslate"><span class="pre">calving</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.rate_scaling</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.file</span></code></a> to scale the <em>total</em> (combined) calving rate from
 all selected rate-based mechanisms, e.g. to introduce calving variability corresponding to
@@ -78,12 +80,12 @@ time-dependent variable <code class="variable docutils literal notranslate"><spa
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> File containing the scaling factor applied to calving rates from <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code>, <code class="docutils literal notranslate"><span class="pre">vonmises_calving</span></code>, and <code class="docutils literal notranslate"><span class="pre">hayhurst_calving</span></code> (variable name: <code class="docutils literal notranslate"><span class="pre">frac_calving_rate</span></code>)</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.rate_scaling.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="eigen-calving">
+</section>
+</section>
+<section id="eigen-calving">
 <span id="sec-calving-eigen-calving"></span><h2>Eigen calving<a class="headerlink" href="#eigen-calving" title="Permalink to this headline">¶</a></h2>
 <p>PISM-PIK introduced a physically-based 2D-calving parameterization
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id1">[89]</a>. This calving parameterization is turned on in PISM by option
+<span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id279" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. doi:10.5194/tc-6-273-2012.">99</a>]</span>. This calving parameterization is turned on in PISM by option
 <code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">eigen_calving</span></code>. Average calving rates, <span class="math notranslate nohighlight">\(c\)</span>, are proportional to the product
 of principal components of the horizontal strain rates, <span class="math notranslate nohighlight">\(\dot{\epsilon}_{_\pm}\)</span>, derived
 from SSA-velocities</p>
@@ -104,16 +106,16 @@ rates balance calving-front ice flow velocities on average.</p>
 <p class="rubric">Parameters</p>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.eigen_calving.</span></code></p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.eigen_calving.K"><code class="docutils literal notranslate"><span class="pre">K</span></code></a> (0<em> meter second</em>) Set proportionality constant to determine calving rate from strain rates.  Note references <a class="bibtex reference internal" href="../../../zzz_references_html.html#levermannetal2012" id="id2">[89]</a>, <a class="bibtex reference internal" href="../../../zzz_references_html.html#martinetal2011" id="id3">[3]</a> use K in range <span class="math notranslate nohighlight">\(10^{9}\)</span> to <span class="math notranslate nohighlight">\(3 \times 10^{11}\)</span> m a, that is, <span class="math notranslate nohighlight">\(3 \times 10^{16}\)</span> to <span class="math notranslate nohighlight">\(10^{19}\)</span> m s.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.eigen_calving.K"><code class="docutils literal notranslate"><span class="pre">K</span></code></a> (0<em> meter second</em>) Set proportionality constant to determine calving rate from strain rates.  Note references <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id279" title="A. Levermann, T. Albrecht, R. Winkelmann, M. A. Martin, M. Haseloff, and I. Joughin. Kinematic first-order calving law implies potential for abrupt ice-shelf retreat. The Cryosphere, 6:273–286, 2012. doi:10.5194/tc-6-273-2012.">99</a>]</span>, <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id304" title="M. A. Martin, R. Winkelmann, M. Haseloff, T. Albrecht, E. Bueler, C. Khroulev, and A. Levermann. The Potsdam Parallel Ice Sheet Model (PISM-PIK) –Part 2: Dynamic equilibrium simulation of the Antarctic ice sheet. The Cryosphere, 5:727–740, 2011.">52</a>]</span> use K in range <span class="math notranslate nohighlight">\(10^{9}\)</span> to <span class="math notranslate nohighlight">\(3 \times 10^{11}\)</span> m a, that is, <span class="math notranslate nohighlight">\(3 \times 10^{16}\)</span> to <span class="math notranslate nohighlight">\(10^{19}\)</span> m s.</p></li>
 </ol>
-</div>
-<div class="section" id="von-mises-stress-calving">
+</section>
+<section id="von-mises-stress-calving">
 <span id="sec-calving-vonmises"></span><h2>von Mises stress calving<a class="headerlink" href="#von-mises-stress-calving" title="Permalink to this headline">¶</a></h2>
 <p>While <code class="docutils literal notranslate"><span class="pre">eigen_calving</span></code> (section <a class="reference internal" href="#sec-calving-eigen-calving"><span class="std std-ref">Eigen calving</span></a>) is appropriate for
 Antartic ice shelves, it does not work for outlet glaciers that flow in narrow fjords.
 Along valleys with nearly parallel walls the transverse component of the velocity is
 close to zero and the transversal strain rate is therefore also close to zero and noisy.</p>
-<p>Instead of the product of the eigen strain rates, <a class="bibtex reference internal" href="../../../zzz_references_html.html#morlighem2016" id="id4">[90]</a> propose a calving
+<p>Instead of the product of the eigen strain rates, <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id315" title="M. Morlighem, J. Bondzio, H. Seroussi, E. Rignot, E. Larour, A. Humbert, and S. Rebuffi. Modeling of Store Gletscher's calving dynamics, West Greenland, in response to ocean thermal forcing. Geophysical Research Letters, pages n/a–n/a, 2016. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL067695, doi:10.1002/2016GL067695.">103</a>]</span> propose a calving
 law where the calving rate <span class="math notranslate nohighlight">\(c\)</span> is functionally related to tensile stresses:</p>
 <div class="math notranslate nohighlight" id="equation-eq-calv3">
 <span class="eqno">(34)<a class="headerlink" href="#equation-eq-calv3" title="Permalink to this equation">¶</a></span>\[c = |\mathbf{u}| \frac{\tilde{\sigma}}{\sigma_{max}},\]</div>
@@ -124,7 +126,7 @@ tensile strain rate is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-calv4">
 <span class="eqno">(35)<a class="headerlink" href="#equation-eq-calv4" title="Permalink to this equation">¶</a></span>\[\tilde{\dot{\epsilon}}_e = \left(\frac{1}{2}\left(\max(0,\dot{\epsilon}_{_+})^2 +
 \max(0,\dot{\epsilon}_{_-})^2\right)\right)^{1/2}.\]</div>
-<p>Following <a class="bibtex reference internal" href="../../../zzz_references_html.html#morlighem2016" id="id5">[90]</a>, <span class="math notranslate nohighlight">\(\tilde{\sigma}\)</span> is given by</p>
+<p>Following <span id="id5">[<a class="reference internal" href="../../../zzz_references_html.html#id315" title="M. Morlighem, J. Bondzio, H. Seroussi, E. Rignot, E. Larour, A. Humbert, and S. Rebuffi. Modeling of Store Gletscher's calving dynamics, West Greenland, in response to ocean thermal forcing. Geophysical Research Letters, pages n/a–n/a, 2016. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL067695, doi:10.1002/2016GL067695.">103</a>]</span>, <span class="math notranslate nohighlight">\(\tilde{\sigma}\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-calv5">
 <span class="eqno">(36)<a class="headerlink" href="#equation-eq-calv5" title="Permalink to this equation">¶</a></span>\[\tilde{\sigma} = \sqrt{3} B \tilde{\dot{{\epsilon}}}_e^{1/n},\]</div>
 <p>where <span class="math notranslate nohighlight">\(B\)</span> is the ice hardness.</p>
@@ -133,15 +135,15 @@ tensile strain rate is defined as</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.Glen_exponent"><code class="docutils literal notranslate"><span class="pre">Glen_exponent</span></code></a> (3) Glen exponent in ice flow law for von Mises calving</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.flow_law"><code class="docutils literal notranslate"><span class="pre">flow_law</span></code></a> (<code class="docutils literal notranslate"><span class="pre">gpbld</span></code>) The custom flow law for the von Mises stress computation</p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.sigma_max"><code class="docutils literal notranslate"><span class="pre">sigma_max</span></code></a> (1e+06<em> Pa</em>) Set maximum tensile stress.  Note references <a class="bibtex reference internal" href="../../../zzz_references_html.html#morlighem2016" id="id6">[90]</a> use 1.0e6 Pa.</p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.sigma_max"><code class="docutils literal notranslate"><span class="pre">sigma_max</span></code></a> (1e+06<em> Pa</em>) Set maximum tensile stress.  Note references <span id="id6">[<a class="reference internal" href="../../../zzz_references_html.html#id315" title="M. Morlighem, J. Bondzio, H. Seroussi, E. Rignot, E. Larour, A. Humbert, and S. Rebuffi. Modeling of Store Gletscher's calving dynamics, West Greenland, in response to ocean thermal forcing. Geophysical Research Letters, pages n/a–n/a, 2016. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL067695, doi:10.1002/2016GL067695.">103</a>]</span> use 1.0e6 Pa.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.threshold_file"><code class="docutils literal notranslate"><span class="pre">threshold_file</span></code></a> Name of the file containing the spatially-variable <code class="variable docutils literal notranslate"><span class="pre">vonmises_calving_threshold</span></code>.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.vonmises_calving.use_custom_flow_law"><code class="docutils literal notranslate"><span class="pre">use_custom_flow_law</span></code></a> (no) Use custom flow law in the von Mises stress computation</p></li>
 </ol>
-</div>
-<div class="section" id="hayhurst-calving">
+</section>
+<section id="hayhurst-calving">
 <span id="sec-calving-hayhurst"></span><h2>Hayhurst calving<a class="headerlink" href="#hayhurst-calving" title="Permalink to this headline">¶</a></h2>
 <p>The option <code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">hayhurst_calving</span></code> implements the parameterization described in
-<a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id7">[91]</a> (equation 22).</p>
+<span id="id7">[<a class="reference internal" href="../../../zzz_references_html.html#id24" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">104</a>]</span> (equation 22).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FIXME: not documented.</p>
@@ -149,12 +151,12 @@ tensile strain rate is defined as</p>
 <p class="rubric">Parameters</p>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">calving.hayhurst_calving.</span></code></p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.B_tilde"><code class="docutils literal notranslate"><span class="pre">B_tilde</span></code></a> (65<em> (MPa)^r / year</em>) Effective damage rate <a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id8">[91]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.exponent_r"><code class="docutils literal notranslate"><span class="pre">exponent_r</span></code></a> (0.43) Damage law exponent <a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id9">[91]</a></p></li>
-<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.sigma_threshold"><code class="docutils literal notranslate"><span class="pre">sigma_threshold</span></code></a> (0.17<em> MPa</em>) Damage threshold stress <a class="bibtex reference internal" href="../../../zzz_references_html.html#mercenier2018" id="id10">[91]</a></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.B_tilde"><code class="docutils literal notranslate"><span class="pre">B_tilde</span></code></a> (65<em> (MPa)^r / year</em>) Effective damage rate <span id="id8">[<a class="reference internal" href="../../../zzz_references_html.html#id24" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">104</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.exponent_r"><code class="docutils literal notranslate"><span class="pre">exponent_r</span></code></a> (0.43) Damage law exponent <span id="id9">[<a class="reference internal" href="../../../zzz_references_html.html#id24" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">104</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-calving.hayhurst_calving.sigma_threshold"><code class="docutils literal notranslate"><span class="pre">sigma_threshold</span></code></a> (0.17<em> MPa</em>) Damage threshold stress <span id="id10">[<a class="reference internal" href="../../../zzz_references_html.html#id24" title="Rémy Mercenier, Martin P. Lüthi, and Andreas Vieli. Calving relation for tidewater glaciers based on detailed stress field analysis. The Cryosphere, 12(2):721–739, feb 2018. doi:10.5194/tc-12-721-2018.">104</a>]</span></p></li>
 </ol>
-</div>
-<div class="section" id="calving-of-thin-floating-ice">
+</section>
+<section id="calving-of-thin-floating-ice">
 <span id="sec-calving-thickness-threshold"></span><h2>Calving of thin floating ice<a class="headerlink" href="#calving-of-thin-floating-ice" title="Permalink to this headline">¶</a></h2>
 <p>The option <code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">thickness_calving</span></code> is based on the observation that ice shelf
 calving fronts are commonly thicker than about 150–250 m (even though the physical
@@ -172,8 +174,8 @@ is removed along the front, at a rate at most one grid cell per time step. The v
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.thickness_calving.threshold"><code class="docutils literal notranslate"><span class="pre">threshold</span></code></a> (50<em> meters</em>) When terminal ice thickness of floating ice shelf is less than this threshold, it will be calved off.</p></li>
 </ol>
-</div>
-<div class="section" id="calving-of-all-floating-ice">
+</section>
+<section id="calving-of-all-floating-ice">
 <span id="sec-calving-floating-ice"></span><h2>Calving of all floating ice<a class="headerlink" href="#calving-of-all-floating-ice" title="Permalink to this headline">¶</a></h2>
 <p>The option <code class="option docutils literal notranslate"><span class="pre">-calving</span> <span class="pre">float_kill</span></code> removes (calves), at each time step of the run, any
 ice that satisfies the flotation criterion. Use of this option implies that there are no
@@ -187,8 +189,8 @@ this, set <a class="reference internal" href="../../parameters/index.html#config
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.calve_near_grounding_line"><code class="docutils literal notranslate"><span class="pre">calve_near_grounding_line</span></code></a> (yes) Calve floating ice near the grounding line.</p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-calving.float_kill.margin_only"><code class="docutils literal notranslate"><span class="pre">margin_only</span></code></a> (no) Apply float_kill at ice margin cells only.</p></li>
 </ol>
-</div>
-<div class="section" id="prescribed-front-retreat">
+</section>
+<section id="prescribed-front-retreat">
 <span id="sec-prescribed-retreat"></span><h2>Prescribed front retreat<a class="headerlink" href="#prescribed-front-retreat" title="Permalink to this headline">¶</a></h2>
 <p>Option <code class="option docutils literal notranslate"><span class="pre">-front_retreat_file</span></code> allows prescribing retreat of the ice front. The forcing
 file specified using this option should contain <code class="variable docutils literal notranslate"><span class="pre">land_ice_area_fraction_retreat</span></code> —
@@ -210,8 +212,8 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
 <li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Name of the file containing the maximum ice extent mask <code class="docutils literal notranslate"><span class="pre">land_ice_area_fraction_retreat</span></code></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-geometry.front_retreat.prescribed.periodic"><code class="docutils literal notranslate"><span class="pre">periodic</span></code></a> (no) If true, interpret forcing data as periodic in time</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
       <hr>
@@ -286,7 +288,7 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -297,9 +299,9 @@ prescribed by creating a field with an appropriately decreasing maximum extent.<
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>

@@ -4,22 +4,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.0.7 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="An ice dynamics parameter study" href="parameter-study.html" />
     <link rel="prev" title="Fourth run: paleo-climate model spin-up" href="run-4.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -31,7 +33,7 @@
   <div class="bodywrapper">
     <div class="body" role="main">
       
-  <div class="section" id="grid-sequencing">
+  <section id="grid-sequencing">
 <span id="sec-gridseq"></span><h1>Grid sequencing<a class="headerlink" href="#grid-sequencing" title="Permalink to this headline">¶</a></h1>
 <p>The previous sections were not very ambitious. We were just getting started! Now we
 demonstrate a serious PISM capability, the ability to change, specifically to <em>refine</em>,
@@ -41,7 +43,7 @@ first. It is, however, only possible to pick up detail from high quality data, f
 instance bed elevation and high-resolution climate data, using high grid resolution.</p>
 <p>A 20 or 10 km grid is inadequate for resolving the flow of the ice sheet through the kind
 of fjord-like, few-kilometer-wide topographical confinement which occurs, for example, at
-Jakobshavn Isbrae in the west Greenland ice sheet <a class="bibtex reference internal" href="../../zzz_references_html.html#joughinetal08" id="id1">[140]</a>, an important
+Jakobshavn Isbrae in the west Greenland ice sheet <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id240" title="Ian Joughin, Sarah B. Das, Matt A. King, Ben E. Smith, Ian M. Howat, and Twila Moon. Seasonal Speedup Along the Western Flank of the Greenland Ice Sheet. Science, 320(5877):781-783, 2008. URL: https://science.sciencemag.org/content/320/5877/781, doi:10.1126/science.1153288.">33</a>]</span>, an important
 outlet glacier which both flows fast and drains a large fraction of the ice sheet. One
 possibility is to set up an even higher-resolution PISM regional model covering only one
 outlet glacier, but this requires decisions about coupling to the whole ice sheet flow.
@@ -69,13 +71,13 @@ approximately at equilibrium on the coarse grid. Because we are bootstrapping (i
 the <code class="docutils literal notranslate"><span class="pre">-bootstrap</span></code> option), the other variables, especially the bedrock topography
 <code class="docutils literal notranslate"><span class="pre">topg</span></code> and the climate data, are brought in to PISM at “full” resolution, that is, on
 the original 5 km grid in the data file <code class="docutils literal notranslate"><span class="pre">pism_Greenland_5km_v1.1.nc</span></code>.</p>
-<p>This technique could be called “grid sequencing”.<a class="footnote-reference brackets" href="#not-mg" id="id3">2</a> The result of the above
-command will be to compute the near-equilibrium result on the fine 5 km grid, taking
-advantage of the coarse-gridded computation of approximate equilibrium, and despite a run
-of only 200 model years (<code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">-200</span> <span class="pre">-ye</span> <span class="pre">0</span></code>). How close to equilibrium we get depends on
-both durations, i.e. on both the coarse and fine grid run durations, but certainly the
-computational effort is reduced by doing a short run on the fine grid. Note that in the
-previous subsection we also used regridding. In that application, however,
+<p>This technique could be called “grid sequencing”.<a class="footnote-reference brackets" href="#not-mg" id="id3">2</a></p>
+<p>By approximating the equilibrium state on a coarser grid and then interpolating onto a
+finer grid the command above allows us to obtain the near-equilibrium result on the finer
+5km grid using a relatively short (200 model years) run. How close to equilibrium we get
+depends on both durations, i.e. on both the coarse and fine grid run durations, but
+certainly the computational effort is reduced by doing a short run on the fine grid. Note
+that in the previous subsection we also used regridding. In that application, however,
 <code class="docutils literal notranslate"><span class="pre">-regrid_file</span></code> only “brings in” fields from a run on the same resolution.</p>
 <p>Generally the fine grid run duration in grid sequencing should be at least <span class="math notranslate nohighlight">\(t = \dx /
 v_{\text{min}}\)</span> where <span class="math notranslate nohighlight">\(\dx\)</span> is the fine grid resolution and <span class="math notranslate nohighlight">\(v_{\text{min}}\)</span> is the lowest
@@ -119,14 +121,16 @@ only do the 20 km <span class="math notranslate nohighlight">\(\to\)</span> 10 k
 </div>
 <p>The 10 km run takes under two wall-clock hours (8 processor-hours) and the 5 km run takes
 about 6 wall-clock hours (24 processor-hours).</p>
-<div class="figure align-default" id="fig-gridseqdetail">
+<figure class="align-default" id="fig-gridseqdetail">
 <img alt="../../_images/g40-20-10-5km-detail.png" src="../../_images/g40-20-10-5km-detail.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Detail of field <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> showing the central western coast of Greenland,
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Detail of field <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> showing the central western coast of Greenland,
 including Jakobshavn Isbrae (lowest major flow), from runs of resolution 40, 20, 10, 5
 km (left-to-right). Color scheme and scale, including 100 m/year contour (solid black),
 are all identical to <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> Figures <a class="reference internal" href="run-2.html#fig-secondoutputcoarse"><span class="std std-numref">Fig. 4</span></a>,
-<a class="reference internal" href="run-2.html#fig-csurfvsobserved"><span class="std std-numref">Fig. 5</span></a>, and <a class="reference internal" href="run-3.html#fig-secondoutputfiner"><span class="std std-numref">Fig. 6</span></a>.</span><a class="headerlink" href="#fig-gridseqdetail" title="Permalink to this image">¶</a></p>
-</div>
+<a class="reference internal" href="run-2.html#fig-csurf-vs-observed"><span class="std std-numref">Fig. 5</span></a>, and <a class="reference internal" href="run-3.html#fig-second-output-finer"><span class="std std-numref">Fig. 6</span></a>.</span><a class="headerlink" href="#fig-gridseqdetail" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#fig-gridseqdetail"><span class="std std-numref">Fig. 10</span></a>, showing only a detail of the western coast of Greenland, with
 several outlet glaciers visible, suggests what is accomplished: the high resolution runs
 have separated outlet glacier flows, as they are in reality. Note that all of these results
@@ -135,24 +139,26 @@ from files <code class="docutils literal notranslate"><span class="pre">g10km_gr
 subfigures). In the two left-hand subfigures we show the same field from NetCDF files
 <code class="docutils literal notranslate"><span class="pre">g40km_10ka_hy.nc</span></code> and <code class="docutils literal notranslate"><span class="pre">g20km_10ka_hy.nc</span></code>; the former is an added 40 km result using
 an obvious modification of the run in section <a class="reference internal" href="run-2.html#sec-ssarun"><span class="std std-ref">Second run: a better ice-dynamics model</span></a>.</p>
-<div class="figure align-default" id="fig-ivolgridseq">
+<figure class="align-default" id="fig-ivol-gridseq">
 <img alt="../../_images/ivol-gridseq.png" src="../../_images/ivol-gridseq.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from the three runs in our grid
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from the three runs in our grid
 sequencing example: 20 km for 10 ka = <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka_hy.nc</span></code>, 10 km for 2 ka =
-<code class="docutils literal notranslate"><span class="pre">ts_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">ts_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivolgridseq" title="Permalink to this image">¶</a></p>
-</div>
-<p><a class="reference internal" href="#fig-ivolgridseq"><span class="std std-numref">Fig. 11</span></a>, which shows time series of ice volume, also shows the cost of
+<code class="docutils literal notranslate"><span class="pre">ts_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">ts_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivol-gridseq" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#fig-ivol-gridseq"><span class="std std-numref">Fig. 11</span></a>, which shows time series of ice volume, also shows the cost of
 high resolution, however. The short 200 a run on the 5 km grid took about 3 wall-clock
 hours compared to the 10 minutes taken by the 10 ka run on a 20 km grid. The fact that the
 time series for ice volume on 10 km and 5 km grids are not very “steady” also suggests
 that these runs should actually be longer.</p>
 <p>In this vein, if you have an available supercomputer then a good exercise is to extend our
 grid sequencing example to 3 km or 2 km resolutions
-<a class="bibtex reference internal" href="../../zzz_references_html.html#aschwandenadalgeirsdottirkhroulev" id="id4">[66]</a>; these grids are already supported in the script
+<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id40" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>; these grids are already supported in the script
 <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code>. Note that the vertical grid also generally gets refined as the horizontal
 grid is refined.</p>
 <p>Going to a 1km grid is possible, but you will start to see the limitations of distributed
-file systems in writing the enormous NetCDF files in question <a class="bibtex reference internal" href="../../zzz_references_html.html#dickensmorey2013" id="id5">[141]</a>.
+file systems in writing the enormous NetCDF files in question <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id117" title="P. Dickens and T. Morey. Increasing the scalability of PISM for high resolution ice sheet models. In Proceedings of the 14th IEEE International Workshop on Parallel and Distributed Scientific and Engineering Computing, May 2013, Boston. 2013.">11</a>]</span>.
 Notice that a factor-of-five refinement in all three dimensions, e.g. from 5 km to 1 km in
 the horizontal, and from 20 m to 4 m in the vertical, generates an output NetCDF file
 which is 125 times larger. Since the already-generated 5 km result <code class="docutils literal notranslate"><span class="pre">g5km_gridseq.nc</span></code> is
@@ -178,7 +184,7 @@ bootstrapping.</p>
 coarsening stages in computing the fine grid solution.</p>
 </dd>
 </dl>
-</div>
+</section>
 
 
       <hr>
@@ -254,7 +260,7 @@ coarsening stages in computing the fine grid solution.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -265,9 +271,9 @@ coarsening stages in computing the fine grid solution.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.0.7
+      Git revision v2.1
       committed by Constantine Khrulev
-      on 2023-11-21 12:49:11 -0900 |
+      on 2023-11-23 11:24:22 -0900 |
       &copy; 2004--2023, the PISM authors.
       
     </div>
