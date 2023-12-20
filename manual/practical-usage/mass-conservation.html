@@ -53,7 +53,7 @@ Positive values correspond to mass gain.</p>
 </div>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/57065d8c5fa6eb66e06106f6fd011bee/ice_mass_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
-<p>All names on the right-hand side correspond to valid PISM diagnostic quantities.</p>
+<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-extra_file</span></code> etc.; see <a class="reference internal" href="saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>.</p>
 <p>To check that all changes in mass are accounted for, download the script above and run<a class="footnote-reference brackets" href="#f2" id="id2">2</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2 -v -S ice_mass_accounting_error.txt <span class="se">\</span>
       pism_output.nc mass_accounting_error.nc
@@ -116,6 +116,7 @@ computational domain. The “integrated” mass accounting error can be computed
 </div>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/a2f27a68f9bcbc7fe59c6f9ab7e17442/scalar_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
+<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-ts_file</span></code> etc.; see <a class="reference internal" href="saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>.</p>
 <p class="rubric">Comments</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_flow</span></code> is the integral of <span class="math notranslate nohighlight">\(-\nabla \cdot Q\)</span> over the
@@ -302,9 +303,9 @@ described in <span id="id6">[<a class="reference internal" href="../../zzz_refer
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1
-      committed by Constantine Khrulev
-      on 2023-11-23 11:24:22 -0900 |
+      Git revision v2.1-1-g6902d5502
+      committed by Ed Bueler
+      on 2023-12-20 08:38:27 -0800 |
       &copy; 2004--2023, the PISM authors.
       
     </div>
