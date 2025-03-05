@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="An ice dynamics parameter study" href="parameter-study.html" />
@@ -34,23 +32,23 @@
     <div class="body" role="main">
       
   <section id="grid-sequencing">
-<span id="sec-gridseq"></span><h1>Grid sequencing<a class="headerlink" href="#grid-sequencing" title="Permalink to this headline">¶</a></h1>
+<span id="sec-gridseq"></span><h1>Grid sequencing<a class="headerlink" href="#grid-sequencing" title="Link to this heading">¶</a></h1>
 <p>The previous sections were not very ambitious. We were just getting started! Now we
 demonstrate a serious PISM capability, the ability to change, specifically to <em>refine</em>,
-the grid resolution at runtime.</p>
+the grid resolution at run time.</p>
 <p>One can of course do the longest model runs using a coarse grid, like the 20 km grid used
 first. It is, however, only possible to pick up detail from high quality data, for
 instance bed elevation and high-resolution climate data, using high grid resolution.</p>
 <p>A 20 or 10 km grid is inadequate for resolving the flow of the ice sheet through the kind
 of fjord-like, few-kilometer-wide topographical confinement which occurs, for example, at
-Jakobshavn Isbrae in the west Greenland ice sheet <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id240" title="Ian Joughin, Sarah B. Das, Matt A. King, Ben E. Smith, Ian M. Howat, and Twila Moon. Seasonal Speedup Along the Western Flank of the Greenland Ice Sheet. Science, 320(5877):781-783, 2008. URL: https://science.sciencemag.org/content/320/5877/781, doi:10.1126/science.1153288.">33</a>]</span>, an important
+Jakobshavn Isbrae in the west Greenland ice sheet <span id="id1">[<a class="reference internal" href="../../zzz_references_html.html#id241" title="Ian Joughin, Sarah B. Das, Matt A. King, Ben E. Smith, Ian M. Howat, and Twila Moon. Seasonal Speedup Along the Western Flank of the Greenland Ice Sheet. Science, 320(5877):781-783, 2008. URL: https://science.sciencemag.org/content/320/5877/781, doi:10.1126/science.1153288.">33</a>]</span>, an important
 outlet glacier which both flows fast and drains a large fraction of the ice sheet. One
 possibility is to set up an even higher-resolution PISM regional model covering only one
 outlet glacier, but this requires decisions about coupling to the whole ice sheet flow.
 (See section <a class="reference internal" href="../jakobshavn/index.html#sec-jako"><span class="std std-ref">Example: A regional model of the Jakobshavn outlet glacier in Greenland</span></a>.) Here we will work on high resolution for the whole ice
 sheet, and thus all outlet glaciers.</p>
 <p>Consider the following command and compare it to the <a class="reference internal" href="run-1.html#firstcommand"><span class="std std-ref">first one</span></a>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 4 pismr \
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 8 pism \
         -bootstrap -i pism_Greenland_5km_v1.1.nc \
         -Mx 301 -My 561 \
         -Mz 201 -Lz 4000 -z_spacing equal \
@@ -63,15 +61,15 @@ sheet, and thus all outlet glaciers.</p>
 <p>Instead of a 20 km grid in the horizontal (<code class="docutils literal notranslate"><span class="pre">-Mx</span> <span class="pre">76</span> <span class="pre">-My</span> <span class="pre">141</span></code>) we ask for a 5 km grid
 (<code class="docutils literal notranslate"><span class="pre">-Mx</span> <span class="pre">301</span> <span class="pre">-My</span> <span class="pre">561</span></code>). Instead of vertical grid resolution of 40 m (<code class="docutils literal notranslate"><span class="pre">-Mz</span> <span class="pre">101</span> <span class="pre">-z_spacing</span>
 <span class="pre">equal</span> <span class="pre">-Lz</span> <span class="pre">4000</span></code>) we ask for a vertical resolution of 20 m (<code class="docutils literal notranslate"><span class="pre">-Mz</span> <span class="pre">201</span> <span class="pre">-z_spacing</span> <span class="pre">equal</span> <span class="pre">-Lz</span>
-<span class="pre">4000</span></code>).<a class="footnote-reference brackets" href="#bootstrapping-grid" id="id2">1</a> Most significantly, however, we say <code class="docutils literal notranslate"><span class="pre">-regrid_file</span>
-<span class="pre">g20km_10ka_hy.nc</span></code> to regrid — specifically, to bilinearly-interpolate — fields from a
+<span class="pre">4000</span></code>).<a class="footnote-reference brackets" href="#bootstrapping-grid" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Most significantly, however, we say <code class="docutils literal notranslate"><span class="pre">-regrid_file</span>
+<span class="pre">g20km_10ka_hy.nc</span></code> to regrid — to interpolate — fields from a
 model result computed on the coarser 20 km grid. The regridded fields (<code class="docutils literal notranslate"><span class="pre">-regrid_vars</span>
 <span class="pre">litho_temp,...</span></code>) are the evolving mass and energy state variables which are already
 approximately at equilibrium on the coarse grid. Because we are bootstrapping (i.e. using
 the <code class="docutils literal notranslate"><span class="pre">-bootstrap</span></code> option), the other variables, especially the bedrock topography
 <code class="docutils literal notranslate"><span class="pre">topg</span></code> and the climate data, are brought in to PISM at “full” resolution, that is, on
 the original 5 km grid in the data file <code class="docutils literal notranslate"><span class="pre">pism_Greenland_5km_v1.1.nc</span></code>.</p>
-<p>This technique could be called “grid sequencing”.<a class="footnote-reference brackets" href="#not-mg" id="id3">2</a></p>
+<p>This technique could be called “grid sequencing”.<a class="footnote-reference brackets" href="#not-mg" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p>By approximating the equilibrium state on a coarser grid and then interpolating onto a
 finer grid the command above allows us to obtain the near-equilibrium result on the finer
 5km grid using a relatively short (200 model years) run. How close to equilibrium we get
@@ -93,19 +91,45 @@ result is in <code class="docutils literal notranslate"><span class="pre">g20km_
 in <code class="docutils literal notranslate"><span class="pre">examples/std-greenland/</span></code>. It calls <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code> to collect all the right PISM
 options:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="nv">NN</span><span class="o">=</span><span class="m">4</span>
-<span class="nb">export</span> <span class="nv">PARAM_PPQ</span><span class="o">=</span><span class="m">0</span>.5
-<span class="nb">export</span> <span class="nv">REGRIDFILE</span><span class="o">=</span>g20km_10ka_hy.nc
-<span class="nb">export</span> <span class="nv">EXSTEP</span><span class="o">=</span><span class="m">100</span>
-./spinup.sh <span class="nv">$NN</span> const <span class="m">2000</span>  <span class="m">10</span> hybrid g10km_gridseq.nc
-<span class="nb">export</span> <span class="nv">REGRIDFILE</span><span class="o">=</span>g10km_gridseq.nc
-<span class="nb">export</span> <span class="nv">EXSTEP</span><span class="o">=</span><span class="m">10</span>
-./spinup.sh <span class="nv">$NN</span> const <span class="m">200</span>    <span class="m">5</span> hybrid  g5km_gridseq.nc
+<span class="nv">NN</span><span class="o">=</span><span class="m">8</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PARAM_PPQ</span><span class="o">=</span><span class="m">0</span>.5
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">REGRIDFILE</span><span class="o">=</span>g20km_10ka_hy.nc<span class="w"> </span><span class="nv">EXSTEP</span><span class="o">=</span><span class="m">100</span>
+./spinup.sh<span class="w"> </span><span class="nv">$NN</span><span class="w"> </span>const<span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>hybrid<span class="w"> </span>g10km_gridseq.nc
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">REGRIDFILE</span><span class="o">=</span>g10km_gridseq.nc<span class="w"> </span><span class="nv">EXSTEP</span><span class="o">=</span><span class="m">10</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PISM_EXEC</span><span class="o">=</span><span class="s2">&quot;pism -stress_balance.sia.max_diffusivity 1000&quot;</span>
+./spinup.sh<span class="w"> </span><span class="nv">$NN</span><span class="w"> </span>const<span class="w"> </span>30days<span class="w"> </span><span class="m">5</span><span class="w"> </span>hybrid<span class="w"> </span>g5km_smoothing.nc
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PISM_EXEC</span><span class="o">=</span>pism
+<span class="nb">export</span><span class="w"> </span><span class="nv">REGRIDFILE</span><span class="o">=</span>g5km_smoothing.nc<span class="w"> </span><span class="nv">EXSTEP</span><span class="o">=</span><span class="m">10</span>
+./spinup.sh<span class="w"> </span><span class="nv">$NN</span><span class="w"> </span>const<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>hybrid<span class="w"> </span>g5km_gridseq.nc
 </pre></div>
 </div>
 <p>Environment variable <code class="docutils literal notranslate"><span class="pre">EXSTEP</span></code> specifies the time in years between writing the
 spatially-dependent, and large-file-size-generating, frames for the <code class="docutils literal notranslate"><span class="pre">-extra_file</span> <span class="pre">...</span></code>
 diagnostic output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As mentioned in section <a class="reference internal" href="../modeling-choices/dynamics/sia.html#sec-sia"><span class="std std-ref">Shallow ice approximation (SIA)</span></a>, PISM checks if the maximum SIA diffusivity of
+the flow exceeds the limit set by <a class="reference internal" href="../parameters/index.html#config-stress_balance.sia.max_diffusivity"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.max_diffusivity</span></code></a> and
+stops the run if it does. This protects you (the user) from wasting CPU hours on a
+possibly flawed simulation – very high values of SIA diffusivity force PISM’s adaptive
+time stepping mechanism to take very small time steps, significantly increasing the
+computational cost of a simulation.</p>
+<p>Very high SIA diffusivity can be caused by artifacts in some input fields (bed
+topography, for example), an incompatibility between some of the inputs (for example:
+ice thickness and bed topography) or an incompatibility between an input and PISM’s
+modeling assumptions (for example: bed topography or ice thickness representing an ice
+mass that is not “shallow”) – among other reasons.</p>
+<p>PISM has to deal with such incompatibilities at the start of many interesting
+simulations. Moreover, we <em>expect</em> it to happen during the first few time steps of most
+non-trivial setups that use realistic ice geometry.</p>
+<p>To allow PISM to proceed until SIA diffusivity decreases to within a reasonable range
+<em>without</em> completely disabling this warning mechanism we add a very short (30 model
+days) “smoothing” run with <a class="reference internal" href="../parameters/index.html#config-stress_balance.sia.max_diffusivity"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sia</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.max_diffusivity</span></code></a> set to a very
+large number.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The 5 km run requires 8 Gb of memory at minimum!</p>
@@ -119,8 +143,8 @@ only do the 20 km <span class="math notranslate nohighlight">\(\to\)</span> 10 k
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./gridseq.sh &amp;&gt; out.gridseq &amp;
 </pre></div>
 </div>
-<p>The 10 km run takes under two wall-clock hours (8 processor-hours) and the 5 km run takes
-about 6 wall-clock hours (24 processor-hours).</p>
+<p>The 10 km run takes about two thirds of a wall-clock hour (about 5 processor-hours) and
+the 5 km run takes about 1.3 wall-clock hours (about 11 processor-hours).</p>
 <figure class="align-default" id="fig-gridseqdetail">
 <img alt="../../_images/g40-20-10-5km-detail.png" src="../../_images/g40-20-10-5km-detail.png" />
 <figcaption>
@@ -128,7 +152,7 @@ about 6 wall-clock hours (24 processor-hours).</p>
 including Jakobshavn Isbrae (lowest major flow), from runs of resolution 40, 20, 10, 5
 km (left-to-right). Color scheme and scale, including 100 m/year contour (solid black),
 are all identical to <code class="docutils literal notranslate"><span class="pre">velsurf_mag</span></code> Figures <a class="reference internal" href="run-2.html#fig-secondoutputcoarse"><span class="std std-numref">Fig. 4</span></a>,
-<a class="reference internal" href="run-2.html#fig-csurf-vs-observed"><span class="std std-numref">Fig. 5</span></a>, and <a class="reference internal" href="run-3.html#fig-second-output-finer"><span class="std std-numref">Fig. 6</span></a>.</span><a class="headerlink" href="#fig-gridseqdetail" title="Permalink to this image">¶</a></p>
+<a class="reference internal" href="run-2.html#fig-csurf-vs-observed"><span class="std std-numref">Fig. 5</span></a>, and <a class="reference internal" href="run-3.html#fig-second-output-finer"><span class="std std-numref">Fig. 6</span></a>.</span><a class="headerlink" href="#fig-gridseqdetail" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#fig-gridseqdetail"><span class="std std-numref">Fig. 10</span></a>, showing only a detail of the western coast of Greenland, with
@@ -144,7 +168,7 @@ an obvious modification of the run in section <a class="reference internal" href
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from the three runs in our grid
 sequencing example: 20 km for 10 ka = <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka_hy.nc</span></code>, 10 km for 2 ka =
-<code class="docutils literal notranslate"><span class="pre">ts_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">ts_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivol-gridseq" title="Permalink to this image">¶</a></p>
+<code class="docutils literal notranslate"><span class="pre">ts_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">ts_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivol-gridseq" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#fig-ivol-gridseq"><span class="std std-numref">Fig. 11</span></a>, which shows time series of ice volume, also shows the cost of
@@ -154,11 +178,11 @@ time series for ice volume on 10 km and 5 km grids are not very “steady” als
 that these runs should actually be longer.</p>
 <p>In this vein, if you have an available supercomputer then a good exercise is to extend our
 grid sequencing example to 3 km or 2 km resolutions
-<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id40" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>; these grids are already supported in the script
+<span id="id4">[<a class="reference internal" href="../../zzz_references_html.html#id41" title="A. Aschwanden, G. Adalgeirsdóttir, and C. Khroulev. Hindcasting to measure ice sheet model sensitivity to initial states. The Cryosphere, 7:1083–1093, 2013. doi:10.5194/tc-7-1083-2013.">2</a>]</span>; these grids are already supported in the script
 <code class="docutils literal notranslate"><span class="pre">spinup.sh</span></code>. Note that the vertical grid also generally gets refined as the horizontal
 grid is refined.</p>
 <p>Going to a 1km grid is possible, but you will start to see the limitations of distributed
-file systems in writing the enormous NetCDF files in question <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id117" title="P. Dickens and T. Morey. Increasing the scalability of PISM for high resolution ice sheet models. In Proceedings of the 14th IEEE International Workshop on Parallel and Distributed Scientific and Engineering Computing, May 2013, Boston. 2013.">11</a>]</span>.
+file systems in writing the enormous NetCDF files in question <span id="id5">[<a class="reference internal" href="../../zzz_references_html.html#id118" title="P. Dickens and T. Morey. Increasing the scalability of PISM for high resolution ice sheet models. In Proceedings of the 14th IEEE International Workshop on Parallel and Distributed Scientific and Engineering Computing, May 2013, Boston. 2013.">11</a>]</span>.
 Notice that a factor-of-five refinement in all three dimensions, e.g. from 5 km to 1 km in
 the horizontal, and from 20 m to 4 m in the vertical, generates an output NetCDF file
 which is 125 times larger. Since the already-generated 5 km result <code class="docutils literal notranslate"><span class="pre">g5km_gridseq.nc</span></code> is
@@ -173,17 +197,19 @@ distribute distinct model runs, each with different parameter values, among the
 processors. For scientific purposes, such parameter studies, whether parallel or not, are
 at least as valuable as individual high-resolution runs.</p>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="bootstrapping-grid"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>See subsections <a class="reference internal" href="../initialization/bootstrapping.html#sec-bootstrapping"><span class="std std-ref">Bootstrapping</span></a>, <a class="reference internal" href="../modeling-choices/computational/box.html#sec-coords"><span class="std std-ref">Computational box</span></a>, and
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="bootstrapping-grid" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>See subsections <a class="reference internal" href="../initialization/bootstrapping.html#sec-bootstrapping"><span class="std std-ref">Bootstrapping</span></a>, <a class="reference internal" href="../modeling-choices/computational/box.html#sec-coords"><span class="std std-ref">Computational box</span></a>, and
 <a class="reference internal" href="../modeling-choices/computational/grid.html#sec-grid"><span class="std std-ref">Spatial grid</span></a> for more about determining the computation domain and grid at
 bootstrapping.</p>
-</dd>
-<dt class="label" id="not-mg"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>It is not quite “multigrid.” That would both involve refinement and
+</aside>
+<aside class="footnote brackets" id="not-mg" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>It is not quite “multigrid.” That would both involve refinement and
 coarsening stages in computing the fine grid solution.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 
 
@@ -222,7 +248,7 @@ coarsening stages in computing the fine grid solution.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Getting started: a Greenland ice sheet example</a><ul class="current">
@@ -252,6 +278,8 @@ coarsening stages in computing the fine grid solution.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -265,16 +293,14 @@ coarsening stages in computing the fine grid solution.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

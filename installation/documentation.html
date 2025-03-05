@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Rebuilding PISM documentation &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <title>Rebuilding PISM documentation &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
+    <script src="../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PISM User’s Manual" href="../manual/index.html" />
@@ -32,14 +30,10 @@
     <div class="body" role="main">
       
   <section id="rebuilding-pism-documentation">
-<span id="sec-install-documentation"></span><h1>Rebuilding PISM documentation<a class="headerlink" href="#rebuilding-pism-documentation" title="Permalink to this headline">¶</a></h1>
+<span id="sec-install-documentation"></span><h1>Rebuilding PISM documentation<a class="headerlink" href="#rebuilding-pism-documentation" title="Link to this heading">¶</a></h1>
 <p>You might want to rebuild the documentation from source, as PISM and its documentation
 evolve together. These tools are required:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Tool</p></th>
 <th class="head"><p>Comment</p></th>
@@ -55,7 +49,7 @@ evolve together. These tools are required:</p>
 <tr class="row-even"><td><p><a class="reference external" href="https://www.latex-project.org/">LaTeX</a></p></td>
 <td><p>needed to rebuild the PDF version of this Manual</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="http://personal.psu.edu/jcc8//software/latexmk-jcc/">Latexmk</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://personal.psu.edu/jcc8//software/latexmk-jcc/">Latexmk</a></p></td>
 <td><p>needed to rebuild the PDF version of this Manual</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ncgen</span></code> from <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/">NetCDF</a></p></td>
@@ -73,21 +67,21 @@ evolve together. These tools are required:</p>
 </tbody>
 </table>
 <p>On a Debian-based system you may be able to install most of these by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install <span class="se">\</span>
-     graphviz <span class="se">\</span>
-     texlive texlive-fonts-extra <span class="se">\</span>
-     latexmk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>graphviz<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>texlive<span class="w"> </span>texlive-fonts-extra<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>latexmk
 
-pip3 install sphinx sphinxcontrib-bibtex --user
+pip3<span class="w"> </span>install<span class="w"> </span>sphinx<span class="w"> </span>sphinxcontrib-bibtex<span class="w"> </span>--user
 </pre></div>
 </div>
 <p>Click <a class="reference download internal" download="" href="../_downloads/f98974912b5a9119112c1876257a48d9/install_docu_libraries.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this file.</p>
 <p>(You may need to change this command to match your package system.)</p>
 <section id="manual">
-<h2>Manual<a class="headerlink" href="#manual" title="Permalink to this headline">¶</a></h2>
+<h2>Manual<a class="headerlink" href="#manual" title="Link to this heading">¶</a></h2>
 <p>To rebuild this manual, change to the PISM build directory and run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make manual_html <span class="c1"># for the HTML version of the manual</span>
-make manual_pdf  <span class="c1"># for the PDF version of the manual</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>manual_html<span class="w"> </span><span class="c1"># for the HTML version of the manual</span>
+make<span class="w"> </span>manual_pdf<span class="w">  </span><span class="c1"># for the PDF version of the manual</span>
 </pre></div>
 </div>
 <p>The main page for this manual is then in <code class="docutils literal notranslate"><span class="pre">doc/sphinx/html/index.html</span></code> inside your build
@@ -95,22 +89,22 @@ directory.</p>
 <p>The PDF manual will be in <code class="docutils literal notranslate"><span class="pre">doc/sphinx/pism_manual.pdf</span></code> in your build directory.</p>
 </section>
 <section id="source-code-browser">
-<h2>Source Code Browser<a class="headerlink" href="#source-code-browser" title="Permalink to this headline">¶</a></h2>
+<h2>Source Code Browser<a class="headerlink" href="#source-code-browser" title="Link to this heading">¶</a></h2>
 <p>To rebuild the PISM <em>Source Code Browser</em>, change to the PISM build directory and run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make browser
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>browser
 </pre></div>
 </div>
 <p>The main page for the documentation is then in <code class="docutils literal notranslate"><span class="pre">doc/browser/html/index.html</span></code> inside
 your build directory.</p>
 </section>
 <section id="re-building-documentation-without-pism-s-prerequisites">
-<h2>Re-building documentation without PISM’s prerequisites<a class="headerlink" href="#re-building-documentation-without-pism-s-prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Re-building documentation without PISM’s prerequisites<a class="headerlink" href="#re-building-documentation-without-pism-s-prerequisites" title="Link to this heading">¶</a></h2>
 <p>To build documentation on a system without PISM’s prerequisite libraries (such as MPI and
 PETSc), assuming that PISM sources are in <code class="docutils literal notranslate"><span class="pre">~/pism-stable</span></code>, do the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/pism-stable
-mkdir doc-build <span class="c1"># create a build directory</span>
-<span class="nb">cd</span> doc-build
-cmake ../doc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/pism-stable
+mkdir<span class="w"> </span>doc-build<span class="w"> </span><span class="c1"># create a build directory</span>
+<span class="nb">cd</span><span class="w"> </span>doc-build
+cmake<span class="w"> </span>../doc
 </pre></div>
 </div>
 <p>then commands “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">manual_html</span></code>”, “<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">manual_pdf</span></code>” and others (see above) will
@@ -154,10 +148,11 @@ work as expected.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installing PISM</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Required tools and libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-io-libraries.html">Installing parallel I/O libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Enabling flexible interpolation using YAC and PROJ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cookbook.html">Installation Cookbook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick-tests.html">Quick tests of the installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quick-tests.html#next-steps">Next steps</a></li>
@@ -174,6 +169,8 @@ work as expected.</p>
 <li class="toctree-l1"><a class="reference internal" href="../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -187,16 +184,14 @@ work as expected.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

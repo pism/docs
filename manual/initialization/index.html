@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Initialization and bootstrapping &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <title>Initialization and bootstrapping &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Initialization from a saved model state" href="restarting.html" />
@@ -32,21 +30,20 @@
     <div class="body" role="main">
       
   <section id="initialization-and-bootstrapping">
-<span id="sec-initboot"></span><h1>Initialization and bootstrapping<a class="headerlink" href="#initialization-and-bootstrapping" title="Permalink to this headline">¶</a></h1>
+<span id="sec-initboot"></span><h1>Initialization and bootstrapping<a class="headerlink" href="#initialization-and-bootstrapping" title="Link to this heading">¶</a></h1>
 <p>There are three ways to start PISM:</p>
 <ul class="simple">
 <li><p>option <code class="option docutils literal notranslate"><span class="pre">-i</span></code> reads a previously-saved “complete” PISM model state from a NetCDF file,
 or</p></li>
 <li><p>option <code class="option docutils literal notranslate"><span class="pre">-i</span></code> <code class="option docutils literal notranslate"><span class="pre">-bootstrap</span></code> reads an “incomplete” NetCDF file and uses heuristics
 to fill in needed fields, or</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pismr</span> <span class="pre">-eisII</span> <span class="pre">...</span></code> and the <code class="docutils literal notranslate"><span class="pre">pismv</span></code> executable are used to initialize
+<li><p><code class="docutils literal notranslate"><span class="pre">pism</span> <span class="pre">-eisII</span> <span class="pre">...</span></code> and the <code class="docutils literal notranslate"><span class="pre">pism</span> <span class="pre">-test</span> <span class="pre">...</span></code> are used to initialize
 simplified-geometry experiments and verification tests from formulas in the source code,
 and thus no input file is required.</p></li>
 </ul>
-<p>One of the first two choices is required when using the executable <code class="docutils literal notranslate"><span class="pre">pismr</span></code>. Modeling
-usually starts with the <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">input.nc</span> <span class="pre">-bootstrap</span></code> because real ice sheet observations are
-never complete initial conditions. Runs with multiple stages often use the <code class="option docutils literal notranslate"><span class="pre">-i</span></code>
-option after the first stage.</p>
+<p>Modeling usually starts with the <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">input.nc</span> <span class="pre">-bootstrap</span></code> because real ice sheet
+observations are never complete initial conditions. Runs with multiple stages often use
+the <code class="option docutils literal notranslate"><span class="pre">-i</span></code> option after the first stage.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="restarting.html">Initialization from a saved model state</a><ul>
@@ -97,7 +94,7 @@ option after the first stage.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -121,6 +118,8 @@ option after the first stage.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -134,16 +133,14 @@ option after the first stage.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

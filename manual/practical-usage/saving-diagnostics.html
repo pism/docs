@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Spatially-varying diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Spatially-varying diagnostic quantities &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Snapshots of the model state" href="saving-snapshots.html" />
@@ -34,7 +32,7 @@
     <div class="body" role="main">
       
   <section id="spatially-varying-diagnostic-quantities">
-<span id="sec-saving-diagnostics"></span><h1>Spatially-varying diagnostic quantities<a class="headerlink" href="#spatially-varying-diagnostic-quantities" title="Permalink to this headline">¶</a></h1>
+<span id="sec-saving-diagnostics"></span><h1>Spatially-varying diagnostic quantities<a class="headerlink" href="#spatially-varying-diagnostic-quantities" title="Link to this heading">¶</a></h1>
 <p>Sometimes it is useful to have PISM save a handful of diagnostic <em>maps</em> at some interval,
 for example every 10 years or even every month. One can use snapshots (section
 <a class="reference internal" href="saving-snapshots.html#sec-snapshots"><span class="std std-ref">Snapshots of the model state</span></a>), but doing so can easily fill your hard-drive because snapshots are
@@ -42,7 +40,7 @@ complete (i.e. re-startable) model states. Sometimes you want a <em>subset</em> 
 variables saved frequently.</p>
 <p>Use options <code class="option docutils literal notranslate"><span class="pre">-extra_file</span></code>, <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, and <code class="option docutils literal notranslate"><span class="pre">-extra_vars</span></code> for this. For
 example,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 10000 -o output.nc \
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 10000 -o output.nc \
       -extra_file extras.nc \
       -extra_times 0:10:1e4 \
       -extra_vars velsurf_mag,velbase_mag
@@ -61,14 +59,14 @@ available. To print a warning and continue instead of stopping, set
 </div>
 <p>Note that options <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code>, <code class="option docutils literal notranslate"><span class="pre">-ts_times</span></code> take <em>dates</em>
 if a non-trivial calendar is selected. Here are some examples.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pismr ... -extra_times <span class="m">10</span>       <span class="c1"># every 10 years</span>
-pismr ... -extra_times 2days    <span class="c1"># every 2 days</span>
-pismr ... -calendar gregorian <span class="se">\</span>
-          -extra_times <span class="m">1</span>-1-1:daily:11-1-1 <span class="c1"># daily for 10 years</span>
-pismr ... -calendar gregorian <span class="se">\</span>
-          -extra_times daily -ys <span class="m">1</span>-1-1 -ye <span class="m">11</span>-1-1
-pismr ... -calendar gregorian <span class="se">\</span>
-          -extra_times 2hours -ys <span class="m">1</span>-1-1 -ye <span class="m">1</span>-2-1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>...<span class="w"> </span>-extra_times<span class="w"> </span><span class="m">10</span><span class="w">       </span><span class="c1"># every 10 years</span>
+pism<span class="w"> </span>...<span class="w"> </span>-extra_times<span class="w"> </span>2days<span class="w">    </span><span class="c1"># every 2 days</span>
+pism<span class="w"> </span>...<span class="w"> </span>-calendar<span class="w"> </span>gregorian<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>-extra_times<span class="w"> </span><span class="m">1</span>-1-1:daily:11-1-1<span class="w"> </span><span class="c1"># daily for 10 years</span>
+pism<span class="w"> </span>...<span class="w"> </span>-calendar<span class="w"> </span>gregorian<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>-extra_times<span class="w"> </span>daily<span class="w"> </span>-ys<span class="w"> </span><span class="m">1</span>-1-1<span class="w"> </span>-ye<span class="w"> </span><span class="m">11</span>-1-1
+pism<span class="w"> </span>...<span class="w"> </span>-calendar<span class="w"> </span>gregorian<span class="w"> </span><span class="se">\</span>
+<span class="w">          </span>-extra_times<span class="w"> </span>2hours<span class="w"> </span>-ys<span class="w"> </span><span class="m">1</span>-1-1<span class="w"> </span>-ye<span class="w"> </span><span class="m">1</span>-2-1
 </pre></div>
 </div>
 <p>The step in the range specification can have the form <code class="docutils literal notranslate"><span class="pre">Nunit</span></code>, for example <code class="docutils literal notranslate"><span class="pre">5days</span></code>.
@@ -77,20 +75,21 @@ selected.</p>
 <p>In addition to specifying a constant step in <code class="docutils literal notranslate"><span class="pre">-extra_times</span> <span class="pre">a:step:b</span></code> one can save every
 hour, day, month, or every year by using <code class="docutils literal notranslate"><span class="pre">hourly</span></code>, <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">monthly</span></code> or <code class="docutils literal notranslate"><span class="pre">yearly</span></code>
 instead of a number; for example</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 100 -o output.nc -extra_file extras.nc \
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 100 -o output.nc -extra_file extras.nc \
       -extra_times 0:monthly:100 -extra_vars dHdt
 </pre></div>
 </div>
-<p>will save the rate of change of the ice thickness every month for 100 years. With
-<code class="docutils literal notranslate"><span class="pre">-calendar</span> <span class="pre">none</span></code> (the default), “monthly” means “every <span class="math notranslate nohighlight">\(\frac 1 {12}\)</span> of the
-year”, and “yearly” is “every <span class="math notranslate nohighlight">\(3.14\ldots\times10^7\)</span>” seconds, otherwise PISM uses
-month lengths computed using the selected calendar.</p>
+<p>will save the rate of change of the ice thickness every month for 100 years. With the
+<code class="docutils literal notranslate"><span class="pre">365_day</span></code> calendar (the default), “monthly” means “at the end of every month assuming
+that every year is a non-leap year”, and “yearly” is “every <span class="math notranslate nohighlight">\(365\)</span>” days. With
+<code class="docutils literal notranslate"><span class="pre">-calendar</span> <span class="pre">gregorian</span></code> “monthly” means “at the end of every month, respecting leap
+years” and so on; please see <a class="reference internal" href="../modeling-choices/computational/time.html#sec-calendars"><span class="std std-ref">Calendars</span></a> for more.</p>
 <p>It is frequently desirable to save diagnostic quantities at regular intervals for the
 whole duration of the run; options <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, <code class="option docutils literal notranslate"><span class="pre">-ts_times</span></code>, and
 <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> provide a shortcut. For example, use <code class="docutils literal notranslate"><span class="pre">-extra_times</span> <span class="pre">yearly</span></code> to save at
 the end of every year.</p>
 <p>This is especially useful when using a climate forcing file to set run duration:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -surface given -surface_given_file climate.nc \
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -surface given -surface_given_file climate.nc \
       -calendar gregorian -time_file climate.nc \
       -extra_times monthly -extra_file ex.nc -extra_vars thk
 </pre></div>
@@ -116,7 +115,7 @@ step to, and save at, <em>exactly</em> the times requested. By contrast, as note
 time-steps and instead uses linear interpolation to save at the requested times in between
 PISM’s actual time-steps.</p>
 <section id="parameters">
-<span id="sec-extra-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<span id="sec-extra-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">output.extra.</span></code></p>
 <ol class="simple">
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.extra.append"><code class="docutils literal notranslate"><span class="pre">append</span></code></a> (no) Append to an existing output file.  No effect if file does not yet exist, and no effect if <a class="reference internal" href="../parameters/index.html#config-output.extra.split"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.extra</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.split</span></code></a> is set.</p></li>
@@ -165,7 +164,7 @@ PISM’s actual time-steps.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -175,6 +174,7 @@ PISM’s actual time-steps.</p>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Practical usage</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="netcdf-tools.html">Handling NetCDF files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="input-output.html">Input and output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">Interpolation of input data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="time-stepping.html">Understanding adaptive time-stepping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-time-series.html">Scalar diagnostic quantities</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Spatially-varying diagnostic quantities</a></li>
@@ -203,6 +203,8 @@ PISM’s actual time-steps.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -216,16 +218,14 @@ PISM’s actual time-steps.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

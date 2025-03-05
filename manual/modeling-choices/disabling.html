@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Disabling sub-models &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <title>Disabling sub-models &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Dealing with more difficult modeling choices" href="hard-choices.html" />
@@ -32,7 +30,7 @@
     <div class="body" role="main">
       
   <section id="disabling-sub-models">
-<span id="sec-turning-off"></span><h1>Disabling sub-models<a class="headerlink" href="#disabling-sub-models" title="Permalink to this headline">¶</a></h1>
+<span id="sec-turning-off"></span><h1>Disabling sub-models<a class="headerlink" href="#disabling-sub-models" title="Link to this heading">¶</a></h1>
 <p>Certain major model components, unlike more peripheral ones like bed deformation or
 calving, are “on” by default. They do not need to be turned on explicitly. For example,
 the SIA computation is so common that it would be a hassle to require an option to turn it
@@ -40,16 +38,13 @@ on every time you need it.</p>
 <p>But sometimes one wants to disable particular components, during model spin-up, for
 example. PISM has the following “off” switches:</p>
 <ul class="simple">
-<li><p><code class="option docutils literal notranslate"><span class="pre">-no_mass</span></code> disables the mass-continuity (conservation of mass) step</p></li>
-<li><p><code class="option docutils literal notranslate"><span class="pre">-energy</span> <span class="pre">none</span></code> disables the conservation of energy computation</p></li>
-<li><p><code class="option docutils literal notranslate"><span class="pre">-energy</span> <span class="pre">cold</span></code> makes PISM use temperature instead of enthalpy in the energy
-conservation code</p></li>
-<li><p><code class="option docutils literal notranslate"><span class="pre">-stress_balance</span> <span class="pre">none</span></code> disables the stress balance computation (useful for testing
-surface mass balance inputs)</p></li>
-<li><p><code class="option docutils literal notranslate"><span class="pre">-dry</span></code> essentially disables ocean models: ice is always considered to be grounded,
-the sub-shelf melt rate and temperature is not used, and the calving-front boundary
-condition is computed ignoring the water pressure exerted on the vertical face at a
-(possibly submerged) terminus.</p></li>
+<li><p>setting <a class="reference internal" href="../parameters/index.html#config-geometry.update.enabled"><code class="docutils literal notranslate"><span class="pre">geometry</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.update</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a> to “false” disables the mass-continuity
+(conservation of mass) step</p></li>
+<li><p>setting <a class="reference internal" href="../parameters/index.html#config-energy.model"><code class="docutils literal notranslate"><span class="pre">energy</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a> to “none” disables the conservation of energy computation</p></li>
+<li><p>setting <a class="reference internal" href="../parameters/index.html#config-energy.model"><code class="docutils literal notranslate"><span class="pre">energy</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a> to “cold” makes PISM use temperature instead of enthalpy
+in the energy conservation code</p></li>
+<li><p>setting <a class="reference internal" href="../parameters/index.html#config-stress_balance.model"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a> to “none” disables the stress balance computation
+(useful for testing surface mass balance inputs)</p></li>
 </ul>
 </section>
 
@@ -89,7 +84,7 @@ condition is computed ignoring the water pressure exerted on the vertical face a
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -118,6 +113,8 @@ condition is computed ignoring the water pressure exerted on the vertical face a
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -131,16 +128,14 @@ condition is computed ignoring the water pressure exerted on the vertical face a
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

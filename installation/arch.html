@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installing prerequisites and building PISM on Arch Linux &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <title>Installing prerequisites and building PISM on Arch Linux &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
+    <script src="../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Installing required libraries on macOS" href="macos.html" />
@@ -32,7 +30,7 @@
     <div class="body" role="main">
       
   <section id="installing-prerequisites-and-building-pism-on-arch-linux">
-<span id="sec-install-arch"></span><h1>Installing prerequisites and building PISM on Arch Linux<a class="headerlink" href="#installing-prerequisites-and-building-pism-on-arch-linux" title="Permalink to this headline">¶</a></h1>
+<span id="sec-install-arch"></span><h1>Installing prerequisites and building PISM on Arch Linux<a class="headerlink" href="#installing-prerequisites-and-building-pism-on-arch-linux" title="Link to this heading">¶</a></h1>
 <p>PISM is registered as a <a class="reference external" href="https://aur.archlinux.org/packages/pism/">package</a>
 in the <a class="reference external" href="https://aur.archlinux.org">Arch Linux User Repository</a> (AUR). This package will build the latest
 PISM release and its dependencies. PISM is linked to <a class="reference external" href="https://www.open-mpi.org">Open MPI</a> and is
@@ -40,19 +38,19 @@ installed under <code class="docutils literal notranslate"><span class="pre">/us
 <p>Installation from the AUR requires an <a class="reference external" href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>
 such as <a class="reference external" href="https://aur.archlinux.org/packages/yay/">yay</a>. If you do not already
 have an AUR helper installed, install <code class="docutils literal notranslate"><span class="pre">yay</span></code> with the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://aur.archlinux.org/yay.git
-<span class="nb">cd</span> git
-makepkg -si
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://aur.archlinux.org/yay.git
+<span class="nb">cd</span><span class="w"> </span>git
+makepkg<span class="w"> </span>-si
 </pre></div>
 </div>
 <p>You can then install PISM and its dependencies with the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yay -Sy pism
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yay<span class="w"> </span>-Sy<span class="w"> </span>pism
 </pre></div>
 </div>
-<p>Once installed, the PISM binaries (e.g. <code class="docutils literal notranslate"><span class="pre">pismr</span></code>, <code class="docutils literal notranslate"><span class="pre">pismv</span></code>, various Python
-tools) are available in the PATH and do not require further intervention to
-work. It is recommended that the installation is manually verified with the
-instructions in section <a class="reference internal" href="quick-tests.html#sec-install-quick-tests"><span class="std std-ref">Quick tests of the installation</span></a>.</p>
+<p>Once installed, the PISM binaries (e.g. <code class="docutils literal notranslate"><span class="pre">pism</span></code>, various Python tools) are available in
+the PATH and do not require further intervention to work. It is recommended that the
+installation is manually verified with the instructions in section
+<a class="reference internal" href="quick-tests.html#sec-install-quick-tests"><span class="std std-ref">Quick tests of the installation</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The AUR package for PISM is maintained by Julien Seguinot; please e-mail him with
@@ -97,10 +95,11 @@ letters + at + posteo and then dot + eu</em>.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installing PISM</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Required tools and libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-io-libraries.html">Installing parallel I/O libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Enabling flexible interpolation using YAC and PROJ</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="cookbook.html">Installation Cookbook</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="debian.html">Installing prerequisites on Debian or Ubuntu</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing prerequisites and building PISM on Arch Linux</a></li>
@@ -121,6 +120,8 @@ letters + at + posteo and then dot + eu</em>.</p>
 <li class="toctree-l1"><a class="reference internal" href="../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -134,16 +135,14 @@ letters + at + posteo and then dot + eu</em>.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

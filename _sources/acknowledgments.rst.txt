@@ -4,8 +4,10 @@
 
 .. include:: <isonum.txt>
 
-Acknowledgements
-================
+.. _sec-acknowledgments:
+
+Acknowledgments
+===============
 
 .. include:: funding.txt
 

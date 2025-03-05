@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using PISM for flow-line modeling &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Using PISM for flow-line modeling &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Managing source code modifications" href="modifying-pism.html" />
@@ -34,7 +32,7 @@
     <div class="body" role="main">
       
   <section id="using-pism-for-flow-line-modeling">
-<span id="sec-flowline-modeling"></span><h1>Using PISM for flow-line modeling<a class="headerlink" href="#using-pism-for-flow-line-modeling" title="Permalink to this headline">¶</a></h1>
+<span id="sec-flowline-modeling"></span><h1>Using PISM for flow-line modeling<a class="headerlink" href="#using-pism-for-flow-line-modeling" title="Link to this heading">¶</a></h1>
 <p>As described in sections <a class="reference internal" href="../modeling-choices/computational/box.html#sec-coords"><span class="std std-ref">Computational box</span></a> and <a class="reference internal" href="../modeling-choices/computational/grid.html#sec-grid"><span class="std std-ref">Spatial grid</span></a>, PISM is a
 three-dimensional model. Moreover, parameters <a class="reference internal" href="../parameters/index.html#config-grid.Mx"><code class="docutils literal notranslate"><span class="pre">grid</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.Mx</span></code></a> and <a class="reference internal" href="../parameters/index.html#config-grid.My"><code class="docutils literal notranslate"><span class="pre">grid</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.My</span></code></a> have
 to be greater than or equal to three, so it is not possible to turn PISM into a 2D
@@ -46,20 +44,20 @@ the <span class="math notranslate nohighlight">\(y\)</span>-direction.</p>
 <p>In this case <a class="reference internal" href="../parameters/index.html#config-grid.My"><code class="docutils literal notranslate"><span class="pre">grid</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.My</span></code></a> can be any number; we want to avoid unnecessary
 computations, though, so <a class="reference internal" href="../parameters/index.html#config-grid.My"><code class="docutils literal notranslate"><span class="pre">grid</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.My</span></code></a> of <span class="math notranslate nohighlight">\(3\)</span> is the obvious choice.</p>
 <p>One remaining problem is that PISM still expects input files to contain both <code class="docutils literal notranslate"><span class="pre">x</span></code> and
-<code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions. To help with this, PISM comes with a Python script <code class="docutils literal notranslate"><span class="pre">flowline.py</span></code> that
+<code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions. To help with this, PISM comes with a Python script <code class="docutils literal notranslate"><span class="pre">pism_flowline</span></code> that
 turns NetCDF files with <span class="math notranslate nohighlight">\(N\)</span> grid points along a flow line into files with 2D fields
-containing <span class="math notranslate nohighlight">\(N\times3\)</span> grid points.<a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+containing <span class="math notranslate nohighlight">\(N\times3\)</span> grid points.<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Here’s an example which uses the script <code class="docutils literal notranslate"><span class="pre">examples/preprocessing/flowlineslab.py</span></code> to
 create a minimal, and obviously unrealistic, dataset. The file <code class="docutils literal notranslate"><span class="pre">slab.nc</span></code> created by this
 script contains all the required information but is not ready to use with PISM. Proceed as
 follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>examples/preprocessing/flowlineslab.py <span class="c1"># creates slab.nc with only an x-direction</span>
-flowline.py -o slab-in.nc --expand -d y slab.nc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>examples/preprocessing/flowlineslab.py<span class="w"> </span><span class="c1"># creates slab.nc with only an x-direction</span>
+pism_flowline<span class="w"> </span>-o<span class="w"> </span>slab-in.nc<span class="w"> </span>--expand<span class="w"> </span>-d<span class="w"> </span>y<span class="w"> </span>slab.nc
 </pre></div>
 </div>
-<p>This produces a PISM-ready <code class="docutils literal notranslate"><span class="pre">slab-in.nc</span></code>. Specifically, <code class="docutils literal notranslate"><span class="pre">flowline.py</span></code> “expands” its
+<p>This produces a PISM-ready <code class="docutils literal notranslate"><span class="pre">slab-in.nc</span></code>. Specifically, <code class="docutils literal notranslate"><span class="pre">pism_flowline</span></code> “expands” its
 input file in the <span class="math notranslate nohighlight">\(y\)</span>-direction. Now we can “bootstrap” from <code class="docutils literal notranslate"><span class="pre">slab-in.nc</span></code>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 2 pismr \
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 2 pism \
         -surface given \
         -bootstrap -i slab-in.nc \
         -Mx 201 -Lx 1000 \
@@ -74,12 +72,13 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
 </pre></div>
 </div>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>This script requires the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> Python modules. Run
-<code class="docutils literal notranslate"><span class="pre">flowline.py</span> <span class="pre">--help</span></code> for a full list of options.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This script requires the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code> Python modules. Run
+<code class="docutils literal notranslate"><span class="pre">pism_flowline</span> <span class="pre">--help</span></code> for a full list of options.</p>
+</aside>
+</aside>
 </section>
 
 
@@ -118,7 +117,7 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -128,6 +127,7 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Practical usage</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="netcdf-tools.html">Handling NetCDF files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="input-output.html">Input and output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">Interpolation of input data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="time-stepping.html">Understanding adaptive time-stepping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-time-series.html">Scalar diagnostic quantities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-diagnostics.html">Spatially-varying diagnostic quantities</a></li>
@@ -156,6 +156,8 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -169,16 +171,14 @@ ncwa -O -a time,y slab-out.nc slab-out.nc
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

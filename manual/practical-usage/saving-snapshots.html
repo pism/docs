@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Snapshots of the model state &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Snapshots of the model state &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Run-time diagnostic viewers" href="diagnostic-viewers.html" />
@@ -34,7 +32,7 @@
     <div class="body" role="main">
       
   <section id="snapshots-of-the-model-state">
-<span id="sec-snapshots"></span><h1>Snapshots of the model state<a class="headerlink" href="#snapshots-of-the-model-state" title="Permalink to this headline">¶</a></h1>
+<span id="sec-snapshots"></span><h1>Snapshots of the model state<a class="headerlink" href="#snapshots-of-the-model-state" title="Link to this heading">¶</a></h1>
 <p>Sometimes you want to check the model state every <span class="math notranslate nohighlight">\(1000\)</span> years, for example. One possible
 solution is to run PISM for a thousand years, have it save all the fields at the end of
 the run, then restart and run for another thousand, and etc. This forces the adaptive
@@ -42,8 +40,8 @@ time-stepping mechanism to stop <em>exactly</em> at multiples of <span class="ma
 desirable in some cases.</p>
 <p>If saving exactly at specified times is not critical, then use the <code class="option docutils literal notranslate"><span class="pre">-save_file</span></code> and
 <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> options. For example,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 10000 -o output.nc -save_file snapshots.nc \
-      -save_times 1000:1000:10000
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 10000 -o output.nc -save_file snapshots.nc \
+     -save_times 1000:1000:10000
 </pre></div>
 </div>
 <p>starts a PISM evolution run, initializing from <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code>, running for 10000 years and
@@ -56,16 +54,16 @@ comparable to the model time-steps. This is not a problem in the typical case in
 snapshot spacing is much greater than the length of a typical time step.</p>
 <p>It is also possible to save snapshots at intervals that are not equally-spaced by giving
 the <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> option a comma-separated list. For example,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 10000 -o output.nc \
-      -save_file snapshots.nc \
-      -save_times 1000,1500,2000,5000
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 10000 -o output.nc \
+     -save_file snapshots.nc \
+     -save_times 1000,1500,2000,5000
 </pre></div>
 </div>
 <p>will save snapshots on the first time-step after years <span class="math notranslate nohighlight">\(1000\)</span>, <span class="math notranslate nohighlight">\(1500\)</span>, <span class="math notranslate nohighlight">\(2000\)</span> and <span class="math notranslate nohighlight">\(5000\)</span>.
 The comma-separated list given to the <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> option can be at most <span class="math notranslate nohighlight">\(200\)</span>
 numbers long.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">snapshots.nc</span></code> was created by the command above, running</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i snapshots.nc -y 1000 -o output_2.nc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i snapshots.nc -y 1000 -o output_2.nc
 </pre></div>
 </div>
 <p>will initialize using the last record in the file, at about <span class="math notranslate nohighlight">\(5000\)</span> years. By
@@ -98,8 +96,8 @@ snapshots at equal wall-clock time (as opposed to model time) intervals by addin
 </div>
 <p>It is also possible to save snapshots to separate files using the <code class="option docutils literal notranslate"><span class="pre">-save_split</span></code> option.
 For example, the run above can be changed to</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 10000 -o output.nc -save_file snapshots \
-      -save_times 1000,1500,2000,5000 -save_split
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 10000 -o output.nc -save_file snapshots \
+     -save_times 1000,1500,2000,5000 -save_split
 </pre></div>
 </div>
 <p>for this purpose. This will produce files called <code class="docutils literal notranslate"><span class="pre">snapshots-year.nc</span></code>. This option is
@@ -108,7 +106,7 @@ reopen a large file at each snapshot when <code class="option docutils literal n
 like NCO and <code class="docutils literal notranslate"><span class="pre">ncview</span></code> usually behave as desired with wildcards like
 “<code class="docutils literal notranslate"><span class="pre">snapshots-*.nc</span></code>”.</p>
 <section id="parameters">
-<span id="sec-snapshot-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<span id="sec-snapshot-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <ol class="simple">
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.snapshot.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a> Snapshot (output) file name (or prefix, if saving to individual files).</p></li>
 <li><p><a class="reference internal" href="../parameters/index.html#config-output.snapshot.size"><code class="docutils literal notranslate"><span class="pre">size</span></code></a> (<code class="docutils literal notranslate"><span class="pre">small</span></code>) The “size” of a snapshot file. See parameters <a class="reference internal" href="../parameters/index.html#config-output.sizes.medium"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sizes</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.medium</span></code></a>, <a class="reference internal" href="../parameters/index.html#config-output.sizes.big_2d"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sizes</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.big_2d</span></code></a>, <a class="reference internal" href="../parameters/index.html#config-output.sizes.big"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.sizes</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.big</span></code></a></p></li>
@@ -154,7 +152,7 @@ like NCO and <code class="docutils literal notranslate"><span class="pre">ncview
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -164,6 +162,7 @@ like NCO and <code class="docutils literal notranslate"><span class="pre">ncview
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Practical usage</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="netcdf-tools.html">Handling NetCDF files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="input-output.html">Input and output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">Interpolation of input data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="time-stepping.html">Understanding adaptive time-stepping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-time-series.html">Scalar diagnostic quantities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saving-diagnostics.html">Spatially-varying diagnostic quantities</a></li>
@@ -192,6 +191,8 @@ like NCO and <code class="docutils literal notranslate"><span class="pre">ncview
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -205,16 +206,14 @@ like NCO and <code class="docutils literal notranslate"><span class="pre">ncview
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

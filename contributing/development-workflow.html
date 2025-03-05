@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Development workflow &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <title>Development workflow &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
+    <script src="../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="How do I…?" href="how-to.html" />
@@ -32,7 +30,7 @@
     <div class="body" role="main">
       
   <section id="development-workflow">
-<span id="sec-development-workflow"></span><h1><a class="toc-backref" href="#id9">Development workflow</a><a class="headerlink" href="#development-workflow" title="Permalink to this headline">¶</a></h1>
+<span id="sec-development-workflow"></span><h1><a class="toc-backref" href="#id9" role="doc-backlink">Development workflow</a><a class="headerlink" href="#development-workflow" title="Link to this heading">¶</a></h1>
 <p>The recommended development workflow is:</p>
 <ol class="arabic simple">
 <li><p>When starting a new project, create a topic branch starting from <code class="docutils literal notranslate"><span class="pre">dev</span></code>. If you are
@@ -50,12 +48,12 @@ warnings.</p></li>
 <li><p>Add verification or regression tests.</p></li>
 <li><p>Test your code and repeat 2a–2c until all tests pass.</p></li>
 <li><p>Update documentation (if necessary).</p></li>
-<li><p>Update the change log <code class="docutils literal notranslate"><span class="pre">CHANGES.rst</span></code>.<a class="footnote-reference brackets" href="#id6" id="id1">1</a></p></li>
+<li><p>Update the change log <code class="docutils literal notranslate"><span class="pre">CHANGES.rst</span></code>.<a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 <li><p>Merge new features into <code class="docutils literal notranslate"><span class="pre">dev</span></code> and fixes into <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> (or submit a pull
 request).</p></li>
 </ol>
 <p>This document covers the tools and approaches we found useful for the steps listed above.</p>
-<div class="contents topic" id="contents">
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#development-workflow" id="id9">Development workflow</a></p>
@@ -85,9 +83,9 @@ request).</p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="setting-up-the-environment">
-<span id="sec-developmental-environment"></span><h2><a class="toc-backref" href="#id10">Setting up the environment</a><a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">¶</a></h2>
+<span id="sec-developmental-environment"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Setting up the environment</a><a class="headerlink" href="#setting-up-the-environment" title="Link to this heading">¶</a></h2>
 <p>The majority of interesting PISM runs are performed on supercomputers, but we <strong>do not</strong>
 recommend using supercomputers for development.</p>
 <blockquote>
@@ -108,23 +106,19 @@ debugging enabled (option <code class="docutils literal notranslate"><span class
 needed. Optimized PETSc builds (using <code class="docutils literal notranslate"><span class="pre">--with-debugging=0</span></code>) are faster and this helps with
 overall productivity.</p>
 <p>Configure PISM with debugging symbols enabled.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PETSC_DIR</span><span class="o">=</span>~/local/petsc/petsc-3.11.3/
-<span class="nb">export</span> <span class="nv">PETSC_ARCH</span><span class="o">=</span>opt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PETSC_DIR</span><span class="o">=</span>~/local/petsc/petsc-3.11.3/
+<span class="nb">export</span><span class="w"> </span><span class="nv">PETSC_ARCH</span><span class="o">=</span>opt
 
-<span class="nv">CC</span><span class="o">=</span>mpicc <span class="nv">CXX</span><span class="o">=</span>mpicxx cmake <span class="se">\</span>
-    -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug <span class="se">\</span>
-    -DPism_BUILD_EXTRA_EXECS<span class="o">=</span>YES <span class="se">\</span>
-    -DPism_BUILD_PYTHON_BINDINGS<span class="o">=</span>YES <span class="se">\</span>
-    -DPism_DEBUG<span class="o">=</span>YES <span class="se">\</span>
-    <span class="si">${</span><span class="nv">pism_source_dir</span><span class="si">}</span>
+<span class="nv">CC</span><span class="o">=</span>mpicc<span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>mpicxx<span class="w"> </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DPism_BUILD_EXTRA_EXECS<span class="o">=</span>YES<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DPism_BUILD_PYTHON_BINDINGS<span class="o">=</span>YES<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DPism_DEBUG<span class="o">=</span>YES<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">pism_source_dir</span><span class="si">}</span>
 </pre></div>
 </div>
 <table class="docutils align-default" id="tab-cmake-development-flags">
-<caption><span class="caption-number">Table 41 </span><span class="caption-text">PISM’s configuration flags for development</span><a class="headerlink" href="#tab-cmake-development-flags" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<caption><span class="caption-number">Table 42 </span><span class="caption-text">PISM’s configuration flags for development</span><a class="headerlink" href="#tab-cmake-development-flags" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Flag</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -147,7 +141,7 @@ overall productivity.</p>
 </table>
 </section>
 <section id="editing-source-code">
-<span id="sec-editor"></span><h2><a class="toc-backref" href="#id11">Editing source code</a><a class="headerlink" href="#editing-source-code" title="Permalink to this headline">¶</a></h2>
+<span id="sec-editor"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Editing source code</a><a class="headerlink" href="#editing-source-code" title="Link to this heading">¶</a></h2>
 <p>Any text editor supporting C++, Python, and reStructuredText will work, but we recommend
 <a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a>.</p>
 <p>Your editor needs to provide the ability to jump from a compiler’s error message to the
@@ -157,24 +151,24 @@ relevant part of the code. In Emacs, use <code class="docutils literal notransla
 helpful; try an IDE such as <a class="reference external" href="https://kdevelop.org/">KDevelop</a>, for example.</p>
 </section>
 <section id="compiling-pism">
-<span id="sec-compiling-pism"></span><h2><a class="toc-backref" href="#id12">Compiling PISM</a><a class="headerlink" href="#compiling-pism" title="Permalink to this headline">¶</a></h2>
+<span id="sec-compiling-pism"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">Compiling PISM</a><a class="headerlink" href="#compiling-pism" title="Link to this heading">¶</a></h2>
 <p>If the computer you use for development has multiple CPU cores you should tell <code class="docutils literal notranslate"><span class="pre">make</span></code> to
 use all of them. Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-j4</span></code> on a four-core laptop, for example; this will
 significantly speed up compilation.</p>
 <p>To further speed up re-compiling PISM, install <a class="reference external" href="https://ccache.dev/">ccache</a> and configure PISM as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;ccache mpicc&quot;</span> <span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;ccache mpicxx&quot;</span> cmake ...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;ccache mpicc&quot;</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;ccache mpicxx&quot;</span><span class="w"> </span>cmake<span class="w"> </span>...
 </pre></div>
 </div>
 <p>It may be helpful to use <a class="reference external" href="https://lld.llvm.org/">LLD</a> to link PISM during development since it is a lot faster
 than GNU ld. Add the following <a class="reference external" href="https://cmake.org/">CMake</a> options to give this a try.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span><span class="s2">&quot;-fuse-ld=lld&quot;</span> <span class="se">\</span>
--DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span><span class="s2">&quot;-fuse-ld=lld&quot;</span> <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span><span class="s2">&quot;-fuse-ld=lld&quot;</span><span class="w"> </span><span class="se">\</span>
+-DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span><span class="s2">&quot;-fuse-ld=lld&quot;</span><span class="w"> </span><span class="se">\</span>
 -DCMAKE_MODULE_LINKER_FLAGS<span class="o">=</span><span class="s2">&quot;-fuse-ld=lld&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="debugging">
-<span id="sec-debugging-pism"></span><h2><a class="toc-backref" href="#id13">Debugging</a><a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<span id="sec-debugging-pism"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Debugging</a><a class="headerlink" href="#debugging" title="Link to this heading">¶</a></h2>
 <p>The first step in debugging an issue is <em>always</em> this:</p>
 <blockquote>
 <div><p>find the shortest simulation using the smallest possible grid that exhibits the
@@ -182,7 +176,7 @@ problematic behavior.</p>
 </div></blockquote>
 <p>It does not have to be <em>the</em> shortest simulation, but it should complete (or stop because
 of a failure) within seconds when running on the machine used for development.</p>
-<p>A debugger such as <a class="reference external" href="https://www.gnu.org/software/gdb/">GDB</a> or <a class="reference external" href="https://lldb.llvm.org/">LLDB</a> can be very useful.<a class="footnote-reference brackets" href="#id7" id="id2">2</a> There are many online tutorials
+<p>A debugger such as <a class="reference external" href="https://www.gnu.org/software/gdb/">GDB</a> or <a class="reference external" href="https://lldb.llvm.org/">LLDB</a> can be very useful.<a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> There are many online tutorials
 for both.</p>
 <p>You will need to know how to</p>
 <ul class="simple">
@@ -205,7 +199,7 @@ often significantly slows down execution.</p>
 to the top of the file (if it is not there), then add <code class="docutils literal notranslate"><span class="pre">assert(!condition);</span></code> to the place
 in the code where you would like to stop if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is met.</p>
 <p>For example,</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">228</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">146</span><span class="p">));</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">228</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">146</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>will stop execution at the grid point where <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">228</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">==</span> <span class="pre">146</span></code>.</p>
@@ -217,16 +211,16 @@ errors are often caused by these). Consider using <a class="reference external" 
 a small test case reproducing the error.</p>
 </div>
 <section id="floating-point-exceptions">
-<h3><a class="toc-backref" href="#id14">Floating point exceptions</a><a class="headerlink" href="#floating-point-exceptions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Floating point exceptions</a><a class="headerlink" href="#floating-point-exceptions" title="Link to this heading">¶</a></h3>
 <p>Run PISM like this</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pismr -fp_trap -on_error_attach_debugger <span class="o">[</span>other options<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-fp_trap<span class="w"> </span>-on_error_attach_debugger<span class="w"> </span><span class="o">[</span>other<span class="w"> </span>options<span class="o">]</span>
 </pre></div>
 </div>
 <p>to catch floating point exceptions (division by zero, operations with a not-a-number or
 infinity, square root of a negative number, etc).</p>
 </section>
 <section id="issues-visible-in-parallel-runs-only">
-<h3><a class="toc-backref" href="#id15">Issues visible in parallel runs only</a><a class="headerlink" href="#issues-visible-in-parallel-runs-only" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Issues visible in parallel runs only</a><a class="headerlink" href="#issues-visible-in-parallel-runs-only" title="Link to this heading">¶</a></h3>
 <p>Every once in a while a bug shows up in a parallel run but <em>not</em> in an equivalent serial
 one. These bugs tend to be hard to fix and there is no definitive technique (or tool) that
 helps with this. Here are some tips, though.</p>
@@ -252,13 +246,13 @@ have experience with it and cannot give any advice.</p></li>
 </ul>
 </section>
 <section id="issues-caught-by-automatic-tests">
-<span id="sec-continuous-integration"></span><h3><a class="toc-backref" href="#id16">Issues caught by automatic tests</a><a class="headerlink" href="#issues-caught-by-automatic-tests" title="Permalink to this headline">¶</a></h3>
+<span id="sec-continuous-integration"></span><h3><a class="toc-backref" href="#id16" role="doc-backlink">Issues caught by automatic tests</a><a class="headerlink" href="#issues-caught-by-automatic-tests" title="Link to this heading">¶</a></h3>
 <p>Every time somebody pushes changes to PISM’s repository on GitHub the continuous
 integration system attempts to build PISM and (if it was built successfully) run a suite
 of tests.</p>
 <p>It is often helpful to be able to run the same tests locally. To do this, install <a class="reference external" href="https://www.docker.com/">Docker</a>
 and <a class="reference external" href="https://circleci.com/docs/local-cli/">CircleCI CLI</a> (command-line interface), then run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>circleci <span class="nb">local</span> execute --job<span class="o">={</span>job<span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>circleci<span class="w"> </span><span class="nb">local</span><span class="w"> </span>execute<span class="w"> </span>--job<span class="o">={</span>job<span class="o">}</span>
 <span class="c1"># where job is one of</span>
 <span class="c1"># build-gcc build-clang</span>
 <span class="c1"># build-clang-minimal build-gcc-minimal build-manual</span>
@@ -267,34 +261,34 @@ and <a class="reference external" href="https://circleci.com/docs/local-cli/">Ci
 <p>in PISM’s source code directory.</p>
 </section>
 <section id="using-clang-tidy">
-<span id="sec-clang-tidy"></span><h3><a class="toc-backref" href="#id17">Using <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code></a><a class="headerlink" href="#using-clang-tidy" title="Permalink to this headline">¶</a></h3>
+<span id="sec-clang-tidy"></span><h3><a class="toc-backref" href="#id17" role="doc-backlink">Using <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code></a><a class="headerlink" href="#using-clang-tidy" title="Link to this heading">¶</a></h3>
 <p>Clang’s tool <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code> can help one find possible portability, readability, and
 performance issues, resulting in cleaner, easier to maintain code.</p>
 <p>To use it, add <code class="docutils literal notranslate"><span class="pre">-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</span></code> to PISM’s CMake options. This will
 tell CMake to save information needed by <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code>.</p>
 <p>Then save the script below to <code class="docutils literal notranslate"><span class="pre">tidy.sh</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="src-clang-tidy">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Running <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code></span><a class="headerlink" href="#src-clang-tidy" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Running <code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code></span><a class="headerlink" href="#src-clang-tidy" title="Link to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="nb">set</span> -e
-<span class="nb">set</span> -u
+<span class="nb">set</span><span class="w"> </span>-e
+<span class="nb">set</span><span class="w"> </span>-u
 
 <span class="nv">build_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="p">:?ERROR: PISM build directory not specified.</span><span class="si">}</span>
 <span class="nv">input_file</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="p">:?ERROR: Input file not specified.</span><span class="si">}</span>
 
 <span class="c1"># Extract compiler options specifying MPI&#39;s include directories</span>
-<span class="nv">mpi</span><span class="o">=</span><span class="k">$(</span>mpicc -show <span class="p">|</span> grep -E -o -e <span class="s2">&quot;-I[^ ]+&quot;</span><span class="k">)</span>
+<span class="nv">mpi</span><span class="o">=</span><span class="k">$(</span>mpicc<span class="w"> </span>-show<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span>-o<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;-I[^ ]+&quot;</span><span class="k">)</span>
 
 <span class="c1"># Run clang-tidy</span>
-clang-tidy --extra-arg<span class="o">=</span><span class="si">${</span><span class="nv">mpi</span><span class="si">}</span> -p <span class="si">${</span><span class="nv">build_dir</span><span class="si">}</span> <span class="si">${</span><span class="nv">input_file</span><span class="si">}</span>
+clang-tidy<span class="w"> </span>--extra-arg<span class="o">=</span><span class="si">${</span><span class="nv">mpi</span><span class="si">}</span><span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">build_dir</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">input_file</span><span class="si">}</span>
 </pre></div>
 </div>
 </div>
 <p>This scrips assumes that PISM’s build directory is in <code class="docutils literal notranslate"><span class="pre">~/local/build/pism</span></code>. You may need
 to adjust this to suit your setup.</p>
 <p>Now, to get the report about a source file <code class="docutils literal notranslate"><span class="pre">foo.cc</span></code>, run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tidy.sh foo.cc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tidy.sh<span class="w"> </span>foo.cc
 </pre></div>
 </div>
 <p>The output is formatted in a way similar to compiler error messages, which makes it easy
@@ -302,8 +296,8 @@ to navigate using Emacs or a similar editor.</p>
 </section>
 </section>
 <section id="writing-tests">
-<span id="sec-writing-tests"></span><h2><a class="toc-backref" href="#id18">Writing tests</a><a class="headerlink" href="#writing-tests" title="Permalink to this headline">¶</a></h2>
-<p>All contributions containing new features should contain tests for the new code.<a class="footnote-reference brackets" href="#id8" id="id3">3</a></p>
+<span id="sec-writing-tests"></span><h2><a class="toc-backref" href="#id18" role="doc-backlink">Writing tests</a><a class="headerlink" href="#writing-tests" title="Link to this heading">¶</a></h2>
+<p>All contributions containing new features should contain tests for the new code.<a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <p>A contribution fixing a bug should (ideally) contain a test that will ensure that it is
 fixed.</p>
 <p>Add verification tests (tests comparing results to an analytical solution) whenever
@@ -339,9 +333,9 @@ of the code. See tests in <code class="docutils literal notranslate"><span class
 <a class="reference external" href="mailto:uaf-pism&#37;&#52;&#48;alaska&#46;edu">uaf-pism<span>&#64;</span>alaska<span>&#46;</span>edu</a> and remind us to document them.</p>
 </div>
 <section id="running-tests">
-<h3><a class="toc-backref" href="#id19">Running tests</a><a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Running tests</a><a class="headerlink" href="#running-tests" title="Link to this heading">¶</a></h3>
 <p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> in parallel by adding</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CTEST_PARALLEL_LEVEL</span><span class="o">=</span>N
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CTEST_PARALLEL_LEVEL</span><span class="o">=</span>N
 </pre></div>
 </div>
 <p>to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>. This will tell <code class="docutils literal notranslate"><span class="pre">ctest</span></code> to run <code class="docutils literal notranslate"><span class="pre">N</span></code> at the same time. Or run
@@ -349,13 +343,13 @@ of the code. See tests in <code class="docutils literal notranslate"><span class
 </section>
 </section>
 <section id="editing-pism-s-manual">
-<span id="sec-editing-the-manual"></span><h2><a class="toc-backref" href="#id20">Editing PISM’s manual</a><a class="headerlink" href="#editing-pism-s-manual" title="Permalink to this headline">¶</a></h2>
+<span id="sec-editing-the-manual"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink">Editing PISM’s manual</a><a class="headerlink" href="#editing-pism-s-manual" title="Link to this heading">¶</a></h2>
 <p>PISM’s manual is written using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a> markup and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html">Sphinx</a>.</p>
 <p>See <a class="reference internal" href="../installation/documentation.html#sec-install-documentation"><span class="std std-ref">Rebuilding PISM documentation</span></a> for a list of tools needed to build PISM’s
 documentation.</p>
 <p>When working on major edits, <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> can save you a lot of
 time. Run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make manual_autobuild
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>manual_autobuild
 </pre></div>
 </div>
 <p>in the build directory to get a browser window containing PISM’s manual that will stay up
@@ -365,7 +359,7 @@ to date with your edits.</p>
 <p>Edit <code class="docutils literal notranslate"><span class="pre">doc/sphinx/math-definitions.tex</span></code> to add custom LaTeX commands used in formulas
 (one per line).</p>
 <section id="listing-configuration-parameters">
-<span id="sec-manual-pism-parameters"></span><h3><a class="toc-backref" href="#id21">Listing configuration parameters</a><a class="headerlink" href="#listing-configuration-parameters" title="Permalink to this headline">¶</a></h3>
+<span id="sec-manual-pism-parameters"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">Listing configuration parameters</a><a class="headerlink" href="#listing-configuration-parameters" title="Link to this heading">¶</a></h3>
 <p>The list in <a class="reference internal" href="../manual/parameters/index.html#sec-parameter-list"><span class="std std-ref">Configuration parameters</span></a> is generated from <code class="docutils literal notranslate"><span class="pre">src/pism_config.cdl</span></code>. Edit this file to
 update the list.</p>
 <p>When documenting a sub-model, use the <code class="docutils literal notranslate"><span class="pre">:config:</span></code> role to mention a parameter. This will
@@ -380,31 +374,34 @@ this:</p>
 </div>
 <p>This is the resulting list:</p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.beta_Clausius_Clapeyron"><code class="docutils literal notranslate"><span class="pre">beta_Clausius_Clapeyron</span></code></a> (7.9e-08<em> Kelvin / Pascal</em>) Clausius-Clapeyron constant relating melting temperature and pressure: <code class="docutils literal notranslate"><span class="pre">beta</span> <span class="pre">=</span> <span class="pre">dT</span> <span class="pre">/</span> <span class="pre">dP</span></code> <span id="id4">[<a class="reference internal" href="../zzz_references_html.html#id288" title="M. Lüthi, M. Funk, A. Iken, S. Gogineni, and M. Truffer. Mechanisms of fast flow in Jakobshavns Isbræ, Greenland; Part III: measurements of ice deformation, temperature and cross-borehole conductivity in boreholes to the bedrock. J. Glaciol., 48(162):369\,–\,385, 2002.">147</a>]</span></p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.density"><code class="docutils literal notranslate"><span class="pre">density</span></code></a> (910<em> kg meter-3</em>) <code class="docutils literal notranslate"><span class="pre">rho_i</span></code>; density of ice in ice sheet</p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.grain_size"><code class="docutils literal notranslate"><span class="pre">grain_size</span></code></a> (1<em> mm</em>) Default constant ice grain size to use with the Goldsby-Kohlstedt <span id="id5">[<a class="reference internal" href="../zzz_references_html.html#id156" title="D. L. Goldsby and D. L. Kohlstedt. Superplastic deformation of ice: experimental observations. J. Geophys. Res., 106(M6):11017–11030, 2001.">70</a>]</span> flow law</p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.specific_heat_capacity"><code class="docutils literal notranslate"><span class="pre">specific_heat_capacity</span></code></a> (2009<em> Joule / (kg Kelvin)</em>) specific heat capacity of pure ice at melting point T_0</p></li>
-<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.thermal_conductivity"><code class="docutils literal notranslate"><span class="pre">thermal_conductivity</span></code></a> (2.1<em> Joule / (meter Kelvin second)</em>) = W m-1 K-1; thermal conductivity of pure ice</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.beta_Clausius_Clapeyron"><code class="docutils literal notranslate"><span class="pre">beta_Clausius_Clapeyron</span></code></a> (7.9e-08<em> kelvin / Pascal</em>) Clausius-Clapeyron constant relating melting temperature and pressure: <code class="docutils literal notranslate"><span class="pre">beta</span> <span class="pre">=</span> <span class="pre">dT</span> <span class="pre">/</span> <span class="pre">dP</span></code> <span id="id4">[<a class="reference internal" href="../zzz_references_html.html#id289" title="M. Lüthi, M. Funk, A. Iken, S. Gogineni, and M. Truffer. Mechanisms of fast flow in Jakobshavns Isbræ, Greenland; Part III: measurements of ice deformation, temperature and cross-borehole conductivity in boreholes to the bedrock. J. Glaciol., 48(162):369\,–\,385, 2002.">147</a>]</span></p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.density"><code class="docutils literal notranslate"><span class="pre">density</span></code></a> (910<em> kg meter^-3</em>) <code class="docutils literal notranslate"><span class="pre">rho_i</span></code>; density of ice in ice sheet</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.grain_size"><code class="docutils literal notranslate"><span class="pre">grain_size</span></code></a> (1<em> mm</em>) Default constant ice grain size to use with the Goldsby-Kohlstedt <span id="id5">[<a class="reference internal" href="../zzz_references_html.html#id157" title="D. L. Goldsby and D. L. Kohlstedt. Superplastic deformation of ice: experimental observations. J. Geophys. Res., 106(M6):11017–11030, 2001.">70</a>]</span> flow law</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.specific_heat_capacity"><code class="docutils literal notranslate"><span class="pre">specific_heat_capacity</span></code></a> (2009<em> Joule / (kg kelvin)</em>) specific heat capacity of pure ice at melting point T_0</p></li>
+<li><p><a class="reference internal" href="../manual/parameters/index.html#config-constants.ice.thermal_conductivity"><code class="docutils literal notranslate"><span class="pre">thermal_conductivity</span></code></a> (2.1<em> Joule / (meter kelvin second)</em>) = W m-1 K-1; thermal conductivity of pure ice</p></li>
 </ol>
 <p>For this to work, configuration parameters should be documented in <code class="docutils literal notranslate"><span class="pre">src/pism_config.cdl</span></code> (see the
 <code class="docutils literal notranslate"><span class="pre">..._doc</span></code> attribute for each configuration parameter).</p>
 </section>
 <section id="listing-diagnostic-quantities">
-<span id="sec-manual-pism-diagnostics"></span><h3><a class="toc-backref" href="#id22">Listing diagnostic quantities</a><a class="headerlink" href="#listing-diagnostic-quantities" title="Permalink to this headline">¶</a></h3>
+<span id="sec-manual-pism-diagnostics"></span><h3><a class="toc-backref" href="#id22" role="doc-backlink">Listing diagnostic quantities</a><a class="headerlink" href="#listing-diagnostic-quantities" title="Link to this heading">¶</a></h3>
 <p>The list of diagnostics reported by PISM is generated by running the PISM code itself. To
 make sure that it is up to date, run <code class="docutils literal notranslate"><span class="pre">make</span></code> in <code class="docutils literal notranslate"><span class="pre">doc/sphinx</span></code> and commit the changes.</p>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>See <a class="reference external" href="https://keepachangelog.com/">Keep a change log</a> for inspiration.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>In most cases a serial debugger is sufficient.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Contributions of tests for existing code are also welcome.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>See <a class="reference external" href="https://keepachangelog.com/">Keep a change log</a> for inspiration.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>In most cases a serial debugger is sufficient.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Contributions of tests for existing code are also welcome.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -445,7 +442,7 @@ make sure that it is up to date, run <code class="docutils literal notranslate">
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">PISM User’s Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../climate_forcing/index.html">Climate forcing</a></li>
@@ -468,6 +465,8 @@ make sure that it is up to date, run <code class="docutils literal notranslate">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -481,16 +480,14 @@ make sure that it is up to date, run <code class="docutils literal notranslate">
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

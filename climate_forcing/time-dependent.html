@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using time-dependent forcing &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Using time-dependent forcing &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
+    <script src="../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Examples and corresponding options" href="examples.html" />
@@ -34,8 +32,8 @@
     <div class="body" role="main">
       
   <section id="using-time-dependent-forcing">
-<span id="sec-forcing-time-dependent"></span><h1><a class="toc-backref" href="#id4">Using time-dependent forcing</a><a class="headerlink" href="#using-time-dependent-forcing" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
+<span id="sec-forcing-time-dependent"></span><h1><a class="toc-backref" href="#id4" role="doc-backlink">Using time-dependent forcing</a><a class="headerlink" href="#using-time-dependent-forcing" title="Link to this heading">¶</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#using-time-dependent-forcing" id="id4">Using time-dependent forcing</a></p>
@@ -54,13 +52,13 @@
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id5">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>PISM can use time-dependent <em>scalar</em> and <em>spatially-variable</em> forcing inputs.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">ncdump</span></code> output for a typical forcing file would look similar to <a class="reference internal" href="#src-forcing-time-dependent"><span class="std std-ref">this example</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="src-forcing-time-dependent">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Example time-dependent forcing</span><a class="headerlink" href="#src-forcing-time-dependent" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Example time-dependent forcing</span><a class="headerlink" href="#src-forcing-time-dependent" title="Link to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>netcdf delta_T {
 dimensions:
   nv = 2 ;
@@ -68,14 +66,14 @@ dimensions:
 variables:
   double nv(nv) ;
   double time(time) ;
-    time:units = &quot;365 days since 1-1-1&quot; ;
+    time:units = &quot;common_year since 1-1-1&quot; ;
     time:axis = &quot;T&quot; ;
     time:bounds = &quot;time_bounds&quot; ;
     time:calendar = &quot;365_day&quot; ;
     time:long_name = &quot;time&quot; ;
   double time_bounds(time, nv) ;
   double delta_T(time) ;
-    delta_T:units = &quot;Kelvin&quot; ;
+    delta_T:units = &quot;kelvin&quot; ;
     delta_T:long_name = &quot;temperature offsets&quot; ;
 data:
 
@@ -102,14 +100,14 @@ extrapolation instead.</p>
 </div>
 </section>
 <section id="scalar-time-dependent-inputs">
-<span id="sec-forcing-scalar"></span><h2><a class="toc-backref" href="#id6">Scalar time-dependent inputs</a><a class="headerlink" href="#scalar-time-dependent-inputs" title="Permalink to this headline">¶</a></h2>
+<span id="sec-forcing-scalar"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Scalar time-dependent inputs</a><a class="headerlink" href="#scalar-time-dependent-inputs" title="Link to this heading">¶</a></h2>
 <p>All scalar time-dependent inputs are interpreted as <em>piecewise-linear</em>.</p>
 <p>Time bounds are used to compute period length for periodic forcing and the time interval
 covered by provided data otherwise. Only the left end point of the first interval and the
 right end point of the last interval are used.</p>
 </section>
 <section id="spatially-variable-time-dependent-inputs">
-<span id="sec-forcing-spatially-variable"></span><h2><a class="toc-backref" href="#id7">Spatially-variable time-dependent inputs</a><a class="headerlink" href="#spatially-variable-time-dependent-inputs" title="Permalink to this headline">¶</a></h2>
+<span id="sec-forcing-spatially-variable"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Spatially-variable time-dependent inputs</a><a class="headerlink" href="#spatially-variable-time-dependent-inputs" title="Link to this heading">¶</a></h2>
 <p>To make <a class="reference internal" href="../manual/practical-usage/mass-conservation.html#sec-mass-conservation"><span class="std std-ref">balancing the books</span></a> possible PISM interprets
 <em>fluxes</em> such as the top surface mass balance, precipitation, and the sub shelf mass flux
 as <em>piecewise-constant in time</em> over intervals defined by time bounds.</p>
@@ -121,7 +119,7 @@ sea level elevation) are interpreted as <em>piecewise-linear in time</em>.</p>
 length for periodic forcing and the time interval covered by provided data otherwise.</p>
 </section>
 <section id="periodic-forcing">
-<span id="sec-periodic-forcing"></span><h2><a class="toc-backref" href="#id8">Periodic forcing</a><a class="headerlink" href="#periodic-forcing" title="Permalink to this headline">¶</a></h2>
+<span id="sec-periodic-forcing"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Periodic forcing</a><a class="headerlink" href="#periodic-forcing" title="Link to this heading">¶</a></h2>
 <p>A PISM forcing file with a periodic forcing <strong>has to contain exactly one period</strong>.</p>
 <p>The left end point of the first time interval defines the <em>start of the period</em>.</p>
 <p>The total duration of forcing in the file defines the length of the period. Specifically,
@@ -136,23 +134,23 @@ having the period of one thousand <span class="math notranslate nohighlight">\(3
 <li><p>A real life (Gregorian, Julian, etc) calendar does not usually make sense in
 simulations using periodic forcing.</p></li>
 <li><p>It is usually a good idea to use time units that are an integer multiple of one
-second, for example “day” or “365 days” as in the example above. This makes forcing
-files easier to interpret. (The units “years” corresponds to the mean tropical year.
-This is appropriate when converting from <code class="docutils literal notranslate"><span class="pre">m/s</span></code> to <code class="docutils literal notranslate"><span class="pre">m/year</span></code>, for example, but
-not for keeping track of time.)</p></li>
+second, for example “<code class="docutils literal notranslate"><span class="pre">day</span></code>” or “<code class="docutils literal notranslate"><span class="pre">common_year</span></code>” (a year consisting of 365 days) as
+in the example above. This makes forcing files easier to interpret. (The units
+“years” corresponds to the mean tropical year. This is appropriate when converting
+from <code class="docutils literal notranslate"><span class="pre">m/s</span></code> to <code class="docutils literal notranslate"><span class="pre">m/year</span></code>, for example, but not for keeping track of time.)</p></li>
 </ul>
 </div>
 </section>
 <section id="adding-time-bounds">
-<span id="sec-adding-time-bounds"></span><h2><a class="toc-backref" href="#id9">Adding time bounds</a><a class="headerlink" href="#adding-time-bounds" title="Permalink to this headline">¶</a></h2>
+<span id="sec-adding-time-bounds"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Adding time bounds</a><a class="headerlink" href="#adding-time-bounds" title="Link to this heading">¶</a></h2>
 <p><a class="reference external" href="https://nco.sourceforge.net/">NCO</a>'s <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> makes it easy to add time bounds to a data set.</p>
 <p>Save one of the scripts below to <code class="docutils literal notranslate"><span class="pre">add_time_bounds.txt</span></code> and then run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2 -O -S add_time_bounds.txt forcing.nc forcing-with-bounds.nc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2<span class="w"> </span>-O<span class="w"> </span>-S<span class="w"> </span>add_time_bounds.txt<span class="w"> </span>forcing.nc<span class="w"> </span>forcing-with-bounds.nc
 </pre></div>
 </div>
 <p>to add time bounds to <code class="docutils literal notranslate"><span class="pre">forcing.nc</span></code>.</p>
 <section id="times-as-mid-points-of-intervals">
-<h3><a class="toc-backref" href="#id10">Times as mid-points of intervals</a><a class="headerlink" href="#times-as-mid-points-of-intervals" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Times as mid-points of intervals</a><a class="headerlink" href="#times-as-mid-points-of-intervals" title="Link to this heading">¶</a></h3>
 <p>Use this script to interpret each time as a mid-point of the corresponding interval.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>defdim(&quot;nv&quot;,2);
 time_bnds=make_bounds(time,$nv,&quot;time_bnds&quot;);
@@ -160,19 +158,19 @@ time_bnds=make_bounds(time,$nv,&quot;time_bnds&quot;);
 </div>
 <p>or just use this one command:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Adding time bounds, interpreting times as mid-points of intervals</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2 -O -s <span class="s1">&#39;defdim(&quot;nv&quot;,2);time_bnds=make_bounds(time,$nv,&quot;time_bnds&quot;);&#39;</span> <span class="se">\</span>
-      forcing.nc forcing-with-bounds.nc
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Adding time bounds, interpreting times as mid-points of intervals</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2<span class="w"> </span>-O<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;defdim(&quot;nv&quot;,2);time_bnds=make_bounds(time,$nv,&quot;time_bnds&quot;);&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>forcing.nc<span class="w"> </span>forcing-with-bounds.nc
 </pre></div>
 </div>
 </div>
 </section>
 <section id="times-as-left-end-points-of-intervals">
-<h3><a class="toc-backref" href="#id11">Times as left end points of intervals</a><a class="headerlink" href="#times-as-left-end-points-of-intervals" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Times as left end points of intervals</a><a class="headerlink" href="#times-as-left-end-points-of-intervals" title="Link to this heading">¶</a></h3>
 <p>Use this script to interpret each time as a the left end point of the corresponding
 interval.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Adding time bounds, interpreting times as left end points of intervals</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Adding time bounds, interpreting times as left end points of intervals</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>time@bounds=&quot;time_bnds&quot;;
 defdim(&quot;nv&quot;,2);
 time_bnds=array(0,0,/$time,$nv/);
@@ -184,11 +182,11 @@ time_bnds(-1,1)=2*time(-1)-time(-2);
 </div>
 </section>
 <section id="times-as-right-end-points-of-intervals">
-<h3><a class="toc-backref" href="#id12">Times as right end points of intervals</a><a class="headerlink" href="#times-as-right-end-points-of-intervals" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Times as right end points of intervals</a><a class="headerlink" href="#times-as-right-end-points-of-intervals" title="Link to this heading">¶</a></h3>
 <p>Use this script to interpret each time as a the right end point of the corresponding
 interval.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Adding time bounds, interpreting times as right end points of intervals</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Adding time bounds, interpreting times as right end points of intervals</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>time@bounds=&quot;time_bnds&quot;;
 defdim(&quot;nv&quot;,2);
 time_bnds=array(0,0,/$time,$nv/);
@@ -238,7 +236,7 @@ time_bnds(0,0)=2*time(0)-time(1);
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">PISM User’s Manual</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Climate forcing</a><ul class="current">
@@ -260,6 +258,8 @@ time_bnds(0,0)=2*time(0)-time(1);
 <li class="toctree-l1"><a class="reference internal" href="../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -273,16 +273,14 @@ time_bnds(0,0)=2*time(0)-time(1);
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

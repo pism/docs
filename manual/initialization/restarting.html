@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Initialization from a saved model state &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <title>Initialization from a saved model state &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
+    <script src="../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Bootstrapping" href="bootstrapping.html" />
@@ -32,13 +30,13 @@
     <div class="body" role="main">
       
   <section id="initialization-from-a-saved-model-state">
-<h1>Initialization from a saved model state<a class="headerlink" href="#initialization-from-a-saved-model-state" title="Permalink to this headline">¶</a></h1>
+<h1>Initialization from a saved model state<a class="headerlink" href="#initialization-from-a-saved-model-state" title="Link to this heading">¶</a></h1>
 <p>“Initialization” has the specific, simple meaning in PISM that option “<code class="option docutils literal notranslate"><span class="pre">-i</span></code>” was
 used. If a previous PISM run has saved a NetCDF file using “<code class="option docutils literal notranslate"><span class="pre">-o</span></code>” then that file will
 contain complete initial conditions for continuing the run. The output file from the last
 run can be loaded with “<code class="option docutils literal notranslate"><span class="pre">-i</span></code>”:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -eisII A -y 100 -o foo.nc
-pismr -eisII A -i foo.nc -y 100 -o bar.nc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -eisII A -Mx 61 -My 61 -y 100 -o foo.nc
+pism -eisII A -Mx 61 -My 61 -i foo.nc -y 100 -o bar.nc
 </pre></div>
 </div>
 <p>As noted, verification tests (section <a class="reference internal" href="../verification/index.html#sec-verif"><span class="std std-ref">Verification</span></a>) and simplified-geometry experiments
@@ -46,29 +44,21 @@ pismr -eisII A -i foo.nc -y 100 -o bar.nc
 formulas in the source code. They can, however, be continued from saved model states using
 <code class="option docutils literal notranslate"><span class="pre">-i</span></code>. Specifying the simplified geometry experiment or verification test <em>is</em>,
 however, necessary if the run is to continue with the climate inputs for that experiment
-or test. For example, based on the above <code class="docutils literal notranslate"><span class="pre">pismr</span> <span class="pre">-eisII</span> <span class="pre">A</span></code> runs, it is valid to do</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -i foo.nc -y 100 -o bar.nc
+or test. For example, based on the above <code class="docutils literal notranslate"><span class="pre">pism</span> <span class="pre">-eisII</span> <span class="pre">A</span></code> runs, it is valid to do</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i foo.nc -y 100 -o bar.nc
 </pre></div>
 </div>
 <p>but the climate and other parameters use PISM default values, and thus are not
 (necessarily) the values specified in EISMINT II.</p>
 <section id="i-file-format">
-<span id="sec-i-format"></span><h2><code class="docutils literal notranslate"><span class="pre">-i</span></code> file format<a class="headerlink" href="#i-file-format" title="Permalink to this headline">¶</a></h2>
-<p>PISM produces CF-1.5 compliant NetCDF files. The easiest way to learn the output format
+<span id="sec-i-format"></span><h2><code class="docutils literal notranslate"><span class="pre">-i</span></code> file format<a class="headerlink" href="#i-file-format" title="Link to this heading">¶</a></h2>
+<p>PISM produces CF-1.6 compliant NetCDF files. The easiest way to learn the output format
 <em>and</em> the <code class="option docutils literal notranslate"><span class="pre">-i</span></code> format is to do a simple run and then look at the metadata in the
 resulting file, like this:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pismr -eisII A -y 10 -o foo.nc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -eisII A -Mx 61 -My 61 -y 10 -o foo.nc
 ncdump -h foo.nc | less
 </pre></div>
 </div>
-<p>Note that variables in the output file have a <code class="docutils literal notranslate"><span class="pre">pism_intent</span></code> attribute. When
-<code class="docutils literal notranslate"><span class="pre">pism_intent</span></code> is <code class="docutils literal notranslate"><span class="pre">diagnostic</span></code>, the variable can be deleted from the file without
-affecting whether PISM can use it as a <code class="option docutils literal notranslate"><span class="pre">-i</span></code> input file. Variables with
-<code class="docutils literal notranslate"><span class="pre">pism_intent</span></code> is <code class="docutils literal notranslate"><span class="pre">model_state</span></code>, by contrast, must be present when using <code class="option docutils literal notranslate"><span class="pre">-i</span></code>.</p>
-<p>The automatically-produced <code class="variable docutils literal notranslate"><span class="pre">time</span></code> variable has a <code class="docutils literal notranslate"><span class="pre">units</span></code> attribute like <code class="docutils literal notranslate"><span class="pre">&quot;seconds</span>
-<span class="pre">since</span> <span class="pre">1-1-1&quot;</span></code> because the CF metadata conventions require a reference date.</p>
-<p>By default PISM ignores this reference date except when it is used in unit conversions
-based on a calendar (see below).</p>
 </section>
 </section>
 
@@ -108,7 +98,7 @@ based on a calendar (see below).</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -132,6 +122,8 @@ based on a calendar (see below).</p>
 <li class="toctree-l1"><a class="reference internal" href="../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -145,16 +137,14 @@ based on a calendar (see below).</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>

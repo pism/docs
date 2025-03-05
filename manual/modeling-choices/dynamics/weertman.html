@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Weertman-style sliding law &#8212; PISM, a Parallel Ice Sheet Model 2.1.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Weertman-style sliding law &#8212; PISM, a Parallel Ice Sheet Model 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=9641f709" />
+    <script src="../../../_static/documentation_options.js?v=61d2f4bf"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Blatter’s model" href="blatter.html" />
@@ -34,14 +32,14 @@
     <div class="body" role="main">
       
   <section id="weertman-style-sliding-law">
-<span id="sec-weertman"></span><h1>Weertman-style sliding law<a class="headerlink" href="#weertman-style-sliding-law" title="Permalink to this headline">¶</a></h1>
+<span id="sec-weertman"></span><h1>Weertman-style sliding law<a class="headerlink" href="#weertman-style-sliding-law" title="Link to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This kind of sliding is, in general, a bad idea. We implement it to simplify
 comparisons of the “hybrid” model mentioned above to older studies using this
 parameterization.</p>
 </div>
-<p>The “Weertman-type sliding law” (<span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id170" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>, equations 5.35 and 5.91) has
+<p>The “Weertman-type sliding law” (<span id="id1">[<a class="reference internal" href="../../../zzz_references_html.html#id171" title="R. Greve and H. Blatter. Dynamics of Ice Sheets and Glaciers. Advances in Geophysical and Environmental Mechanics and Mathematics. Springer, 2009.">55</a>]</span>, equations 5.35 and 5.91) has
 the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{u}_s =
@@ -51,14 +49,14 @@ the form</p>
 \end{cases}\end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(T_b\)</span> is the ice temperature, and <span class="math notranslate nohighlight">\(T_m\)</span> is the pressure-melting temperature. The constant
 <span class="math notranslate nohighlight">\(C_b\)</span> and exponents <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are tuning parameters.</p>
-<p>The particular form implemented in PISM comes from equation 5 in <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id440" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span>:</p>
+<p>The particular form implemented in PISM comes from equation 5 in <span id="id2">[<a class="reference internal" href="../../../zzz_references_html.html#id441" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-weertman-sliding">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-weertman-sliding" title="Permalink to this equation">¶</a></span>\[\mathbf{u}_s = -\frac{2 A_s \beta_c (\rho g H)^{n}}{N - P} |\nabla h|^{n-1} \nabla h.\]</div>
-<table class="colwidths-given docutils align-default" id="tab-weertman-notation">
-<caption><span class="caption-number">Table 11 </span><span class="caption-text">Notation used in <a class="reference internal" href="#equation-eq-weertman-sliding">(5)</a></span><a class="headerlink" href="#tab-weertman-notation" title="Permalink to this table">¶</a></caption>
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-weertman-sliding" title="Link to this equation">¶</a></span>\[\mathbf{u}_s = -\frac{2 A_s \beta_c (\rho g H)^{n}}{N - P} |\nabla h|^{n-1} \nabla h.\]</div>
+<table class="docutils align-default" id="tab-weertman-notation">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Notation used in <a class="reference internal" href="#equation-eq-weertman-sliding">(6)</a></span><a class="headerlink" href="#tab-weertman-notation" title="Link to this table">¶</a></caption>
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col style="width: 10.0%" />
+<col style="width: 90.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -97,7 +95,7 @@ set to <span class="math notranslate nohighlight">\(1\)</span> in this implement
 </tbody>
 </table>
 <p>We assume that the basal water pressure is a given constant fraction of the overburden
-pressure: <span class="math notranslate nohighlight">\(P = k N\)</span>. This simplifies <a class="reference internal" href="#equation-eq-weertman-sliding">(5)</a> to</p>
+pressure: <span class="math notranslate nohighlight">\(P = k N\)</span>. This simplifies <a class="reference internal" href="#equation-eq-weertman-sliding">(6)</a> to</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{u}_s = -\frac{2 A_s}{1 - k} ( \rho g H\, |\nabla h| )^{n-1} \nabla h.\]</div>
 <p>This parameterization is used for grounded ice <em>where the base of the ice is temperate</em>.</p>
@@ -106,12 +104,12 @@ ice velocity) or <code class="option docutils literal notranslate"><span class="
 as a sliding law with the deformational flow modeled using the SIA model.</p>
 <p>Use configuration parameters <a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.k"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.weertman_sliding</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.k</span></code></a> and
 <a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.weertman_sliding</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.A</span></code></a> to set <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(A_s\)</span>, respectively. Default
-values come from <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id440" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span>.</p>
+values come from <span id="id3">[<a class="reference internal" href="../../../zzz_references_html.html#id441" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span>.</p>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <p>Prefix: <code class="docutils literal notranslate"><span class="pre">stress_balance.weertman_sliding.</span></code></p>
 <ol class="simple">
-<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (1.8e-16<em> Pa-3 year-1 m-2</em>) Sliding parameter in the Weertman-style sliding parameterization <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id440" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span></p></li>
+<li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.A"><code class="docutils literal notranslate"><span class="pre">A</span></code></a> (1.8e-16<em> Pa^-3 year^-1 m^-2</em>) Sliding parameter in the Weertman-style sliding parameterization <span id="id4">[<a class="reference internal" href="../../../zzz_references_html.html#id441" title="Jonathan H. Tomkin. Coupling glacial erosion and tectonics at active orogens: a numerical modeling study. Journal of Geophysical Research: Earth Surface, 112(F2):, 2007. URL: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005JF000332, doi:10.1029/2005JF000332.">71</a>]</span></p></li>
 <li><p><a class="reference internal" href="../../parameters/index.html#config-stress_balance.weertman_sliding.k"><code class="docutils literal notranslate"><span class="pre">k</span></code></a> (0.2) The ratio of the basal water pressure and the ice overburden pressure in the Weertman-style sliding parameterization.</p></li>
 </ol>
 </section>
@@ -153,7 +151,7 @@ values come from <span id="id3">[<a class="reference internal" href="../../../zz
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgments.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation/index.html">Installing PISM</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">PISM User’s Manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../std-greenland/index.html">Getting started: a Greenland ice sheet example</a></li>
@@ -182,6 +180,8 @@ values come from <span id="id3">[<a class="reference internal" href="../../../zz
 <li class="toctree-l1"><a class="reference internal" href="../../../technical/index.html">Technical notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing/index.html">Contributing to PISM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../authorship.html">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citing/index.html">Citing PISM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../publishing.html">Publishing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zzz_references_html.html">References</a></li>
 </ul>
 
@@ -195,16 +195,14 @@ values come from <span id="id3">[<a class="reference internal" href="../../../zz
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Git revision v2.1.1
-      committed by Constantine Khrulev
-      on 2024-12-04 13:36:58 -0900 |
-      &copy; 2004--2023, the PISM authors.
+      Built using PISM 2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05 |
+      &copy; 2004--2025, the PISM authors.
       
     </div>
   </body>
