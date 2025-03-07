@@ -1,5 +1,5 @@
 const DOCUMENTATION_OPTIONS = {
-    VERSION: '2.2.0-cb3567278 committed by Constantine Khrulev on 2025-03-05',
+    VERSION: '2.2.1-cd005eec8 committed by Constantine Khrulev on 2025-03-07',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,
     BUILDER: 'html',
