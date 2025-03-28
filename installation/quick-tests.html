@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quick tests of the installation &#8212; PISM, a Parallel Ice Sheet Model 2.2.1-cd005eec8 committed by Constantine Khrulev on 2025-03-07 documentation</title>
+    <title>Quick tests of the installation &#8212; PISM, a Parallel Ice Sheet Model 2.2.2-d6b3a29ca committed by Constantine Khrulev on 2025-03-28 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=e99f4f3c"></script>
+    <script src="../_static/documentation_options.js?v=cdb1caaa"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -47,6 +47,18 @@ on your machine. (In that case MPI will just run multiple processes on the one
 processor.) This run will also produce a NetCDF output file <code class="docutils literal notranslate"><span class="pre">unnamed.nc</span></code>, which can
 be read and viewed by NetCDF tools.</p>
 </li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Open MPI’s <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">N</span></code> stops with an error message if <code class="docutils literal notranslate"><span class="pre">N</span></code> is larger than the
+number of <em>processors</em> available.</p>
+<p>It is not recommended to <em>oversubscribe</em> nodes of a HPC cluster, i.e. request more CPUs
+than available. If you have to work around this, use <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">--oversubscribe</span> <span class="pre">-n</span> <span class="pre">N</span></code>
+instead or (if you cannot change the command), set the environment variable
+<code class="docutils literal notranslate"><span class="pre">OMPI_MCA_rmaps_base_oversubscribe=true</span></code>. Please see Open MPI documentation for
+details.</p>
+</div>
+<ol class="arabic">
 <li><p>Try an EISMINT II run using the PETSc viewers (under the X window system):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -eisII A -Mx 61 -My 61 -y 5000 -view thk,temppabase,velsurf_mag
 </pre></div>
@@ -163,7 +175,7 @@ in your build directory.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.1-cd005eec8 committed by Constantine Khrulev on 2025-03-07 |
+      Built using PISM 2.2.2-d6b3a29ca committed by Constantine Khrulev on 2025-03-28 |
       &copy; 2004--2025, the PISM authors.
       
     </div>
