@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>First run &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>First run &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -61,19 +61,25 @@ like this:</p>
 <span class="w">  </span>-skip<span class="w"> </span>-skip_max<span class="w"> </span><span class="m">10</span><span class="w"> </span>-grid.recompute_longitude_and_latitude<span class="w"> </span><span class="nb">false</span><span class="w"> </span>-ys<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-10000<span class="w"> </span>-ye<span class="w"> </span><span class="m">0</span><span class="w"> </span>-surface<span class="w"> </span>given<span class="w"> </span>-surface_given_file<span class="w"> </span>pism_Greenland_5km_v1.1.nc<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-front_retreat_file<span class="w"> </span>pism_Greenland_5km_v1.1.nc<span class="w"> </span>-sia_e<span class="w"> </span><span class="m">3</span>.0<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-ts_file<span class="w"> </span>ts_g20km_10ka.nc<span class="w"> </span>-ts_times<span class="w"> </span>-10000:yearly:0<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-extra_file<span class="w"> </span>ex_g20km_10ka.nc<span class="w"> </span>-extra_times<span class="w"> </span>-10000:100:0<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-extra_vars<span class="w"> </span>diffusivity,temppabase,tempicethk_basal,bmelt,tillwat,velsurf_mag,mask,thk,topg,usurf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-scalar_file<span class="w"> </span>scalar_g20km_10ka.nc<span class="w"> </span>-scalar_times<span class="w"> </span>-10000:yearly:0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-spatial_file<span class="w"> </span>spatial_g20km_10ka.nc<span class="w"> </span>-spatial_times<span class="w"> </span>-10000:100:0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-spatial_vars<span class="w"> </span>diffusivity,temppabase,tempicethk_basal,bmelt,tillwat,velsurf_mag,mask,thk,topg,usurf<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-o<span class="w"> </span>g20km_10ka.nc
 </pre></div>
 </div>
 <p>Let’s briefly deconstruct this run.</p>
-<p>At the front is “<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">8</span> <span class="pre">pism</span></code>”. This means that the PISM executable <code class="docutils literal notranslate"><span class="pre">pism</span></code> is
-run in parallel using eight processes (usually one per CPU core) under the <a class="reference external" href="https://www.mcs.anl.gov/research/projects/mpi/">Message Passing
-Interface</a>. Though we are assuming you have a workstation or laptop with at least
-8 cores, this example will work with 1 to about 50 processors, with reasonably good
+<p>At the front is “<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">8</span> <span class="pre">pism</span></code>”. The command line option <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">8</span></code> means that the
+PISM executable <code class="docutils literal notranslate"><span class="pre">pism</span></code> is run in parallel using eight processes (usually one per CPU
+core) under the <a class="reference external" href="https://www.mcs.anl.gov/research/projects/mpi/">Message Passing Interface</a>. Though we are assuming you have a
+workstation or laptop with at least 8 cores, this example will work with 1 (using
+<code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">1</span></code>) to about 50 (using <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">50</span></code>) processors, with reasonably good
 scaling in speed. Scaling can be good with more processors if we run at higher spatial
 resolution <span id="id2">[<a class="reference internal" href="../../zzz_references_html.html#id47" title="E. Bueler and J. Brown. Shallow shelf approximation as a “sliding law” in a thermodynamically coupled ice sheet model. J. Geophys. Res., 2009. F03008. doi:10.1029/2008JF001179.">10</a>]</span>, <span id="id3">[<a class="reference internal" href="../../zzz_references_html.html#id118" title="P. Dickens and T. Morey. Increasing the scalability of PISM for high resolution ice sheet models. In Proceedings of the 14th IEEE International Workshop on Parallel and Distributed Scientific and Engineering Computing, May 2013, Boston. 2013.">11</a>]</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">X</span> <span class="pre">pism</span> <span class="pre">...</span></code> on a system with less than <code class="docutils literal notranslate"><span class="pre">X</span></code> CPUs is not
+recommended and may fail.</p>
+</div>
 <p>Next, the proposed run uses option <code class="docutils literal notranslate"><span class="pre">-bootstrap</span></code> to start the run by “bootstrapping.”
 This term describes the creation, by heuristics and highly-simplified models, of the
 mathematical initial conditions required for a deterministic, time-dependent ice dynamics
@@ -92,9 +98,9 @@ the sea level) according to the input file (”<code class="docutils literal not
 enhanced ice softness (”<code class="docutils literal notranslate"><span class="pre">-sia_e</span> <span class="pre">3.0</span></code>”). See section <a class="reference internal" href="../modeling-choices/dynamics/rheology.html#sec-rheology"><span class="std std-ref">Ice rheology</span></a> for more on this
 enhancement parameter, which we also return to later in section <a class="reference internal" href="parameter-study.html#sec-paramstudy"><span class="std std-ref">An ice dynamics parameter study</span></a>.</p>
 <p>Then there are longish options describing the fields we want as output, including scalar
-time series (”<code class="docutils literal notranslate"><span class="pre">-ts_file</span> <span class="pre">ts_g20km_10ka.nc</span> <span class="pre">-ts_times</span> <span class="pre">-10000:yearly:0</span></code>”; see section
-<a class="reference internal" href="../practical-usage/index.html#sec-practical-usage"><span class="std std-ref">Practical usage</span></a>) and space-dependent fields (”<code class="docutils literal notranslate"><span class="pre">-extra_file</span> <span class="pre">...</span></code>”; again see
-section <a class="reference internal" href="../practical-usage/index.html#sec-practical-usage"><span class="std std-ref">Practical usage</span></a>), and finally the named output file (”<code class="docutils literal notranslate"><span class="pre">-o</span>
+time series (”<code class="docutils literal notranslate"><span class="pre">-scalar_file</span> <span class="pre">scalar_g20km_10ka.nc</span> <span class="pre">-scalar_times</span> <span class="pre">-10000:yearly:0</span></code>”; see
+section <a class="reference internal" href="../practical-usage/index.html#sec-practical-usage"><span class="std std-ref">Practical usage</span></a>) and space-dependent fields (”<code class="docutils literal notranslate"><span class="pre">-spatial_file</span> <span class="pre">...</span></code>”;
+again see section <a class="reference internal" href="../practical-usage/index.html#sec-practical-usage"><span class="std std-ref">Practical usage</span></a>), and finally the named output file (”<code class="docutils literal notranslate"><span class="pre">-o</span>
 <span class="pre">g20km_10ka.nc</span></code>”).</p>
 <p>Note that the modeling choices here are reasonable, but they are not the only way to do
 it! The user is encouraged to experiment; that is the point of a model.</p>
@@ -204,8 +210,8 @@ the same name.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

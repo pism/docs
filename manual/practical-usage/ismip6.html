@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ISMIP6 Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>ISMIP6 Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -96,24 +96,24 @@ area of submerged ice front, <span class="math notranslate nohighlight">\(kg / (
 <section id="output-variables">
 <h2>Output variables<a class="headerlink" href="#output-variables" title="Link to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="#tab-ismip6-variables"><span class="std std-numref">Table 31</span></a> for a list of variables requested by ISMIP6. Note that
-they have names different from the ones listed in <a class="reference internal" href="../diagnostics/index.html#sec-extra-vars"><span class="std std-ref">Spatially-variable fields</span></a> and use MKS units.
+they have names different from the ones listed in <a class="reference internal" href="../diagnostics/index.html#sec-spatial-vars"><span class="std std-ref">Spatially-variable fields</span></a> and use MKS units.
 To reduce the amount of post-processing output files require PISM can follow these
 conventions.</p>
 <p>Setting <a class="reference internal" href="../parameters/index.html#config-output.ISMIP6"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.ISMIP6</span></code></a> makes PISM save diagnostics using MKS units and recognize
 ISMIP6 variable names.</p>
 <p>To save <em>all</em> the diagnostics requested by ISMIP6 use the short-cut</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-extra_vars<span class="w"> </span>ismip6<span class="w"> </span>...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-spatial_vars<span class="w"> </span>ismip6<span class="w"> </span>...
 </pre></div>
 </div>
 <p>The list of variables is stored in the configuration parameter
-<a class="reference internal" href="../parameters/index.html#config-output.ISMIP6_extra_variables"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.ISMIP6_extra_variables</span></code></a> and contains variables Greenland projections are
+<a class="reference internal" href="../parameters/index.html#config-output.ISMIP6_spatial_variables"><code class="docutils literal notranslate"><span class="pre">output</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.ISMIP6_spatial_variables</span></code></a> and contains variables Greenland projections are
 required to provide. (Add <code class="docutils literal notranslate"><span class="pre">base,ligroundf</span></code> to this list for Antarctic projections.)</p>
-<p>To save all the time series supported by PISM, omit the <code class="docutils literal notranslate"><span class="pre">-ts_vars</span></code> option:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-ts_times<span class="w"> </span>TIMES<span class="w"> </span>-ts_file<span class="w"> </span>ts.nc
+<p>To save all the time series supported by PISM, omit the <code class="docutils literal notranslate"><span class="pre">-scalar_vars</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-scalar_times<span class="w"> </span>TIMES<span class="w"> </span>-scalar_file<span class="w"> </span>scalar-diagnostics.nc
 </pre></div>
 </div>
-<p>To save all variables requested by ISMIP6, use <code class="docutils literal notranslate"><span class="pre">-ts_vars</span> <span class="pre">ismip6</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-ts_times<span class="w"> </span>TIMES<span class="w"> </span>-ts_file<span class="w"> </span>ts.nc<span class="w"> </span>-ts_vars<span class="w"> </span>ismip6
+<p>To save all variables requested by ISMIP6, use <code class="docutils literal notranslate"><span class="pre">-scalar_vars</span> <span class="pre">ismip6</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pism<span class="w"> </span>-scalar_times<span class="w"> </span>TIMES<span class="w"> </span>-scalar_file<span class="w"> </span>scalar-diagnostics.nc<span class="w"> </span>-scalar_vars<span class="w"> </span>ismip6
 </pre></div>
 </div>
 <table class="docutils align-default" id="tab-ismip6-variables">
@@ -379,8 +379,8 @@ required to provide. (Add <code class="docutils literal notranslate"><span class
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Balancing the books &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -51,7 +51,7 @@ Positive values correspond to mass gain.</p>
 </div>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/57065d8c5fa6eb66e06106f6fd011bee/ice_mass_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
-<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-extra_file</span></code> etc.; see <a class="reference internal" href="saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>.</p>
+<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-spatial_file</span></code> etc.; see <a class="reference internal" href="saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>.</p>
 <p>To check that all changes in mass are accounted for, download the script above and run<a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ncap2<span class="w"> </span>-v<span class="w"> </span>-S<span class="w"> </span>ice_mass_accounting_error.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>pism_output.nc<span class="w"> </span>mass_accounting_error.nc
@@ -61,7 +61,7 @@ Positive values correspond to mass gain.</p>
 mass accounting errors at each point. All values of this variable should be close to or
 equal to zero. They are not zero (in general) due to rounding errors, though.</p>
 <p>Use a shortcut</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -extra_file ex.nc -extra_times N -extra_vars mass_fluxes,...
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -spatial_file diagnostics.nc -spatial_times N -spatial_vars mass_fluxes,...
 </pre></div>
 </div>
 <p>to save all fluxes needed to “balance the books” in terms of ice mass.</p>
@@ -79,7 +79,7 @@ equal to zero. They are not zero (in general) due to rounding errors, though.</p
 <p>Click <a class="reference download internal" download="" href="../../_downloads/c3b5bf4317c52a8623d52c8974f71d4c/ice_amount_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
 <p>To save these, use the shortcut</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -extra_file ex.nc -extra_times N -extra_vars amount_fluxes,...
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -spatial_file diagnostics.nc -spatial_times N -spatial_vars amount_fluxes,...
 </pre></div>
 </div>
 <p class="rubric">Comments</p>
@@ -114,7 +114,7 @@ computational domain. The “integrated” mass accounting error can be computed
 </div>
 <p>Click <a class="reference download internal" download="" href="../../_downloads/a2f27a68f9bcbc7fe59c6f9ab7e17442/scalar_accounting_error.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
-<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-ts_file</span></code> etc.; see <a class="reference internal" href="saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>.</p>
+<p>All names on the right-hand side above correspond to valid PISM diagnostic quantities.  They were generated using run-time option <code class="docutils literal notranslate"><span class="pre">-scalar_file</span></code> etc.; see <a class="reference internal" href="saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>.</p>
 <p class="rubric">Comments</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_flow</span></code> is the integral of <span class="math notranslate nohighlight">\(-\nabla \cdot Q\)</span> over the
@@ -152,7 +152,7 @@ the transport layer (if applicable).</p>
 <code class="docutils literal notranslate"><span class="pre">ncap2</span></code> script.</p>
 <p>All names on the right-hand side correspond to valid PISM diagnostic quantities.</p>
 <p>Use a shortcut</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -extra_file ex.nc -extra_times N -extra_vars hydrology_fluxes,...
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -spatial_file diagnostics.nc -spatial_times N -spatial_vars hydrology_fluxes,...
 </pre></div>
 </div>
 <p>to save all diagnostics mentioned above.</p>
@@ -165,7 +165,7 @@ runoff to the effective mass balance. Use diagnostic quantities
 <code class="docutils literal notranslate"><span class="pre">surface_accumulation_flux</span></code>, <code class="docutils literal notranslate"><span class="pre">surface_melt_flux</span></code>, and <code class="docutils literal notranslate"><span class="pre">surface_runoff_flux</span></code> (units of mass
 per area per time) and <code class="docutils literal notranslate"><span class="pre">surface_accumulation_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">surface_melt_rate</span></code>,
 <code class="docutils literal notranslate"><span class="pre">surface_runoff_rate</span></code> (units of mass per time).</p>
-<p>To save all these, use <code class="docutils literal notranslate"><span class="pre">-extra_vars</span></code> shortcuts <code class="docutils literal notranslate"><span class="pre">pdd_fluxes</span></code> and <code class="docutils literal notranslate"><span class="pre">pdd_rates</span></code>.</p>
+<p>To save all these, use <code class="docutils literal notranslate"><span class="pre">-spatial_vars</span></code> shortcuts <code class="docutils literal notranslate"><span class="pre">pdd_fluxes</span></code> and <code class="docutils literal notranslate"><span class="pre">pdd_rates</span></code>.</p>
 </section>
 <section id="mass-conservation-and-rough-bed-topography">
 <span id="sec-mass-conservation-rough-bed"></span><h2>Mass conservation and “rough” bed topography<a class="headerlink" href="#mass-conservation-and-rough-bed-topography" title="Link to this heading">¶</a></h2>
@@ -306,8 +306,8 @@ described in <span id="id6">[<a class="reference internal" href="../../zzz_refer
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

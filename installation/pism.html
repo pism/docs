@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Building PISM &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Building PISM &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -153,22 +153,19 @@ enabled when building PISM. This section lists important build-time options.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_LOOK_FOR_LIBRARIES</span></code></p></td>
 <td><p>specifies whether PISM should look for libraries (disable this on Crays)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_BUILD_EXTRA_EXECS</span></code></p></td>
-<td><p>build additional executables (needed to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_BUILD_PYTHON_BINDINGS</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_BUILD_PYTHON_BINDINGS</span></code></p></td>
 <td><p>build PISM’s Python bindingd; requires <code class="docutils literal notranslate"><span class="pre">petsc4py</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PROJ</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PROJ</span></code></p></td>
 <td><p>use the <a class="reference external" href="https://proj.org/en/stable/">PROJ</a> library to compute latitudes and longitudes of grid points</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PARALLEL_NETCDF4</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PARALLEL_NETCDF4</span></code></p></td>
 <td><p>use <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/">NetCDF</a> for parallel file I/O</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PNETCDF</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_USE_PNETCDF</span></code></p></td>
 <td><p>use <a class="reference external" href="https://parallel-netcdf.github.io/">PnetCDF</a> for parallel file I/O</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_DEBUG</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Pism_DEBUG</span></code></p></td>
 <td><p>enables extra sanity checks in the code (this makes PISM a lot slower but simplifies development)</p></td>
 </tr>
 </tbody>
@@ -265,7 +262,7 @@ for example.</p>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installing PISM</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Required tools and libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-io-libraries.html">Installing parallel I/O libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Enabling flexible interpolation using YAC and PROJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Flexible interpolation and asynchronous output using YAC and PROJ</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="cookbook.html">Installation Cookbook</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="debian.html">Installing prerequisites on Debian or Ubuntu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arch.html">Installing prerequisites and building PISM on Arch Linux</a></li>
@@ -307,8 +304,8 @@ for example.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

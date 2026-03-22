@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Grid sequencing &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -107,7 +107,7 @@ options:</p>
 </pre></div>
 </div>
 <p>Environment variable <code class="docutils literal notranslate"><span class="pre">EXSTEP</span></code> specifies the time in years between writing the
-spatially-dependent, and large-file-size-generating, frames for the <code class="docutils literal notranslate"><span class="pre">-extra_file</span> <span class="pre">...</span></code>
+spatially-dependent, and large-file-size-generating, frames for the <code class="docutils literal notranslate"><span class="pre">-spatial_file</span> <span class="pre">...</span></code>
 diagnostic output.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -167,8 +167,8 @@ an obvious modification of the run in section <a class="reference internal" href
 <img alt="../../_images/ivol-gridseq.png" src="../../_images/ivol-gridseq.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Time series of ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from the three runs in our grid
-sequencing example: 20 km for 10 ka = <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka_hy.nc</span></code>, 10 km for 2 ka =
-<code class="docutils literal notranslate"><span class="pre">ts_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">ts_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivol-gridseq" title="Link to this image">¶</a></p>
+sequencing example: 20 km for 10 ka = <code class="docutils literal notranslate"><span class="pre">scalar_g20km_10ka_hy.nc</span></code>, 10 km for 2 ka =
+<code class="docutils literal notranslate"><span class="pre">scalar_g10km_gridseq.nc</span></code>, and 5 km for 200 a = <code class="docutils literal notranslate"><span class="pre">scalar_g5km_gridseq.nc</span></code>.</span><a class="headerlink" href="#fig-ivol-gridseq" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#fig-ivol-gridseq"><span class="std std-numref">Fig. 11</span></a>, which shows time series of ice volume, also shows the cost of
@@ -299,8 +299,8 @@ coarsening stages in computing the fine grid solution.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

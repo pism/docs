@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>How do I…? &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>How do I…? &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -120,7 +120,7 @@ and then set its metadata:</p>
 <span class="n">ice_thickness</span><span class="p">.</span><span class="n">metadata</span><span class="p">().</span><span class="n">set_number</span><span class="p">(</span><span class="s">&quot;valid_min&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Here <code class="docutils literal notranslate"><span class="pre">grid</span></code> is an <code class="docutils literal notranslate"><span class="pre">IceGrid</span></code> instance, <code class="docutils literal notranslate"><span class="pre">thk</span></code> is the name of the NetCDF variable,
+<p>Here <code class="docutils literal notranslate"><span class="pre">grid</span></code> is an <code class="docutils literal notranslate"><span class="pre">Grid</span></code> instance, <code class="docutils literal notranslate"><span class="pre">thk</span></code> is the name of the NetCDF variable,
 <code class="docutils literal notranslate"><span class="pre">WITH_GHOSTS</span></code> means that storage for “ghost” (“halo”) points will be allocated, and “2” is
 the number of ghosts (in other words: required stencil width).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">array::Array::set_attrs()</span></code> call sets commonly used NetCDF variable attributes seen in
@@ -196,7 +196,7 @@ the time variable.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="n">m_grid</span><span class="o">-&gt;</span><span class="n">com</span><span class="p">,</span><span class="w"> </span><span class="n">m_config</span><span class="o">-&gt;</span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;output.format&quot;</span><span class="p">),</span>
 <span class="w">         </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">PISM_READWRITE_CLOBBER</span><span class="p">);</span>
 
-<span class="n">io</span><span class="o">::</span><span class="n">define_time</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">m_grid</span><span class="o">-&gt;</span><span class="n">ctx</span><span class="p">());</span>
+<span class="n">io</span><span class="o">::</span><span class="n">define_time</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">m_grid</span><span class="o">-&gt;</span><span class="n">ctx</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">time</span><span class="p">());</span>
 <span class="n">io</span><span class="o">::</span><span class="n">append_time</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">m_grid</span><span class="o">-&gt;</span><span class="n">ctx</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">config</span><span class="p">(),</span><span class="w"> </span><span class="n">current_time</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -305,8 +305,8 @@ time; please see <code class="docutils literal notranslate"><span class="pre">pi
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

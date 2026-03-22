@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>An SIA flow model for a table-top laboratory experiment &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>An SIA flow model for a table-top laboratory experiment &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -85,11 +85,11 @@ the generation of a configuration <code class="docutils literal notranslate"><sp
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./rungum.sh 4 52 &amp;&gt; out.lab52 &amp;
 </pre></div>
 </div>
-<p>This run generates text file <code class="docutils literal notranslate"><span class="pre">out.lab52</span></code>, diagnostic files <code class="docutils literal notranslate"><span class="pre">ts_lab52.nc</span></code> and
-<code class="docutils literal notranslate"><span class="pre">ex_lab52.nc</span></code>, and final output <code class="docutils literal notranslate"><span class="pre">lab52.nc</span></code>. This run took about 5 minutes on
+<p>This run generates text file <code class="docutils literal notranslate"><span class="pre">out.lab52</span></code>, diagnostic files <code class="docutils literal notranslate"><span class="pre">scalar_lab52.nc</span></code> and
+<code class="docutils literal notranslate"><span class="pre">spatial_lab52.nc</span></code>, and final output <code class="docutils literal notranslate"><span class="pre">lab52.nc</span></code>. This run took about 5 minutes on
 a 2013 laptop, thus roughly real time! When it is done, you can compare the modeled radius
 to the experimental data:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./showradius.py -o r52.png -d constantflux3.txt ts_lab52.nc
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./showradius.py -o r52.png -d constantflux3.txt scalar_lab52.nc
 </pre></div>
 </div>
 <p>You can also redo the whole thing on higher resolution grids (here: 5 and 2.5 mm), here
@@ -99,16 +99,16 @@ several hours, make a combined figure just like <a class="reference internal" hr
 ./preprocess.py -Mx 208 -o initlab208.nc
 ./rungum.sh 2 104 &amp;&gt; out.lab104 &amp;
 ./rungum.sh 4 208 &amp;&gt; out.lab208 &amp;
-./showradius.py -o foo.png -d constantflux3.txt ts_lab*.nc
+./showradius.py -o foo.png -d constantflux3.txt scalar_lab*.nc
 </pre></div>
 </div>
 <figure class="align-default" id="fig-labgumresult">
 <img alt="../../_images/labgumradius.png" src="../../_images/labgumradius.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Radius <span class="math notranslate nohighlight">\(r_N(t)\)</span> for runs with 10 mm (<code class="docutils literal notranslate"><span class="pre">ts_lab52.nc</span></code>), 5 mm (<code class="docutils literal notranslate"><span class="pre">ts_lab104.nc</span></code>), and 2.5
-mm (<code class="docutils literal notranslate"><span class="pre">ts_lab208.nc</span></code>) grids, compared to observations from Sayag &amp; Worster’s
-<span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id404" title="R. Sayag and M. G. Worster. Axisymmetric gravity currents of power-law fluids over a rigid horizontal surface. J. Fluid Mech., 2013. doi:10.1017/jfm.2012.545.">133</a>]</span> table-top “ice cap” (gravity current) made from a 1% Xanthan
-gum suspension, as shown in Figure <a class="reference internal" href="#fig-labgumexperiment"><span class="std std-numref">Fig. 40</span></a>.</span><a class="headerlink" href="#fig-labgumresult" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Radius <span class="math notranslate nohighlight">\(r_N(t)\)</span> for runs with 10 mm (<code class="docutils literal notranslate"><span class="pre">scalar_lab52.nc</span></code>), 5 mm (<code class="docutils literal notranslate"><span class="pre">scalar_lab104.nc</span></code>),
+and 2.5 mm (<code class="docutils literal notranslate"><span class="pre">scalar_lab208.nc</span></code>) grids, compared to observations from Sayag &amp;
+Worster’s <span id="id6">[<a class="reference internal" href="../../zzz_references_html.html#id404" title="R. Sayag and M. G. Worster. Axisymmetric gravity currents of power-law fluids over a rigid horizontal surface. J. Fluid Mech., 2013. doi:10.1017/jfm.2012.545.">133</a>]</span> table-top “ice cap” (gravity current) made from a 1%
+Xanthan gum suspension, as shown in Figure <a class="reference internal" href="#fig-labgumexperiment"><span class="std std-numref">Fig. 40</span></a>.</span><a class="headerlink" href="#fig-labgumresult" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>We see that on the coarsest grid the modeled volume has “steps” because the margin
@@ -209,8 +209,8 @@ particular, roughly speaking, <span class="math notranslate nohighlight">\(n\)</
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

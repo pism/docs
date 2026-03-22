@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Testing if forcing data is used correctly &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Testing if forcing data is used correctly &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -46,7 +46,7 @@ using a combination of options and input files. This is helpful during the proce
 creating PISM-readable data files, and modeling with such.</p>
 <p>To do this, set <a class="reference internal" href="../manual/parameters/index.html#config-stress_balance.model"><code class="docutils literal notranslate"><span class="pre">stress_balance</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a> to “none”, <a class="reference internal" href="../manual/parameters/index.html#config-energy.model"><code class="docutils literal notranslate"><span class="pre">energy</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.model</span></code></a> to “none”
 and <a class="reference internal" href="../manual/parameters/index.html#config-age.enabled"><code class="docutils literal notranslate"><span class="pre">age</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.enabled</span></code></a> to “false” (see <a class="reference internal" href="../manual/modeling-choices/disabling.html#sec-turning-off"><span class="std std-ref">Disabling sub-models</span></a>) and use PISM’s reporting
-capabilities (<code class="option docutils literal notranslate"><span class="pre">-extra_file</span></code>, <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, <code class="option docutils literal notranslate"><span class="pre">-extra_vars</span></code>) to monitor.</p>
+capabilities (<code class="option docutils literal notranslate"><span class="pre">-spatial_file</span></code>, <code class="option docutils literal notranslate"><span class="pre">-spatial_times</span></code>, <code class="option docutils literal notranslate"><span class="pre">-spatial_vars</span></code>) to monitor.</p>
 <p>Turning “off” ice dynamics saves computational time while allowing one to use the same
 options as in an actual modeling run. Note that we do <em>not</em> disable geometry updates, so
 one can check if surface elevation feedbacks modeled using lapse rates (and similar) work
@@ -56,9 +56,9 @@ growth that is not balanced by ice flow in this setup.)</p>
 <p>As an example, set up an ice sheet state file and check if climate data is read in
 correctly:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpiexec -n 2 pism -eisII A -Mx 61 -My 61 -y 1000 -o state.nc
-pism -i state.nc -surface given -extra_times 0.0:0.1:2.5 \
-     -extra_file movie.nc \
-     -extra_vars climatic_mass_balance,ice_surface_temp \
+pism -i state.nc -surface given -spatial_times 0.0:0.1:2.5 \
+     -spatial_file movie.nc \
+     -spatial_vars climatic_mass_balance,ice_surface_temp \
      -ys 0 -ye 2.5
 </pre></div>
 </div>
@@ -79,9 +79,9 @@ get the surface mass balance <code class="variable docutils literal notranslate"
      -geometry.update.enabled no \
      -i g20km_10ka.nc -bootstrap \
      -atmosphere searise_greenland -surface pdd \
-     -ys 0 -ye 1 -extra_times 1week \
-     -extra_file foo.nc \
-     -extra_vars climatic_mass_balance,ice_surface_temp,air_temp_snapshot
+     -ys 0 -ye 1 -spatial_times 1week \
+     -spatial_file foo.nc \
+     -spatial_vars climatic_mass_balance,ice_surface_temp,air_temp_snapshot
 </pre></div>
 </div>
 <p>produces <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code>. Viewing in with <code class="docutils literal notranslate"><span class="pre">ncview</span></code> shows an annual cycle in the variable
@@ -100,18 +100,19 @@ of modeled events is right, and high spatial resolution is not essential.)</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i g20km_10ka.nc -bootstrap -dx 40km -dy 40km -Mz 11 \
      -atmosphere searise_greenland \
      -surface pdd -ys 0 -ye 2.5 \
-     -extra_file foo.nc -extra_times 0.1 \
-     -extra_vars climatic_mass_balance,air_temp_snapshot,surface_melt_rate,surface_runoff_rate,surface_accumulation_rate \
-     -ts_file ts.nc -ts_times 0.1 \
+     -spatial_file foo.nc -spatial_times 0.1 \
+     -spatial_vars climatic_mass_balance,air_temp_snapshot,surface_melt_rate,surface_runoff_rate,surface_accumulation_rate \
+     -scalar_file scalar_diagnostics.nc -scalar_times 0.1 \
      -o bar.nc
 </pre></div>
 </div>
 <p>will produce <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code> containing a “movie” very similar to the one created by the
 previous run, but including the full influence of ice dynamics.</p>
-<p>In addition to <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code>, the latter command will produce <code class="docutils literal notranslate"><span class="pre">ts.nc</span></code> containing scalar
-time-series. The variable <code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_surface_mass_flux</span></code> (the <em>total
-over ice domain of top surface ice mass flux</em>) can be used to detect if climate forcing is
-applied at the right time.</p>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">foo.nc</span></code>, the latter command will produce <code class="docutils literal notranslate"><span class="pre">scalar_diagnostics.nc</span></code>
+containing scalar time-series. The variable
+<code class="docutils literal notranslate"><span class="pre">tendency_of_ice_mass_due_to_surface_mass_flux</span></code> (the <em>total over ice domain of top
+surface ice mass flux</em>) can be used to detect if climate forcing is applied at the right
+time.</p>
 </section>
 <section id="visualizing-the-climate-inputs-in-the-greenland-case">
 <h2>Visualizing the climate inputs in the Greenland case<a class="headerlink" href="#visualizing-the-climate-inputs-in-the-greenland-case" title="Link to this heading">¶</a></h2>
@@ -121,9 +122,9 @@ section <a class="reference internal" href="surface.html#sec-surface-pdd"><span 
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pism -i g20km_10ka.nc -bootstrap \
      -atmosphere searise_greenland,precip_scaling \
      -surface pdd -atmosphere_precip_scaling_file pism_dT.nc \
-     -extra_times 1week -ys -3 -ye 0 \
-     -extra_file pddmovie.nc \
-     -extra_vars climatic_mass_balance,air_temp_snapshot,effective_precipitation
+     -spatial_times 1week -ys -3 -ye 0 \
+     -spatial_file pddmovie.nc \
+     -spatial_vars climatic_mass_balance,air_temp_snapshot,effective_precipitation
 </pre></div>
 </div>
 <p>This produces the file <code class="docutils literal notranslate"><span class="pre">pddmovie.nc</span></code> with several variables:
@@ -158,9 +159,9 @@ expected <span id="id3">[<a class="reference internal" href="../zzz_references_h
      -surface simple \
      -atmosphere searise_greenland,delta_T \
      -atmosphere_delta_T_file pism_dT.nc \
-     -extra_times 100 -ys -125e3 -ye 0 \
-     -extra_vars ice_surface_temp \
-     -extra_file dT_movie.nc \
+     -spatial_times 100 -ys -125e3 -ye 0 \
+     -spatial_vars ice_surface_temp \
+     -spatial_file dT_movie.nc \
      -stress_balance.model none \
      -energy.model none \
      -age.enabled no \
@@ -258,8 +259,8 @@ temperature offsets are used correctly.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

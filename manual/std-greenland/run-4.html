@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fourth run: paleo-climate model spin-up &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Fourth run: paleo-climate model spin-up &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -114,10 +114,10 @@ starts with the ice geometry from the end of the constant-climate run.</p>
 <figure class="align-default" id="fig-ivolconstpaleo">
 <img alt="../../_images/ivol-const-paleo.png" src="../../_images/ivol-const-paleo.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Time series of modeled ice sheet volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from constant-climate
-(blue; <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka_hy.nc</span></code>) and paleo-climate (green; <code class="docutils literal notranslate"><span class="pre">ts_g20km_25ka_paleo.nc</span></code>)
-spinup runs. Note that the paleo-climate run started with the ice geometry at the end
-of the constant-climate run.</span><a class="headerlink" href="#fig-ivolconstpaleo" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Time series of modeled ice sheet volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> from
+constant-climate (blue; <code class="docutils literal notranslate"><span class="pre">scalar_g20km_10ka_hy.nc</span></code>) and paleo-climate (green;
+<code class="docutils literal notranslate"><span class="pre">scalar_g20km_25ka_paleo.nc</span></code>) spinup runs. Note that the paleo-climate run started
+with the ice geometry at the end of the constant-climate run.</span><a class="headerlink" href="#fig-ivolconstpaleo" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Another time-series comparison, of the variable <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized_temperate</span></code>, the
@@ -127,15 +127,15 @@ total volume of temperate (at <span class="math notranslate nohighlight">\(0^\ci
 come into rough equilibrium in the holocene. The bootstrapping artifact, seen at the start
 of the constant-climate run, which disappears in less than 1000 years, is avoided in the
 paleo-climate run by starting with the constant-climate end-state. The reader is
-encouraged to examine the diagnostic files <code class="docutils literal notranslate"><span class="pre">ts_g20km_25ka_paleo.nc</span></code> and
-<code class="docutils literal notranslate"><span class="pre">ex_g20km_25ka_paleo.nc</span></code> to find more evidence of the (modeled) climate impact on the
+encouraged to examine the diagnostic files <code class="docutils literal notranslate"><span class="pre">scalar_g20km_25ka_paleo.nc</span></code> and
+<code class="docutils literal notranslate"><span class="pre">spatial_g20km_25ka_paleo.nc</span></code> to find more evidence of the (modeled) climate impact on the
 ice dynamics.</p>
 <figure class="align-default" id="fig-ivoltempconstpaleo">
 <img alt="../../_images/ivoltemp-const-paleo.png" src="../../_images/ivoltemp-const-paleo.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Time series of temperate ice volume <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized_temperate</span></code> from
-constant-climate (blue; <code class="docutils literal notranslate"><span class="pre">ts_g20km_10ka_hy.nc</span></code>) and paleo-climate (green;
-<code class="docutils literal notranslate"><span class="pre">ts_g20km_25ka_paleo.nc</span></code>) spinup runs. The cold of the last ice age affects the
+constant-climate (blue; <code class="docutils literal notranslate"><span class="pre">scalar_g20km_10ka_hy.nc</span></code>) and paleo-climate (green;
+<code class="docutils literal notranslate"><span class="pre">scalar_g20km_25ka_paleo.nc</span></code>) spinup runs. The cold of the last ice age affects the
 fraction of temperate ice. Note different volume scale compared to that in
 <a class="reference internal" href="#fig-ivolconstpaleo"><span class="std std-numref">Fig. 8</span></a>; only about 1% of ice is temperate (by volume).</span><a class="headerlink" href="#fig-ivoltempconstpaleo" title="Link to this image">¶</a></p>
 </figcaption>
@@ -229,8 +229,8 @@ fraction of temperate ice. Note different volume scale compared to that in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

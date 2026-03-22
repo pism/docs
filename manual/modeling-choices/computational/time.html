@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Model time &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Model time &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=9641f709" />
-    <script src="../../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
@@ -68,7 +68,7 @@ date in the chosen calendar</em> (see <a class="reference internal" href="../../
 <a class="reference internal" href="../../parameters/index.html#config-time.calendar"><code class="docutils literal notranslate"><span class="pre">time</span></code>&shy;<code class="docutils literal notranslate"><span class="pre">.calendar</span></code></a>), so by default <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">0</span></code> will correspond to January 1 of year 1.</p>
 <p>It is also possible to provide <em>units</em>: for example, <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">1day</span> <span class="pre">-ye</span> <span class="pre">2weeks</span></code> will start the
 run from January 2, 1 and run for 14 days (until January 15).</p>
-<p>In addition to this, <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> (as well as <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>, etc) can
+<p>In addition to this, <code class="option docutils literal notranslate"><span class="pre">-ys</span></code> and <code class="option docutils literal notranslate"><span class="pre">-ye</span></code> (as well as <code class="option docutils literal notranslate"><span class="pre">-spatial_times</span></code>, etc) can
 take <em>dates</em> of the form <code class="docutils literal notranslate"><span class="pre">Y-M-D</span></code>, so <code class="docutils literal notranslate"><span class="pre">-ys</span> <span class="pre">2000-1-1</span> <span class="pre">-ye</span> <span class="pre">2100-1-1</span></code> would tell PISM to
 run for 100 years from January 1, 2000.</p>
 <p>The run length given by <code class="option docutils literal notranslate"><span class="pre">-y</span></code> is interpreted as the number of <span class="math notranslate nohighlight">\(365\)</span>-day years. For
@@ -117,8 +117,8 @@ corresponding to the keyword <code class="docutils literal notranslate"><span cl
 require precise application of forcing data or reporting on particular dates
 (paleo-climate runs, for example).</p>
 <p>In addition to setting run start and end times, the calendar setting also affects the
-interpretation of “monthly” and “yearly” reporting with <code class="option docutils literal notranslate"><span class="pre">-extra_times</span></code>,
-<code class="option docutils literal notranslate"><span class="pre">-ts_times</span></code>, and <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> (see <a class="reference internal" href="../../practical-usage/saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>,
+interpretation of “monthly” and “yearly” reporting with <code class="option docutils literal notranslate"><span class="pre">-spatial_times</span></code>,
+<code class="option docutils literal notranslate"><span class="pre">-scalar_times</span></code>, and <code class="option docutils literal notranslate"><span class="pre">-save_times</span></code> (see <a class="reference internal" href="../../practical-usage/saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">Spatially-varying diagnostic quantities</span></a>,
 <a class="reference internal" href="../../practical-usage/saving-time-series.html#sec-saving-time-series"><span class="std std-ref">Scalar diagnostic quantities</span></a>, and <a class="reference internal" href="../../practical-usage/saving-snapshots.html#sec-snapshots"><span class="std std-ref">Snapshots of the model state</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -305,8 +305,8 @@ supported diagnostic quantities at the end of a time-stepping run using the opti
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

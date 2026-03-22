@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Example: A regional model of the Jakobshavn outlet glacier in Greenland &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -227,7 +227,7 @@ the SeaRISE 1km data set) differs from that in the whole ice sheet model state.<
 <p>We will get first an equilibrium 5 km regional model, and then do a century run of a 2 km
 model based on that. While determining “equilibrium” requires a decision, of course, a
 standard satisfied here is that the ice volume in the region changes by less than 0.1
-percent in the final 100 model years. See <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> in <code class="docutils literal notranslate"><span class="pre">ts_spunjako_0.nc</span></code>
+percent in the final 100 model years. See <code class="docutils literal notranslate"><span class="pre">ice_volume_glacierized</span></code> in <code class="docutils literal notranslate"><span class="pre">scalar_spunjako_0.nc</span></code>
 below.</p>
 <p>The 5 km grid <a class="footnote-reference brackets" href="#id19" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> uses <code class="docutils literal notranslate"><span class="pre">-Mx</span> <span class="pre">125</span> <span class="pre">-My</span> <span class="pre">86</span></code>. So now we do a basic run using 8 MPI
 processes:</p>
@@ -236,7 +236,7 @@ processes:</p>
 </div>
 <p>You can read the <code class="docutils literal notranslate"><span class="pre">stdout</span></code> log file while it runs: “<code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">out.spin5km</span></code>”. The run takes
 about 4.4 processor-hours on a 2016 laptop. It produces three files which can be viewed
-(e.g. with <code class="docutils literal notranslate"><span class="pre">ncview</span></code>): <code class="docutils literal notranslate"><span class="pre">spunjako_0.nc</span></code>, <code class="docutils literal notranslate"><span class="pre">ts_spunjako_0.nc</span></code>, and <code class="docutils literal notranslate"><span class="pre">ex_spunjako_0.nc</span></code>.
+(e.g. with <code class="docutils literal notranslate"><span class="pre">ncview</span></code>): <code class="docutils literal notranslate"><span class="pre">spunjako_0.nc</span></code>, <code class="docutils literal notranslate"><span class="pre">scalar_spunjako_0.nc</span></code>, and <code class="docutils literal notranslate"><span class="pre">spatial_spunjako_0.nc</span></code>.
 Some more comments on this run are appropriate:</p>
 <ul>
 <li><p>Generally the regridding techniques used at the start of this spin-up run are
@@ -300,8 +300,8 @@ grid in the vertical:</p>
 because we need to regrid fields from the end of the previous 5 km regional run (in
 <code class="docutils literal notranslate"><span class="pre">spunjako_0.nc</span></code>) and then to “go back” and regrid the SSA boundary conditions from the 5
 km whole ice sheet results <code class="docutils literal notranslate"><span class="pre">g5km_bc.nc</span></code>. At the end of the run the final file
-<code class="docutils literal notranslate"><span class="pre">jakofine.nc</span></code> is produced. Also there is a time-series file <code class="docutils literal notranslate"><span class="pre">ts_jakofine.nc</span></code> with
-monthly scalar time-series and a spatial time-dependent file <code class="docutils literal notranslate"><span class="pre">ex_jakofine.nc</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">jakofine.nc</span></code> is produced. Also there is a time-series file <code class="docutils literal notranslate"><span class="pre">scalar_jakofine.nc</span></code> with
+monthly scalar time-series and a spatial time-dependent file <code class="docutils literal notranslate"><span class="pre">spatial_jakofine.nc</span></code>. The
 surface speed at the end of this run is shown in <a class="reference internal" href="#fig-jako-csurf"><span class="std std-numref">Fig. 44</span></a>, with a
 comparison to observations.</p>
 <p>Over this 100 year period the flow appears to be relatively steady state. Though this is
@@ -447,8 +447,8 @@ modeled region.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

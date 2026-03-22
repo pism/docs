@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Input and output &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Input and output &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=9641f709" />
-    <script src="../../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>window.MathJax = {"tex": {"macros": {"dx": "\\Delta x", "dy": "\\Delta y", "dz": "\\Delta z", "dt": "\\Delta t", "km": "\\,\\text{km}", "Diff": [" \\frac{\\mathrm{d}#1}{\\mathrm{d}#2} ", "2"], "diff": [" \\frac{\\partial #1}{\\partial #2} ", "2"], "var": [" {#1}_{\\text{#2}} ", "2"], "h": [" \\var{h}{#1} ", "1"], "T": [" \\var{T}{#1} ", "1"], "m": [" \\var{m}{#1} ", "1"], "ms": [" \\var{m^{*}}{#1} ", "1"], "psw": "p_{\\text{water}}", "pice": "p_{\\text{ice}}", "pmelange": "\\bar p_{\\text{melange}}", "rhoi": "\\rho_{\\text{ice}}", "rhow": "\\rho_{\\text{water}}", "n": "\\boldsymbol{n}", "nx": "\\n_{x}", "ny": "\\n_{y}", "phimin": "\\phi_{\\mathrm{min}}", "phimax": "\\phi_{\\mathrm{max}}", "bmin": "b_{\\mathrm{min}}", "bmax": "b_{\\mathrm{max}}", "bq": "\\mathbf{q}", "Up": ["\\operatorname{Up}\\left(#1\\big|#2\\right)", "2"], "uppair": ["\\left\\{\\begin{matrix} #1 \\\\ #2 \\end{matrix}\\right\\}", "2"], "Div": "\\nabla \\cdot", "V": "\\mathbf{V}", "Wtill": "W_{\\mathrm{till}}", "zs": "z_{\\text{sea level}}", "uu": "\\boldsymbol{u}", "nz": "\\n_{z}", "td": ["t^{D}_{#1}", "1"], "D": "\\displaystyle", "viscosity": "\\nu", "partI": "(2\\tilde N_{xx} + \\tilde N_{yy})", "partII": "(\\tilde N_{xy})", "E": "\\dot{\\boldsymbol{\\epsilon}}", "exponent": "\\frac{1-n}{2n}", "p": ["\\left(#1\\right)", "1"], "f": "\\rho\\, g\\, \\nabla s", "Id": "\\int_{\\Omega}", "Ib": "\\int_{\\partial\\Omega}", "Ibase": "\\int_{\\text{base}}", "dphi": ["\\diff{\\varphi_{#1}}{#2}", "2", "i"], "dpsi": ["\\diff{\\psi_{#1}}{#2}", "2", "i"], "Hmin": "H_{\\text{min}}", "dbeta": "\\diff{\\beta}{\\alpha}", "K": ["K_{i,j,#1,#2}", "2"], "ELA": "h_{\\text{ELA}}", "dphimin": "\\Delta \\phi_{\\mathrm{min}}", "dphimax": "\\Delta \\phi_{\\mathrm{max}}"}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Interpolation of input data" href="interpolation.html" />
@@ -211,6 +213,29 @@ available targets.</p>
 </ol>
 </div>
 </section>
+<section id="writing-output-files-asynchronously">
+<span id="sec-pism-async-io"></span><h2>Writing output files asynchronously<a class="headerlink" href="#writing-output-files-asynchronously" title="Link to this heading">¶</a></h2>
+<p>If PISM is build with <a class="reference external" href="https://dkrz-sw.gitlab-pages.dkrz.de/yac/">YAC</a> (see <a class="reference internal" href="../../installation/interpolation.html#sec-install-yac"><span class="std std-ref">Flexible interpolation and asynchronous output using YAC and PROJ</span></a>) one can also write
+<a class="reference internal" href="saving-diagnostics.html#sec-saving-diagnostics"><span class="std std-ref">spatially-variable diagnostics</span></a> and <a class="reference internal" href="saving-snapshots.html#sec-snapshots"><span class="std std-ref">snapshots of the
+model state</span></a> <em>asynchronously</em> using the Python-based executable
+<code class="docutils literal notranslate"><span class="pre">pism_async_writer</span></code>. Depending on a number of factors (such as the number of MPI
+processes used, grid size, frequency with which output files are updated) this may
+significantly reduce computation time since asynchronous writing allows the model to
+proceed while data are written to output files.</p>
+<p>Please make sure that Python packages <code class="docutils literal notranslate"><span class="pre">yac</span></code> (<a class="reference external" href="https://dkrz-sw.gitlab-pages.dkrz.de/yac/">YAC</a>’s Python bindings), <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>
+(<a class="reference external" href="https://pypi.org/project/netCDF4">netcdf4-python</a>), <a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">mpi4py</a> and <a class="reference external" href="https://numpy.org/">NumPy</a> are installed. Then run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>-n<span class="w"> </span>N<span class="w"> </span>pism<span class="w"> </span><span class="o">[</span>PISM<span class="w"> </span>options<span class="o">]</span><span class="w"> </span>:<span class="se">\</span>
+<span class="w">       </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>python3<span class="w"> </span>pism_async_writer
+</pre></div>
+</div>
+<p>to use <code class="docutils literal notranslate"><span class="pre">N</span></code> MPI processes for PISM and 1 MPI process for writing output files
+(<code class="docutils literal notranslate"><span class="pre">pism_async_writer</span></code> does not support parallel I/O yet; the command <code class="docutils literal notranslate"><span class="pre">mpiexec</span> <span class="pre">-n</span> <span class="pre">M</span>
+<span class="pre">python3</span> <span class="pre">pism_async_writer</span></code> with <span class="math notranslate nohighlight">\(M &gt; 1\)</span> will stop with an error message).</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">pism_async_writer</span> <span class="pre">--help</span></code> to see the list of its command-line options. Notably, one
+can set the compression level used to save 2D and 3D variables using the option <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">N</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">N</span></code> can vary from <span class="math notranslate nohighlight">\(0\)</span> (no compression) to <span class="math notranslate nohighlight">\(9\)</span> (maximum, slowest). The default
+compression level is <span class="math notranslate nohighlight">\(1\)</span>.</p>
+</section>
 </section>
 
 
@@ -309,8 +334,8 @@ available targets.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>

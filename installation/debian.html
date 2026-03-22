@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Installing prerequisites on Debian or Ubuntu &#8212; PISM, a Parallel Ice Sheet Model 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 documentation</title>
+    <title>Installing prerequisites on Debian or Ubuntu &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=15baefc4"></script>
+    <script src="../_static/documentation_options.js?v=a94e1b97"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -106,25 +106,22 @@ recommended as they satisfy requirements for building or running PISM.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-netcdf4</span></code></p></td>
 <td><p>optional; used in most post-processing scripts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-nose</span></code></p></td>
-<td><p>optional; used by PISM’s regression tests</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code></p></td>
 <td><p>optional; used in some pre- and post-processing scripts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-pyproj</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-pyproj</span></code></p></td>
 <td><p>optional; used in some pre-processing scripts</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python3-scipy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python3-scipy</span></code></p></td>
 <td><p>optional; used in some pre- and post-processing scripts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">swig</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">swig</span></code></p></td>
 <td><p>optional; used to build PISM’s Python bindings</p></td>
 </tr>
 </tbody>
 </table>
 <p>You may be able to install these by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>make<span class="w"> </span>g++<span class="w"> </span>git<span class="w"> </span>libfftw3-dev<span class="w"> </span>libgsl-dev<span class="w"> </span>libnetcdf-dev<span class="w"> </span>libudunits2-dev<span class="w"> </span>netcdf-bin<span class="w"> </span>petsc-dev<span class="w"> </span>cdo<span class="w"> </span>cmake-curses-gui<span class="w"> </span>libpnetcdf-dev<span class="w"> </span>libproj-dev<span class="w"> </span>libx11-dev<span class="w"> </span>nco<span class="w"> </span>ncview<span class="w"> </span>python3-dev<span class="w"> </span>python3-netcdf4<span class="w"> </span>python3-nose<span class="w"> </span>python3-numpy<span class="w"> </span>python3-pyproj<span class="w"> </span>python3-scipy<span class="w"> </span>swig
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>make<span class="w"> </span>g++<span class="w"> </span>git<span class="w"> </span>libfftw3-dev<span class="w"> </span>libgsl-dev<span class="w"> </span>libnetcdf-dev<span class="w"> </span>libudunits2-dev<span class="w"> </span>netcdf-bin<span class="w"> </span>petsc-dev<span class="w"> </span>cdo<span class="w"> </span>cmake-curses-gui<span class="w"> </span>libpnetcdf-dev<span class="w"> </span>libproj-dev<span class="w"> </span>libx11-dev<span class="w"> </span>nco<span class="w"> </span>ncview<span class="w"> </span>python3-dev<span class="w"> </span>python3-netcdf4<span class="w"> </span>python3-numpy<span class="w"> </span>python3-pyproj<span class="w"> </span>python3-scipy<span class="w"> </span>swig
 </pre></div>
 </div>
 <p>Click <a class="reference download internal" download="" href="../_downloads/ee1d5658757ddd49caa6c7557781a660/install_libraries.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> to download this file.</p>
@@ -181,7 +178,7 @@ recommended as they satisfy requirements for building or running PISM.</p>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installing PISM</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Required tools and libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-io-libraries.html">Installing parallel I/O libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Enabling flexible interpolation using YAC and PROJ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">Flexible interpolation and asynchronous output using YAC and PROJ</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="cookbook.html">Installation Cookbook</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing prerequisites on Debian or Ubuntu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arch.html">Installing prerequisites and building PISM on Arch Linux</a></li>
@@ -223,8 +220,8 @@ recommended as they satisfy requirements for building or running PISM.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.2.3-bcaa1c823 committed by Constantine Khrulev on 2026-03-20 |
-      &copy; 2004--2025, the PISM authors.
+      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      &copy; 2004--2026, the PISM authors.
       
     </div>
   </body>
