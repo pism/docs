@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Building PETSc &#8212; PISM, a Parallel Ice Sheet Model 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 documentation</title>
+    <title>Building PETSc &#8212; PISM, a Parallel Ice Sheet Model 2.3.1-6664c8ae8 committed by Constantine Khrulev on 2026-04-02 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=9641f709" />
-    <script src="../_static/documentation_options.js?v=a94e1b97"></script>
+    <script src="../_static/documentation_options.js?v=742c2de6"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -46,26 +46,27 @@ configure and build process first.</p>
 options are recommended; note PISM uses shared libraries by default:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Building PETSc</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">petsc_prefix</span><span class="o">=</span><span class="nv">$HOME</span>/local/petsc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">prefix</span><span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/local/petsc</span><span class="si">}</span>
+<span class="nv">petsc4py</span><span class="o">=</span><span class="si">${</span><span class="nv">petsc4py</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span>
 <span class="nv">PETSC_DIR</span><span class="o">=</span><span class="nv">$PWD</span>
 <span class="nv">PETSC_ARCH</span><span class="o">=</span><span class="s2">&quot;linux-opt&quot;</span>
 
 ./configure<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nv">COPTFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O3&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--prefix<span class="o">=</span><span class="si">${</span><span class="nv">petsc_prefix</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prefix<span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--with-cc<span class="o">=</span>mpicc<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--with-cxx<span class="o">=</span>mpicxx<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--with-fc<span class="o">=</span>mpifort<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--with-fc<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--with-shared-libraries<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--with-debugging<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--with-petsc4py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--with-petsc4py<span class="o">=</span><span class="si">${</span><span class="nv">petsc4py</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--with-x<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--download-f2cblaslapack
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">petsc_prefix</span><span class="si">}</span>/lib
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span>/lib
 make<span class="w"> </span>all
 make<span class="w"> </span>install
-make<span class="w"> </span><span class="nv">PETSC_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">petsc_prefix</span><span class="si">}</span><span class="w"> </span><span class="nv">PETSC_ARCH</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span>check
+make<span class="w"> </span><span class="nv">PETSC_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">prefix</span><span class="si">}</span><span class="w"> </span><span class="nv">PETSC_ARCH</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span>check
 </pre></div>
 </div>
 </div>
@@ -188,7 +189,7 @@ PETSc configurations and does not have any other significance.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      Built using PISM 2.3.0-79cae578d committed by Constantine Khrulev on 2026-03-22 |
+      Built using PISM 2.3.1-6664c8ae8 committed by Constantine Khrulev on 2026-04-02 |
       &copy; 2004--2026, the PISM authors.
       
     </div>
