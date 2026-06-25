@@ -1,5 +1,5 @@
 const DOCUMENTATION_OPTIONS = {
-    VERSION: '2.3.2-76011970c committed by Andy Aschwanden on 2026-06-25',
+    VERSION: '2.3.2-61fbb4273 committed by Andy Aschwanden on 2026-06-25',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,
     BUILDER: 'html',
